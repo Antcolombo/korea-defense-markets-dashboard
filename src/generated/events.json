@@ -1,0 +1,1992 @@
+[
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPajVpQlp5RXRNRWUzOWJ1YXlnd1Bfb1BZVmo4YzZud3lObmRCdFh1cjZqNXZHLURWR0VJTE5fQ3p5MERKQW9VeTZiQUd3NktxdFJyRFBsajBxYkpqN0VQbWdILUFpZ2ZYcmdCODd6Z2hVMlRDVmxGZGlRemxZS2I2YjIzQ2FTQUJneDI0ei1zSlBlQnRMZ0h4UzhTTzlhc2VkcllLTWh4RE0xMEZQNWs4UUJweWJGQlFGejh5MVI0ajEyRzA?oc=5",
+    "sourceName": "USNI News",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260424070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-1",
+    "date": "2026-04-24",
+    "title": "U.S. Considering Foreign Designs, Shipyards for New Navy Frigate, Destroyer Work in $1.85B Study - USNI News",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "SHIPPING_NAVAL_RISK",
+    "sourceContext": [
+      "regional",
+      "macro-context",
+      "defense-readthrough"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "QQQ",
+      "SMH",
+      "SOXX",
+      "TSM",
+      "MU",
+      "NVDA",
+      "AMD",
+      "AVGO"
+    ],
+    "affectedThemes": [
+      "Naval / Shipbuilding",
+      "China/Taiwan Spillover"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNc2NRS0otQkNZdzA4cnFsUHZ6TFVxRjliSFlzdExrMjdWMlU4NHdXNjNfbjZuMld4VlhZTUhUVkltZVRIZTlYNU1pcVBQbWVLajVsbHY0elUzNzlHUy1LMEF5aGVzWTZvNXdaVFhiR18yakpDM2VaWElIak1tN0kxR3RMNk1Lb0N5ZnNCZnlDS1ZRbVA2RTR2ZUNUS18zQkZza1dEbjhxQ1lVbnV2RW1zSXR2N2RVd1hYRUNEb1RjZjJiMHc?oc=5",
+    "sourceName": "Navy Times",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260421070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-2",
+    "date": "2026-04-21",
+    "title": "Navy ‘going to study’ possibility of building ships outside US, Phelan says - Navy Times",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "SHIPPING_NAVAL_RISK",
+    "sourceContext": [
+      "regional",
+      "macro-context",
+      "defense-readthrough"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "QQQ",
+      "SMH",
+      "SOXX",
+      "TSM",
+      "MU",
+      "NVDA",
+      "AMD",
+      "AVGO"
+    ],
+    "affectedThemes": [
+      "Naval / Shipbuilding",
+      "China/Taiwan Spillover"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNaGc2eThxbUV5c05tQkQ2a01udGVWR2d3WDNXdF9jb3dJaXpQVmtucXpzWmVZTmh1T3BaT0Q4RDZadjZTVUFLMUZpemZ2LXdIQ0hXZW1DMkM5LTludTdkZ01zYUFNQ1JGTFNLOVVMRWFDLUt0cE5sMDhHd2EwMGhVeE9taGt6cl9sbHFjdW9iRnYwTUZMc19fRDFlbzB2b3A0dlpPdVNn?oc=5",
+    "sourceName": "Stars and Stripes",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260421070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-3",
+    "date": "2026-04-21",
+    "title": "Navy calls for 34 new ships plus more than 4,000 major munitions - Stars and Stripes",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "SHIPPING_NAVAL_RISK",
+    "sourceContext": [
+      "regional",
+      "macro-context",
+      "defense-readthrough"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "QQQ",
+      "SMH",
+      "SOXX",
+      "TSM",
+      "MU",
+      "NVDA",
+      "AMD",
+      "AVGO"
+    ],
+    "affectedThemes": [
+      "Naval / Shipbuilding",
+      "China/Taiwan Spillover"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOeG1rTGw4QzQwOUpxbkIzWHZKTFBWc3VwTzBGTWJsaWFoOEtwRzlseVhMY1NMWkxWWmd4S0U1N2FUem5QWEN6b2FHYkdWMURvMXhzMDJLZk1Sc1oxbEFrUl9fSkpGdWwxN2F3Z2dlSmg3aWhvM3J2ZkpNZFp5a0VLV25ITkhNVDAwVG5wU2pZV3BSZFNmN25yWHhyUER5ZklLamF6clE3RmhyVlFXOXA5UVg1RlFOODY3ekVldQ?oc=5",
+    "sourceName": "Atlantic Council",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260515193000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-4",
+    "date": "2026-05-15",
+    "title": "Tracking US military assets in the Iran war - Atlantic Council",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "regional",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQM09zQ2lJXzFTX3JZdWRBNEc1Y1podzQwR0RDaV9wVmxWYjR3bmFmVkhpQXRyQ2c0OXFYRmZadHkwNjRHMnVKaTVoaHpuWmthdWVfUVpSZ1Y2UTZURHliLVJ0dm5DcjVoSk9qNllUQzkzcFlncFUxYVZTYTdab1BKeklKV0lsMlI0MVRTcHRac0R4bUFNcHMyYXdEaEZPbWcwdzcwSFc5b0d0R3lNOEc1dmJMSQ?oc=5",
+    "sourceName": "19FortyFive",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260428070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-5",
+    "date": "2026-04-28",
+    "title": "South Korea Wants Nuclear Submarines Just Like the U.S. Navy, Russia, and China - 19FortyFive",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "NORTH_KOREA_NUCLEAR",
+    "sourceContext": [
+      "korea-linked",
+      "security-event",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "North Korea Escalation",
+      "Missile Defense",
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQY0VnSDBYLTBIUnpqSUozcURpWFFSVUpmRFM4U0tXUDQyd3lEN1hvc1poRDBSd2xhd0g1aW9SemxjNnZqMVFIUWY4Szk4c19JaVNPN3ZqTVNlVEVpbFd5SHlXa1F6SmpVWHpjTUV1bDl6c3did2dPOHdzMUktWjR5SUNMUFlKWTE5dnMw?oc=5",
+    "sourceName": "War on the Rocks",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260520073245",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-6",
+    "date": "2026-05-20",
+    "title": "The Navy Needs Precise Mass and Here Is How to Get There - War on the Rocks",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "SHIPPING_NAVAL_RISK",
+    "sourceContext": [
+      "regional",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "QQQ",
+      "SMH",
+      "SOXX",
+      "TSM",
+      "MU",
+      "NVDA",
+      "AMD",
+      "AVGO"
+    ],
+    "affectedThemes": [
+      "Naval / Shipbuilding",
+      "China/Taiwan Spillover"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOYkJLdDE3LWZ6aXl4d0swaTlBYXpDUUEtRTFZX2NVbVdJbndQZ3ZSbkdsWERwcEE2ZjRESDBjNzVjd0dmcHVBNnpTT0xfaERzaE85dzM1Z1Z1ZHZzZTlqZkthdVhsa0hneFk3VEVnTTU5RldPbWRVek9vSWpjcUlKYzdIMTNWbmpQOWlJOW5FbzB6ek9OemJkUnIxWlJXWHctSFowVlN4RVdHczJTRThpbU93?oc=5",
+    "sourceName": "The Heritage Foundation",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260509203551",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-7",
+    "date": "2026-05-09",
+    "title": "China’s Naval Buildup Exposes U.S. Shipbuilding Gaps and Fleet Weakness - The Heritage Foundation",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "SHIPPING_NAVAL_RISK",
+    "sourceContext": [
+      "regional",
+      "macro-context",
+      "defense-readthrough"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "QQQ",
+      "SMH",
+      "SOXX",
+      "TSM",
+      "MU",
+      "NVDA",
+      "AMD",
+      "AVGO"
+    ],
+    "affectedThemes": [
+      "Naval / Shipbuilding",
+      "China/Taiwan Spillover"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOLVNrdEpEcllVYi1xMFhxSUh2US10UTZER2w1U2g2VmI0akJYLXBCRmxoYTZTR2ZNazJSV2VsZ1NRcXBucTRPZm5GLWMyUnRtckRJaC1fOU5HSjRjSkh1eU1ST3BhOW0xSXZmOFdDUVJQRm5rb3J4d3k1OHZOQzRzLU55VXdHMXpFQXJaRHRKWQ?oc=5",
+    "sourceName": "U.S. Department of War (.gov)",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260515212442",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-8",
+    "date": "2026-05-15",
+    "title": "Contracts for May 15, 2026 - U.S. Department of War (.gov)",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "regional",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPZTNjdjdDYnYzX1pkQ01za2tXWm9mamxJVmliaG9JWUZlaWtmaUp1WWFIZV82Ym5qeXh5RWtrWWZzOFdfdjd1eHdSQ1dsbDBuR2M4TGZUVmdwbDlaY2tGY0tDaER0Q3ktMjJCQ3pCRnJfS0x3ZzBJQTVVU1NOcFdtMEtoOFkzdXppQ3RDLVh5OUxrYWx6cTkyckZud0s0NndSRkw4RHdlOS1hYXBBN0Nwa3BB?oc=5",
+    "sourceName": "Foundation for Defense of Democracies",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260423070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-9",
+    "date": "2026-04-23",
+    "title": "Trump Administration Requests Extraordinary $1.5 Trillion Defense Budget - Foundation for Defense of Democracies",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "regional",
+      "macro-context",
+      "defense-readthrough"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNcGtTUWJMQ3FQQ3lYbGh6Z2Z3LTVQMEVWZU94V25kUWRCdkRod2JhbDNXQjlid1RDSDN0eFJfeWNZd1Z6NVYwclRJSlBuVmkxblhheWJXZVJRRUZ2djFtUG9telZSaXZvWXRDVmhiS1o4aHJsdWE2QkFpdVZBVnh3alRzSzJjTUhSdXVFcGU3bF9VUmtRMmY1X3FWOA?oc=5",
+    "sourceName": "DefenseScoop",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260421070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-10",
+    "date": "2026-04-21",
+    "title": "Navy planning to spend more than $17B on first Trump-class battleship - DefenseScoop",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "SHIPPING_NAVAL_RISK",
+    "sourceContext": [
+      "regional",
+      "macro-context",
+      "defense-readthrough"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "QQQ",
+      "SMH",
+      "SOXX",
+      "TSM",
+      "MU",
+      "NVDA",
+      "AMD",
+      "AVGO"
+    ],
+    "affectedThemes": [
+      "Naval / Shipbuilding",
+      "China/Taiwan Spillover"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxNODZXWGtsZVNpTElDLWREcWdOSHpESjZXd0hxME51MHRVNXRZRmJJVm9yVTUydERqdDhzT0VvbWRDNjJFbU5Ga25RYkt6THZnS09HcjEwM0FhWEF2b2JjZ182b09Fc1A5bjFSb2ZrSllCTHI4SkkweDdpNGVnZHdEY2g0RTAzaVRVV20wR2NsbmZPN3YwejZRblZLMkFRNThtcExSdTFTMnA0MXMydklsYWJaR0JxSHNZWnlUVVRHRmpnSnk0NnV0eHhGcFV6Sjl0aTl1MVdBc19ydmhBbmVqWXFYMzVTaTdKcXpxODVPa2RPems?oc=5",
+    "sourceName": "MSN",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260423070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-11",
+    "date": "2026-04-23",
+    "title": "Pentagon unveils sweeping expansion of fleet, weapons, and global support - MSN",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "regional",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE0xSlYtckVkZkNHRWJDUmZGeHhvb1A0c21rRExIdHBYT1loVUptOXlNd1YtZjMwR1h2eHROV3JHSXhXbjMxTHBoUlFfZ1FmYXFMUFY4Yi1LNA?oc=5",
+    "sourceName": "The Korea Herald",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260429070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-12",
+    "date": "2026-04-29",
+    "title": "S. Korea to launch new frigate with enhanced anti-air, anti-sub capabilities - The Korea Herald",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPb1RxTjhzRjhucnh6R3NHbmtLSVM1bXpTNXdmRnpYSzl1MlRPbzcxWmh5Y3JHMGJqQkZST2x5cjljNVZHNU5FX2ZmNEpUaG9IQVdNTEtLZTJjaXFwbFRxWFNyNjQyZVVsdVlTSWJtSlhESnpfRUVvNm1ZY3NiNlZqQm5CQ19fRWwwaGIxeXBvTGE0MUp2UFhlbjFRMDliZTduT3lXQ0JHUDZjT3U0TzVrNWtxd1VpaDlBeC1CNFd2MjEyNHBnaGc?oc=5",
+    "sourceName": "Andrew Erickson",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260421070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-13",
+    "date": "2026-04-21",
+    "title": "CMSI Translation #29: “Can ‘Armchair Strategizing’ Secure Victory from a Thousand Miles Away?” - Andrew Erickson",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "regional",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxNdTNacEZBWkdGU2NLLXpRNUcwZEg5anFPcTVIZ2Q1d2NQTlFsUHFEd1QwWWRBNVRfaXAwUTYtc1p3bE9BLTZEQ1F1Z1RNcFdBVE9QSG9VaWxpWVZGbGJLU0NLWHNYd2dCRFpPaVB0MGFZZmRDOFBLaGFJZHM2UFhyQjhsRFVBWm0ySEpzQm83dWlGYzluTGt1LTRfYXE0WXZiUHZhZGUyQkJaTnBVTnhERk9LRmtzdkJITGhYN1NjdTFtclhLdWY4YmF1QVJndzF6bU84SG9EelVCQ1BBRzZGN2VZZkRMbDZTV2I5Z0hydnhibElz?oc=5",
+    "sourceName": "Korea JoongAng Daily",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260421070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-14",
+    "date": "2026-04-21",
+    "title": "Korean companies push hard into U.S. Navy MRO market as gateway to greater cooperation - Korea JoongAng Daily",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "SHIPPING_NAVAL_RISK",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "QQQ",
+      "SMH",
+      "SOXX",
+      "TSM",
+      "MU",
+      "NVDA",
+      "AMD",
+      "AVGO"
+    ],
+    "affectedThemes": [
+      "Naval / Shipbuilding",
+      "China/Taiwan Spillover"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQM29xcmVnVzZ3b2xRY0xGZWY2eE0xaGJOczZVSkdGVzVUN2gyNWFFR25jMk5HZEVIQjNFNFVuOTVvOXJjN2o5eEpzX1M1TmpsX1FCeERUMkN1cGp3UnNxQWRoY3ZQdnVUMjJWc0tvb1haX1FQRTBfcE9qUTBPWEJBbUZ0bU9JRUdjWUplOXN3dlBPSmZEZ3lfNjFpTQ?oc=5",
+    "sourceName": "Indo-Pacific Defense FORUM",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260512140012",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-15",
+    "date": "2026-05-12",
+    "title": "Trilateral partners respond to North Korea’s missile threats - Indo-Pacific Defense FORUM",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "NORTH_KOREA_MISSILE",
+    "sourceContext": [
+      "korea-linked",
+      "security-event",
+      "defense-readthrough"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "North Korea Escalation",
+      "Missile Defense",
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQNE1pMzg0aVg4VG9kWGVPOHRHLVkzRlhYX3ZtRG96UTFVeS1kX3Z0V2xnWjE0cWJ3dW13a3kzRmlXeGQ3R2dROG8taVBpWW9qUHQ1NmhjSDg2YmlKT2hZOW1HaUIyem1temM4NDNWR1NKaXJRVFBoRkhYRE9ZM0NMNTlCdWpVdlFCNXNOSll5dDRIWVhvSHVFZ1JWZHBZaU1Mc3RmeWY5QnJIYS1nUFdzVXhlUDB3aHZISGFjUA?oc=5",
+    "sourceName": "Nikkei Asia",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260502070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-16",
+    "date": "2026-05-02",
+    "title": "South Korea's Hanwha builds arms empire as Ukraine, Iran wars spur spending - Nikkei Asia",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNUTByNkFDX1lWRGotV0d6MHRBZ2VTTXEzWG9jYWZRSnAzQXpoOTdOdFNBNHJKQ2JoRF9oY1JPYlB5MkxDT3BXYlFpRWxWcHFIUHJpRG0yOEtNcWJxaWpYQTB6VWRNaUl4MGVUYmIwanBnU1A2cjFxWVdUZVZmTG9wdUU2cDJvV0ZqQXczakhROExqazQwWGZKX296Y1B6R25lS244?oc=5",
+    "sourceName": "Overt Defense -",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260508070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-17",
+    "date": "2026-05-08",
+    "title": "SK Oceanplant Launches South Korea’s Newest Frigate – ROKS Jeju - Overt Defense -",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "defense-readthrough"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQRHMyS3NMQmROVlBabVd2dlc4MFNzN1hZYVlVeWZKNXZRaVczNlhxc21JVllDMUJhdGhnMjlUcm82QV80NjBRaElQaVg0ODlzc1EzZmdsdnhET0JsUG4wTGQzYWNTcWZjVVZmSUF5NlRweXpFSXFrNlpGckk5Um8zbEF5NTBoZjRfc1VxdjdFMEw0aVNSTWRPbDE2NHlXM1RGWFRIUg?oc=5",
+    "sourceName": "Stars and Stripes",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260424070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-18",
+    "date": "2026-04-24",
+    "title": "US, South Korean firms to partner on unmanned surface vessel for US military - Stars and Stripes",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPWndwREZmLWtDY1M5aFVnQzh5cHdZUW01RHh4alQxMkxBVDFQTGVReV95UWQ4MzVjNGpFemhzc0dEMjYxMFVNQkNPWFJOeUNIY19iNWgwLWxkWUhTRTBnWTlmaXp2blkybE9jRGc0N0d3YU8zLWtybF9wbzEzWGUtS0ctbUxibFAxalB2dE8zWlZ4R2ZoYmR6WDdFUkxxN1lMZnRrdTUzd3ktZC1nbXZDNzRR?oc=5",
+    "sourceName": "USNI News",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260424070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-19",
+    "date": "2026-04-24",
+    "title": "North Korea Test Launches Short Range Ballistic Missiles with Cluster Munitions - USNI News",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "NORTH_KOREA_MISSILE",
+    "sourceContext": [
+      "korea-linked",
+      "security-event",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "North Korea Escalation",
+      "Missile Defense",
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQUkUwSXFWZW5rRlJYN0NVdU96OVpMak5JaU9LdmEzNk81N0NjTURyUHBEWHpwd1h4emZUOVhhRy05NnFSRmFzRElFMmZ0bnZDYzBYLVhUNkRLczd5SnVFQXFaeUlfYVJyeHZhZFd6NjFrQy1DWUxPV3JfR24tS09YYnBpOW1UcElOMlIzcEIxUlFNQWc3eDBTY0FiRHNZVWd0QU5OczBTanZXdDFjMVdpc0JaTTZoV3B1elZtUlhLNA?oc=5",
+    "sourceName": "19FortyFive",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260429070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-20",
+    "date": "2026-04-29",
+    "title": "The U.S. Navy’s Shipbuilding Crisis Might Need Foreign Help to Fix and China Is Smiling - 19FortyFive",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "SHIPPING_NAVAL_RISK",
+    "sourceContext": [
+      "regional",
+      "macro-context",
+      "defense-readthrough"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "QQQ",
+      "SMH",
+      "SOXX",
+      "TSM",
+      "MU",
+      "NVDA",
+      "AMD",
+      "AVGO"
+    ],
+    "affectedThemes": [
+      "Naval / Shipbuilding",
+      "China/Taiwan Spillover"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQUEc3V0NCSHJHT2xfNGh6Sk03NFpXR2hjM0JLR1g3UzZfakYwem15RlRyU21qZEc2UU9RTTg3NlFjLUVaU054ZjBwc3FwRFFWLTlZZ1RFenFtN0JxQzgwUEc5d2V5MmU5ZE5uTy10QjFwOUg4VERXQ1Z1aVFjdWpXTzgxYzBWMW1BR29DbDlpZGh3V0U?oc=5",
+    "sourceName": "NPR",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260508070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-21",
+    "date": "2026-05-08",
+    "title": "North Korea says it will deploy new artillery guns targeting Seoul - NPR",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQenlBRlE2YnA0VDk2Y2dtTzNYNl9nNXJxakdNTEVTNFBnUUdKdTNBZjZxeERnNFV3dEJlUkJjV3VHbldqQlR1WUVRQjE1bV9UdlFrazY3MnNVYWM0eWV5NThDV3hRNmtNaWxKS3Z2dDMwWkM3a3RETWVtTUhWaGF6bTBla2tMN2QzY0ZuVHh3S0pFMjQ?oc=5",
+    "sourceName": "Arms Control Association",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260511131842",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-22",
+    "date": "2026-05-11",
+    "title": "North Korea Tests Missiles with Cluster Munitions - Arms Control Association",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "NORTH_KOREA_MISSILE",
+    "sourceContext": [
+      "korea-linked",
+      "security-event",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "North Korea Escalation",
+      "Missile Defense",
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOTlg3WFdrcDlTcmxjUl9iT2hQRjJyczVSUE5Nc3cyLWhGWk9iemd0d3RmbnNjeVd5UUZsTGgyVU04Y3E0alNPQnd4T0JkTlQ1dmZqa0s4bUFPb0x0V3JUMm1qTUFZSDZmWmVXSzBMc1RFakdBc2x2SUxPbkszcVMzLUJSeVhGUkpJMHc?oc=5",
+    "sourceName": "Yahoo",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260508070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-23",
+    "date": "2026-05-08",
+    "title": "North Korea ‘will fire nuclear weapon’ if Kim is killed - Yahoo",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "NORTH_KOREA_NUCLEAR",
+    "sourceContext": [
+      "korea-linked",
+      "security-event",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "North Korea Escalation",
+      "Missile Defense",
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQZThycTR0aFJwZUtQNXZ3RWZzbk5ia2lfMmFIQlhHTlR3djVxZzRZOTAtTW9HbGZiZk9wLWpBOXhhcGVRTG9YTFRYMlJKbnAyZWc1SEJHbHpKaGNoeEh6ZUZDV2t2MExUc0FXUjFjWWtBMWJaWUQ3WHgxai0xNlp4S1NsaHJyaXZWVUtxNNIBkgFBVV95cUxPWE9pVEM3Zl9uaHZ5dFZDQURhOERiN0ZZbnd6aXlFR1VhaWQ2TEZnOHhSNDJ2ZVR5MExUN2hZd1NsMGFRcHBxN2VOeHZxbXozeHdQY3NxeTNYNVZJYncwZ3p6bHdCRnZ2d0FhS1pjbHNrNjJFTDRvTkF5Z0x5LThMVi1NMFJCc2VNT2ZYMnhxeFVWUQ?oc=5",
+    "sourceName": "The Hill",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260428070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-24",
+    "date": "2026-04-28",
+    "title": "What’s behind North Korea’s ‘diplomatic sprint’ toward Trump - The Hill",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1jQzhyTWRSTjlnbTFMbGk0dElfUnZybE1SU2lwZVRfb19HUTA5emJ4aHJoUjFkOXU5aUR4YlVWb1ZsVW1FNnYxbWlYdXNIMmtvbVIwTVRvUWVUNVcwU3JjeWZiLV9wdGdueFUzbHBJMUs4MFFVOEZ2MlRMNmdpVmc?oc=5",
+    "sourceName": "Britannica",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260518050000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-25",
+    "date": "2026-05-18",
+    "title": "North Korea - Nuclear, Juche, Reunification - Britannica",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "NORTH_KOREA_NUCLEAR",
+    "sourceContext": [
+      "korea-linked",
+      "security-event",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "North Korea Escalation",
+      "Missile Defense",
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQWjNSNFlDczB0UloxOVpGaXFVMk9uTVRLaXgyZXQtQ202eEFibV9ZclQtdktiVXRWa1gyblFQeWNfTGF5RktwZlN5UVh0dzFIaVdMb3d3RXlIVWFCSDhBQ3pCbjBxa1pncENNczRFLS1ranR3RkZRekhtRUx5R1pzWHFUOGtxamZ0ZEN2U1g2bmJUc1d2RmpDeQ?oc=5",
+    "sourceName": "the-sun.com",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260508070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-26",
+    "date": "2026-05-08",
+    "title": "North Korea will automatically launch a nuclear attack if Kim Jong-un is assassinated, new constitution decrees - the-sun.com",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "NORTH_KOREA_NUCLEAR",
+    "sourceContext": [
+      "korea-linked",
+      "security-event",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "North Korea Escalation",
+      "Missile Defense",
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQR2pFNE5kcENkZHNSMTlJeGlrUW4zRkdSVHdCUndZeGJUcmxEQTlrdVJ0ZnB1VTVPRjJOZ3hBaXdKdGo2YmMxdEtJYkNla2RLNDRJbG5Cb0RWVHhTeWdZcHJtQXBWd3ZrLUc4Z3l5N0lwVlNTWjIxQlRSR0d1NHVXLWc0eTVIcjhnVWdqd1hEejJKRVJ2N3NYMDkwWGhLLWt3aEVCNEdqaGgyeGhHaWc?oc=5",
+    "sourceName": "Reuters",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260512070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-27",
+    "date": "2026-05-12",
+    "title": "Even in North Korea, someone’s in your parking spot - Reuters",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQQnpDanZRRk1SVkFUVkw4MEk4QUJZV0sxbk0tbWlVa2ZWaUdfUWlUN1BWSHNqc1dGTUl4cVdocFY5cEtsZUZKYW5veVRUYkk0LXNGQ01mYmFRUHRubnZhU2k5VlZFaFpGeklRUkhwSzExcHFyQWFPZWhqejZMcC1wSUh4VVowU0ww0gGOAUFVX3lxTE9oRDVEY1htWWh0UEZhQmlfV3RhZG1QTXZuYXhONWMzd1FFeDQzOEZ1SHF4cmhWem55NUhLVEg4OWx5Wm9fVXo3d1pmRlVncXBUYXdWNUdJckw1Z0NCQllsT1phODA4NFY5RTlBU0RpLWhYTmJzWHVFYXRYbmhTMEFuLVBlQzB1ODhJMHppUGc?oc=5",
+    "sourceName": "CBS News",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260505070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-28",
+    "date": "2026-05-05",
+    "title": "America's aging Minuteman III nuclear missiles are getting replaced. We got an inside look. - CBS News",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "NORTH_KOREA_NUCLEAR",
+    "sourceContext": [
+      "regional",
+      "security-event",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "North Korea Escalation",
+      "Missile Defense",
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxOS2dUOXpLNUxfdEtRNkQ1OGxOemtlWHk2TE01TlhQR0M2QVU3Rkc1cWY5c0Y4MWZWeFdqMGpjUnBXYXdmWlpoT3JZNllMdDJmSWVVYTJhRXRoWlhMNGx6WUJrSGhVa0ROYzRPMXZRUWIyTkxxeWlSY3Nna3B2TnZXejZYa1RKSWlHS0kyLTdSbmN3dVR0YjVyS3B3UTZHc0FCcVJoelMzd0hIa1dSVlJDWkFfTGpvZllKR0NSRXQtYkRFeS1velJaQU4yd2VIdG4zVDZfYXBMY2txUGhYNUJVRVV0VlFtc2l4SlF2QzhMdw?oc=5",
+    "sourceName": "MSN",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260507070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-29",
+    "date": "2026-05-07",
+    "title": "North Korea to deploy new long-range artillery near border - MSN",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMingFBVV95cUxQS1p2dGRrUWF1QXdLZTJGOFBIWmtYVDR6RjZHSmlHcFQwTXNPbjN4YVgzZTc3VTAtdWVMNmFzVFBkRkV2NFowNWc4NGhhVWFjSGQ0Z0JVR0FKUGhjM2lfQ05QT3hpdF9JdlFQaDNvRkZrOUdYUlpBeFRqWEFZcmt4a1M0QmpwOHM4c19teUt6eGw5bVFKNGwxLUhLSGc0UQ?oc=5",
+    "sourceName": "Plataforma Media",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260508103830",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-30",
+    "date": "2026-05-08",
+    "title": "North Korea to deploy three long-range battalions to South Korean border - Plataforma Media",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNNzZObVJMRVNSNThvWUZ5Z2ZfLXRrTTNFYUdOeGg1bzBENkR6VXVvNnhtNjJDSS1TeUphdEFKUnJ1RzFIU3VNYjc3ZTNWQ3Rla3BRMDFtX05DdmFYNDdxdDZ0Ty10aEZVcVRDZnpqdkw5QXBtR0lGdU00d0ZodWdRRnBOTUhaQlBEQkVWREdLUVd3YzJuMjJSbW1TMVpFcHpvbktIb1N5MnlQNk4wb29yWmxNUGNabnAyNmJPMmVoRmFNVk1CaDJV0gHMAUFVX3lxTFBDdC11STQtem9BeW15MzE1QTlKUlMtY3FmMXVkNVgxUnJJbVBKbE5VRms0bmVJcm12QUVFREJlTHJFd0otQTFnR3MxRjliQ0ViNlhTNEFSenJvb2FzSUNaN3RKam5yMXk4ZG5WTnkyMFk4aThQNG5uMlMxamxSbzhOZUgzaXFWTzBxUzlYLWdiaEluYmdDRGYxeGRKYXhMWVZUWnB6eFlSZ0xFUThpVEE0Z2NSUHFNcmZWTXdhSElhQmc1OHVNcC1nN1RFaA?oc=5",
+    "sourceName": "The Times of India",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260510102100",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-31",
+    "date": "2026-05-10",
+    "title": "North Korea prepares nuclear dead man's switch - The Times of India",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "NORTH_KOREA_NUCLEAR",
+    "sourceContext": [
+      "korea-linked",
+      "security-event",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "North Korea Escalation",
+      "Missile Defense",
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPcnV1MW9WcVlieWU4QlQ0T0Q3LThyZ3g2RnlNWlBXQjMxRVpqWk5pcElJVWZCWU9aZS1oZFROdnZKTndDWXpZMXh3TXFtYXJLQnRuQUJ5Mm9NV2hXbVpHaTdfc2U0X0sxVzRwVXo4MkVIR2R1SkRoaFc0NGRvMWFnU21uZ0k2SGxMbjNReDlYNmdMZGoxeHEzN3I3QW9oN2E1QTgwS2xHUUQ?oc=5",
+    "sourceName": "Türkiye Today",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260428070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-32",
+    "date": "2026-04-28",
+    "title": "North Korea executions surged during COVID-19 crackdown: Report - Türkiye Today",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPUF9CS1lFM1BIMWhuUDJEWklXM0JiX2dBR2ZwOGZEX2prdHNmQzgtR0Z1eFhhOHZJbldBNlBxZTNuMUVjelFTaFVZRS0yQzRlelJKQnRZQUE1UWhFalBjd0hDLWlyd2FTMHVwOFgyTUR1bnJNWlpXdnV5Y2x6T3dlN2xuaEhhUjRjQmh4Zkw3ZXpTVVBJMVY0UDI0RUcyaWZpVVktOVZBSHp1Y0ZpSHdVWTV0dERmaDdEbVBhM3YteXVDeTFacmpzbUF0NkZBay1vSDQ3QTNwQWNJaUMzYkhXctIB5gFBVV95cUxNZG9yeUNna2w2bFMybVBhVWJieHJaZHRDdDJrTVliSGlaVlVIbldiUGRNVTdaZUcyX3h3RXBfc0FYRkJ0dXVXRTJqbTB3a3A1am9ORzFYcndXN0tjejhRVWl0XzZzX3g1OGtsZXVqYzFZd2NRamdwb3MzU2psQVRnOTVTa0paRmpoUXVZSDlnZzNGWFlRN2ZmS0ppWENFTTJzNXJYSEFNTThYYzItRDQxdWNaZEhaUXV4WVoxZGFrOVRrOE5Iam1JZWl2NkxTQmk1TlN2MVRkQ2d3ekswdnZiVGxZVEdJUQ?oc=5",
+    "sourceName": "The Korea Times",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260508070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-33",
+    "date": "2026-05-08",
+    "title": "N. Korea to deploy new long-range artillery along border with S. Korea this year: KCNA - The Korea Times",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOY1lsZlp0WndSQXJBTmNlUkNOdE5zV2lURUxvQXNNanFSZXdlaXVscmlMSUZyTWozbkRsUWZST1hLZV81dU9DaXdXS3BaNnVvODVQYWNuTmZ4VHJUb0t5dGRBLUpoWEpRT0pkcmRCRl9MSHZsVjQ2ZlQ0d1RDZlM5Y2N5WTRhNVdkUEpZZElZTjFLanZYOTB0NmY1SzFjeExWbHlj?oc=5",
+    "sourceName": "Türkiye Today",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260518062054",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-34",
+    "date": "2026-05-18",
+    "title": "Kim orders North Korea to fortify border against ‘archenemy’ - Türkiye Today",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxPclJ1bmducGpfNjFVUVlFVDgwVk5aVy1xVWYzdVN0QWhFaG1fVlZOTVZHTDhocVVQYW9IdmY3MURaZF9MRkZPelRtRWhXbHlDaXpkWTdEZjJxOHdjZEI3NFotVG5rTlN4VmhCalBlR0tqNFlTRVNvYy10Z0FnWXZiYlRVSVdVZlFxcW15VkFWTmZwNGFFZ2N5ckJrZlNzMWpWbFZQVWV4Rl9OQUpQcTNRc0NMUFZHY1ZyR2hpMk1oN2x3WkdSdFlXN2EtNnVaSFl5MkY5U0tRb2t4b2NfQzFLcnZZNS1KNVRfXzhmYkNnbjQ3dw?oc=5",
+    "sourceName": "MSN",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260512130634",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-35",
+    "date": "2026-05-12",
+    "title": "North Korea enshrines automatic nuclear strike if Kim killed - MSN",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "NORTH_KOREA_NUCLEAR",
+    "sourceContext": [
+      "korea-linked",
+      "security-event",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "North Korea Escalation",
+      "Missile Defense",
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMinAFBVV95cUxORkY2NUNsQ00tV0w0dlRzRXBNWUVTdTJYN0JwdUZCRnZBRlU5SEZPRXpUS29rbjQwbFg0cFZsVWRTMW9pbC04ekpkOFprYVJyNHBGNS1CYzZFZW1WTHNQWGJaYXkwLUtBU2pJZ01HbkI2TGU3bEVHTEc0c044VmNYNHMzUGNLOVRjb054b0lSSHdQQWQ5M0MtY0NSV1E?oc=5",
+    "sourceName": "The News Pakistan",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260509070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-36",
+    "date": "2026-05-09",
+    "title": "North Korea to deploy new artillery along border with South - The News Pakistan",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxNM1dZajlvc1VoUG9KdXZnbVdCYm45ZW5FLTlkWnNlUVF4Z05JNlZ6UjU2Ykl6RllGVy0yUkI3U09wTHZjYzJjQjJWNEh4UURWd0lVZ2tiaTBfOTJhSndzTTBkVEtrc21Yc3Bfb3R0MnllLVpnRndidmNnbkFJeV80cUl3Z2xTWF9rMUVxUEk3VEwzSjZCa1dJTFBDMml1ZFZ0UlVyZF81eWxoYndWMHJSWW51WGk5ZExaT2hYcWdkZkNKQnhndFVJLUpPaUNBR0NmMl96M21hWk9FYmpaMGJNMkJsMWtBcHlGLTVMVHRmQ3JGRGVyM1E?oc=5",
+    "sourceName": "MSN",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260512172459",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-37",
+    "date": "2026-05-12",
+    "title": "North Korea enshrines automatic nuclear strike if Kim killed - MSN",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "NORTH_KOREA_NUCLEAR",
+    "sourceContext": [
+      "korea-linked",
+      "security-event",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "North Korea Escalation",
+      "Missile Defense",
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPbEFxVWpaQVZiQVlobGJMWEJGMFU4cnB0OS1PTE5SeHB6TXhyWEg0bWowXy1DMXhiSjlEU3JjZjZSRHp2WkNWN3ZLaThYSk5BeDZ3QkxuVVZSQjduOTRZZ3FnVFhWVFoydkVQclNMN09nNkgyZFQwb0haVjZJTUJta20teURKcmxmV1NJZkM5Z19aRVptNC1BbzBITl9BODg5R3RqZ0RqcDZfRFVl0gGyAUFVX3lxTE95d1drM3ZRNjZqSFJMR29jR2RuR2dmd1ZDQlRCUDZ4dkZwVW10Z0xaZlFsODY3U1l4d1J5T2FXcHlLV0lqQXRJZzJudlRuR094T082RUZZbGVOSWJ6MlI1bTdfTm5tMUR0LWFnYndPbUtGTE5Eb09oU0ZMXzdVaDJERFJTdl9rTmlEd1JPZGxvUTRpbE1fZHprR2RfT3ItbDFtWU4zQlpiVmVfbEhyUUgwT3c?oc=5",
+    "sourceName": "Inquirer.net",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260520051700",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-38",
+    "date": "2026-05-20",
+    "title": "Kim holds 1st division-brigade commanders’ meet amid military revamp - Inquirer.net",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "regional",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1lTy1HaElPbnJZN2swZnRLanY5NHhwOGRvYWhtOXh2WlBCX2EzM0JZYU5tNjctbkZuaXhXX2UzeFQtUHl3TGpTMWhNX09LMkN3NGFj?oc=5",
+    "sourceName": "매일경제",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260508070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-39",
+    "date": "2026-05-08",
+    "title": "North Korean State Councilor Kim Jong-un said he will deploy a new self-propelled artillery force ta.. - 매일경제",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOd1BqRW9uMUZ1OS1kLWZ5NnpGNTQ3WWJ6M2lWWmIwNkFtbEtkTS1IbVQweXZ4b2VtTmM1czhmdWpqMFppdHBhYVhvNDZMczR2UmllVFQ4dHVncEhIWVBQaHhkQkFkUl9rY2RnNmIzX2tsZnkyOFcxVmczUEJHWGRkMjRCbkNsaDlpdTZGUkVlR2JKX0VkcWhVdzFFRFY3NHhqN3cwVmpDWVlHYWNBN1NNeVFn?oc=5",
+    "sourceName": "Agenzia Nova",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260508031514",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-40",
+    "date": "2026-05-08",
+    "title": "North Korea to deploy new long-range artillery systems along border by year - Agenzia Nova",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNUGFYZEFCMzRBbjVFUWp2ekEwelJtMW1RRDJiNWEtSjM1Z0tFYjhUVy1GNlBBRFdRdGJWY0xQVGc0dGJ0MWIwR0JYT3FBOUIyOXQxY1dJc24weF9KU0QzNkwtOVdXejFzd1U3U1ByVDFFTTJvdEpYeVFYdDFRZHhhdkZFYUhUcTl5MjJUR3gzcVFmamVReThVRk5jdDZqU2RzTkFaQmZ3aW5ialVUNXB5MV85MXJjajk4NHFOZHJhZWE3REtWajZTTTZkUkxoMXFrZ3lLdGM1YVRsOXNJTTBkdQ?oc=5",
+    "sourceName": "Fondation pour la Recherche Stratégique",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260512174947",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-41",
+    "date": "2026-05-12",
+    "title": "Japan-ROK relations since 2025: toward a sustainable strategic convergence? - Fondation pour la Recherche Stratégique",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "US_ROK_JAPAN_TRILATERAL",
+    "sourceContext": [
+      "regional",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "LMT",
+      "RTX",
+      "NOC",
+      "HII",
+      "BA",
+      "ITA",
+      "079550.KS",
+      "047810.KS"
+    ],
+    "affectedThemes": [
+      "U.S.-ROK-Japan Alliance",
+      "Missile Defense"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNODQxcjRtVENrTE56WDFramU2SHZ6ZU1kYi1vNGJ4R0pDUnk2WGtsaWEwR3NHdnZGbUxjYzZ5ZEhvYnRQV0R2VTQ1NUI5NG0tUHQ5UE9BVG5jS2hSUUJhTE9ZMTQ5d0pDMk1DbGpFTlBVRWZzR2J1T0dhVzByZS1sSWxPQVJmOEZYcVpCU1pDZ0tSdjFjQ21KQzVXR196LVF6UnJSY05IaXpTZjRRY1E?oc=5",
+    "sourceName": "Atlantic Council",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260429070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-42",
+    "date": "2026-04-29",
+    "title": "A blueprint for a US-South Korea combined multi-domain task force - Atlantic Council",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQazJKck96dDRubXZRWG15YlpqRVhEMUtWaVRIak5zYU53VjRJMnBJS25WTkFoVHNJOUQ0V3JTbm5weF8zelNITk5MRDF2T0ZrV1E4Z25MQUlQQ1hQbDhZdjd1OHFUcTMtcExfQ2E3RW5yYzlvUXRrdlg0bV9ENkFIRzh1RUE?oc=5",
+    "sourceName": "Foreign Affairs Magazine",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260507070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-43",
+    "date": "2026-05-07",
+    "title": "Why Japan and South Korea Won’t Go Nuclear - Foreign Affairs Magazine",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "NORTH_KOREA_NUCLEAR",
+    "sourceContext": [
+      "korea-linked",
+      "security-event",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "North Korea Escalation",
+      "Missile Defense",
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMickFVX3lxTE1JdHdqS2pjNE5RUVFqQ3dFdVdaNXM5RC1pRkhUSFlXaXdUS25oOGVuLUJ6LVdBOEI0X3lHcENQOUlLdmd6bWNsTEg2VGFoTVFLWm1MbFNPSWJWckRqazhiMEF3VFZ1V0hOY3V6cmMycDA5dw?oc=5",
+    "sourceName": "War on the Rocks",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260430070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-44",
+    "date": "2026-04-30",
+    "title": "Correcting Course in the Indo‑Pacific - War on the Rocks",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "regional",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQS2VtRXgxODRtT0VnTkNQMFRXRmJIdXNReGF5cTBGelZJR3JFcnN1V2phZy1sdVI2a3RNSGxoRTFSbGVnU3JERk5JbXdMbzRTMHlXRm8wVmZxNGJQeC1ORVF6YzNWOFI5azB1SjZDeW5CaWtPZ1YwUW1nUVZqM3VGNlFIUUp6S1p6YkMybXRQRWR0aUFBMUp6Tk11cTNmLV9raXU5YXZQT3VDdnBNM3ZpQnk5V3ViZw?oc=5",
+    "sourceName": "38 North",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260423070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-45",
+    "date": "2026-04-23",
+    "title": "How South Korea Might Fight a North Korean Invasion in a Dual-Contingency Scenario - 38 North",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "DIPLOMATIC_DEVELOPMENT",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMigAFBVV95cUxONXF0UUhWc0pEczY4YXhOZmd0VklMaE1lZjdHdGNMYi1ZaEtONEJxVERJeXNtRDh1enVWYlU2NElwUWhPQ1NUd3d5MmFhQ0VNc2YxWFJBd3BXRjc4R3VpcFRoRUVKU1dPTVVVXzl2dmtUYUtjM3paUUVjbGVkbWtrOA?oc=5",
+    "sourceName": "Politics Today",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260424070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-46",
+    "date": "2026-04-24",
+    "title": "Washington’s Allies? Japan, Germany and South Korea - Politics Today",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "US_ROK_JAPAN_TRILATERAL",
+    "sourceContext": [
+      "korea-linked",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "LMT",
+      "RTX",
+      "NOC",
+      "HII",
+      "BA",
+      "ITA",
+      "079550.KS",
+      "047810.KS"
+    ],
+    "affectedThemes": [
+      "U.S.-ROK-Japan Alliance",
+      "Missile Defense"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOTFRQUkJ5bnZPR3h4Y0pyTzdRaUdFMmlvZEJKTXNXb0YtVEJORURWVzBJRXNzRlowUXEwMldma1phai14TjlUNENsME84WUMtYlVCclZHY1lyMmtySnhiUjRxLXQwLXl6OE9kb2lNTzlHYmdHUWVDUXBnQUlaZDBUc0xnaEZsSDFkVjJqbVdqNllaRVVhNUZZV0wtY3g0M1ZWNExr?oc=5",
+    "sourceName": "Brookings",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260430070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-47",
+    "date": "2026-04-30",
+    "title": "Should Japan change its approach to North Korean denuclearization? - Brookings",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Korean Peninsula",
+    "country": "US",
+    "category": "NORTH_KOREA_NUCLEAR",
+    "sourceContext": [
+      "korea-linked",
+      "security-event",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "North Korea Escalation",
+      "Missile Defense",
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOQ1dYMUwyd3hLbzlZSUs1UmNoNmx1M1pKRWYxenpJYmJHN0x2MGpUaDJFaHBSeUpiWHA0OEFxNzBpeU4zQ1lzZHZzaVZPU2FjVFBCZm1YUjhIZWQwbVNsZmhYaks2OEpCZGxCWmwzSUhRVzlDQ0tjVWNzYlkza0h1QnZJWF8wc3A5UUthV3NuWjNXOGJIZ25zcWpR?oc=5",
+    "sourceName": "Carnegie Endowment for International Peace",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260424070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-48",
+    "date": "2026-04-24",
+    "title": "What Does Nuclear Proliferation in East Asia Mean for Russia? - Carnegie Endowment for International Peace",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "NORTH_KOREA_NUCLEAR",
+    "sourceContext": [
+      "regional",
+      "security-event",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "affectedThemes": [
+      "North Korea Escalation",
+      "Missile Defense",
+      "FX / Volatility Stress"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNb1BiSlMwUDBSOTRybUJUejNkRThnWlNLVGNiZ1hlVmNjVGRSZmQ0ZDVmUVZydGFZMks1SGZUbjVQUG1FeGN2ZGVjZDZvSTdBMHpUQV9BbDZuUFdFRldNWjlWcnppOUZYNnk3NldmUE1NRG9MTWdTal9oeVJzOVY4LTM2WjhnZk1YRW440gGQAUFVX3lxTFBFaVFDb0JjTE0ycmVJME8zdmViRG5PV01MTFU0YjBYNGJZb0phV3JXek81R2JRZEtaQ21ETnNCdEl6ZUNFU1lZazl0eWY4RkJTbnREY05oSzNad3FLbWl5andyV0MwbWdKcWVVVmlXZzg0T0tHbVBGT1NfUkk2QkVqenZKc0hHaFNVWF93bVpxVg?oc=5",
+    "sourceName": "CNBC",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260513233911",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-49",
+    "date": "2026-05-13",
+    "title": "Japan's global defense business may be on the cusp of a big breakout - CNBC",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "US_ROK_JAPAN_TRILATERAL",
+    "sourceContext": [
+      "regional",
+      "macro-context",
+      "defense-readthrough"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "LMT",
+      "RTX",
+      "NOC",
+      "HII",
+      "BA",
+      "ITA",
+      "079550.KS",
+      "047810.KS"
+    ],
+    "affectedThemes": [
+      "U.S.-ROK-Japan Alliance",
+      "Missile Defense"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  },
+  {
+    "provider": "Google News RSS",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPbUhzdjVNSGctZlpDN3h4azQ3eFh3WnFBWGk4XzFPX0NsX3lFUWlMbVpjSzNSVlpWTldCMmRMWEVzWW5EdnZjdE5MUzJNN2lLcWJ0U3RkcmlYbFEyOVN1Uk1yR1RBWjdZRFNrdWYtZ2xwVmVMWDdxcG1tdnE2eDVHTTktd0lNY3ZUM0l3RUc1V2JyZVdRSERVQlc1eTE3SHczV3dBcHlwaVVQU2JhUHp3S0Noby3SAboBQVVfeXFMT0dHZDZRQnZOZVcxZWdPYU13eGtKMk0zTEZJejllRkdUR1ZvWnh2Q1gwelJOT0xyOEw0MDdBWHkxdVRodmJVNGsyZ3NTc2JnM0dqc05JalhYcm1UamNmMUJMWHdPOGtaNm85SFpCNnRXUXZweFY5cTRjOXhTbFE1TEEtQXQyazZESmNFTU9FWmVjVm4ydmVIbWV2UkplVm04cmk1UGpDVm5ZNHB5ZHMxbG1ueEphNFhfZ053?oc=5",
+    "sourceName": "Al Jazeera",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "20260424070000",
+    "isDerived": false,
+    "methodologyNote": "Event title/date/url sourced from news RSS; category and exposure mappings are deterministic context fields, not market-movement scores.",
+    "dataQuality": "source",
+    "id": "gdelt-50",
+    "date": "2026-04-24",
+    "title": "Japan builds up its ‘southern shield’ as faith in US security cover falters - Al Jazeera",
+    "summary": "Open the linked source article for full text. This dashboard stores only sourced metadata and deterministic derived classifications.",
+    "region": "Indo-Pacific",
+    "country": "US",
+    "category": "US_ROK_JAPAN_TRILATERAL",
+    "sourceContext": [
+      "regional",
+      "macro-context",
+      "watchlist-context"
+    ],
+    "priceConfirmationRequired": true,
+    "eventUse": "Context only; confirm with price, filings, fundamentals, or repeatable return studies.",
+    "affectedAssets": [
+      "LMT",
+      "RTX",
+      "NOC",
+      "HII",
+      "BA",
+      "ITA",
+      "079550.KS",
+      "047810.KS"
+    ],
+    "affectedThemes": [
+      "U.S.-ROK-Japan Alliance",
+      "Missile Defense"
+    ],
+    "analystNote": "Derived note: review the source article and methodology before using this record in research.",
+    "verified": true
+  }
+]

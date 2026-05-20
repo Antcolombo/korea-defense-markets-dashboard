@@ -1,0 +1,115 @@
+[
+  {
+    "provider": "derived",
+    "sourceUrl": "/methodology",
+    "sourceName": "Research OS market tape",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Daily market tape derived from sourced price and macro observations. Missing providers are tracked in sourceBacklog, not silently rendered.",
+    "dataQuality": "derived",
+    "date": "2026-05-20",
+    "SPX": 7353.61,
+    "QQQ": 25870.71,
+    "KOSPI": null,
+    "USD_KRW": 1499.61,
+    "USD_JPY": 158.69,
+    "DXY": 119.2825,
+    "US_2Y": 4.07,
+    "US_10Y": 4.61,
+    "KR10Y": 3.737,
+    "oil": 101.56,
+    "gold": null,
+    "SOX": 496.74,
+    "VIX": 18.06,
+    "top_movers": [
+      "QQQ -217.49% 5D",
+      "SPX -47.35% 5D",
+      "USDKRW 38.55% 5D",
+      "BA -9.23% 5D",
+      "MU -8.85% 5D"
+    ],
+    "market_summary": "Daily command-center row built from sourced macro and market observations; use it to ask what moved, why, whether it matters, and whether an expression is warranted.",
+    "todays_question": "What moved today, what source explains it, and does it change any Korea macro, defense, or semis idea?",
+    "sourceBacklog": [
+      {
+        "name": "foreign equity flows",
+        "providerTarget": "KRX / Bank of Korea / licensed market data",
+        "reasonBlocked": "No configured public provider in the current ingestion layer.",
+        "status": "Not yet sourced"
+      },
+      {
+        "name": "gold spot series",
+        "providerTarget": "FRED / LBMA / market data provider",
+        "reasonBlocked": "Current provider mapping is not configured as a stable build dependency.",
+        "status": "Not yet sourced"
+      },
+      {
+        "name": "DRAM/NAND pricing",
+        "providerTarget": "TrendForce / DRAMeXchange / company disclosures",
+        "reasonBlocked": "Specialized semiconductor pricing feed is not configured.",
+        "status": "Not yet sourced"
+      },
+      {
+        "name": "KOSPI live price",
+        "providerTarget": "KRX-capable market data provider",
+        "reasonBlocked": "Current pipeline tracks KOSPI as evidence-only until a licensed/index-capable provider is configured.",
+        "status": "Not yet sourced"
+      },
+      {
+        "name": "KOSDAQ (KOSDAQ)",
+        "providerTarget": "Licensed or provider-backed market/disclosure feed",
+        "reasonBlocked": "Evidence only; add local exchange price provider",
+        "status": "Not yet sourced"
+      },
+      {
+        "name": "Hanwha Aerospace (012450.KS)",
+        "providerTarget": "Licensed or provider-backed market/disclosure feed",
+        "reasonBlocked": "Evidence only; add local exchange price provider",
+        "status": "Not yet sourced"
+      },
+      {
+        "name": "LIG Nex1 (079550.KS)",
+        "providerTarget": "OpenDART plus KRX-capable market data provider",
+        "reasonBlocked": "Evidence only; add local exchange price provider",
+        "status": "Not yet sourced"
+      },
+      {
+        "name": "Korea Aerospace Industries (047810.KS)",
+        "providerTarget": "Licensed or provider-backed market/disclosure feed",
+        "reasonBlocked": "Evidence only; add local exchange price provider",
+        "status": "Not yet sourced"
+      },
+      {
+        "name": "Hyundai Rotem (064350.KS)",
+        "providerTarget": "Licensed or provider-backed market/disclosure feed",
+        "reasonBlocked": "Evidence only; add local exchange price provider",
+        "status": "Not yet sourced"
+      },
+      {
+        "name": "HD Hyundai (329180.KS)",
+        "providerTarget": "Licensed or provider-backed market/disclosure feed",
+        "reasonBlocked": "Evidence only; add local exchange price provider",
+        "status": "Not yet sourced"
+      },
+      {
+        "name": "Hanwha Ocean (042660.KS)",
+        "providerTarget": "OpenDART plus KRX-capable market data provider",
+        "reasonBlocked": "Evidence only; add local exchange price provider",
+        "status": "Not yet sourced"
+      },
+      {
+        "name": "Samsung Electronics (005930.KS)",
+        "providerTarget": "Licensed or provider-backed market/disclosure feed",
+        "reasonBlocked": "Evidence only; add local exchange price provider",
+        "status": "Not yet sourced"
+      },
+      {
+        "name": "SK Hynix (000660.KS)",
+        "providerTarget": "Licensed or provider-backed market/disclosure feed",
+        "reasonBlocked": "Evidence only; add local exchange price provider",
+        "status": "Not yet sourced"
+      }
+    ]
+  }
+]

@@ -1,0 +1,482 @@
+[
+  {
+    "provider": "derived",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "Research OS company coverage",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Company coverage extends sourced disclosure metadata with explicit diligence fields and research-state tracking.",
+    "dataQuality": "derived",
+    "ticker": "LMT",
+    "company": "LOCKHEED MARTIN CORP",
+    "country": "United States",
+    "sector": "Aerospace & Defense",
+    "theme": "Missile Defense",
+    "revenue_segments": [
+      "Not yet modeled from filings"
+    ],
+    "margin_trend": "Not yet modeled from filings",
+    "backlog": "Backlog diligence required from filings and contract disclosures.",
+    "debt": "Not yet modeled from filings",
+    "cash": "Not yet modeled from filings",
+    "valuation_multiple": "Valuation work should be completed from sourced market and filing data before publication.",
+    "next_earnings": "Not yet sourced",
+    "latest_filing": "Latest sourced SEC filing metadata: 8-K filed 2026-05-13.",
+    "key_risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "current_thesis": "Lockheed Martin is tracked for public Aerospace & Defense exposure tied to Missile Defense, Munitions / Defense Industrial Base, U.S.-ROK-Japan Alliance.",
+    "research_state": "Watching"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "Research OS company coverage",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Company coverage extends sourced disclosure metadata with explicit diligence fields and research-state tracking.",
+    "dataQuality": "derived",
+    "ticker": "RTX",
+    "company": "RTX Corp",
+    "country": "United States",
+    "sector": "Aerospace & Defense",
+    "theme": "Missile Defense",
+    "revenue_segments": [
+      "Not yet modeled from filings"
+    ],
+    "margin_trend": "Not yet modeled from filings",
+    "backlog": "Backlog diligence required from filings and contract disclosures.",
+    "debt": "Not yet modeled from filings",
+    "cash": "Not yet modeled from filings",
+    "valuation_multiple": "Valuation work should be completed from sourced market and filing data before publication.",
+    "next_earnings": "Not yet sourced",
+    "latest_filing": "Latest sourced SEC filing metadata: SCHEDULE 13G/A filed 2026-05-14.",
+    "key_risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "current_thesis": "RTX is tracked for public Aerospace & Defense exposure tied to Missile Defense, Munitions / Defense Industrial Base.",
+    "research_state": "Watching"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "Research OS company coverage",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Company coverage extends sourced disclosure metadata with explicit diligence fields and research-state tracking.",
+    "dataQuality": "derived",
+    "ticker": "NOC",
+    "company": "NORTHROP GRUMMAN CORP /DE/",
+    "country": "United States",
+    "sector": "Aerospace & Defense",
+    "theme": "Missile Defense",
+    "revenue_segments": [
+      "Not yet modeled from filings"
+    ],
+    "margin_trend": "Not yet modeled from filings",
+    "backlog": "Backlog diligence required from filings and contract disclosures.",
+    "debt": "Not yet modeled from filings",
+    "cash": "Not yet modeled from filings",
+    "valuation_multiple": "Valuation work should be completed from sourced market and filing data before publication.",
+    "next_earnings": "Not yet sourced",
+    "latest_filing": "Latest sourced SEC filing metadata: SCHEDULE 13G/A filed 2026-05-14.",
+    "key_risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "current_thesis": "Northrop Grumman is tracked for public Aerospace & Defense exposure tied to Missile Defense, Cyber / AI Defense.",
+    "research_state": "Watching"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "Research OS company coverage",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Company coverage extends sourced disclosure metadata with explicit diligence fields and research-state tracking.",
+    "dataQuality": "derived",
+    "ticker": "GD",
+    "company": "GENERAL DYNAMICS CORP",
+    "country": "United States",
+    "sector": "Aerospace & Defense",
+    "theme": "Naval / Shipbuilding",
+    "revenue_segments": [
+      "Not yet modeled from filings"
+    ],
+    "margin_trend": "Not yet modeled from filings",
+    "backlog": "Backlog diligence required from filings and contract disclosures.",
+    "debt": "Not yet modeled from filings",
+    "cash": "Not yet modeled from filings",
+    "valuation_multiple": "Valuation work should be completed from sourced market and filing data before publication.",
+    "next_earnings": "Not yet sourced",
+    "latest_filing": "Latest sourced SEC filing metadata: 4 filed 2026-05-13.",
+    "key_risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "current_thesis": "General Dynamics is tracked for public Aerospace & Defense exposure tied to Naval / Shipbuilding, Munitions / Defense Industrial Base.",
+    "research_state": "Watching"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "Research OS company coverage",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Company coverage extends sourced disclosure metadata with explicit diligence fields and research-state tracking.",
+    "dataQuality": "derived",
+    "ticker": "HII",
+    "company": "HUNTINGTON INGALLS INDUSTRIES, INC.",
+    "country": "United States",
+    "sector": "Aerospace & Defense",
+    "theme": "Naval / Shipbuilding",
+    "revenue_segments": [
+      "Not yet modeled from filings"
+    ],
+    "margin_trend": "Not yet modeled from filings",
+    "backlog": "Backlog diligence required from filings and contract disclosures.",
+    "debt": "Not yet modeled from filings",
+    "cash": "Not yet modeled from filings",
+    "valuation_multiple": "Valuation work should be completed from sourced market and filing data before publication.",
+    "next_earnings": "Not yet sourced",
+    "latest_filing": "Latest sourced SEC filing metadata: 10-Q filed 2026-05-05.",
+    "key_risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "current_thesis": "Huntington Ingalls Industries is tracked for public Aerospace & Defense exposure tied to Naval / Shipbuilding, China/Taiwan Spillover, U.S.-ROK-Japan Alliance.",
+    "research_state": "Watching"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "Research OS company coverage",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Company coverage extends sourced disclosure metadata with explicit diligence fields and research-state tracking.",
+    "dataQuality": "derived",
+    "ticker": "LHX",
+    "company": "L3HARRIS TECHNOLOGIES, INC. /DE/",
+    "country": "United States",
+    "sector": "Aerospace & Defense",
+    "theme": "Cyber / AI Defense",
+    "revenue_segments": [
+      "Not yet modeled from filings"
+    ],
+    "margin_trend": "Not yet modeled from filings",
+    "backlog": "Backlog diligence required from filings and contract disclosures.",
+    "debt": "Not yet modeled from filings",
+    "cash": "Not yet modeled from filings",
+    "valuation_multiple": "Valuation work should be completed from sourced market and filing data before publication.",
+    "next_earnings": "Not yet sourced",
+    "latest_filing": "Latest sourced SEC filing metadata: 144 filed 2026-05-18.",
+    "key_risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "current_thesis": "L3Harris is tracked for public Aerospace & Defense exposure tied to Cyber / AI Defense, Missile Defense.",
+    "research_state": "Watching"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "Research OS company coverage",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Company coverage extends sourced disclosure metadata with explicit diligence fields and research-state tracking.",
+    "dataQuality": "derived",
+    "ticker": "BA",
+    "company": "BOEING CO",
+    "country": "United States",
+    "sector": "Aerospace & Defense",
+    "theme": "U.S.-ROK-Japan Alliance",
+    "revenue_segments": [
+      "Not yet modeled from filings"
+    ],
+    "margin_trend": "Not yet modeled from filings",
+    "backlog": "Backlog diligence required from filings and contract disclosures.",
+    "debt": "Not yet modeled from filings",
+    "cash": "Not yet modeled from filings",
+    "valuation_multiple": "Valuation work should be completed from sourced market and filing data before publication.",
+    "next_earnings": "Not yet sourced",
+    "latest_filing": "Latest sourced SEC filing metadata: SCHEDULE 13G filed 2026-05-14.",
+    "key_risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "current_thesis": "Boeing is tracked for public Aerospace & Defense exposure tied to U.S.-ROK-Japan Alliance, Defense Procurement.",
+    "research_state": "Watching"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "Research OS company coverage",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Company coverage extends sourced disclosure metadata with explicit diligence fields and research-state tracking.",
+    "dataQuality": "derived",
+    "ticker": "TSM",
+    "company": "TAIWAN SEMICONDUCTOR MANUFACTURING CO LTD",
+    "country": "Taiwan",
+    "sector": "Semiconductors",
+    "theme": "Semiconductor Export Controls",
+    "revenue_segments": [
+      "Not yet modeled from filings"
+    ],
+    "margin_trend": "Not yet modeled from filings",
+    "backlog": "Not central to current thesis.",
+    "debt": "Not yet modeled from filings",
+    "cash": "Not yet modeled from filings",
+    "valuation_multiple": "Valuation work should be completed from sourced market and filing data before publication.",
+    "next_earnings": "Not yet sourced",
+    "latest_filing": "Latest sourced SEC filing metadata: 4 filed 2026-05-19.",
+    "key_risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "current_thesis": "Taiwan Semiconductor Manufacturing ADR is tracked for public Semiconductors exposure tied to Semiconductor Export Controls, China/Taiwan Spillover.",
+    "research_state": "Watching"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "Research OS company coverage",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Company coverage extends sourced disclosure metadata with explicit diligence fields and research-state tracking.",
+    "dataQuality": "derived",
+    "ticker": "MU",
+    "company": "MICRON TECHNOLOGY INC",
+    "country": "United States",
+    "sector": "Semiconductors",
+    "theme": "Semiconductor Export Controls",
+    "revenue_segments": [
+      "Not yet modeled from filings"
+    ],
+    "margin_trend": "Not yet modeled from filings",
+    "backlog": "Not central to current thesis.",
+    "debt": "Not yet modeled from filings",
+    "cash": "Not yet modeled from filings",
+    "valuation_multiple": "Valuation work should be completed from sourced market and filing data before publication.",
+    "next_earnings": "Not yet sourced",
+    "latest_filing": "Latest sourced SEC filing metadata: SCHEDULE 13G/A filed 2026-05-14.",
+    "key_risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "current_thesis": "Micron Technology is tracked for public Semiconductors exposure tied to Semiconductor Export Controls, China/Taiwan Spillover.",
+    "research_state": "Watching"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
+    "sourceName": "Research OS company coverage",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Company coverage extends sourced disclosure metadata with explicit diligence fields and research-state tracking.",
+    "dataQuality": "derived",
+    "ticker": "012450.KS",
+    "company": "Hanwha Aerospace",
+    "country": "South Korea",
+    "sector": "Aerospace & Defense",
+    "theme": "Korean Defense Exports",
+    "revenue_segments": [
+      "Not yet modeled from filings"
+    ],
+    "margin_trend": "Not yet modeled from filings",
+    "backlog": "Backlog diligence required from filings and contract disclosures.",
+    "debt": "Not yet modeled from filings",
+    "cash": "Not yet modeled from filings",
+    "valuation_multiple": "Valuation work should be completed from sourced market and filing data before publication.",
+    "next_earnings": "Not yet sourced",
+    "latest_filing": "Latest sourced OpenDART disclosure: N/A received N/A.",
+    "key_risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "current_thesis": "Provider disclosure coverage failed during ingestion.",
+    "research_state": "Unresearched"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
+    "sourceName": "Research OS company coverage",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Company coverage extends sourced disclosure metadata with explicit diligence fields and research-state tracking.",
+    "dataQuality": "derived",
+    "ticker": "079550.KS",
+    "company": "LIG Nex1",
+    "country": "South Korea",
+    "sector": "Aerospace & Defense",
+    "theme": "Missile Defense",
+    "revenue_segments": [
+      "Not yet modeled from filings"
+    ],
+    "margin_trend": "Not yet modeled from filings",
+    "backlog": "Backlog diligence required from filings and contract disclosures.",
+    "debt": "Not yet modeled from filings",
+    "cash": "Not yet modeled from filings",
+    "valuation_multiple": "Valuation work should be completed from sourced market and filing data before publication.",
+    "next_earnings": "Not yet sourced",
+    "latest_filing": "Latest sourced OpenDART disclosure: N/A received N/A.",
+    "key_risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "current_thesis": "Provider disclosure coverage failed during ingestion.",
+    "research_state": "Unresearched"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
+    "sourceName": "Research OS company coverage",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Company coverage extends sourced disclosure metadata with explicit diligence fields and research-state tracking.",
+    "dataQuality": "derived",
+    "ticker": "047810.KS",
+    "company": "Korea Aerospace Industries",
+    "country": "South Korea",
+    "sector": "Aerospace & Defense",
+    "theme": "Korean Defense Exports",
+    "revenue_segments": [
+      "Not yet modeled from filings"
+    ],
+    "margin_trend": "Not yet modeled from filings",
+    "backlog": "Backlog diligence required from filings and contract disclosures.",
+    "debt": "Not yet modeled from filings",
+    "cash": "Not yet modeled from filings",
+    "valuation_multiple": "Valuation work should be completed from sourced market and filing data before publication.",
+    "next_earnings": "Not yet sourced",
+    "latest_filing": "Latest sourced OpenDART disclosure: N/A received N/A.",
+    "key_risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "current_thesis": "Provider disclosure coverage failed during ingestion.",
+    "research_state": "Unresearched"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
+    "sourceName": "Research OS company coverage",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Company coverage extends sourced disclosure metadata with explicit diligence fields and research-state tracking.",
+    "dataQuality": "derived",
+    "ticker": "064350.KS",
+    "company": "Hyundai Rotem",
+    "country": "South Korea",
+    "sector": "Industrials",
+    "theme": "Korean Defense Exports",
+    "revenue_segments": [
+      "Not yet modeled from filings"
+    ],
+    "margin_trend": "Not yet modeled from filings",
+    "backlog": "Backlog diligence required from filings and contract disclosures.",
+    "debt": "Not yet modeled from filings",
+    "cash": "Not yet modeled from filings",
+    "valuation_multiple": "Valuation work should be completed from sourced market and filing data before publication.",
+    "next_earnings": "Not yet sourced",
+    "latest_filing": "Latest sourced OpenDART disclosure: N/A received N/A.",
+    "key_risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "current_thesis": "Provider disclosure coverage failed during ingestion.",
+    "research_state": "Unresearched"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
+    "sourceName": "Research OS company coverage",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Company coverage extends sourced disclosure metadata with explicit diligence fields and research-state tracking.",
+    "dataQuality": "derived",
+    "ticker": "329180.KS",
+    "company": "HD Hyundai",
+    "country": "South Korea",
+    "sector": "Industrials",
+    "theme": "Naval / Shipbuilding",
+    "revenue_segments": [
+      "Not yet modeled from filings"
+    ],
+    "margin_trend": "Not yet modeled from filings",
+    "backlog": "Backlog diligence required from filings and contract disclosures.",
+    "debt": "Not yet modeled from filings",
+    "cash": "Not yet modeled from filings",
+    "valuation_multiple": "Valuation work should be completed from sourced market and filing data before publication.",
+    "next_earnings": "Not yet sourced",
+    "latest_filing": "Latest sourced OpenDART disclosure: N/A received N/A.",
+    "key_risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "current_thesis": "Provider disclosure coverage failed during ingestion.",
+    "research_state": "Unresearched"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
+    "sourceName": "Research OS company coverage",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Company coverage extends sourced disclosure metadata with explicit diligence fields and research-state tracking.",
+    "dataQuality": "derived",
+    "ticker": "042660.KS",
+    "company": "Hanwha Ocean",
+    "country": "South Korea",
+    "sector": "Shipbuilding",
+    "theme": "Naval / Shipbuilding",
+    "revenue_segments": [
+      "Not yet modeled from filings"
+    ],
+    "margin_trend": "Not yet modeled from filings",
+    "backlog": "Backlog diligence required from filings and contract disclosures.",
+    "debt": "Not yet modeled from filings",
+    "cash": "Not yet modeled from filings",
+    "valuation_multiple": "Valuation work should be completed from sourced market and filing data before publication.",
+    "next_earnings": "Not yet sourced",
+    "latest_filing": "Latest sourced OpenDART disclosure: N/A received N/A.",
+    "key_risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "current_thesis": "Provider disclosure coverage failed during ingestion.",
+    "research_state": "Unresearched"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
+    "sourceName": "Research OS company coverage",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Company coverage extends sourced disclosure metadata with explicit diligence fields and research-state tracking.",
+    "dataQuality": "derived",
+    "ticker": "005930.KS",
+    "company": "Samsung Electronics",
+    "country": "South Korea",
+    "sector": "Semiconductors",
+    "theme": "Semiconductor Export Controls",
+    "revenue_segments": [
+      "Not yet modeled from filings"
+    ],
+    "margin_trend": "Not yet modeled from filings",
+    "backlog": "Not central to current thesis.",
+    "debt": "Not yet modeled from filings",
+    "cash": "Not yet modeled from filings",
+    "valuation_multiple": "Valuation work should be completed from sourced market and filing data before publication.",
+    "next_earnings": "Not yet sourced",
+    "latest_filing": "Latest sourced OpenDART disclosure: N/A received N/A.",
+    "key_risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "current_thesis": "Provider disclosure coverage failed during ingestion.",
+    "research_state": "Unresearched"
+  }
+]

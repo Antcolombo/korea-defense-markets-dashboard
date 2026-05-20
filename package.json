@@ -1,0 +1,32 @@
+{
+  "name": "korea-defense-markets-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "npm run build:data && next build",
+    "build:data": "npm run setup:check && npm run ingest:providers && tsx scripts/build_real_dataset.ts && tsx scripts/build_energy_research.ts && tsx scripts/build_research_os.ts && npm run audit:data",
+    "ingest": "npm run build:data",
+    "ingest:providers": "tsx scripts/ingest_events.ts && tsx scripts/ingest_market_data.ts && tsx scripts/ingest_macro.ts && tsx scripts/ingest_energy.ts && tsx scripts/ingest_filings.ts",
+    "build:research-os": "tsx scripts/build_research_os.ts",
+    "setup:check": "tsx scripts/check_setup.ts",
+    "audit:data": "tsx scripts/audit_sources.ts",
+    "start": "next start",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@types/node": "^22.15.19",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "autoprefixer": "^10.4.21",
+    "next": "^15.3.3",
+    "postcss": "^8.5.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "recharts": "^2.15.3",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,349 @@
+[
+  {
+    "provider": "derived",
+    "sourceUrl": "/methodology",
+    "sourceName": "Research OS mastery pipeline",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Mastery pipeline converts passive learning topics into required public research outputs.",
+    "dataQuality": "derived",
+    "id": "market-basics",
+    "title": "Market basics",
+    "track": "Markets",
+    "goal": "Understand what moved and why.",
+    "learn": [
+      "Equity indexes",
+      "FX",
+      "Rates",
+      "Commodities",
+      "Volatility"
+    ],
+    "do": [
+      "Write the daily market map",
+      "Update top movers",
+      "Ask what changed"
+    ],
+    "artifact": "Market note",
+    "proofLinks": [
+      "/dashboard",
+      "/markets"
+    ],
+    "status": "Building"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "/methodology",
+    "sourceName": "Research OS mastery pipeline",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Mastery pipeline converts passive learning topics into required public research outputs.",
+    "dataQuality": "derived",
+    "id": "accounting-valuation",
+    "title": "Accounting and valuation",
+    "track": "Research",
+    "goal": "Read companies as operating machines.",
+    "learn": [
+      "Statements",
+      "Margins",
+      "Backlog",
+      "Debt",
+      "Cash",
+      "Multiples"
+    ],
+    "do": [
+      "Read one filing",
+      "Update one company one-pager"
+    ],
+    "artifact": "Company model",
+    "proofLinks": [
+      "/companies"
+    ],
+    "status": "Building"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "/methodology",
+    "sourceName": "Research OS mastery pipeline",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Mastery pipeline converts passive learning topics into required public research outputs.",
+    "dataQuality": "derived",
+    "id": "data-engineering",
+    "title": "Data engineering",
+    "track": "Data",
+    "goal": "Make source truth auditable.",
+    "learn": [
+      "Ingestion",
+      "Normalization",
+      "Schemas",
+      "Freshness",
+      "Failure modes"
+    ],
+    "do": [
+      "Improve one dataset",
+      "Run source audit"
+    ],
+    "artifact": "Data quality improvement",
+    "proofLinks": [
+      "/source-audit"
+    ],
+    "status": "Building"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "/methodology",
+    "sourceName": "Research OS mastery pipeline",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Mastery pipeline converts passive learning topics into required public research outputs.",
+    "dataQuality": "derived",
+    "id": "statistics",
+    "title": "Statistics",
+    "track": "Data",
+    "goal": "Know when a result may be fake.",
+    "learn": [
+      "Sample size",
+      "Base rates",
+      "Bias",
+      "Event windows"
+    ],
+    "do": [
+      "Run one event study",
+      "Write false-positive risk"
+    ],
+    "artifact": "Event study",
+    "proofLinks": [
+      "/backtest"
+    ],
+    "status": "Building"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "/methodology",
+    "sourceName": "Research OS mastery pipeline",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Mastery pipeline converts passive learning topics into required public research outputs.",
+    "dataQuality": "derived",
+    "id": "trading-research",
+    "title": "Trading research process",
+    "track": "Research",
+    "goal": "Turn observations into structured decisions.",
+    "learn": [
+      "Market-implies",
+      "Variant view",
+      "Catalysts",
+      "Expression"
+    ],
+    "do": [
+      "Promote one idea to memo"
+    ],
+    "artifact": "Research memo",
+    "proofLinks": [
+      "/memos"
+    ],
+    "status": "Building"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "/methodology",
+    "sourceName": "Research OS mastery pipeline",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Mastery pipeline converts passive learning topics into required public research outputs.",
+    "dataQuality": "derived",
+    "id": "risk-management",
+    "title": "Risk management",
+    "track": "Risk",
+    "goal": "Survive being wrong.",
+    "learn": [
+      "Sizing",
+      "Invalidation",
+      "Correlation",
+      "Drawdowns"
+    ],
+    "do": [
+      "Define risk before expression"
+    ],
+    "artifact": "Risk section in memo",
+    "proofLinks": [
+      "/methodology"
+    ],
+    "status": "Building"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "/methodology",
+    "sourceName": "Research OS mastery pipeline",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Mastery pipeline converts passive learning topics into required public research outputs.",
+    "dataQuality": "derived",
+    "id": "macro-framework",
+    "title": "Macro framework",
+    "track": "Markets",
+    "goal": "Connect Korea to USD, rates, oil, and semis.",
+    "learn": [
+      "USD liquidity",
+      "Rates",
+      "Current account",
+      "Trade balance"
+    ],
+    "do": [
+      "Update macro monitor inputs"
+    ],
+    "artifact": "Macro chart",
+    "proofLinks": [
+      "/markets"
+    ],
+    "status": "Building"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "/methodology",
+    "sourceName": "Research OS mastery pipeline",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Mastery pipeline converts passive learning topics into required public research outputs.",
+    "dataQuality": "derived",
+    "id": "options-derivatives",
+    "title": "Options and derivatives",
+    "track": "Risk",
+    "goal": "Understand payoff shape before expression.",
+    "learn": [
+      "Calls",
+      "Puts",
+      "Spreads",
+      "Volatility",
+      "Convexity"
+    ],
+    "do": [
+      "Compare stock vs option expression"
+    ],
+    "artifact": "Expression note",
+    "proofLinks": [
+      "/memos"
+    ],
+    "status": "Building"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "/methodology",
+    "sourceName": "Research OS mastery pipeline",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Mastery pipeline converts passive learning topics into required public research outputs.",
+    "dataQuality": "derived",
+    "id": "software-craft",
+    "title": "Software craft",
+    "track": "Data",
+    "goal": "Build reliable research tools.",
+    "learn": [
+      "TypeScript",
+      "Tests",
+      "CI",
+      "Generated data",
+      "README"
+    ],
+    "do": [
+      "Ship one code improvement"
+    ],
+    "artifact": "Dashboard module",
+    "proofLinks": [
+      "/source-audit"
+    ],
+    "status": "Building"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "/methodology",
+    "sourceName": "Research OS mastery pipeline",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Mastery pipeline converts passive learning topics into required public research outputs.",
+    "dataQuality": "derived",
+    "id": "research-factory",
+    "title": "Research factory",
+    "track": "Research",
+    "goal": "Make output repeatable.",
+    "learn": [
+      "Weekly cadence",
+      "Rejected ideas",
+      "Post-mortems"
+    ],
+    "do": [
+      "5 raw ideas, 1 memo, 1 post-mortem"
+    ],
+    "artifact": "Weekly review",
+    "proofLinks": [
+      "/memos"
+    ],
+    "status": "Building"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "/methodology",
+    "sourceName": "Research OS mastery pipeline",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Mastery pipeline converts passive learning topics into required public research outputs.",
+    "dataQuality": "derived",
+    "id": "specialization",
+    "title": "Specialization",
+    "track": "Markets",
+    "goal": "Become useful on Korea macro, defense, and semis.",
+    "learn": [
+      "Korea FX",
+      "Defense exporters",
+      "Memory cycle",
+      "China risk"
+    ],
+    "do": [
+      "Deepen one battlefield per week"
+    ],
+    "artifact": "Specialist memo",
+    "proofLinks": [
+      "/themes"
+    ],
+    "status": "Building"
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "/methodology",
+    "sourceName": "Research OS mastery pipeline",
+    "retrievedAt": "2026-05-20T16:51:06.699Z",
+    "publishedAt": "2026-05-20T16:51:06.699Z",
+    "isDerived": true,
+    "methodologyNote": "Mastery pipeline converts passive learning topics into required public research outputs.",
+    "dataQuality": "derived",
+    "id": "public-proof",
+    "title": "Public proof",
+    "track": "Proof",
+    "goal": "Show the work publicly without overclaiming.",
+    "learn": [
+      "Code map",
+      "Screenshots",
+      "Source map",
+      "Failures"
+    ],
+    "do": [
+      "Publish one public artifact"
+    ],
+    "artifact": "Proof page update",
+    "proofLinks": [
+      "/about"
+    ],
+    "status": "Proof-ready"
+  }
+]

@@ -1,0 +1,7 @@
+series,date,value,unit,provider,sourceName,sourceUrl
+GASOLINE_ON_WATER,2026-05-01,12345,thousand barrels,Kpler,Example export,https://www.kpler.com/
+GASOLINE_ON_WATER,2026-05-08,12500,thousand barrels,Kpler,Example export,https://www.kpler.com/
+APAC_EX_CHINA_CRUDE_INVENTORY,2026-05-01,540000,thousand barrels,Energy Aspects,Example export,https://www.energyaspects.com/
+APAC_EX_CHINA_CRUDE_INVENTORY,2026-05-08,538000,thousand barrels,Energy Aspects,Example export,https://www.energyaspects.com/
+IRAN_CRUDE_INVENTORY,2026-05-01,70000,thousand barrels,Vortexa,Example export,https://www.vortexa.com/
+IRAN_CRUDE_INVENTORY,2026-05-08,71500,thousand barrels,Vortexa,Example export,https://www.vortexa.com/

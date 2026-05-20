@@ -1,0 +1,42 @@
+{
+  "retrievedAt": "2026-05-18T19:13:35.620Z",
+  "status": "failed",
+  "articleCount": 0,
+  "failures": [
+    "Korea defense: fetch failed",
+    "North Korea missile: 429 Too Many Requests for https://api.gdeltproject.org/api/v2/doc/doc?query=%22North+Korea%22+%28missile+OR+nuclear+OR+border%29&mode=ArtList&format=json&maxrecords=30&sort=HybridRel",
+    "US ROK Japan: 429 Too Many Requests for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22U.S.%22+OR+United+States%29+%22South+Korea%22+Japan+defense&mode=ArtList&format=json&maxrecords=30&sort=HybridRel"
+  ],
+  "batches": [
+    {
+      "label": "Korea defense",
+      "query": "(South Korea OR ROK OR Korea) (defense OR missile OR military OR navy OR shipbuilding)",
+      "provider": "GDELT DOC 2.1",
+      "sourceUrl": "https://www.gdeltproject.org/data.html",
+      "retrievedAt": "2026-05-18T19:13:35.620Z",
+      "status": "unavailable",
+      "error": "fetch failed",
+      "articles": []
+    },
+    {
+      "label": "North Korea missile",
+      "query": "\"North Korea\" (missile OR nuclear OR border)",
+      "provider": "GDELT DOC 2.1",
+      "sourceUrl": "https://www.gdeltproject.org/data.html",
+      "retrievedAt": "2026-05-18T19:13:35.620Z",
+      "status": "unavailable",
+      "error": "429 Too Many Requests for https://api.gdeltproject.org/api/v2/doc/doc?query=%22North+Korea%22+%28missile+OR+nuclear+OR+border%29&mode=ArtList&format=json&maxrecords=30&sort=HybridRel",
+      "articles": []
+    },
+    {
+      "label": "US ROK Japan",
+      "query": "(\"U.S.\" OR United States) \"South Korea\" Japan defense",
+      "provider": "GDELT DOC 2.1",
+      "sourceUrl": "https://www.gdeltproject.org/data.html",
+      "retrievedAt": "2026-05-18T19:13:35.620Z",
+      "status": "unavailable",
+      "error": "429 Too Many Requests for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22U.S.%22+OR+United+States%29+%22South+Korea%22+Japan+defense&mode=ArtList&format=json&maxrecords=30&sort=HybridRel",
+      "articles": []
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "provider": "derived",
+    "sourceUrl": "/methodology",
+    "sourceName": "Dashboard methodology",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": true,
+    "methodologyNote": "Memo assembled only from sourced event titles and sourced/derived dashboard records.",
+    "dataQuality": "derived",
+    "id": "memo-2026-05-20",
+    "date": "2026-05-20",
+    "title": "Korea Macro Trade Note",
+    "researchPriority": 0,
+    "riskLevel": "Watch",
+    "topEvents": [
+      "U.S. Considering Foreign Designs, Shipyards for New Navy Frigate, Destroyer Work in $1.85B Study - USNI News",
+      "Navy ‘going to study’ possibility of building ships outside US, Phelan says - Navy Times",
+      "Navy calls for 34 new ships plus more than 4,000 major munitions - Stars and Stripes"
+    ],
+    "marketReaction": "Start with USD/KRW and EWY, then compare liquid U.S. expressions in semis and A&D against the event tape and macro overlays.",
+    "themeUpdate": "Most recent sourced theme mapping: Naval / Shipbuilding, China/Taiwan Spillover.",
+    "watchlist": [
+      "USDKRW",
+      "EWY",
+      "SMH",
+      "SOXX",
+      "LMT",
+      "RTX",
+      "HII",
+      "VIX"
+    ],
+    "investmentImplication": "Decision support only: identify the setup, choose the cleanest liquid expression, define invalidation, and size risk outside this app.",
+    "whatToWatchNext": [
+      "USD/KRW direction and volatility",
+      "EWY versus U.S. semis and A&D divergence",
+      "New event tape pressure and source-confirmed disclosure updates"
+    ],
+    "sources": [
+      "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPajVpQlp5RXRNRWUzOWJ1YXlnd1Bfb1BZVmo4YzZud3lObmRCdFh1cjZqNXZHLURWR0VJTE5fQ3p5MERKQW9VeTZiQUd3NktxdFJyRFBsajBxYkpqN0VQbWdILUFpZ2ZYcmdCODd6Z2hVMlRDVmxGZGlRemxZS2I2YjIzQ2FTQUJneDI0ei1zSlBlQnRMZ0h4UzhTTzlhc2VkcllLTWh4RE0xMEZQNWs4UUJweWJGQlFGejh5MVI0ajEyRzA?oc=5",
+      "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNc2NRS0otQkNZdzA4cnFsUHZ6TFVxRjliSFlzdExrMjdWMlU4NHdXNjNfbjZuMld4VlhZTUhUVkltZVRIZTlYNU1pcVBQbWVLajVsbHY0elUzNzlHUy1LMEF5aGVzWTZvNXdaVFhiR18yakpDM2VaWElIak1tN0kxR3RMNk1Lb0N5ZnNCZnlDS1ZRbVA2RTR2ZUNUS18zQkZza1dEbjhxQ1lVbnV2RW1zSXR2N2RVd1hYRUNEb1RjZjJiMHc?oc=5",
+      "https://news.google.com/rss/articles/CBMipgFBVV95cUxNaGc2eThxbUV5c05tQkQ2a01udGVWR2d3WDNXdF9jb3dJaXpQVmtucXpzWmVZTmh1T3BaT0Q4RDZadjZTVUFLMUZpemZ2LXdIQ0hXZW1DMkM5LTludTdkZ01zYUFNQ1JGTFNLOVVMRWFDLUt0cE5sMDhHd2EwMGhVeE9taGt6cl9sbHFjdW9iRnYwTUZMc19fRDFlbzB2b3A0dlpPdVNn?oc=5",
+      "https://news.google.com/rss/articles/CBMivAFBVV95cUxOeG1rTGw4QzQwOUpxbkIzWHZKTFBWc3VwTzBGTWJsaWFoOEtwRzlseVhMY1NMWkxWWmd4S0U1N2FUem5QWEN6b2FHYkdWMURvMXhzMDJLZk1Sc1oxbEFrUl9fSkpGdWwxN2F3Z2dlSmg3aWhvM3J2ZkpNZFp5a0VLV25ITkhNVDAwVG5wU2pZV3BSZFNmN25yWHhyUER5ZklLamF6clE3RmhyVlFXOXA5UVg1RlFOODY3ekVldQ?oc=5",
+      "https://news.google.com/rss/articles/CBMiswFBVV95cUxQM09zQ2lJXzFTX3JZdWRBNEc1Y1podzQwR0RDaV9wVmxWYjR3bmFmVkhpQXRyQ2c0OXFYRmZadHkwNjRHMnVKaTVoaHpuWmthdWVfUVpSZ1Y2UTZURHliLVJ0dm5DcjVoSk9qNllUQzkzcFlncFUxYVZTYTdab1BKeklKV0lsMlI0MVRTcHRac0R4bUFNcHMyYXdEaEZPbWcwdzcwSFc5b0d0R3lNOEc1dmJMSQ?oc=5"
+    ]
+  }
+]

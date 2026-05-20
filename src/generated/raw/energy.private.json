@@ -1,0 +1,35 @@
+{
+  "provider": "Private paid energy exports",
+  "sourceUrl": "data/private/energy-flows",
+  "retrievedAt": "2026-05-20T16:50:59.906Z",
+  "status": "not_configured",
+  "failures": [],
+  "expectedPath": "data/private/energy-flows",
+  "expectedSchema": "series,date,value,unit,provider,sourceName,sourceUrl",
+  "series": [
+    {
+      "ticker": "GASOLINE_ON_WATER",
+      "name": "Gasoline on water",
+      "unit": "thousand barrels",
+      "providerTarget": "Kpler / Vortexa / tanker-tracking provider",
+      "status": "not_configured",
+      "observations": []
+    },
+    {
+      "ticker": "APAC_EX_CHINA_CRUDE_INVENTORY",
+      "name": "Asia ex-China crude inventory",
+      "unit": "thousand barrels",
+      "providerTarget": "Kpler / Vortexa / Energy Aspects / commodity data provider",
+      "status": "not_configured",
+      "observations": []
+    },
+    {
+      "ticker": "IRAN_CRUDE_INVENTORY",
+      "name": "Iran weekly crude inventory",
+      "unit": "thousand barrels",
+      "providerTarget": "Kpler / Vortexa / tanker-tracking provider",
+      "status": "not_configured",
+      "observations": []
+    }
+  ]
+}

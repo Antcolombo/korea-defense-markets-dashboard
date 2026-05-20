@@ -1,0 +1,2239 @@
+{
+  "provider": "Alpha Vantage",
+  "sourceUrl": "https://www.alphavantage.co/documentation/",
+  "retrievedAt": "2026-05-19T16:49:12.009Z",
+  "status": "failed",
+  "failures": [
+    "Alpha Vantage NVDA: We have detected your API key as OQGVBFTS4XOJVCO1 and our standard API rate limit is 25 requests per day. Please subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to instantly remove all daily rate limits.",
+    "Alpha Vantage AMD: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+    "Alpha Vantage AVGO: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+    "Alpha Vantage LMT: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+    "Alpha Vantage RTX: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+    "Alpha Vantage NOC: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+    "Alpha Vantage GD: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+    "Alpha Vantage HII: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+    "Alpha Vantage LHX: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+    "Alpha Vantage BA: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+    "Alpha Vantage ITA: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+    "Alpha Vantage XAR: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints"
+  ],
+  "series": [
+    {
+      "symbol": "EWY",
+      "status": "source",
+      "data": {
+        "Meta Data": {
+          "1. Information": "Daily Prices (open, high, low, close) and Volumes",
+          "2. Symbol": "EWY",
+          "3. Last Refreshed": "2026-05-18",
+          "4. Output Size": "Compact",
+          "5. Time Zone": "US/Eastern"
+        },
+        "Time Series (Daily)": {
+          "2026-05-18": {
+            "1. open": "182.4500",
+            "2. high": "182.7900",
+            "3. low": "173.1500",
+            "4. close": "176.1000",
+            "5. volume": "17191376"
+          },
+          "2026-05-15": {
+            "1. open": "178.9600",
+            "2. high": "181.3450",
+            "3. low": "176.7000",
+            "4. close": "178.8600",
+            "5. volume": "21737591"
+          },
+          "2026-05-14": {
+            "1. open": "189.0000",
+            "2. high": "191.2300",
+            "3. low": "188.0800",
+            "4. close": "190.5200",
+            "5. volume": "10027401"
+          },
+          "2026-05-13": {
+            "1. open": "187.5100",
+            "2. high": "189.3300",
+            "3. low": "183.8600",
+            "4. close": "188.6300",
+            "5. volume": "18868353"
+          },
+          "2026-05-12": {
+            "1. open": "181.9900",
+            "2. high": "185.3100",
+            "3. low": "173.6000",
+            "4. close": "178.5000",
+            "5. volume": "39313493"
+          },
+          "2026-05-11": {
+            "1. open": "190.8700",
+            "2. high": "194.5800",
+            "3. low": "189.9900",
+            "4. close": "192.8500",
+            "5. volume": "17208340"
+          },
+          "2026-05-08": {
+            "1. open": "183.7300",
+            "2. high": "190.4100",
+            "3. low": "183.4300",
+            "4. close": "190.2000",
+            "5. volume": "21526150"
+          },
+          "2026-05-07": {
+            "1. open": "181.3000",
+            "2. high": "181.8900",
+            "3. low": "176.1400",
+            "4. close": "176.7500",
+            "5. volume": "17754678"
+          },
+          "2026-05-06": {
+            "1. open": "180.5200",
+            "2. high": "182.2050",
+            "3. low": "176.8600",
+            "4. close": "181.9800",
+            "5. volume": "21163392"
+          },
+          "2026-05-05": {
+            "1. open": "168.3400",
+            "2. high": "175.2900",
+            "3. low": "168.2600",
+            "4. close": "173.4700",
+            "5. volume": "21110444"
+          },
+          "2026-05-04": {
+            "1. open": "165.2260",
+            "2. high": "167.8300",
+            "3. low": "162.2400",
+            "4. close": "163.5900",
+            "5. volume": "14601647"
+          },
+          "2026-05-01": {
+            "1. open": "159.9100",
+            "2. high": "164.1800",
+            "3. low": "159.6600",
+            "4. close": "162.0000",
+            "5. volume": "9840023"
+          },
+          "2026-04-30": {
+            "1. open": "157.8500",
+            "2. high": "161.5500",
+            "3. low": "155.3900",
+            "4. close": "160.7600",
+            "5. volume": "16803342"
+          },
+          "2026-04-29": {
+            "1. open": "156.2500",
+            "2. high": "156.6300",
+            "3. low": "152.8600",
+            "4. close": "153.9600",
+            "5. volume": "12415887"
+          },
+          "2026-04-28": {
+            "1. open": "153.9300",
+            "2. high": "155.7250",
+            "3. low": "152.4110",
+            "4. close": "154.3700",
+            "5. volume": "11492776"
+          },
+          "2026-04-27": {
+            "1. open": "157.0200",
+            "2. high": "158.1000",
+            "3. low": "155.8100",
+            "4. close": "156.7300",
+            "5. volume": "11361174"
+          },
+          "2026-04-24": {
+            "1. open": "153.3600",
+            "2. high": "155.5800",
+            "3. low": "152.4100",
+            "4. close": "154.5700",
+            "5. volume": "14966780"
+          },
+          "2026-04-23": {
+            "1. open": "153.2900",
+            "2. high": "154.8600",
+            "3. low": "148.0600",
+            "4. close": "150.5900",
+            "5. volume": "18088547"
+          },
+          "2026-04-22": {
+            "1. open": "151.9600",
+            "2. high": "155.9800",
+            "3. low": "151.4500",
+            "4. close": "155.8000",
+            "5. volume": "17034444"
+          },
+          "2026-04-21": {
+            "1. open": "152.2000",
+            "2. high": "152.6500",
+            "3. low": "146.4000",
+            "4. close": "146.7900",
+            "5. volume": "12940184"
+          },
+          "2026-04-20": {
+            "1. open": "150.2550",
+            "2. high": "151.0000",
+            "3. low": "148.7700",
+            "4. close": "150.0900",
+            "5. volume": "11825195"
+          },
+          "2026-04-17": {
+            "1. open": "151.1500",
+            "2. high": "154.9900",
+            "3. low": "150.0900",
+            "4. close": "152.3300",
+            "5. volume": "20083636"
+          },
+          "2026-04-16": {
+            "1. open": "146.7300",
+            "2. high": "148.5250",
+            "3. low": "145.4000",
+            "4. close": "147.4700",
+            "5. volume": "10132996"
+          },
+          "2026-04-15": {
+            "1. open": "144.6700",
+            "2. high": "145.3000",
+            "3. low": "143.1100",
+            "4. close": "144.9200",
+            "5. volume": "16187527"
+          },
+          "2026-04-14": {
+            "1. open": "142.3650",
+            "2. high": "147.3900",
+            "3. low": "142.1200",
+            "4. close": "146.6800",
+            "5. volume": "17301289"
+          },
+          "2026-04-13": {
+            "1. open": "136.1000",
+            "2. high": "141.8350",
+            "3. low": "135.9702",
+            "4. close": "141.2300",
+            "5. volume": "13632281"
+          },
+          "2026-04-10": {
+            "1. open": "138.3300",
+            "2. high": "139.4750",
+            "3. low": "137.5000",
+            "4. close": "138.7300",
+            "5. volume": "11230768"
+          },
+          "2026-04-09": {
+            "1. open": "136.2000",
+            "2. high": "140.2000",
+            "3. low": "134.9500",
+            "4. close": "139.2900",
+            "5. volume": "19370222"
+          },
+          "2026-04-08": {
+            "1. open": "140.2800",
+            "2. high": "140.9600",
+            "3. low": "136.0350",
+            "4. close": "140.0700",
+            "5. volume": "31700437"
+          },
+          "2026-04-07": {
+            "1. open": "126.4500",
+            "2. high": "127.6800",
+            "3. low": "122.5100",
+            "4. close": "127.1900",
+            "5. volume": "14720338"
+          },
+          "2026-04-06": {
+            "1. open": "125.8500",
+            "2. high": "126.7700",
+            "3. low": "124.3100",
+            "4. close": "125.9400",
+            "5. volume": "10830115"
+          },
+          "2026-04-02": {
+            "1. open": "117.5200",
+            "2. high": "124.9100",
+            "3. low": "116.8900",
+            "4. close": "122.8700",
+            "5. volume": "17840267"
+          },
+          "2026-04-01": {
+            "1. open": "125.6800",
+            "2. high": "128.6500",
+            "3. low": "124.5700",
+            "4. close": "126.2200",
+            "5. volume": "27872238"
+          },
+          "2026-03-31": {
+            "1. open": "115.1500",
+            "2. high": "123.3500",
+            "3. low": "114.9200",
+            "4. close": "123.0100",
+            "5. volume": "40381765"
+          },
+          "2026-03-30": {
+            "1. open": "121.2600",
+            "2. high": "121.4300",
+            "3. low": "115.0700",
+            "4. close": "116.4300",
+            "5. volume": "24644384"
+          },
+          "2026-03-27": {
+            "1. open": "121.7400",
+            "2. high": "123.1500",
+            "3. low": "119.7600",
+            "4. close": "120.9800",
+            "5. volume": "16113144"
+          },
+          "2026-03-26": {
+            "1. open": "124.5850",
+            "2. high": "125.2800",
+            "3. low": "119.2800",
+            "4. close": "119.9900",
+            "5. volume": "26420476"
+          },
+          "2026-03-25": {
+            "1. open": "129.5450",
+            "2. high": "130.5900",
+            "3. low": "127.0300",
+            "4. close": "127.7400",
+            "5. volume": "25453228"
+          },
+          "2026-03-24": {
+            "1. open": "127.3100",
+            "2. high": "130.8500",
+            "3. low": "127.2500",
+            "4. close": "128.7500",
+            "5. volume": "24789192"
+          },
+          "2026-03-23": {
+            "1. open": "131.7100",
+            "2. high": "134.7000",
+            "3. low": "129.5759",
+            "4. close": "133.8100",
+            "5. volume": "32748819"
+          },
+          "2026-03-20": {
+            "1. open": "132.5700",
+            "2. high": "132.9150",
+            "3. low": "125.4900",
+            "4. close": "125.7800",
+            "5. volume": "32030708"
+          },
+          "2026-03-19": {
+            "1. open": "128.4150",
+            "2. high": "135.5400",
+            "3. low": "126.7175",
+            "4. close": "134.8200",
+            "5. volume": "21186410"
+          },
+          "2026-03-18": {
+            "1. open": "133.9900",
+            "2. high": "135.3450",
+            "3. low": "131.7800",
+            "4. close": "131.8800",
+            "5. volume": "19764494"
+          },
+          "2026-03-17": {
+            "1. open": "134.7550",
+            "2. high": "135.9900",
+            "3. low": "133.1700",
+            "4. close": "134.4300",
+            "5. volume": "15549861"
+          },
+          "2026-03-16": {
+            "1. open": "130.8700",
+            "2. high": "133.9400",
+            "3. low": "130.8000",
+            "4. close": "133.1000",
+            "5. volume": "24762801"
+          },
+          "2026-03-13": {
+            "1. open": "127.7500",
+            "2. high": "129.3900",
+            "3. low": "123.5100",
+            "4. close": "124.1500",
+            "5. volume": "23355483"
+          },
+          "2026-03-12": {
+            "1. open": "128.6950",
+            "2. high": "128.8150",
+            "3. low": "123.1800",
+            "4. close": "123.5000",
+            "5. volume": "32466881"
+          },
+          "2026-03-11": {
+            "1. open": "131.2150",
+            "2. high": "133.9900",
+            "3. low": "130.3400",
+            "4. close": "132.8500",
+            "5. volume": "25279379"
+          },
+          "2026-03-10": {
+            "1. open": "132.3000",
+            "2. high": "137.6883",
+            "3. low": "130.0400",
+            "4. close": "130.3000",
+            "5. volume": "35090765"
+          },
+          "2026-03-09": {
+            "1. open": "123.7000",
+            "2. high": "134.0700",
+            "3. low": "122.1000",
+            "4. close": "133.8900",
+            "5. volume": "46248466"
+          },
+          "2026-03-06": {
+            "1. open": "122.8200",
+            "2. high": "128.4400",
+            "3. low": "121.5500",
+            "4. close": "126.7300",
+            "5. volume": "43780334"
+          },
+          "2026-03-05": {
+            "1. open": "129.5700",
+            "2. high": "132.3650",
+            "3. low": "122.7200",
+            "4. close": "125.7400",
+            "5. volume": "61265806"
+          },
+          "2026-03-04": {
+            "1. open": "129.2950",
+            "2. high": "140.6700",
+            "3. low": "128.6300",
+            "4. close": "134.3700",
+            "5. volume": "65494527"
+          },
+          "2026-03-03": {
+            "1. open": "130.0400",
+            "2. high": "135.2700",
+            "3. low": "125.5400",
+            "4. close": "132.3400",
+            "5. volume": "65699578"
+          },
+          "2026-03-02": {
+            "1. open": "144.1200",
+            "2. high": "149.3700",
+            "3. low": "143.6300",
+            "4. close": "147.5400",
+            "5. volume": "33984799"
+          },
+          "2026-02-27": {
+            "1. open": "148.1650",
+            "2. high": "151.5500",
+            "3. low": "147.9700",
+            "4. close": "151.3700",
+            "5. volume": "17172958"
+          },
+          "2026-02-26": {
+            "1. open": "153.3050",
+            "2. high": "154.2200",
+            "3. low": "146.5800",
+            "4. close": "150.4100",
+            "5. volume": "42546250"
+          },
+          "2026-02-25": {
+            "1. open": "149.0500",
+            "2. high": "149.7400",
+            "3. low": "148.1800",
+            "4. close": "148.8900",
+            "5. volume": "16893168"
+          },
+          "2026-02-24": {
+            "1. open": "143.6500",
+            "2. high": "145.6200",
+            "3. low": "142.7750",
+            "4. close": "144.5500",
+            "5. volume": "20212926"
+          },
+          "2026-02-23": {
+            "1. open": "140.6200",
+            "2. high": "141.3800",
+            "3. low": "138.9550",
+            "4. close": "139.3000",
+            "5. volume": "15725277"
+          },
+          "2026-02-20": {
+            "1. open": "137.7000",
+            "2. high": "141.9800",
+            "3. low": "137.4400",
+            "4. close": "141.8800",
+            "5. volume": "19435403"
+          },
+          "2026-02-19": {
+            "1. open": "134.1800",
+            "2. high": "135.3550",
+            "3. low": "133.4300",
+            "4. close": "135.2100",
+            "5. volume": "13191940"
+          },
+          "2026-02-18": {
+            "1. open": "131.3800",
+            "2. high": "134.1400",
+            "3. low": "130.6100",
+            "4. close": "132.9300",
+            "5. volume": "12057664"
+          },
+          "2026-02-17": {
+            "1. open": "132.3200",
+            "2. high": "132.9900",
+            "3. low": "129.6500",
+            "4. close": "130.6800",
+            "5. volume": "16472150"
+          },
+          "2026-02-13": {
+            "1. open": "131.6900",
+            "2. high": "134.3200",
+            "3. low": "128.3300",
+            "4. close": "133.9700",
+            "5. volume": "16584284"
+          },
+          "2026-02-12": {
+            "1. open": "133.3300",
+            "2. high": "134.3000",
+            "3. low": "129.6100",
+            "4. close": "130.8000",
+            "5. volume": "16591808"
+          },
+          "2026-02-11": {
+            "1. open": "127.6800",
+            "2. high": "130.7300",
+            "3. low": "126.3300",
+            "4. close": "130.6000",
+            "5. volume": "12884201"
+          },
+          "2026-02-10": {
+            "1. open": "125.4600",
+            "2. high": "125.5600",
+            "3. low": "123.8100",
+            "4. close": "124.4500",
+            "5. volume": "7838569"
+          },
+          "2026-02-09": {
+            "1. open": "123.9800",
+            "2. high": "126.4100",
+            "3. low": "123.5000",
+            "4. close": "126.0500",
+            "5. volume": "10426643"
+          },
+          "2026-02-06": {
+            "1. open": "121.3500",
+            "2. high": "124.8700",
+            "3. low": "121.3500",
+            "4. close": "124.7100",
+            "5. volume": "11990075"
+          },
+          "2026-02-05": {
+            "1. open": "118.9000",
+            "2. high": "121.7000",
+            "3. low": "118.1150",
+            "4. close": "120.2100",
+            "5. volume": "16250420"
+          },
+          "2026-02-04": {
+            "1. open": "126.4550",
+            "2. high": "126.6400",
+            "3. low": "119.3800",
+            "4. close": "120.2600",
+            "5. volume": "21545501"
+          },
+          "2026-02-03": {
+            "1. open": "126.1100",
+            "2. high": "126.1500",
+            "3. low": "122.5700",
+            "4. close": "124.3200",
+            "5. volume": "12638698"
+          },
+          "2026-02-02": {
+            "1. open": "118.7600",
+            "2. high": "121.4150",
+            "3. low": "118.6100",
+            "4. close": "120.9300",
+            "5. volume": "15395916"
+          },
+          "2026-01-30": {
+            "1. open": "125.2200",
+            "2. high": "126.3200",
+            "3. low": "122.1300",
+            "4. close": "122.4100",
+            "5. volume": "15376472"
+          },
+          "2026-01-29": {
+            "1. open": "125.9200",
+            "2. high": "125.9200",
+            "3. low": "121.6400",
+            "4. close": "124.5000",
+            "5. volume": "13187029"
+          },
+          "2026-01-28": {
+            "1. open": "125.4000",
+            "2. high": "125.5950",
+            "3. low": "123.4900",
+            "4. close": "125.5600",
+            "5. volume": "14622712"
+          },
+          "2026-01-27": {
+            "1. open": "121.2850",
+            "2. high": "122.8200",
+            "3. low": "121.0500",
+            "4. close": "122.7000",
+            "5. volume": "10036292"
+          },
+          "2026-01-26": {
+            "1. open": "117.2700",
+            "2. high": "117.9350",
+            "3. low": "117.2000",
+            "4. close": "117.3200",
+            "5. volume": "5085752"
+          },
+          "2026-01-23": {
+            "1. open": "115.2900",
+            "2. high": "118.4100",
+            "3. low": "115.0500",
+            "4. close": "117.9700",
+            "5. volume": "8550215"
+          },
+          "2026-01-22": {
+            "1. open": "115.7600",
+            "2. high": "116.3500",
+            "3. low": "114.7400",
+            "4. close": "115.9900",
+            "5. volume": "6094095"
+          },
+          "2026-01-21": {
+            "1. open": "114.0000",
+            "2. high": "116.2600",
+            "3. low": "113.8200",
+            "4. close": "115.6600",
+            "5. volume": "10876719"
+          },
+          "2026-01-20": {
+            "1. open": "110.4700",
+            "2. high": "112.4000",
+            "3. low": "110.3600",
+            "4. close": "110.9700",
+            "5. volume": "7949293"
+          },
+          "2026-01-16": {
+            "1. open": "111.7800",
+            "2. high": "112.2550",
+            "3. low": "110.8350",
+            "4. close": "112.2200",
+            "5. volume": "7804100"
+          },
+          "2026-01-15": {
+            "1. open": "111.6100",
+            "2. high": "112.0000",
+            "3. low": "110.9500",
+            "4. close": "111.0500",
+            "5. volume": "9862165"
+          },
+          "2026-01-14": {
+            "1. open": "109.0500",
+            "2. high": "109.6600",
+            "3. low": "108.5700",
+            "4. close": "109.6400",
+            "5. volume": "7408625"
+          },
+          "2026-01-13": {
+            "1. open": "108.9000",
+            "2. high": "108.9100",
+            "3. low": "107.3800",
+            "4. close": "107.5400",
+            "5. volume": "7995314"
+          },
+          "2026-01-12": {
+            "1. open": "107.5100",
+            "2. high": "108.9800",
+            "3. low": "107.4900",
+            "4. close": "108.9300",
+            "5. volume": "8059719"
+          },
+          "2026-01-09": {
+            "1. open": "107.8600",
+            "2. high": "109.0050",
+            "3. low": "107.5900",
+            "4. close": "108.8900",
+            "5. volume": "6512382"
+          },
+          "2026-01-08": {
+            "1. open": "107.8250",
+            "2. high": "107.9400",
+            "3. low": "105.9250",
+            "4. close": "106.5900",
+            "5. volume": "7974617"
+          },
+          "2026-01-07": {
+            "1. open": "107.3650",
+            "2. high": "107.6400",
+            "3. low": "106.8200",
+            "4. close": "107.0300",
+            "5. volume": "8364989"
+          },
+          "2026-01-06": {
+            "1. open": "105.5800",
+            "2. high": "107.6500",
+            "3. low": "105.5100",
+            "4. close": "107.6100",
+            "5. volume": "9754803"
+          },
+          "2026-01-05": {
+            "1. open": "104.9800",
+            "2. high": "105.2500",
+            "3. low": "104.0200",
+            "4. close": "104.8300",
+            "5. volume": "9523368"
+          },
+          "2026-01-02": {
+            "1. open": "101.0000",
+            "2. high": "102.3350",
+            "3. low": "100.8500",
+            "4. close": "102.2200",
+            "5. volume": "8772419"
+          },
+          "2025-12-31": {
+            "1. open": "98.3900",
+            "2. high": "98.5800",
+            "3. low": "97.2200",
+            "4. close": "97.2200",
+            "5. volume": "4481072"
+          },
+          "2025-12-30": {
+            "1. open": "98.1800",
+            "2. high": "98.9100",
+            "3. low": "98.1500",
+            "4. close": "98.6200",
+            "5. volume": "4291789"
+          },
+          "2025-12-29": {
+            "1. open": "97.9500",
+            "2. high": "98.7900",
+            "3. low": "97.6950",
+            "4. close": "98.7200",
+            "5. volume": "7582201"
+          },
+          "2025-12-26": {
+            "1. open": "95.2300",
+            "2. high": "96.0050",
+            "3. low": "95.0500",
+            "4. close": "95.8400",
+            "5. volume": "5307904"
+          },
+          "2025-12-24": {
+            "1. open": "94.0800",
+            "2. high": "94.6500",
+            "3. low": "94.0000",
+            "4. close": "94.6000",
+            "5. volume": "3461499"
+          },
+          "2025-12-23": {
+            "1. open": "91.7900",
+            "2. high": "92.7300",
+            "3. low": "91.7100",
+            "4. close": "92.7000",
+            "5. volume": "3815970"
+          }
+        }
+      }
+    },
+    {
+      "symbol": "SMH",
+      "status": "source",
+      "data": {
+        "Meta Data": {
+          "1. Information": "Daily Prices (open, high, low, close) and Volumes",
+          "2. Symbol": "SMH",
+          "3. Last Refreshed": "2026-05-18",
+          "4. Output Size": "Compact",
+          "5. Time Zone": "US/Eastern"
+        },
+        "Time Series (Daily)": {
+          "2026-05-18": {
+            "1. open": "565.4750",
+            "2. high": "567.2100",
+            "3. low": "536.8700",
+            "4. close": "546.1600",
+            "5. volume": "12317457"
+          },
+          "2026-05-15": {
+            "1. open": "560.3050",
+            "2. high": "565.8800",
+            "3. low": "552.9101",
+            "4. close": "556.3400",
+            "5. volume": "13009610"
+          },
+          "2026-05-14": {
+            "1. open": "570.8400",
+            "2. high": "581.1699",
+            "3. low": "567.7500",
+            "4. close": "578.3400",
+            "5. volume": "8458691"
+          },
+          "2026-05-13": {
+            "1. open": "571.7950",
+            "2. high": "576.2000",
+            "3. low": "560.1200",
+            "4. close": "572.4600",
+            "5. volume": "9586693"
+          },
+          "2026-05-12": {
+            "1. open": "565.0050",
+            "2. high": "570.4000",
+            "3. low": "542.6700",
+            "4. close": "561.2500",
+            "5. volume": "17720787"
+          },
+          "2026-05-11": {
+            "1. open": "570.2600",
+            "2. high": "578.0598",
+            "3. low": "566.8000",
+            "4. close": "576.3100",
+            "5. volume": "12680940"
+          },
+          "2026-05-08": {
+            "1. open": "551.5800",
+            "2. high": "566.7900",
+            "3. low": "549.0000",
+            "4. close": "566.5400",
+            "5. volume": "8553714"
+          },
+          "2026-05-07": {
+            "1. open": "545.7650",
+            "2. high": "549.7032",
+            "3. low": "535.9200",
+            "4. close": "540.1000",
+            "5. volume": "10905154"
+          },
+          "2026-05-06": {
+            "1. open": "537.7700",
+            "2. high": "549.8800",
+            "3. low": "532.3500",
+            "4. close": "549.7600",
+            "5. volume": "15262913"
+          },
+          "2026-05-05": {
+            "1. open": "515.3800",
+            "2. high": "526.2000",
+            "3. low": "514.1200",
+            "4. close": "522.6900",
+            "5. volume": "8624608"
+          },
+          "2026-05-04": {
+            "1. open": "512.4700",
+            "2. high": "513.1500",
+            "3. low": "501.1500",
+            "4. close": "506.7900",
+            "5. volume": "6867462"
+          },
+          "2026-05-01": {
+            "1. open": "504.2050",
+            "2. high": "511.9900",
+            "3. low": "502.2500",
+            "4. close": "509.8200",
+            "5. volume": "5308292"
+          },
+          "2026-04-30": {
+            "1. open": "504.7050",
+            "2. high": "507.7899",
+            "3. low": "495.0200",
+            "4. close": "506.7200",
+            "5. volume": "8401642"
+          },
+          "2026-04-29": {
+            "1. open": "496.3450",
+            "2. high": "499.5800",
+            "3. low": "492.3400",
+            "4. close": "499.5800",
+            "5. volume": "6007909"
+          },
+          "2026-04-28": {
+            "1. open": "488.1850",
+            "2. high": "496.6600",
+            "3. low": "483.2900",
+            "4. close": "491.2100",
+            "5. volume": "12664811"
+          },
+          "2026-04-27": {
+            "1. open": "509.1900",
+            "2. high": "510.1000",
+            "3. low": "497.7450",
+            "4. close": "506.2600",
+            "5. volume": "9040153"
+          },
+          "2026-04-24": {
+            "1. open": "499.5050",
+            "2. high": "509.5900",
+            "3. low": "495.4600",
+            "4. close": "506.4400",
+            "5. volume": "12614318"
+          },
+          "2026-04-23": {
+            "1. open": "480.3950",
+            "2. high": "488.0800",
+            "3. low": "475.1901",
+            "4. close": "481.8500",
+            "5. volume": "10619719"
+          },
+          "2026-04-22": {
+            "1. open": "471.0500",
+            "2. high": "477.4200",
+            "3. low": "467.1700",
+            "4. close": "476.8300",
+            "5. volume": "7835173"
+          },
+          "2026-04-21": {
+            "1. open": "466.2850",
+            "2. high": "468.4262",
+            "3. low": "462.2400",
+            "4. close": "464.6600",
+            "5. volume": "5598577"
+          },
+          "2026-04-20": {
+            "1. open": "464.6400",
+            "2. high": "465.7400",
+            "3. low": "458.6500",
+            "4. close": "463.9600",
+            "5. volume": "3935098"
+          },
+          "2026-04-17": {
+            "1. open": "462.8000",
+            "2. high": "464.5800",
+            "3. low": "459.5000",
+            "4. close": "464.1600",
+            "5. volume": "7184643"
+          },
+          "2026-04-16": {
+            "1. open": "450.7250",
+            "2. high": "457.0900",
+            "3. low": "447.7702",
+            "4. close": "454.8000",
+            "5. volume": "6450664"
+          },
+          "2026-04-15": {
+            "1. open": "450.7000",
+            "2. high": "453.3300",
+            "3. low": "435.1500",
+            "4. close": "453.0000",
+            "5. volume": "9155668"
+          },
+          "2026-04-14": {
+            "1. open": "448.0000",
+            "2. high": "452.0950",
+            "3. low": "444.2400",
+            "4. close": "452.0000",
+            "5. volume": "6932448"
+          },
+          "2026-04-13": {
+            "1. open": "434.7450",
+            "2. high": "443.6400",
+            "3. low": "433.6000",
+            "4. close": "443.3400",
+            "5. volume": "6549794"
+          },
+          "2026-04-10": {
+            "1. open": "434.4500",
+            "2. high": "441.5400",
+            "3. low": "434.4500",
+            "4. close": "436.8800",
+            "5. volume": "11224186"
+          },
+          "2026-04-09": {
+            "1. open": "423.1700",
+            "2. high": "430.6500",
+            "3. low": "422.6300",
+            "4. close": "430.3100",
+            "5. volume": "6018201"
+          },
+          "2026-04-08": {
+            "1. open": "423.1600",
+            "2. high": "424.9900",
+            "3. low": "414.9900",
+            "4. close": "422.9200",
+            "5. volume": "10184264"
+          },
+          "2026-04-07": {
+            "1. open": "394.7100",
+            "2. high": "400.0900",
+            "3. low": "389.6400",
+            "4. close": "399.9000",
+            "5. volume": "6672538"
+          },
+          "2026-04-06": {
+            "1. open": "393.7450",
+            "2. high": "397.1000",
+            "3. low": "391.9000",
+            "4. close": "395.9800",
+            "5. volume": "4186120"
+          },
+          "2026-04-02": {
+            "1. open": "378.0700",
+            "2. high": "393.5000",
+            "3. low": "378.0009",
+            "4. close": "392.3200",
+            "5. volume": "8505833"
+          },
+          "2026-04-01": {
+            "1. open": "388.2550",
+            "2. high": "396.6300",
+            "3. low": "386.3800",
+            "4. close": "391.9700",
+            "5. volume": "10805350"
+          },
+          "2026-03-31": {
+            "1. open": "368.7350",
+            "2. high": "383.5000",
+            "3. low": "368.1000",
+            "4. close": "383.4000",
+            "5. volume": "13834948"
+          },
+          "2026-03-30": {
+            "1. open": "377.6150",
+            "2. high": "379.2400",
+            "3. low": "359.8620",
+            "4. close": "362.5300",
+            "5. volume": "12198183"
+          },
+          "2026-03-27": {
+            "1. open": "377.7900",
+            "2. high": "381.3090",
+            "3. low": "373.0100",
+            "4. close": "374.2500",
+            "5. volume": "11811407"
+          },
+          "2026-03-26": {
+            "1. open": "391.9200",
+            "2. high": "392.6800",
+            "3. low": "380.3000",
+            "4. close": "380.8400",
+            "5. volume": "14806234"
+          },
+          "2026-03-25": {
+            "1. open": "398.3550",
+            "2. high": "402.5000",
+            "3. low": "395.7400",
+            "4. close": "399.0200",
+            "5. volume": "7388665"
+          },
+          "2026-03-24": {
+            "1. open": "388.0300",
+            "2. high": "396.8800",
+            "3. low": "387.6200",
+            "4. close": "394.5900",
+            "5. volume": "6177166"
+          },
+          "2026-03-23": {
+            "1. open": "393.3600",
+            "2. high": "399.2800",
+            "3. low": "389.4400",
+            "4. close": "391.3600",
+            "5. volume": "12742293"
+          },
+          "2026-03-20": {
+            "1. open": "394.1100",
+            "2. high": "395.7300",
+            "3. low": "380.8700",
+            "4. close": "384.7400",
+            "5. volume": "12846845"
+          },
+          "2026-03-19": {
+            "1. open": "384.0000",
+            "2. high": "397.5300",
+            "3. low": "381.4400",
+            "4. close": "394.9200",
+            "5. volume": "12674826"
+          },
+          "2026-03-18": {
+            "1. open": "396.9600",
+            "2. high": "399.6900",
+            "3. low": "393.4700",
+            "4. close": "393.6700",
+            "5. volume": "8372417"
+          },
+          "2026-03-17": {
+            "1. open": "397.1550",
+            "2. high": "397.6100",
+            "3. low": "393.2200",
+            "4. close": "396.8800",
+            "5. volume": "6646252"
+          },
+          "2026-03-16": {
+            "1. open": "395.1400",
+            "2. high": "399.4800",
+            "3. low": "392.6400",
+            "4. close": "393.9200",
+            "5. volume": "10317560"
+          },
+          "2026-03-13": {
+            "1. open": "392.3200",
+            "2. high": "396.3300",
+            "3. low": "386.0700",
+            "4. close": "387.3300",
+            "5. volume": "7636079"
+          },
+          "2026-03-12": {
+            "1. open": "395.4600",
+            "2. high": "396.0600",
+            "3. low": "386.7400",
+            "4. close": "388.1300",
+            "5. volume": "9845227"
+          },
+          "2026-03-11": {
+            "1. open": "400.0100",
+            "2. high": "404.3900",
+            "3. low": "398.6900",
+            "4. close": "401.0300",
+            "5. volume": "6024928"
+          },
+          "2026-03-10": {
+            "1. open": "394.0000",
+            "2. high": "403.8800",
+            "3. low": "394.0000",
+            "4. close": "397.3300",
+            "5. volume": "13687716"
+          },
+          "2026-03-09": {
+            "1. open": "375.7600",
+            "2. high": "395.3600",
+            "3. low": "374.1601",
+            "4. close": "394.3700",
+            "5. volume": "16338100"
+          },
+          "2026-03-06": {
+            "1. open": "384.9700",
+            "2. high": "392.6700",
+            "3. low": "378.5300",
+            "4. close": "380.5600",
+            "5. volume": "12423222"
+          },
+          "2026-03-05": {
+            "1. open": "396.0600",
+            "2. high": "401.1100",
+            "3. low": "386.7500",
+            "4. close": "395.3500",
+            "5. volume": "11793743"
+          },
+          "2026-03-04": {
+            "1. open": "396.2500",
+            "2. high": "401.2300",
+            "3. low": "393.1000",
+            "4. close": "399.1000",
+            "5. volume": "8767199"
+          },
+          "2026-03-03": {
+            "1. open": "391.3600",
+            "2. high": "394.5400",
+            "3. low": "385.9300",
+            "4. close": "391.0600",
+            "5. volume": "13768923"
+          },
+          "2026-03-02": {
+            "1. open": "397.2500",
+            "2. high": "407.3600",
+            "3. low": "396.9200",
+            "4. close": "406.3900",
+            "5. volume": "11490174"
+          },
+          "2026-02-27": {
+            "1. open": "403.2600",
+            "2. high": "409.2400",
+            "3. low": "401.8800",
+            "4. close": "406.3700",
+            "5. volume": "9049053"
+          },
+          "2026-02-26": {
+            "1. open": "423.7200",
+            "2. high": "423.7200",
+            "3. low": "405.5600",
+            "4. close": "412.0100",
+            "5. volume": "14811315"
+          },
+          "2026-02-25": {
+            "1. open": "424.3450",
+            "2. high": "427.9400",
+            "3. low": "423.6800",
+            "4. close": "426.1600",
+            "5. volume": "7714452"
+          },
+          "2026-02-24": {
+            "1. open": "417.2150",
+            "2. high": "421.6700",
+            "3. low": "411.6700",
+            "4. close": "419.1600",
+            "5. volume": "7828860"
+          },
+          "2026-02-23": {
+            "1. open": "413.5700",
+            "2. high": "417.6999",
+            "3. low": "409.2750",
+            "4. close": "412.8800",
+            "5. volume": "5842756"
+          },
+          "2026-02-20": {
+            "1. open": "407.6550",
+            "2. high": "416.8300",
+            "3. low": "407.1800",
+            "4. close": "415.0300",
+            "5. volume": "5715805"
+          },
+          "2026-02-19": {
+            "1. open": "408.7100",
+            "2. high": "411.0000",
+            "3. low": "405.5600",
+            "4. close": "410.2000",
+            "5. volume": "4056441"
+          },
+          "2026-02-18": {
+            "1. open": "411.4400",
+            "2. high": "417.0400",
+            "3. low": "408.7150",
+            "4. close": "412.5500",
+            "5. volume": "5839869"
+          },
+          "2026-02-17": {
+            "1. open": "402.7050",
+            "2. high": "410.8700",
+            "3. low": "397.7700",
+            "4. close": "407.5100",
+            "5. volume": "7312702"
+          },
+          "2026-02-13": {
+            "1. open": "408.1500",
+            "2. high": "412.0700",
+            "3. low": "402.4900",
+            "4. close": "407.7200",
+            "5. volume": "6481565"
+          },
+          "2026-02-12": {
+            "1. open": "418.3300",
+            "2. high": "420.0400",
+            "3. low": "405.2800",
+            "4. close": "406.1100",
+            "5. volume": "7379088"
+          },
+          "2026-02-11": {
+            "1. open": "413.8350",
+            "2. high": "418.0800",
+            "3. low": "406.3600",
+            "4. close": "414.7800",
+            "5. volume": "6211177"
+          },
+          "2026-02-10": {
+            "1. open": "408.1800",
+            "2. high": "408.8000",
+            "3. low": "401.8300",
+            "4. close": "404.7600",
+            "5. volume": "5645261"
+          },
+          "2026-02-09": {
+            "1. open": "398.9100",
+            "2. high": "409.6900",
+            "3. low": "397.0000",
+            "4. close": "406.6500",
+            "5. volume": "5915243"
+          },
+          "2026-02-06": {
+            "1. open": "389.2000",
+            "2. high": "403.0800",
+            "3. low": "387.1900",
+            "4. close": "401.6500",
+            "5. volume": "13460264"
+          },
+          "2026-02-05": {
+            "1. open": "379.1400",
+            "2. high": "388.0800",
+            "3. low": "375.5609",
+            "4. close": "381.0700",
+            "5. volume": "12007770"
+          },
+          "2026-02-04": {
+            "1. open": "394.6700",
+            "2. high": "396.7106",
+            "3. low": "374.2400",
+            "4. close": "382.0200",
+            "5. volume": "16908468"
+          },
+          "2026-02-03": {
+            "1. open": "411.0300",
+            "2. high": "412.5800",
+            "3. low": "390.5200",
+            "4. close": "397.6800",
+            "5. volume": "12053570"
+          },
+          "2026-02-02": {
+            "1. open": "398.8600",
+            "2. high": "412.0400",
+            "3. low": "398.4300",
+            "4. close": "407.9700",
+            "5. volume": "5946327"
+          },
+          "2026-01-30": {
+            "1. open": "411.2800",
+            "2. high": "416.6400",
+            "3. low": "400.5754",
+            "4. close": "403.4600",
+            "5. volume": "9029033"
+          },
+          "2026-01-29": {
+            "1. open": "417.4400",
+            "2. high": "420.6000",
+            "3. low": "403.1700",
+            "4. close": "417.5200",
+            "5. volume": "9352480"
+          },
+          "2026-01-28": {
+            "1. open": "415.3400",
+            "2. high": "418.4900",
+            "3. low": "413.1322",
+            "4. close": "416.6300",
+            "5. volume": "7641913"
+          },
+          "2026-01-27": {
+            "1. open": "403.9000",
+            "2. high": "409.3900",
+            "3. low": "402.2050",
+            "4. close": "407.2500",
+            "5. volume": "6034972"
+          },
+          "2026-01-26": {
+            "1. open": "398.4000",
+            "2. high": "400.7400",
+            "3. low": "396.2200",
+            "4. close": "398.8200",
+            "5. volume": "4326866"
+          },
+          "2026-01-23": {
+            "1. open": "400.5000",
+            "2. high": "403.0887",
+            "3. low": "397.5300",
+            "4. close": "400.0900",
+            "5. volume": "5869514"
+          },
+          "2026-01-22": {
+            "1. open": "408.1800",
+            "2. high": "408.7300",
+            "3. low": "401.5700",
+            "4. close": "402.8200",
+            "5. volume": "5462581"
+          },
+          "2026-01-21": {
+            "1. open": "394.7500",
+            "2. high": "405.8800",
+            "3. low": "393.3700",
+            "4. close": "401.9300",
+            "5. volume": "8754595"
+          },
+          "2026-01-20": {
+            "1. open": "393.1600",
+            "2. high": "397.1550",
+            "3. low": "389.4300",
+            "4. close": "390.3900",
+            "5. volume": "7172682"
+          },
+          "2026-01-16": {
+            "1. open": "402.8500",
+            "2. high": "405.3100",
+            "3. low": "398.4200",
+            "4. close": "400.3900",
+            "5. volume": "5485939"
+          },
+          "2026-01-15": {
+            "1. open": "401.0700",
+            "2. high": "403.6200",
+            "3. low": "396.1200",
+            "4. close": "396.4100",
+            "5. volume": "9948083"
+          },
+          "2026-01-14": {
+            "1. open": "388.9600",
+            "2. high": "389.3400",
+            "3. low": "383.8100",
+            "4. close": "388.3500",
+            "5. volume": "6696503"
+          },
+          "2026-01-13": {
+            "1. open": "392.2700",
+            "2. high": "396.1000",
+            "3. low": "390.3832",
+            "4. close": "391.5300",
+            "5. volume": "5281595"
+          },
+          "2026-01-12": {
+            "1. open": "385.6650",
+            "2. high": "391.9800",
+            "3. low": "385.6650",
+            "4. close": "390.6600",
+            "5. volume": "5532026"
+          },
+          "2026-01-09": {
+            "1. open": "382.2750",
+            "2. high": "390.8800",
+            "3. low": "380.0800",
+            "4. close": "389.2200",
+            "5. volume": "6490839"
+          },
+          "2026-01-08": {
+            "1. open": "384.5600",
+            "2. high": "384.7400",
+            "3. low": "375.8600",
+            "4. close": "378.9800",
+            "5. volume": "5724015"
+          },
+          "2026-01-07": {
+            "1. open": "385.2000",
+            "2. high": "387.8100",
+            "3. low": "383.5900",
+            "4. close": "385.0200",
+            "5. volume": "6058880"
+          },
+          "2026-01-06": {
+            "1. open": "382.3950",
+            "2. high": "389.3650",
+            "3. low": "382.1400",
+            "4. close": "387.6200",
+            "5. volume": "10201168"
+          },
+          "2026-01-05": {
+            "1. open": "381.7150",
+            "2. high": "383.9900",
+            "3. low": "376.9400",
+            "4. close": "377.5900",
+            "5. volume": "9071296"
+          },
+          "2026-01-02": {
+            "1. open": "368.9500",
+            "2. high": "376.3350",
+            "3. low": "368.8350",
+            "4. close": "373.3000",
+            "5. volume": "8972358"
+          },
+          "2025-12-31": {
+            "1. open": "364.8300",
+            "2. high": "365.5684",
+            "3. low": "360.0700",
+            "4. close": "360.1300",
+            "5. volume": "2687316"
+          },
+          "2025-12-30": {
+            "1. open": "365.1600",
+            "2. high": "366.2400",
+            "3. low": "363.0700",
+            "4. close": "363.3100",
+            "5. volume": "2926998"
+          },
+          "2025-12-29": {
+            "1. open": "362.6550",
+            "2. high": "365.8200",
+            "3. low": "360.8200",
+            "4. close": "364.2100",
+            "5. volume": "4874419"
+          },
+          "2025-12-26": {
+            "1. open": "366.0650",
+            "2. high": "367.3500",
+            "3. low": "364.4900",
+            "4. close": "365.8600",
+            "5. volume": "2921277"
+          },
+          "2025-12-24": {
+            "1. open": "362.7000",
+            "2. high": "364.5400",
+            "3. low": "362.1500",
+            "4. close": "364.1700",
+            "5. volume": "1640529"
+          },
+          "2025-12-23": {
+            "1. open": "358.6000",
+            "2. high": "363.3000",
+            "3. low": "358.0600",
+            "4. close": "363.1600",
+            "5. volume": "3542056"
+          }
+        }
+      }
+    },
+    {
+      "symbol": "SOXX",
+      "status": "source",
+      "data": {
+        "Meta Data": {
+          "1. Information": "Daily Prices (open, high, low, close) and Volumes",
+          "2. Symbol": "SOXX",
+          "3. Last Refreshed": "2026-05-18",
+          "4. Output Size": "Compact",
+          "5. Time Zone": "US/Eastern"
+        },
+        "Time Series (Daily)": {
+          "2026-05-18": {
+            "1. open": "518.0200",
+            "2. high": "519.9600",
+            "3. low": "486.9200",
+            "4. close": "495.8700",
+            "5. volume": "9998994"
+          },
+          "2026-05-15": {
+            "1. open": "511.6700",
+            "2. high": "518.7899",
+            "3. low": "506.2600",
+            "4. close": "508.5200",
+            "5. volume": "9388221"
+          },
+          "2026-05-14": {
+            "1. open": "526.4950",
+            "2. high": "533.1300",
+            "3. low": "522.2100",
+            "4. close": "530.0300",
+            "5. volume": "5212394"
+          },
+          "2026-05-13": {
+            "1. open": "527.6150",
+            "2. high": "532.2500",
+            "3. low": "515.9400",
+            "4. close": "528.2900",
+            "5. volume": "7346374"
+          },
+          "2026-05-12": {
+            "1. open": "520.8500",
+            "2. high": "525.1500",
+            "3. low": "495.7100",
+            "4. close": "515.9900",
+            "5. volume": "14660632"
+          },
+          "2026-05-11": {
+            "1. open": "524.0800",
+            "2. high": "533.7400",
+            "3. low": "521.6600",
+            "4. close": "532.7600",
+            "5. volume": "7492556"
+          },
+          "2026-05-08": {
+            "1. open": "504.2400",
+            "2. high": "520.4600",
+            "3. low": "502.7500",
+            "4. close": "520.3000",
+            "5. volume": "7754540"
+          },
+          "2026-05-07": {
+            "1. open": "502.9300",
+            "2. high": "503.6800",
+            "3. low": "488.1310",
+            "4. close": "492.3600",
+            "5. volume": "9913713"
+          },
+          "2026-05-06": {
+            "1. open": "497.9600",
+            "2. high": "506.9400",
+            "3. low": "487.8600",
+            "4. close": "506.8700",
+            "5. volume": "9768591"
+          },
+          "2026-05-05": {
+            "1. open": "471.1400",
+            "2. high": "486.1808",
+            "3. low": "470.2300",
+            "4. close": "482.7300",
+            "5. volume": "7203047"
+          },
+          "2026-05-04": {
+            "1. open": "467.9300",
+            "2. high": "469.6100",
+            "3. low": "457.8100",
+            "4. close": "462.0600",
+            "5. volume": "5233125"
+          },
+          "2026-05-01": {
+            "1. open": "458.4700",
+            "2. high": "466.9100",
+            "3. low": "455.0700",
+            "4. close": "465.7500",
+            "5. volume": "4155856"
+          },
+          "2026-04-30": {
+            "1. open": "455.6950",
+            "2. high": "462.1400",
+            "3. low": "449.3400",
+            "4. close": "461.4400",
+            "5. volume": "5170248"
+          },
+          "2026-04-29": {
+            "1. open": "445.2600",
+            "2. high": "450.3700",
+            "3. low": "442.4109",
+            "4. close": "449.9900",
+            "5. volume": "5972791"
+          },
+          "2026-04-28": {
+            "1. open": "437.6250",
+            "2. high": "446.1400",
+            "3. low": "431.7400",
+            "4. close": "438.7100",
+            "5. volume": "11014947"
+          },
+          "2026-04-27": {
+            "1. open": "461.7500",
+            "2. high": "463.0000",
+            "3. low": "448.9300",
+            "4. close": "455.4100",
+            "5. volume": "8924649"
+          },
+          "2026-04-24": {
+            "1. open": "457.5900",
+            "2. high": "463.8700",
+            "3. low": "450.9700",
+            "4. close": "461.6000",
+            "5. volume": "9071959"
+          },
+          "2026-04-23": {
+            "1. open": "435.3400",
+            "2. high": "446.6400",
+            "3. low": "434.0400",
+            "4. close": "441.0000",
+            "5. volume": "10812387"
+          },
+          "2026-04-22": {
+            "1. open": "427.2600",
+            "2. high": "432.1600",
+            "3. low": "422.8200",
+            "4. close": "431.7700",
+            "5. volume": "6557574"
+          },
+          "2026-04-21": {
+            "1. open": "420.4000",
+            "2. high": "423.3500",
+            "3. low": "416.6700",
+            "4. close": "420.7000",
+            "5. volume": "3676751"
+          },
+          "2026-04-20": {
+            "1. open": "417.4300",
+            "2. high": "418.8600",
+            "3. low": "411.7900",
+            "4. close": "417.5500",
+            "5. volume": "3493545"
+          },
+          "2026-04-17": {
+            "1. open": "413.3800",
+            "2. high": "415.7300",
+            "3. low": "409.5800",
+            "4. close": "415.7100",
+            "5. volume": "5729056"
+          },
+          "2026-04-16": {
+            "1. open": "400.6000",
+            "2. high": "407.4800",
+            "3. low": "397.9900",
+            "4. close": "405.9500",
+            "5. volume": "4400496"
+          },
+          "2026-04-15": {
+            "1. open": "400.3100",
+            "2. high": "402.0900",
+            "3. low": "392.3900",
+            "4. close": "401.8600",
+            "5. volume": "5570248"
+          },
+          "2026-04-14": {
+            "1. open": "397.8350",
+            "2. high": "401.4445",
+            "3. low": "393.5100",
+            "4. close": "401.2400",
+            "5. volume": "5202559"
+          },
+          "2026-04-13": {
+            "1. open": "384.8800",
+            "2. high": "393.5700",
+            "3. low": "384.3700",
+            "4. close": "393.3400",
+            "5. volume": "4377374"
+          },
+          "2026-04-10": {
+            "1. open": "382.6700",
+            "2. high": "389.6025",
+            "3. low": "382.6700",
+            "4. close": "386.6000",
+            "5. volume": "5596888"
+          },
+          "2026-04-09": {
+            "1. open": "371.2950",
+            "2. high": "378.9500",
+            "3. low": "371.2950",
+            "4. close": "378.6300",
+            "5. volume": "6036659"
+          },
+          "2026-04-08": {
+            "1. open": "367.8900",
+            "2. high": "371.1500",
+            "3. low": "362.1300",
+            "4. close": "370.4000",
+            "5. volume": "9868722"
+          },
+          "2026-04-07": {
+            "1. open": "343.0350",
+            "2. high": "347.9400",
+            "3. low": "338.4700",
+            "4. close": "347.7600",
+            "5. volume": "4025969"
+          },
+          "2026-04-06": {
+            "1. open": "341.5200",
+            "2. high": "345.7700",
+            "3. low": "339.9200",
+            "4. close": "344.1000",
+            "5. volume": "3105036"
+          },
+          "2026-04-02": {
+            "1. open": "325.1100",
+            "2. high": "340.3900",
+            "3. low": "325.0300",
+            "4. close": "339.6100",
+            "5. volume": "6521003"
+          },
+          "2026-04-01": {
+            "1. open": "333.4900",
+            "2. high": "342.6500",
+            "3. low": "332.3500",
+            "4. close": "338.5400",
+            "5. volume": "10130816"
+          },
+          "2026-03-31": {
+            "1. open": "315.5950",
+            "2. high": "329.1800",
+            "3. low": "314.8800",
+            "4. close": "328.6600",
+            "5. volume": "14036482"
+          },
+          "2026-03-30": {
+            "1. open": "326.7500",
+            "2. high": "327.6300",
+            "3. low": "307.2550",
+            "4. close": "309.7900",
+            "5. volume": "13204840"
+          },
+          "2026-03-27": {
+            "1. open": "326.8400",
+            "2. high": "329.9500",
+            "3. low": "322.1600",
+            "4. close": "323.4800",
+            "5. volume": "6334798"
+          },
+          "2026-03-26": {
+            "1. open": "339.4500",
+            "2. high": "339.8850",
+            "3. low": "328.5200",
+            "4. close": "328.8500",
+            "5. volume": "10172448"
+          },
+          "2026-03-25": {
+            "1. open": "344.1700",
+            "2. high": "347.6800",
+            "3. low": "342.1400",
+            "4. close": "345.2500",
+            "5. volume": "5868985"
+          },
+          "2026-03-24": {
+            "1. open": "333.7900",
+            "2. high": "343.2200",
+            "3. low": "333.6200",
+            "4. close": "341.0200",
+            "5. volume": "5287512"
+          },
+          "2026-03-23": {
+            "1. open": "340.1150",
+            "2. high": "344.9300",
+            "3. low": "335.1200",
+            "4. close": "336.5900",
+            "5. volume": "8151040"
+          },
+          "2026-03-20": {
+            "1. open": "339.7100",
+            "2. high": "341.2500",
+            "3. low": "327.9400",
+            "4. close": "332.5100",
+            "5. volume": "9441265"
+          },
+          "2026-03-19": {
+            "1. open": "328.7600",
+            "2. high": "342.7700",
+            "3. low": "326.7600",
+            "4. close": "340.2000",
+            "5. volume": "8292080"
+          },
+          "2026-03-18": {
+            "1. open": "340.5250",
+            "2. high": "343.4400",
+            "3. low": "338.2900",
+            "4. close": "338.2900",
+            "5. volume": "6363909"
+          },
+          "2026-03-17": {
+            "1. open": "340.5600",
+            "2. high": "341.1600",
+            "3. low": "336.7900",
+            "4. close": "340.2500",
+            "5. volume": "4472077"
+          },
+          "2026-03-16": {
+            "1. open": "338.8900",
+            "2. high": "342.0400",
+            "3. low": "336.3200",
+            "4. close": "337.8300",
+            "5. volume": "8018169"
+          },
+          "2026-03-13": {
+            "1. open": "333.8750",
+            "2. high": "338.4000",
+            "3. low": "329.7900",
+            "4. close": "331.3200",
+            "5. volume": "6450826"
+          },
+          "2026-03-12": {
+            "1. open": "337.3400",
+            "2. high": "337.5500",
+            "3. low": "328.6400",
+            "4. close": "330.1900",
+            "5. volume": "8008148"
+          },
+          "2026-03-11": {
+            "1. open": "340.5000",
+            "2. high": "345.4000",
+            "3. low": "340.4500",
+            "4. close": "342.0900",
+            "5. volume": "6215113"
+          },
+          "2026-03-10": {
+            "1. open": "336.3100",
+            "2. high": "345.5600",
+            "3. low": "336.3100",
+            "4. close": "338.8100",
+            "5. volume": "7470989"
+          },
+          "2026-03-09": {
+            "1. open": "318.3100",
+            "2. high": "337.1700",
+            "3. low": "316.2200",
+            "4. close": "336.3700",
+            "5. volume": "9824632"
+          },
+          "2026-03-06": {
+            "1. open": "328.4000",
+            "2. high": "335.0400",
+            "3. low": "321.4900",
+            "4. close": "323.5100",
+            "5. volume": "8733675"
+          },
+          "2026-03-05": {
+            "1. open": "338.9000",
+            "2. high": "343.7200",
+            "3. low": "330.5700",
+            "4. close": "337.7600",
+            "5. volume": "7239331"
+          },
+          "2026-03-04": {
+            "1. open": "339.9600",
+            "2. high": "343.8100",
+            "3. low": "336.7900",
+            "4. close": "341.5400",
+            "5. volume": "10649868"
+          },
+          "2026-03-03": {
+            "1. open": "338.0900",
+            "2. high": "339.3100",
+            "3. low": "330.8900",
+            "4. close": "334.7800",
+            "5. volume": "17946093"
+          },
+          "2026-03-02": {
+            "1. open": "343.7900",
+            "2. high": "352.3300",
+            "3. low": "343.3400",
+            "4. close": "352.0500",
+            "5. volume": "7284006"
+          },
+          "2026-02-27": {
+            "1. open": "349.6000",
+            "2. high": "354.0300",
+            "3. low": "348.3400",
+            "4. close": "352.2900",
+            "5. volume": "6250166"
+          },
+          "2026-02-26": {
+            "1. open": "366.3800",
+            "2. high": "366.4800",
+            "3. low": "350.4100",
+            "4. close": "356.8000",
+            "5. volume": "13329095"
+          },
+          "2026-02-25": {
+            "1. open": "366.1950",
+            "2. high": "368.8200",
+            "3. low": "365.5100",
+            "4. close": "368.0000",
+            "5. volume": "4539919"
+          },
+          "2026-02-24": {
+            "1. open": "361.6000",
+            "2. high": "364.7400",
+            "3. low": "358.0400",
+            "4. close": "362.0400",
+            "5. volume": "6205967"
+          },
+          "2026-02-23": {
+            "1. open": "357.5700",
+            "2. high": "360.3800",
+            "3. low": "352.8500",
+            "4. close": "356.8200",
+            "5. volume": "6339757"
+          },
+          "2026-02-20": {
+            "1. open": "353.5900",
+            "2. high": "361.3300",
+            "3. low": "352.8000",
+            "4. close": "359.4300",
+            "5. volume": "6013593"
+          },
+          "2026-02-19": {
+            "1. open": "354.1750",
+            "2. high": "356.3200",
+            "3. low": "351.7700",
+            "4. close": "355.8400",
+            "5. volume": "5576424"
+          },
+          "2026-02-18": {
+            "1. open": "355.8150",
+            "2. high": "361.6650",
+            "3. low": "353.6000",
+            "4. close": "357.9200",
+            "5. volume": "5681203"
+          },
+          "2026-02-17": {
+            "1. open": "349.8050",
+            "2. high": "357.1000",
+            "3. low": "345.3200",
+            "4. close": "354.1000",
+            "5. volume": "4068938"
+          },
+          "2026-02-13": {
+            "1. open": "352.8000",
+            "2. high": "357.6100",
+            "3. low": "348.6750",
+            "4. close": "354.6600",
+            "5. volume": "5963039"
+          },
+          "2026-02-12": {
+            "1. open": "363.4600",
+            "2. high": "365.3800",
+            "3. low": "351.0500",
+            "4. close": "351.5000",
+            "5. volume": "9487983"
+          },
+          "2026-02-11": {
+            "1. open": "358.8150",
+            "2. high": "362.2800",
+            "3. low": "351.4000",
+            "4. close": "360.2000",
+            "5. volume": "7497024"
+          },
+          "2026-02-10": {
+            "1. open": "353.5200",
+            "2. high": "355.0400",
+            "3. low": "348.1200",
+            "4. close": "351.4300",
+            "5. volume": "6252387"
+          },
+          "2026-02-09": {
+            "1. open": "344.8400",
+            "2. high": "354.7400",
+            "3. low": "343.8800",
+            "4. close": "352.7700",
+            "5. volume": "7091409"
+          },
+          "2026-02-06": {
+            "1. open": "337.3950",
+            "2. high": "349.5600",
+            "3. low": "335.8700",
+            "4. close": "348.5100",
+            "5. volume": "9096100"
+          },
+          "2026-02-05": {
+            "1. open": "326.5400",
+            "2. high": "335.4700",
+            "3. low": "324.0400",
+            "4. close": "330.8300",
+            "5. volume": "10406541"
+          },
+          "2026-02-04": {
+            "1. open": "342.1800",
+            "2. high": "345.3900",
+            "3. low": "323.3300",
+            "4. close": "330.3800",
+            "5. volume": "15231365"
+          },
+          "2026-02-03": {
+            "1. open": "355.9050",
+            "2. high": "357.1200",
+            "3. low": "338.0900",
+            "4. close": "345.6400",
+            "5. volume": "8085976"
+          },
+          "2026-02-02": {
+            "1. open": "342.3700",
+            "2. high": "356.1100",
+            "3. low": "341.9000",
+            "4. close": "352.6900",
+            "5. volume": "7758021"
+          },
+          "2026-01-30": {
+            "1. open": "356.0000",
+            "2. high": "360.1900",
+            "3. low": "343.7100",
+            "4. close": "346.3000",
+            "5. volume": "8719085"
+          },
+          "2026-01-29": {
+            "1. open": "361.1800",
+            "2. high": "363.8000",
+            "3. low": "347.7200",
+            "4. close": "361.1300",
+            "5. volume": "8446174"
+          },
+          "2026-01-28": {
+            "1. open": "358.5300",
+            "2. high": "362.0400",
+            "3. low": "356.7150",
+            "4. close": "360.4600",
+            "5. volume": "5364042"
+          },
+          "2026-01-27": {
+            "1. open": "348.1600",
+            "2. high": "353.2000",
+            "3. low": "346.6500",
+            "4. close": "351.0800",
+            "5. volume": "5179935"
+          },
+          "2026-01-26": {
+            "1. open": "343.2900",
+            "2. high": "345.5000",
+            "3. low": "341.1300",
+            "4. close": "343.0700",
+            "5. volume": "4458743"
+          },
+          "2026-01-23": {
+            "1. open": "346.3900",
+            "2. high": "348.0300",
+            "3. low": "342.1700",
+            "4. close": "344.7100",
+            "5. volume": "4335863"
+          },
+          "2026-01-22": {
+            "1. open": "354.3600",
+            "2. high": "354.6000",
+            "3. low": "347.3700",
+            "4. close": "348.6700",
+            "5. volume": "4661976"
+          },
+          "2026-01-21": {
+            "1. open": "341.8400",
+            "2. high": "351.3300",
+            "3. low": "340.3000",
+            "4. close": "348.1400",
+            "5. volume": "7204178"
+          },
+          "2026-01-20": {
+            "1. open": "336.2000",
+            "2. high": "343.1900",
+            "3. low": "335.9600",
+            "4. close": "337.3500",
+            "5. volume": "6164127"
+          },
+          "2026-01-16": {
+            "1. open": "343.5050",
+            "2. high": "345.4100",
+            "3. low": "340.2200",
+            "4. close": "342.4700",
+            "5. volume": "5127307"
+          },
+          "2026-01-15": {
+            "1. open": "343.1000",
+            "2. high": "344.5500",
+            "3. low": "337.2200",
+            "4. close": "337.2200",
+            "5. volume": "6531451"
+          },
+          "2026-01-14": {
+            "1. open": "331.0300",
+            "2. high": "331.9900",
+            "3. low": "327.1800",
+            "4. close": "331.9000",
+            "5. volume": "5468927"
+          },
+          "2026-01-13": {
+            "1. open": "332.8500",
+            "2. high": "336.4200",
+            "3. low": "331.8900",
+            "4. close": "333.3000",
+            "5. volume": "3835882"
+          },
+          "2026-01-12": {
+            "1. open": "325.6950",
+            "2. high": "331.3800",
+            "3. low": "325.5300",
+            "4. close": "330.3500",
+            "5. volume": "5159571"
+          },
+          "2026-01-09": {
+            "1. open": "322.8000",
+            "2. high": "330.6700",
+            "3. low": "321.1100",
+            "4. close": "328.7800",
+            "5. volume": "7323053"
+          },
+          "2026-01-08": {
+            "1. open": "324.1900",
+            "2. high": "324.1900",
+            "3. low": "316.4000",
+            "4. close": "319.5800",
+            "5. volume": "5408327"
+          },
+          "2026-01-07": {
+            "1. open": "325.0500",
+            "2. high": "325.9500",
+            "3. low": "322.1100",
+            "4. close": "324.8900",
+            "5. volume": "4528460"
+          },
+          "2026-01-06": {
+            "1. open": "322.0700",
+            "2. high": "329.1500",
+            "3. low": "322.0000",
+            "4. close": "328.3500",
+            "5. volume": "7579894"
+          },
+          "2026-01-05": {
+            "1. open": "320.7000",
+            "2. high": "322.6400",
+            "3. low": "316.8800",
+            "4. close": "318.0600",
+            "5. volume": "7923201"
+          },
+          "2026-01-02": {
+            "1. open": "308.5600",
+            "2. high": "315.8100",
+            "3. low": "308.5600",
+            "4. close": "313.6900",
+            "5. volume": "8491325"
+          },
+          "2025-12-31": {
+            "1. open": "305.6350",
+            "2. high": "306.1200",
+            "3. low": "301.1100",
+            "4. close": "301.1500",
+            "5. volume": "2954235"
+          },
+          "2025-12-30": {
+            "1. open": "306.0800",
+            "2. high": "307.4800",
+            "3. low": "304.7000",
+            "4. close": "304.9200",
+            "5. volume": "2984846"
+          },
+          "2025-12-29": {
+            "1. open": "303.3700",
+            "2. high": "306.4600",
+            "3. low": "301.8850",
+            "4. close": "305.3200",
+            "5. volume": "3620720"
+          },
+          "2025-12-26": {
+            "1. open": "307.4000",
+            "2. high": "307.5399",
+            "3. low": "305.2900",
+            "4. close": "306.0400",
+            "5. volume": "1860929"
+          },
+          "2025-12-24": {
+            "1. open": "304.9950",
+            "2. high": "306.5000",
+            "3. low": "304.7100",
+            "4. close": "306.1400",
+            "5. volume": "1723245"
+          },
+          "2025-12-23": {
+            "1. open": "302.2100",
+            "2. high": "305.1200",
+            "3. low": "301.3700",
+            "4. close": "304.9600",
+            "5. volume": "2708577"
+          }
+        }
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "status": "unavailable",
+      "error": "Alpha Vantage NVDA: We have detected your API key as OQGVBFTS4XOJVCO1 and our standard API rate limit is 25 requests per day. Please subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to instantly remove all daily rate limits.",
+      "data": null
+    },
+    {
+      "symbol": "AMD",
+      "status": "unavailable",
+      "error": "Alpha Vantage AMD: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+      "data": null
+    },
+    {
+      "symbol": "AVGO",
+      "status": "unavailable",
+      "error": "Alpha Vantage AVGO: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+      "data": null
+    },
+    {
+      "symbol": "LMT",
+      "status": "unavailable",
+      "error": "Alpha Vantage LMT: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+      "data": null
+    },
+    {
+      "symbol": "RTX",
+      "status": "unavailable",
+      "error": "Alpha Vantage RTX: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+      "data": null
+    },
+    {
+      "symbol": "NOC",
+      "status": "unavailable",
+      "error": "Alpha Vantage NOC: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+      "data": null
+    },
+    {
+      "symbol": "GD",
+      "status": "unavailable",
+      "error": "Alpha Vantage GD: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+      "data": null
+    },
+    {
+      "symbol": "HII",
+      "status": "unavailable",
+      "error": "Alpha Vantage HII: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+      "data": null
+    },
+    {
+      "symbol": "LHX",
+      "status": "unavailable",
+      "error": "Alpha Vantage LHX: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+      "data": null
+    },
+    {
+      "symbol": "BA",
+      "status": "unavailable",
+      "error": "Alpha Vantage BA: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+      "data": null
+    },
+    {
+      "symbol": "ITA",
+      "status": "unavailable",
+      "error": "Alpha Vantage ITA: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+      "data": null
+    },
+    {
+      "symbol": "XAR",
+      "status": "unavailable",
+      "error": "Alpha Vantage XAR: Thank you for using Alpha Vantage! Please consider spreading out your free API requests more sparingly (1 request per second). You may subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to lift the free key rate limit (25 requests per day), raise the per-second burst limit, and instantly unlock all premium endpoints",
+      "data": null
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "generatedAt": "2026-05-20T18:11:04.280Z",
+  "status": "passed",
+  "recordsChecked": 4582,
+  "datasetCounts": {
+    "events": 50,
+    "assets": 39,
+    "companies": 16,
+    "themes": 13,
+    "prices": 4253,
+    "riskIndex": 1,
+    "eventReturns": 118,
+    "memos": 1,
+    "marketTape": 1,
+    "companyCoverage": 16,
+    "eventTape": 50,
+    "ideaLedger": 5,
+    "researchArtifacts": 6,
+    "masteryPipeline": 12,
+    "energyResearch": 1
+  },
+  "providers": [
+    {
+      "provider": "Google News RSS",
+      "status": "source",
+      "retrievedAt": "2026-05-20T16:50:44.865Z",
+      "records": 60,
+      "failures": []
+    },
+    {
+      "provider": "Nasdaq Historical",
+      "status": "source",
+      "retrievedAt": "2026-05-20T16:50:48.172Z",
+      "records": 2091,
+      "failures": []
+    },
+    {
+      "provider": "FRED",
+      "status": "source",
+      "retrievedAt": "2026-05-20T16:50:57.640Z",
+      "records": 2220,
+      "failures": []
+    },
+    {
+      "provider": "SEC EDGAR",
+      "status": "source",
+      "retrievedAt": "2026-05-20T16:51:02.197Z",
+      "records": 9,
+      "failures": []
+    },
+    {
+      "provider": "OpenDART",
+      "status": "source",
+      "retrievedAt": "2026-05-20T16:51:02.197Z",
+      "records": 100,
+      "failures": []
+    }
+  ],
+  "missingProvenance": [],
+  "readinessFailures": [],
+  "notes": [
+    "All generated records include required provenance fields and core datasets are populated."
+  ]
+}

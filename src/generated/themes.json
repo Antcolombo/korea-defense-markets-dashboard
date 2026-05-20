@@ -1,0 +1,438 @@
+[
+  {
+    "provider": "methodology",
+    "sourceUrl": "/methodology",
+    "sourceName": "Dashboard methodology",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": true,
+    "methodologyNote": "Theme taxonomy is derived from the dashboard methodology and linked to sourced events/assets.",
+    "dataQuality": "derived",
+    "id": "fx-volatility-stress",
+    "name": "FX / Volatility Stress",
+    "description": "Derived taxonomy bucket for sourced records mapped to FX / Volatility Stress.",
+    "marketChannels": [
+      "Global Overlay",
+      "Korea Macro",
+      "Korea Beta",
+      "Energy Fundamentals"
+    ],
+    "relatedAssets": [
+      "SPX",
+      "DXY",
+      "US2Y",
+      "USDKRW",
+      "KR10Y",
+      "EWY",
+      "KOSPI",
+      "KOSDAQ",
+      "USDJPY",
+      "VIX",
+      "GOLD",
+      "GASOLINE",
+      "US10Y"
+    ],
+    "relatedCompanies": [],
+    "currentRiskLevel": "Watch",
+    "investmentImplication": "Derived research taxonomy only; not a recommendation.",
+    "keyCatalysts": [],
+    "keyRisks": []
+  },
+  {
+    "provider": "methodology",
+    "sourceUrl": "/methodology",
+    "sourceName": "Dashboard methodology",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": true,
+    "methodologyNote": "Theme taxonomy is derived from the dashboard methodology and linked to sourced events/assets.",
+    "dataQuality": "derived",
+    "id": "semiconductor-export-controls",
+    "name": "Semiconductor Export Controls",
+    "description": "Derived taxonomy bucket for sourced records mapped to Semiconductor Export Controls.",
+    "marketChannels": [
+      "Global Overlay",
+      "Korea Beta",
+      "U.S. Semis",
+      "Global Semis",
+      "Korea Local Evidence"
+    ],
+    "relatedAssets": [
+      "QQQ",
+      "EWY",
+      "KOSPI",
+      "SMH",
+      "SOXX",
+      "TSM",
+      "MU",
+      "NVDA",
+      "AMD",
+      "AVGO",
+      "005930.KS",
+      "000660.KS"
+    ],
+    "relatedCompanies": [
+      "TSM",
+      "MU",
+      "005930.KS"
+    ],
+    "currentRiskLevel": "Low",
+    "investmentImplication": "Derived research taxonomy only; not a recommendation.",
+    "keyCatalysts": [],
+    "keyRisks": []
+  },
+  {
+    "provider": "methodology",
+    "sourceUrl": "/methodology",
+    "sourceName": "Dashboard methodology",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": true,
+    "methodologyNote": "Theme taxonomy is derived from the dashboard methodology and linked to sourced events/assets.",
+    "dataQuality": "derived",
+    "id": "china-taiwan-spillover",
+    "name": "China/Taiwan Spillover",
+    "description": "Derived taxonomy bucket for sourced records mapped to China/Taiwan Spillover.",
+    "marketChannels": [
+      "Global Overlay",
+      "U.S. Semis",
+      "Global Semis",
+      "U.S. A&D",
+      "Korea Local Evidence"
+    ],
+    "relatedAssets": [
+      "QQQ",
+      "SMH",
+      "SOXX",
+      "TSM",
+      "MU",
+      "NVDA",
+      "AMD",
+      "AVGO",
+      "HII",
+      "005930.KS",
+      "000660.KS",
+      "GOLD"
+    ],
+    "relatedCompanies": [
+      "HII",
+      "TSM",
+      "MU",
+      "005930.KS"
+    ],
+    "currentRiskLevel": "Watch",
+    "investmentImplication": "Derived research taxonomy only; not a recommendation.",
+    "keyCatalysts": [],
+    "keyRisks": []
+  },
+  {
+    "provider": "methodology",
+    "sourceUrl": "/methodology",
+    "sourceName": "Dashboard methodology",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": true,
+    "methodologyNote": "Theme taxonomy is derived from the dashboard methodology and linked to sourced events/assets.",
+    "dataQuality": "derived",
+    "id": "missile-defense",
+    "name": "Missile Defense",
+    "description": "Derived taxonomy bucket for sourced records mapped to Missile Defense.",
+    "marketChannels": [
+      "U.S. A&D",
+      "Korea Local Evidence"
+    ],
+    "relatedAssets": [
+      "LMT",
+      "RTX",
+      "NOC",
+      "ITA",
+      "079550.KS"
+    ],
+    "relatedCompanies": [
+      "LMT",
+      "RTX",
+      "NOC",
+      "LHX",
+      "079550.KS"
+    ],
+    "currentRiskLevel": "Watch",
+    "investmentImplication": "Derived research taxonomy only; not a recommendation.",
+    "keyCatalysts": [],
+    "keyRisks": []
+  },
+  {
+    "provider": "methodology",
+    "sourceUrl": "/methodology",
+    "sourceName": "Dashboard methodology",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": true,
+    "methodologyNote": "Theme taxonomy is derived from the dashboard methodology and linked to sourced events/assets.",
+    "dataQuality": "derived",
+    "id": "munitions-defense-industrial-base",
+    "name": "Munitions / Defense Industrial Base",
+    "description": "Derived taxonomy bucket for sourced records mapped to Munitions / Defense Industrial Base.",
+    "marketChannels": [
+      "U.S. A&D",
+      "Korea Local Evidence"
+    ],
+    "relatedAssets": [
+      "LMT",
+      "RTX",
+      "GD",
+      "ITA",
+      "XAR",
+      "012450.KS",
+      "064350.KS"
+    ],
+    "relatedCompanies": [
+      "LMT",
+      "RTX",
+      "GD",
+      "012450.KS",
+      "064350.KS"
+    ],
+    "currentRiskLevel": "Low",
+    "investmentImplication": "Derived research taxonomy only; not a recommendation.",
+    "keyCatalysts": [],
+    "keyRisks": []
+  },
+  {
+    "provider": "methodology",
+    "sourceUrl": "/methodology",
+    "sourceName": "Dashboard methodology",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": true,
+    "methodologyNote": "Theme taxonomy is derived from the dashboard methodology and linked to sourced events/assets.",
+    "dataQuality": "derived",
+    "id": "u-s-rok-japan-alliance",
+    "name": "U.S.-ROK-Japan Alliance",
+    "description": "Derived taxonomy bucket for sourced records mapped to U.S.-ROK-Japan Alliance.",
+    "marketChannels": [
+      "U.S. A&D",
+      "Korea Local Evidence",
+      "Global Overlay"
+    ],
+    "relatedAssets": [
+      "LMT",
+      "HII",
+      "BA",
+      "047810.KS",
+      "USDJPY"
+    ],
+    "relatedCompanies": [
+      "LMT",
+      "HII",
+      "BA",
+      "047810.KS"
+    ],
+    "currentRiskLevel": "Watch",
+    "investmentImplication": "Derived research taxonomy only; not a recommendation.",
+    "keyCatalysts": [],
+    "keyRisks": []
+  },
+  {
+    "provider": "methodology",
+    "sourceUrl": "/methodology",
+    "sourceName": "Dashboard methodology",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": true,
+    "methodologyNote": "Theme taxonomy is derived from the dashboard methodology and linked to sourced events/assets.",
+    "dataQuality": "derived",
+    "id": "cyber-ai-defense",
+    "name": "Cyber / AI Defense",
+    "description": "Derived taxonomy bucket for sourced records mapped to Cyber / AI Defense.",
+    "marketChannels": [
+      "U.S. A&D"
+    ],
+    "relatedAssets": [
+      "NOC",
+      "LHX"
+    ],
+    "relatedCompanies": [
+      "NOC",
+      "LHX"
+    ],
+    "currentRiskLevel": "Low",
+    "investmentImplication": "Derived research taxonomy only; not a recommendation.",
+    "keyCatalysts": [],
+    "keyRisks": []
+  },
+  {
+    "provider": "methodology",
+    "sourceUrl": "/methodology",
+    "sourceName": "Dashboard methodology",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": true,
+    "methodologyNote": "Theme taxonomy is derived from the dashboard methodology and linked to sourced events/assets.",
+    "dataQuality": "derived",
+    "id": "isr-sensors",
+    "name": "ISR / Sensors",
+    "description": "Derived taxonomy bucket for sourced records mapped to ISR / Sensors.",
+    "marketChannels": [
+      "U.S. A&D",
+      "Korea Local Evidence"
+    ],
+    "relatedAssets": [
+      "NOC",
+      "LHX",
+      "079550.KS"
+    ],
+    "relatedCompanies": [
+      "079550.KS"
+    ],
+    "currentRiskLevel": "Low",
+    "investmentImplication": "Derived research taxonomy only; not a recommendation.",
+    "keyCatalysts": [],
+    "keyRisks": []
+  },
+  {
+    "provider": "methodology",
+    "sourceUrl": "/methodology",
+    "sourceName": "Dashboard methodology",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": true,
+    "methodologyNote": "Theme taxonomy is derived from the dashboard methodology and linked to sourced events/assets.",
+    "dataQuality": "derived",
+    "id": "naval-shipbuilding",
+    "name": "Naval / Shipbuilding",
+    "description": "Derived taxonomy bucket for sourced records mapped to Naval / Shipbuilding.",
+    "marketChannels": [
+      "U.S. A&D",
+      "Korea Local Evidence"
+    ],
+    "relatedAssets": [
+      "GD",
+      "HII",
+      "329180.KS",
+      "042660.KS"
+    ],
+    "relatedCompanies": [
+      "GD",
+      "HII",
+      "329180.KS",
+      "042660.KS"
+    ],
+    "currentRiskLevel": "Watch",
+    "investmentImplication": "Derived research taxonomy only; not a recommendation.",
+    "keyCatalysts": [],
+    "keyRisks": []
+  },
+  {
+    "provider": "methodology",
+    "sourceUrl": "/methodology",
+    "sourceName": "Dashboard methodology",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": true,
+    "methodologyNote": "Theme taxonomy is derived from the dashboard methodology and linked to sourced events/assets.",
+    "dataQuality": "derived",
+    "id": "defense-procurement",
+    "name": "Defense Procurement",
+    "description": "Derived taxonomy bucket for sourced records mapped to Defense Procurement.",
+    "marketChannels": [
+      "U.S. A&D"
+    ],
+    "relatedAssets": [
+      "BA",
+      "XAR"
+    ],
+    "relatedCompanies": [
+      "BA"
+    ],
+    "currentRiskLevel": "Low",
+    "investmentImplication": "Derived research taxonomy only; not a recommendation.",
+    "keyCatalysts": [],
+    "keyRisks": []
+  },
+  {
+    "provider": "methodology",
+    "sourceUrl": "/methodology",
+    "sourceName": "Dashboard methodology",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": true,
+    "methodologyNote": "Theme taxonomy is derived from the dashboard methodology and linked to sourced events/assets.",
+    "dataQuality": "derived",
+    "id": "korean-defense-exports",
+    "name": "Korean Defense Exports",
+    "description": "Derived taxonomy bucket for sourced records mapped to Korean Defense Exports.",
+    "marketChannels": [
+      "Korea Local Evidence"
+    ],
+    "relatedAssets": [
+      "012450.KS",
+      "079550.KS",
+      "047810.KS",
+      "064350.KS",
+      "329180.KS",
+      "042660.KS"
+    ],
+    "relatedCompanies": [
+      "012450.KS",
+      "079550.KS",
+      "047810.KS",
+      "064350.KS",
+      "329180.KS",
+      "042660.KS"
+    ],
+    "currentRiskLevel": "Low",
+    "investmentImplication": "Derived research taxonomy only; not a recommendation.",
+    "keyCatalysts": [],
+    "keyRisks": []
+  },
+  {
+    "provider": "methodology",
+    "sourceUrl": "/methodology",
+    "sourceName": "Dashboard methodology",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": true,
+    "methodologyNote": "Theme taxonomy is derived from the dashboard methodology and linked to sourced events/assets.",
+    "dataQuality": "derived",
+    "id": "oil-energy-security",
+    "name": "Oil / Energy Security",
+    "description": "Derived taxonomy bucket for sourced records mapped to Oil / Energy Security.",
+    "marketChannels": [
+      "Global Overlay",
+      "Energy Fundamentals"
+    ],
+    "relatedAssets": [
+      "OIL",
+      "GASOLINE"
+    ],
+    "relatedCompanies": [],
+    "currentRiskLevel": "Low",
+    "investmentImplication": "Derived research taxonomy only; not a recommendation.",
+    "keyCatalysts": [],
+    "keyRisks": []
+  },
+  {
+    "provider": "methodology",
+    "sourceUrl": "/methodology",
+    "sourceName": "Dashboard methodology",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": true,
+    "methodologyNote": "Theme taxonomy is derived from the dashboard methodology and linked to sourced events/assets.",
+    "dataQuality": "derived",
+    "id": "shipping-naval-risk",
+    "name": "Shipping / Naval Risk",
+    "description": "Derived taxonomy bucket for sourced records mapped to Shipping / Naval Risk.",
+    "marketChannels": [
+      "Global Overlay"
+    ],
+    "relatedAssets": [
+      "OIL"
+    ],
+    "relatedCompanies": [],
+    "currentRiskLevel": "Low",
+    "investmentImplication": "Derived research taxonomy only; not a recommendation.",
+    "keyCatalysts": [],
+    "keyRisks": []
+  }
+]

@@ -1,0 +1,455 @@
+[
+  {
+    "provider": "SEC EDGAR",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "SEC submissions API",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "2026-05-13",
+    "isDerived": false,
+    "methodologyNote": "Latest sourced SEC filing metadata: 8-K filed 2026-05-13.",
+    "dataQuality": "source",
+    "ticker": "LMT",
+    "name": "LOCKHEED MARTIN CORP",
+    "country": "United States",
+    "sector": "Aerospace & Defense",
+    "exchange": "NYSE",
+    "description": "Lockheed Martin is tracked for public Aerospace & Defense exposure tied to Missile Defense, Munitions / Defense Industrial Base, U.S.-ROK-Japan Alliance.",
+    "defenseExposure": "Mapped to Missile Defense, Munitions / Defense Industrial Base, U.S.-ROK-Japan Alliance through the public watchlist taxonomy.",
+    "catalysts": [
+      "Latest sourced SEC filing form: 8-K"
+    ],
+    "risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "relatedThemes": [
+      "Missile Defense",
+      "Munitions / Defense Industrial Base",
+      "U.S.-ROK-Japan Alliance"
+    ],
+    "valuationSnapshot": "Valuation work should be completed from sourced market and filing data before publication.",
+    "researchStatus": "Sourced disclosure metadata"
+  },
+  {
+    "provider": "SEC EDGAR",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "SEC submissions API",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "2026-05-14",
+    "isDerived": false,
+    "methodologyNote": "Latest sourced SEC filing metadata: SCHEDULE 13G/A filed 2026-05-14.",
+    "dataQuality": "source",
+    "ticker": "RTX",
+    "name": "RTX Corp",
+    "country": "United States",
+    "sector": "Aerospace & Defense",
+    "exchange": "NYSE",
+    "description": "RTX is tracked for public Aerospace & Defense exposure tied to Missile Defense, Munitions / Defense Industrial Base.",
+    "defenseExposure": "Mapped to Missile Defense, Munitions / Defense Industrial Base through the public watchlist taxonomy.",
+    "catalysts": [
+      "Latest sourced SEC filing form: SCHEDULE 13G/A"
+    ],
+    "risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "relatedThemes": [
+      "Missile Defense",
+      "Munitions / Defense Industrial Base"
+    ],
+    "valuationSnapshot": "Valuation work should be completed from sourced market and filing data before publication.",
+    "researchStatus": "Sourced disclosure metadata"
+  },
+  {
+    "provider": "SEC EDGAR",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "SEC submissions API",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "2026-05-14",
+    "isDerived": false,
+    "methodologyNote": "Latest sourced SEC filing metadata: SCHEDULE 13G/A filed 2026-05-14.",
+    "dataQuality": "source",
+    "ticker": "NOC",
+    "name": "NORTHROP GRUMMAN CORP /DE/",
+    "country": "United States",
+    "sector": "Aerospace & Defense",
+    "exchange": "NYSE",
+    "description": "Northrop Grumman is tracked for public Aerospace & Defense exposure tied to Missile Defense, Cyber / AI Defense.",
+    "defenseExposure": "Mapped to Missile Defense, Cyber / AI Defense through the public watchlist taxonomy.",
+    "catalysts": [
+      "Latest sourced SEC filing form: SCHEDULE 13G/A"
+    ],
+    "risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "relatedThemes": [
+      "Missile Defense",
+      "Cyber / AI Defense"
+    ],
+    "valuationSnapshot": "Valuation work should be completed from sourced market and filing data before publication.",
+    "researchStatus": "Sourced disclosure metadata"
+  },
+  {
+    "provider": "SEC EDGAR",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "SEC submissions API",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "2026-05-13",
+    "isDerived": false,
+    "methodologyNote": "Latest sourced SEC filing metadata: 4 filed 2026-05-13.",
+    "dataQuality": "source",
+    "ticker": "GD",
+    "name": "GENERAL DYNAMICS CORP",
+    "country": "United States",
+    "sector": "Aerospace & Defense",
+    "exchange": "NYSE",
+    "description": "General Dynamics is tracked for public Aerospace & Defense exposure tied to Naval / Shipbuilding, Munitions / Defense Industrial Base.",
+    "defenseExposure": "Mapped to Naval / Shipbuilding, Munitions / Defense Industrial Base through the public watchlist taxonomy.",
+    "catalysts": [
+      "Latest sourced SEC filing form: 4"
+    ],
+    "risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "relatedThemes": [
+      "Naval / Shipbuilding",
+      "Munitions / Defense Industrial Base"
+    ],
+    "valuationSnapshot": "Valuation work should be completed from sourced market and filing data before publication.",
+    "researchStatus": "Sourced disclosure metadata"
+  },
+  {
+    "provider": "SEC EDGAR",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "SEC submissions API",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "2026-05-05",
+    "isDerived": false,
+    "methodologyNote": "Latest sourced SEC filing metadata: 10-Q filed 2026-05-05.",
+    "dataQuality": "source",
+    "ticker": "HII",
+    "name": "HUNTINGTON INGALLS INDUSTRIES, INC.",
+    "country": "United States",
+    "sector": "Aerospace & Defense",
+    "exchange": "NYSE",
+    "description": "Huntington Ingalls Industries is tracked for public Aerospace & Defense exposure tied to Naval / Shipbuilding, China/Taiwan Spillover, U.S.-ROK-Japan Alliance.",
+    "defenseExposure": "Mapped to Naval / Shipbuilding, China/Taiwan Spillover, U.S.-ROK-Japan Alliance through the public watchlist taxonomy.",
+    "catalysts": [
+      "Latest sourced SEC filing form: 10-Q"
+    ],
+    "risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "relatedThemes": [
+      "Naval / Shipbuilding",
+      "China/Taiwan Spillover",
+      "U.S.-ROK-Japan Alliance"
+    ],
+    "valuationSnapshot": "Valuation work should be completed from sourced market and filing data before publication.",
+    "researchStatus": "Sourced disclosure metadata"
+  },
+  {
+    "provider": "SEC EDGAR",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "SEC submissions API",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "2026-05-18",
+    "isDerived": false,
+    "methodologyNote": "Latest sourced SEC filing metadata: 144 filed 2026-05-18.",
+    "dataQuality": "source",
+    "ticker": "LHX",
+    "name": "L3HARRIS TECHNOLOGIES, INC. /DE/",
+    "country": "United States",
+    "sector": "Aerospace & Defense",
+    "exchange": "NYSE",
+    "description": "L3Harris is tracked for public Aerospace & Defense exposure tied to Cyber / AI Defense, Missile Defense.",
+    "defenseExposure": "Mapped to Cyber / AI Defense, Missile Defense through the public watchlist taxonomy.",
+    "catalysts": [
+      "Latest sourced SEC filing form: 144"
+    ],
+    "risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "relatedThemes": [
+      "Cyber / AI Defense",
+      "Missile Defense"
+    ],
+    "valuationSnapshot": "Valuation work should be completed from sourced market and filing data before publication.",
+    "researchStatus": "Sourced disclosure metadata"
+  },
+  {
+    "provider": "SEC EDGAR",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "SEC submissions API",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "2026-05-14",
+    "isDerived": false,
+    "methodologyNote": "Latest sourced SEC filing metadata: SCHEDULE 13G filed 2026-05-14.",
+    "dataQuality": "source",
+    "ticker": "BA",
+    "name": "BOEING CO",
+    "country": "United States",
+    "sector": "Aerospace & Defense",
+    "exchange": "NYSE",
+    "description": "Boeing is tracked for public Aerospace & Defense exposure tied to U.S.-ROK-Japan Alliance, Defense Procurement.",
+    "defenseExposure": "Mapped to U.S.-ROK-Japan Alliance, Defense Procurement through the public watchlist taxonomy.",
+    "catalysts": [
+      "Latest sourced SEC filing form: SCHEDULE 13G"
+    ],
+    "risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "relatedThemes": [
+      "U.S.-ROK-Japan Alliance",
+      "Defense Procurement"
+    ],
+    "valuationSnapshot": "Valuation work should be completed from sourced market and filing data before publication.",
+    "researchStatus": "Sourced disclosure metadata"
+  },
+  {
+    "provider": "SEC EDGAR",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "SEC submissions API",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "2026-05-19",
+    "isDerived": false,
+    "methodologyNote": "Latest sourced SEC filing metadata: 4 filed 2026-05-19.",
+    "dataQuality": "source",
+    "ticker": "TSM",
+    "name": "TAIWAN SEMICONDUCTOR MANUFACTURING CO LTD",
+    "country": "Taiwan",
+    "sector": "Semiconductors",
+    "exchange": "NYSE",
+    "description": "Taiwan Semiconductor Manufacturing ADR is tracked for public Semiconductors exposure tied to Semiconductor Export Controls, China/Taiwan Spillover.",
+    "defenseExposure": "Mapped to Semiconductor Export Controls, China/Taiwan Spillover through the public watchlist taxonomy.",
+    "catalysts": [
+      "Latest sourced SEC filing form: 4"
+    ],
+    "risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "relatedThemes": [
+      "Semiconductor Export Controls",
+      "China/Taiwan Spillover"
+    ],
+    "valuationSnapshot": "Valuation work should be completed from sourced market and filing data before publication.",
+    "researchStatus": "Sourced disclosure metadata"
+  },
+  {
+    "provider": "SEC EDGAR",
+    "sourceUrl": "https://data.sec.gov/",
+    "sourceName": "SEC submissions API",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": "2026-05-14",
+    "isDerived": false,
+    "methodologyNote": "Latest sourced SEC filing metadata: SCHEDULE 13G/A filed 2026-05-14.",
+    "dataQuality": "source",
+    "ticker": "MU",
+    "name": "MICRON TECHNOLOGY INC",
+    "country": "United States",
+    "sector": "Semiconductors",
+    "exchange": "NASDAQ",
+    "description": "Micron Technology is tracked for public Semiconductors exposure tied to Semiconductor Export Controls, China/Taiwan Spillover.",
+    "defenseExposure": "Mapped to Semiconductor Export Controls, China/Taiwan Spillover through the public watchlist taxonomy.",
+    "catalysts": [
+      "Latest sourced SEC filing form: SCHEDULE 13G/A"
+    ],
+    "risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "relatedThemes": [
+      "Semiconductor Export Controls",
+      "China/Taiwan Spillover"
+    ],
+    "valuationSnapshot": "Valuation work should be completed from sourced market and filing data before publication.",
+    "researchStatus": "Sourced disclosure metadata"
+  },
+  {
+    "provider": "OpenDART",
+    "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
+    "sourceName": "OpenDART disclosure list API",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": false,
+    "methodologyNote": "Latest sourced OpenDART disclosure: N/A received N/A.",
+    "dataQuality": "unavailable",
+    "ticker": "012450.KS",
+    "name": "Hanwha Aerospace",
+    "country": "South Korea",
+    "sector": "Aerospace & Defense",
+    "exchange": "Korea Exchange",
+    "description": "Provider disclosure coverage failed during ingestion.",
+    "defenseExposure": "Mapped to Korean Defense Exports, Munitions / Defense Industrial Base through the public watchlist taxonomy.",
+    "catalysts": [],
+    "risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "relatedThemes": [
+      "Korean Defense Exports",
+      "Munitions / Defense Industrial Base"
+    ],
+    "valuationSnapshot": "Valuation work should be completed from sourced market and filing data before publication.",
+    "researchStatus": "Provider coverage failed"
+  },
+  {
+    "provider": "OpenDART",
+    "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
+    "sourceName": "OpenDART disclosure list API",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": false,
+    "methodologyNote": "Latest sourced OpenDART disclosure: N/A received N/A.",
+    "dataQuality": "unavailable",
+    "ticker": "079550.KS",
+    "name": "LIG Nex1",
+    "country": "South Korea",
+    "sector": "Aerospace & Defense",
+    "exchange": "Korea Exchange",
+    "description": "Provider disclosure coverage failed during ingestion.",
+    "defenseExposure": "Mapped to Missile Defense, ISR / Sensors, Korean Defense Exports through the public watchlist taxonomy.",
+    "catalysts": [],
+    "risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "relatedThemes": [
+      "Missile Defense",
+      "ISR / Sensors",
+      "Korean Defense Exports"
+    ],
+    "valuationSnapshot": "Valuation work should be completed from sourced market and filing data before publication.",
+    "researchStatus": "Provider coverage failed"
+  },
+  {
+    "provider": "OpenDART",
+    "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
+    "sourceName": "OpenDART disclosure list API",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": false,
+    "methodologyNote": "Latest sourced OpenDART disclosure: N/A received N/A.",
+    "dataQuality": "unavailable",
+    "ticker": "047810.KS",
+    "name": "Korea Aerospace Industries",
+    "country": "South Korea",
+    "sector": "Aerospace & Defense",
+    "exchange": "Korea Exchange",
+    "description": "Provider disclosure coverage failed during ingestion.",
+    "defenseExposure": "Mapped to Korean Defense Exports, U.S.-ROK-Japan Alliance through the public watchlist taxonomy.",
+    "catalysts": [],
+    "risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "relatedThemes": [
+      "Korean Defense Exports",
+      "U.S.-ROK-Japan Alliance"
+    ],
+    "valuationSnapshot": "Valuation work should be completed from sourced market and filing data before publication.",
+    "researchStatus": "Provider coverage failed"
+  },
+  {
+    "provider": "OpenDART",
+    "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
+    "sourceName": "OpenDART disclosure list API",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": false,
+    "methodologyNote": "Latest sourced OpenDART disclosure: N/A received N/A.",
+    "dataQuality": "unavailable",
+    "ticker": "064350.KS",
+    "name": "Hyundai Rotem",
+    "country": "South Korea",
+    "sector": "Industrials",
+    "exchange": "Korea Exchange",
+    "description": "Provider disclosure coverage failed during ingestion.",
+    "defenseExposure": "Mapped to Korean Defense Exports, Munitions / Defense Industrial Base through the public watchlist taxonomy.",
+    "catalysts": [],
+    "risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "relatedThemes": [
+      "Korean Defense Exports",
+      "Munitions / Defense Industrial Base"
+    ],
+    "valuationSnapshot": "Valuation work should be completed from sourced market and filing data before publication.",
+    "researchStatus": "Provider coverage failed"
+  },
+  {
+    "provider": "OpenDART",
+    "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
+    "sourceName": "OpenDART disclosure list API",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": false,
+    "methodologyNote": "Latest sourced OpenDART disclosure: N/A received N/A.",
+    "dataQuality": "unavailable",
+    "ticker": "329180.KS",
+    "name": "HD Hyundai",
+    "country": "South Korea",
+    "sector": "Industrials",
+    "exchange": "Korea Exchange",
+    "description": "Provider disclosure coverage failed during ingestion.",
+    "defenseExposure": "Mapped to Naval / Shipbuilding, Korean Defense Exports through the public watchlist taxonomy.",
+    "catalysts": [],
+    "risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "relatedThemes": [
+      "Naval / Shipbuilding",
+      "Korean Defense Exports"
+    ],
+    "valuationSnapshot": "Valuation work should be completed from sourced market and filing data before publication.",
+    "researchStatus": "Provider coverage failed"
+  },
+  {
+    "provider": "OpenDART",
+    "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
+    "sourceName": "OpenDART disclosure list API",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": false,
+    "methodologyNote": "Latest sourced OpenDART disclosure: N/A received N/A.",
+    "dataQuality": "unavailable",
+    "ticker": "042660.KS",
+    "name": "Hanwha Ocean",
+    "country": "South Korea",
+    "sector": "Shipbuilding",
+    "exchange": "Korea Exchange",
+    "description": "Provider disclosure coverage failed during ingestion.",
+    "defenseExposure": "Mapped to Naval / Shipbuilding, Korean Defense Exports through the public watchlist taxonomy.",
+    "catalysts": [],
+    "risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "relatedThemes": [
+      "Naval / Shipbuilding",
+      "Korean Defense Exports"
+    ],
+    "valuationSnapshot": "Valuation work should be completed from sourced market and filing data before publication.",
+    "researchStatus": "Provider coverage failed"
+  },
+  {
+    "provider": "OpenDART",
+    "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
+    "sourceName": "OpenDART disclosure list API",
+    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "publishedAt": null,
+    "isDerived": false,
+    "methodologyNote": "Latest sourced OpenDART disclosure: N/A received N/A.",
+    "dataQuality": "unavailable",
+    "ticker": "005930.KS",
+    "name": "Samsung Electronics",
+    "country": "South Korea",
+    "sector": "Semiconductors",
+    "exchange": "Korea Exchange",
+    "description": "Provider disclosure coverage failed during ingestion.",
+    "defenseExposure": "Mapped to Semiconductor Export Controls, China/Taiwan Spillover through the public watchlist taxonomy.",
+    "catalysts": [],
+    "risks": [
+      "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
+    ],
+    "relatedThemes": [
+      "Semiconductor Export Controls",
+      "China/Taiwan Spillover"
+    ],
+    "valuationSnapshot": "Valuation work should be completed from sourced market and filing data before publication.",
+    "researchStatus": "Provider coverage failed"
+  }
+]
