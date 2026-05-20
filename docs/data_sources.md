@@ -28,3 +28,26 @@ npm run audit:data
 ```
 
 The ingestion scripts load `.env.local` automatically.
+
+## Scheduled Refresh
+
+GitHub Actions runs `.github/workflows/refresh-data.yml` on weekdays at:
+
+- 12:30 UTC / 8:30 AM New York
+- 21:30 UTC / 5:30 PM New York
+- 02:30 UTC / 10:30 PM New York on the prior calendar day
+
+The workflow creates a scheduled empty commit on `main`. Vercel then redeploys production, and the production build runs `npm run build:data` with the provider env vars configured in Vercel. If ingestion or the source audit fails, Vercel keeps the previous ready deployment live.
+
+Required Vercel production environment variables:
+
+- `ALPHA_VANTAGE_API_KEY`
+- `FRED_API_KEY`
+- `OPENDART_API_KEY`
+- `SEC_USER_AGENT`
+
+Optional Vercel production environment variable:
+
+- `EIA_API_KEY`
+- `MARKET_DATA_PROVIDER`, defaulting to `nasdaq`
+- `ALLOW_STALE_CACHE`, normally `false`

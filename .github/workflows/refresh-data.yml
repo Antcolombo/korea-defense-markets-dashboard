@@ -1,0 +1,30 @@
+name: Refresh live research data
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Weekdays before the U.S. open, after the U.S. close, and overnight Asia time.
+    - cron: '30 12 * * 1-5'
+    - cron: '30 21 * * 1-5'
+    - cron: '30 2 * * 2-6'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-research-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Trigger Vercel rebuild
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "Trigger scheduled research data refresh"
+          git push
