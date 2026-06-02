@@ -2,9 +2,6 @@ name: Refresh live research data
 
 on:
   workflow_dispatch:
-  schedule:
-    # Weekdays after the U.S. close. Provider ingest is rate-limited, so keep this off the Vercel build path.
-    - cron: '30 21 * * 1-5'
 
 permissions:
   contents: write
