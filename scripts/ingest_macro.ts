@@ -1,7 +1,18 @@
-import { assertNonEmpty, fetchJson, nowIso, requiredEnv, writeJson } from './lib/io'
+import { assertNonEmpty, fetchJson, nowIso, readJson, requiredEnv, writeJson } from './lib/io'
 
 const outputPath = 'src/generated/raw/macro.fred.json'
 const apiKey = requiredEnv('FRED_API_KEY')
+
+type FredSeriesResult = {
+  id: string
+  ticker: string
+  name: string
+  limit?: number
+  status: string
+  observations: unknown[]
+  error?: string
+  cacheFallback?: boolean
+}
 
 const series = [
   { id: 'SP500', ticker: 'SPX', name: 'S&P 500 Index' },
@@ -35,7 +46,9 @@ async function fetchFredSeries(id: string, limit = 180) {
 
 async function main() {
   const retrievedAt = nowIso()
-  const results = []
+  const cached = await readJson<{ series?: FredSeriesResult[] }>(outputPath, {})
+  const cachedById = new Map((cached.series ?? []).map(item => [item.id, item]))
+  const results: FredSeriesResult[] = []
   const failures: string[] = []
 
   for (const item of series) {
@@ -47,6 +60,17 @@ async function main() {
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error)
       failures.push(`${item.id}: ${message}`)
+      const cachedSeries = cachedById.get(item.id)
+      if (cachedSeries && cachedSeries.observations.length > 0) {
+        results.push({
+          ...item,
+          status: 'source',
+          observations: cachedSeries.observations,
+          error: message,
+          cacheFallback: true
+        })
+        continue
+      }
       results.push({
         ...item,
         status: 'unavailable',
@@ -61,11 +85,11 @@ async function main() {
     provider: 'FRED',
     sourceUrl: 'https://fred.stlouisfed.org/docs/api/fred/',
     retrievedAt,
-    status: failures.length === 0 ? 'source' : 'failed',
+    status: results.some(item => item.status === 'unavailable') ? 'failed' : 'source',
     failures,
     series: results
   })
-  if (failures.length > 0) {
+  if (results.some(item => item.status === 'unavailable')) {
     throw new Error(`FRED ingestion failed: ${failures.join('; ')}`)
   }
   console.log(`Wrote ${outputPath}`)
