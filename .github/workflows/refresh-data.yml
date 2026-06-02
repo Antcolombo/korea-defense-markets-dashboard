@@ -3,10 +3,8 @@ name: Refresh live research data
 on:
   workflow_dispatch:
   schedule:
-    # Weekdays before the U.S. open, after the U.S. close, and overnight Asia time.
-    - cron: '30 12 * * 1-5'
+    # Weekdays after the U.S. close. Provider ingest is rate-limited, so keep this off the Vercel build path.
     - cron: '30 21 * * 1-5'
-    - cron: '30 2 * * 2-6'
 
 permissions:
   contents: write
@@ -22,9 +20,26 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Trigger Vercel rebuild
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Refresh generated data
+        run: npm run build:data
+
+      - name: Commit refreshed data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit --allow-empty -m "Trigger scheduled research data refresh"
+          git add src/generated
+          if git diff --cached --quiet; then
+            echo "No generated data changes"
+            exit 0
+          fi
+          git commit -m "Refresh generated research data"
           git push
