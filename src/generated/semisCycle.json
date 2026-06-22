@@ -1,0 +1,61 @@
+[
+  {
+    "provider": "derived",
+    "sourceUrl": "/methodology",
+    "sourceName": "Semis price tape",
+    "retrievedAt": "2026-06-21T19:58:32.863Z",
+    "publishedAt": "2026-06-21T19:58:32.863Z",
+    "isDerived": true,
+    "methodologyNote": "Semiconductor tape is derived from sourced daily closes for listed semis expressions and Korea local semis when official local data is configured.",
+    "dataQuality": "derived",
+    "date": "2026-06-21",
+    "layer": "price_tape",
+    "title": "Semis Price Tape",
+    "status": "sourced",
+    "signal": "Compare SOXX/SMH/NVDA/TSM/MU against Samsung and SK Hynix when local KRX prices are sourced.",
+    "evidence": [
+      "SOXX/SMH ETF moves",
+      "NVDA/TSM/MU U.S.-listed closes",
+      "Samsung/SK Hynix KRX closes when configured"
+    ],
+    "soxx5d": 8.95,
+    "smh5d": 8.27,
+    "nvda5d": 2.84,
+    "tsm5d": 9.75,
+    "mu5d": 13.87,
+    "samsung5d": null,
+    "skHynix5d": null,
+    "sourceBacklog": []
+  },
+  {
+    "provider": "derived",
+    "sourceUrl": "/methodology",
+    "sourceName": "Semis fundamentals cycle",
+    "retrievedAt": "2026-06-21T19:58:32.863Z",
+    "publishedAt": "2026-06-21T19:58:32.863Z",
+    "isDerived": true,
+    "methodologyNote": "True DRAM/NAND pricing remains proxy-labeled unless TrendForce, DRAMeXchange, or equivalent licensed data is configured.",
+    "dataQuality": "proxy",
+    "date": "2026-06-21",
+    "layer": "fundamentals_cycle",
+    "title": "Memory-Cycle Evidence",
+    "status": "proxy",
+    "signal": "Cycle evidence is not the same as price tape; require DRAM/NAND pricing or public export/unit-value proxies before upgrading conviction.",
+    "evidence": [
+      "TrendForce / DRAMeXchange provider target",
+      "Korea semiconductor exports or unit-value proxy target",
+      "Company disclosure read-through"
+    ],
+    "soxx5d": 8.95,
+    "smh5d": 8.27,
+    "nvda5d": 2.84,
+    "tsm5d": 9.75,
+    "mu5d": 13.87,
+    "samsung5d": null,
+    "skHynix5d": null,
+    "sourceBacklog": [
+      "DRAM/NAND pricing requires TrendForce, DRAMeXchange, or equivalent licensed/source-backed feed.",
+      "Korea semis export/unit-value proxy should be added before treating the cycle layer as sourced fundamentals."
+    ]
+  }
+]

@@ -1,5 +1,6 @@
 import { assetWatchlist, companyWatchlist } from './lib/watchlist'
 import { nowIso, readJson, writeJson } from './lib/io'
+import { getTradingViewSymbol } from '../src/lib/tradingView'
 
 type RawGdeltArticle = {
   title?: string
@@ -190,6 +191,7 @@ function assertRawSource(condition: boolean, label: string) {
 async function main() {
   const rawEvents = await readJson<{ status?: string; batches: { articles: RawGdeltArticle[]; provider: string; sourceUrl: string; label: string }[] }>('src/generated/raw/events.news.json', { batches: [] })
   const rawMarket = await readJson<{ status?: string; provider?: string; sourceUrl?: string; series: RawMarketSeries[] }>('src/generated/raw/market.prices.json', { series: [] })
+  const rawKoreaMarket = await readJson<{ status?: string; provider?: string; sourceUrl?: string; series: RawMarketSeries[] }>('src/generated/raw/korea.market.json', { series: [] })
   const rawMacro = await readJson<{ status?: string; series: RawFredSeries[] }>('src/generated/raw/macro.fred.json', { series: [] })
   const rawFilings = await readJson<{ status?: string; sec?: { records?: RawSecRecord[] }; openDart?: { status?: string; records?: RawOpenDartRecord[] } }>('src/generated/raw/filings.json', {})
 
@@ -229,7 +231,7 @@ async function main() {
   assertRawSource(events.length > 0, 'news ingestion produced zero normalized events')
 
   const marketByTicker = new Map(
-    (rawMarket.series ?? [])
+    [...(rawMarket.series ?? []), ...(rawKoreaMarket.series ?? [])]
       .filter(series => series.status === 'source')
       .map(series => [series.symbol, parseMarketReturns(series)] as const)
       .filter(([, parsed]) => parsed.hasData)
@@ -243,11 +245,16 @@ async function main() {
   const assets = assetWatchlist.map(asset => {
     const market = marketByTicker.get(asset.ticker)
     const macro = fredByTicker.get(asset.ticker)
-    const sourceProvider = market ? rawMarket.provider ?? 'Market data provider' : macro ? 'FRED' : 'watchlist-config'
-    const sourceUrl = market ? rawMarket.sourceUrl ?? '/methodology' : macro ? 'https://fred.stlouisfed.org/docs/api/fred/' : '/methodology'
+    const isKoreaLocal = asset.country === 'South Korea' && (asset.sleeve === 'Korea local evidence' || asset.ticker.endsWith('.KS') || ['KOSPI', 'KOSDAQ'].includes(asset.ticker))
+    const isKoreaMarketSource = Boolean(market && isKoreaLocal)
+    const sourceProvider = market ? isKoreaMarketSource ? 'Korea official market data' : rawMarket.provider ?? 'Market data provider' : macro ? 'FRED' : 'watchlist-config'
+    const sourceUrl = market ? isKoreaMarketSource ? rawKoreaMarket.sourceUrl ?? 'https://www.data.go.kr/en/data/15094808/openapi.do' : rawMarket.sourceUrl ?? '/methodology' : macro ? 'https://fred.stlouisfed.org/docs/api/fred/' : '/methodology'
+    const sourceQuality = isKoreaMarketSource ? 'local-market-source' : market ? 'us-listed-source' : macro ? 'macro-source' : asset.assetClass === 'commodity' && asset.ticker === 'GOLD' ? 'proxy' : 'evidence-only'
+    const sleeve = isKoreaMarketSource ? 'Korea local market data' : asset.sleeve
     return {
-      ...provenance(sourceProvider, sourceUrl, market ? `${sourceProvider} daily close` : macro ? 'FRED macro series' : 'Configured watchlist', Boolean(!market && !macro), market || macro ? 'source' : 'unavailable', market ? 'Returns derived from sourced daily closes.' : macro ? 'Moves are sourced FRED level changes over the selected window.' : 'Instrument configured as research evidence; market values unavailable until a provider is added.'),
+      ...provenance(sourceProvider, sourceUrl, market ? `${sourceProvider} daily close` : macro ? 'FRED macro series' : 'Configured watchlist', Boolean(!market && !macro), market || macro ? 'source' : sourceQuality === 'proxy' ? 'proxy' : 'unavailable', market ? 'Returns derived from sourced daily closes.' : macro ? 'Moves are sourced FRED level changes over the selected window.' : 'Instrument configured as research evidence; market values unavailable until a provider is added.'),
       ...asset,
+      sleeve,
       description: `${asset.name} is tracked in the ${asset.sleeve} sleeve and mapped to ${asset.themes.join(', ')}.`,
       return1d: market?.return1d ?? macro?.return1d ?? null,
       return5d: market?.return5d ?? macro?.return5d ?? null,
@@ -255,7 +262,9 @@ async function main() {
       returnYtd: market?.returnYtd ?? macro?.returnYtd ?? null,
       relatedEventCount: eventCounts.get(asset.ticker) ?? 0,
       riskSensitivity: eventCounts.has(asset.ticker) ? Math.min(5, Math.max(1, eventCounts.get(asset.ticker) ?? 1)) : null,
-      notes: market ? 'U.S.-listed price expression' : macro ? 'FRED macro level series' : 'Evidence only; add local exchange price provider'
+      sourceQuality,
+      tradingViewSymbol: getTradingViewSymbol(asset.ticker),
+      notes: isKoreaMarketSource ? 'Official Korea local daily close' : market ? 'U.S.-listed price expression' : macro ? 'FRED macro level series' : sourceQuality === 'proxy' ? 'Proxy target; source upgrade required' : 'Evidence only; add local exchange price provider'
     }
   })
 

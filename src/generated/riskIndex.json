@@ -3,18 +3,18 @@
     "provider": "derived",
     "sourceUrl": "/methodology",
     "sourceName": "Market regime board",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
     "publishedAt": null,
     "isDerived": true,
     "methodologyNote": "Market-regime context derived from sourced price, rates, FX, volatility, and source-coverage inputs. Event text is not scored.",
     "dataQuality": "derived",
-    "date": "2026-05-20",
-    "totalScore": 72,
-    "northKoreaEscalation": 100,
-    "allianceActivity": 69,
-    "regionalSpillover": 0,
+    "date": "2026-06-21",
+    "totalScore": 76,
+    "northKoreaEscalation": 0,
+    "allianceActivity": 44,
+    "regionalSpillover": 100,
     "sanctionsExportControls": 0,
-    "defenseDemandSignal": 36,
-    "marketStressOverlay": 50
+    "defenseDemandSignal": 42,
+    "marketStressOverlay": 31
   }
 ]

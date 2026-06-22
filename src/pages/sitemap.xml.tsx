@@ -2,14 +2,16 @@ import type { GetServerSideProps } from 'next'
 
 const routes = [
   '/',
-  '/dashboard',
-  '/markets',
-  '/events',
-  '/source-audit',
-  '/research/korea-defense-memo',
-  '/research/hii-stock-pitch',
-  '/methodology',
-  '/about'
+  '/report/NVDA',
+  '/?module=rotation',
+  '/?module=baskets',
+  '/?module=positioning',
+  '/?module=crowding',
+  '/?module=daily-note',
+  '/?module=validation',
+  '/?module=korea-defense',
+  '/?module=methodology',
+  '/?module=stock-report&ticker=NVDA'
 ]
 
 function Sitemap() {

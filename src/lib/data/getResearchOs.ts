@@ -4,13 +4,15 @@ import eventTapeJson from '@/generated/eventTape.json'
 import ideaLedgerJson from '@/generated/ideaLedger.json'
 import researchArtifactsJson from '@/generated/researchArtifacts.json'
 import masteryPipelineJson from '@/generated/masteryPipeline.json'
+import weeklyReviewJson from '@/generated/weeklyReview.json'
 import type {
   CompanyCoverageRecord,
   EventTapeRecord,
   IdeaLedgerRecord,
   MarketTapeRecord,
   MasteryPipelineStage,
-  ResearchArtifactRecord
+  ResearchArtifactRecord,
+  WeeklyReviewRecord
 } from '@/types/researchOs'
 
 export function getMarketTape(): MarketTapeRecord[] {
@@ -35,4 +37,8 @@ export function getResearchArtifacts(): ResearchArtifactRecord[] {
 
 export function getMasteryPipeline(): MasteryPipelineStage[] {
   return masteryPipelineJson as MasteryPipelineStage[]
+}
+
+export function getWeeklyReview(): WeeklyReviewRecord[] {
+  return weeklyReviewJson as WeeklyReviewRecord[]
 }

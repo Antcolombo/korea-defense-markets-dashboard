@@ -1,6 +1,6 @@
 import type { EventCategory } from '@/types/event'
 
-export const DISCLAIMER = 'This project uses public information only. It does not use classified, restricted, confidential, or material nonpublic information. It is a research workbench for market decision support and is not investment advice or a recommendation to buy or sell securities.'
+export const DISCLAIMER = 'This project uses public and licensed provider data only. It does not use classified, restricted, confidential, or material nonpublic information. It is a research workbench for market intelligence and is not investment advice or a recommendation to buy or sell securities.'
 
 export const EVENT_CATEGORIES: EventCategory[] = [
   'NORTH_KOREA_MISSILE',

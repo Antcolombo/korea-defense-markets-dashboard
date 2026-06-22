@@ -1,81 +1,91 @@
-# Asia Macro Research OS
+# Flow & Positioning Research Terminal
 
-## Purpose
-Public-source Asia macro research operating system for market tape, Korea/semis/defense coverage, source provenance, event studies, and portfolio-style research outputs.
+A PM-facing research dashboard that uses sourced public and provider-backed market-data proxies to monitor sector rotation, theme sponsorship, positioning pressure, crowding, and reversal risk.
 
-## Why I built this
-Built to combine macro monitoring, business analysis, coding work, and investment research interest. The dashboard is designed to show how sourced public information can become structured research workflows without using classified, restricted, confidential, or material nonpublic information.
+This project is designed as a proof-of-work artifact for Flow / Positioning / Market Intelligence roles across hedge funds, asset managers, and market-data teams.
 
-## Features
-- Market Regime Board driven by sourced price/rates/FX/coverage inputs instead of event-text scoring
-- Public-source event feed from automated ingestion
-- Defense, semiconductor, FX/rates, commodity, and volatility watchlist
-- Event-to-market impact analysis when price history is available
-- Company exposure map backed by public filings metadata
-- Weekly memo workflow with visible sources
-- Company dossier pages
-- Korea defense market memo page
-- A&D stock pitch page
+## Product
 
-## Data
-Generated application data lives in `src/generated`. Ingestion scripts write raw provider payloads and normalized app-ready JSON. Strict source mode requires successful provider ingestion; missing provider values are ingestion/build errors, not publishable fallback states.
+The terminal answers:
 
-Supported providers:
-- Google News RSS for public event/article metadata
-- Alpha Vantage for market data when `ALPHA_VANTAGE_API_KEY` is set
-- FRED for macro series when `FRED_API_KEY` is set
-- SEC EDGAR for U.S. company filing metadata
-- OpenDART for Korean disclosure integration when `OPENDART_API_KEY` is set
+- Where is capital rotating?
+- Is the move confirmed by volume or positioning?
+- Is the theme early or crowded?
+- What is the risk/reward backdrop?
+- What should a PM investigate today?
+- Can a sourced single-stock note be generated and exported?
 
-## Source Data Handling
-Every major page displays source or derived-data status. Records include provider, source URL, source name, retrieval timestamp, published timestamp when available, derived flag, methodology note, and data-quality status.
+The first applied case study is Korea / Indo-Pacific defense.
 
-## Portfolio Outputs
-- Public Vercel deployment
-- GitHub repo with polished README
-- Dashboard screenshots in `/public/screenshots`
-- Resume bullets in `docs/resume_bullets.md`
-- Korea defense market memo page
-- A&D stock pitch page
-- Methodology page with public-source / no-MNPI disclaimer
+## Real Data Rule
 
-## Disclaimer
-Educational research project.
-Not investment advice.
-No classified, restricted, confidential, or material nonpublic information used.
+No mock market values. No fake options data. No fabricated short interest.
 
-## Tech Stack
-- TypeScript / Next.js Pages Router for the product UI
-- React, Tailwind CSS, and Recharts for dashboards
-- Node / tsx scripts for provider ingestion and generated JSON artifacts
-- Python / pandas analytics scaffold for offline dataset inspection
-- Rust validation/performance layer planned for future data checks
+Rows are sourced live from providers or read from a frozen sourced snapshot with:
 
-## Environment
 ```bash
-ALPHA_VANTAGE_API_KEY=
-FRED_API_KEY=
-OPENDART_API_KEY=
-SEC_USER_AGENT="KoreaDefenseMarketsDashboard your-email@example.com"
-MARKET_DATA_PROVIDER=alpha_vantage
-ALLOW_STALE_CACHE=false
+DEMO_AS_OF_DATE=YYYY-MM-DD
 ```
 
+Demo mode blocks live fetches and reads real historical provider rows already stored in Postgres.
+
+## Data Stack
+
+- Polygon/Massive for OHLCV and options snapshots
+- FINRA Query API for consolidated short interest and Reg SHO short-sale volume
+- FRED, SEC EDGAR, OpenDART, BOK/data.go.kr, and public news/catalyst feeds where configured
+- Prisma + Postgres for point-in-time storage
+
+Every provider-backed row stores `asOfDate`, `observedAt`, `providerTimestamp`, `ingestedAt`, `source`, `provider`, `revisionFlag`, and `dataStatus`.
+
+## Routes
+
+- `/`
+- `/stock-report`
+- `/report/[ticker]`
+- `/rotation`
+- `/baskets`
+- `/baskets/[slug]`
+- `/positioning`
+- `/crowding`
+- `/daily-note`
+- `/research/validation`
+- `/case-studies/korea-defense`
+- `/methodology`
+
 ## Setup
+
 ```bash
 npm install
 cp .env.example .env.local
-# Fill .env.local with real provider credentials.
-npm run setup:check
+npm run prisma:generate
+npm run db:migrate
+npm run db:seed
 npm run ingest
+npm run validate:research
 npm run audit:data
 npm run dev
-npm run build
 ```
 
-`npm run build` runs the source audit before `next build`. It fails if core datasets are empty or provider ingestion did not succeed.
+Required:
 
-Ingestion scripts automatically load `.env.local`, `.env`, or `.env.development`. Provider secrets should stay local and must not be committed.
+```bash
+DATABASE_URL=
+POLYGON_API_KEY=
+FINRA_CLIENT_ID=
+FINRA_CLIENT_SECRET=
+```
 
-## Screenshots
-Dashboard screenshots should be saved in `/public/screenshots`.
+## Validation
+
+`/research/validation` tests:
+
+- crowding score vs 5D/20D reversal
+- RS + volume confirmation vs continuation
+- options volume spikes vs later realized volatility
+
+Each test reports hit rate, average forward return, sample size, coverage, and caveats.
+
+## Disclaimer
+
+Research workbench only. Not investment advice. No classified, restricted, confidential, or material nonpublic information is used.

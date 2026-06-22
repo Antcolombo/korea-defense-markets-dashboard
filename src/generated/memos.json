@@ -3,20 +3,20 @@
     "provider": "derived",
     "sourceUrl": "/methodology",
     "sourceName": "Dashboard methodology",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
     "publishedAt": null,
     "isDerived": true,
     "methodologyNote": "Memo assembled only from sourced event titles and sourced/derived dashboard records.",
     "dataQuality": "derived",
-    "id": "memo-2026-05-20",
-    "date": "2026-05-20",
+    "id": "memo-2026-06-21",
+    "date": "2026-06-21",
     "title": "Korea Macro Trade Note",
     "researchPriority": 0,
     "riskLevel": "Watch",
     "topEvents": [
-      "U.S. Considering Foreign Designs, Shipyards for New Navy Frigate, Destroyer Work in $1.85B Study - USNI News",
-      "Navy ‘going to study’ possibility of building ships outside US, Phelan says - Navy Times",
-      "Navy calls for 34 new ships plus more than 4,000 major munitions - Stars and Stripes"
+      "The Navy’s Golden Fleet Has a Price Problem - Defense Security Monitor",
+      "South Korea Could Build Nuclear Submarines, But It Shouldn’t - War on the Rocks",
+      "Shipbuilders Look to Big Budget Plus-Ups to Reverse Delays, Cost Overruns - National Defense Magazine"
     ],
     "marketReaction": "Start with USD/KRW and EWY, then compare liquid U.S. expressions in semis and A&D against the event tape and macro overlays.",
     "themeUpdate": "Most recent sourced theme mapping: Naval / Shipbuilding, China/Taiwan Spillover.",
@@ -37,11 +37,11 @@
       "New event tape pressure and source-confirmed disclosure updates"
     ],
     "sources": [
-      "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPajVpQlp5RXRNRWUzOWJ1YXlnd1Bfb1BZVmo4YzZud3lObmRCdFh1cjZqNXZHLURWR0VJTE5fQ3p5MERKQW9VeTZiQUd3NktxdFJyRFBsajBxYkpqN0VQbWdILUFpZ2ZYcmdCODd6Z2hVMlRDVmxGZGlRemxZS2I2YjIzQ2FTQUJneDI0ei1zSlBlQnRMZ0h4UzhTTzlhc2VkcllLTWh4RE0xMEZQNWs4UUJweWJGQlFGejh5MVI0ajEyRzA?oc=5",
-      "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNc2NRS0otQkNZdzA4cnFsUHZ6TFVxRjliSFlzdExrMjdWMlU4NHdXNjNfbjZuMld4VlhZTUhUVkltZVRIZTlYNU1pcVBQbWVLajVsbHY0elUzNzlHUy1LMEF5aGVzWTZvNXdaVFhiR18yakpDM2VaWElIak1tN0kxR3RMNk1Lb0N5ZnNCZnlDS1ZRbVA2RTR2ZUNUS18zQkZza1dEbjhxQ1lVbnV2RW1zSXR2N2RVd1hYRUNEb1RjZjJiMHc?oc=5",
-      "https://news.google.com/rss/articles/CBMipgFBVV95cUxNaGc2eThxbUV5c05tQkQ2a01udGVWR2d3WDNXdF9jb3dJaXpQVmtucXpzWmVZTmh1T3BaT0Q4RDZadjZTVUFLMUZpemZ2LXdIQ0hXZW1DMkM5LTludTdkZ01zYUFNQ1JGTFNLOVVMRWFDLUt0cE5sMDhHd2EwMGhVeE9taGt6cl9sbHFjdW9iRnYwTUZMc19fRDFlbzB2b3A0dlpPdVNn?oc=5",
-      "https://news.google.com/rss/articles/CBMivAFBVV95cUxOeG1rTGw4QzQwOUpxbkIzWHZKTFBWc3VwTzBGTWJsaWFoOEtwRzlseVhMY1NMWkxWWmd4S0U1N2FUem5QWEN6b2FHYkdWMURvMXhzMDJLZk1Sc1oxbEFrUl9fSkpGdWwxN2F3Z2dlSmg3aWhvM3J2ZkpNZFp5a0VLV25ITkhNVDAwVG5wU2pZV3BSZFNmN25yWHhyUER5ZklLamF6clE3RmhyVlFXOXA5UVg1RlFOODY3ekVldQ?oc=5",
-      "https://news.google.com/rss/articles/CBMiswFBVV95cUxQM09zQ2lJXzFTX3JZdWRBNEc1Y1podzQwR0RDaV9wVmxWYjR3bmFmVkhpQXRyQ2c0OXFYRmZadHkwNjRHMnVKaTVoaHpuWmthdWVfUVpSZ1Y2UTZURHliLVJ0dm5DcjVoSk9qNllUQzkzcFlncFUxYVZTYTdab1BKeklKV0lsMlI0MVRTcHRac0R4bUFNcHMyYXdEaEZPbWcwdzcwSFc5b0d0R3lNOEc1dmJMSQ?oc=5"
+      "https://news.google.com/rss/articles/CBMilwFBVV95cUxPSmhDQmZGNVhnZHN0WjRPUUpsVmhNZkdrN1lSYmRvUkY3YzU4Q3lfd1pKU0wyTWIta0tfQkhRZmYxQjQ0ODJER1psYUtWSXFYOTc1WHI2NmxjZnhmVVhPejFudkNvLXZBU2hqZ1dodTNYRXI3eHZ1NV9INy0xYnFfSV9Qb3pXYkRwcjV1Qm9xVXZvYzRuVVZB?oc=5",
+      "https://news.google.com/rss/articles/CBMijgFBVV95cUxQWkpIYzJSa3NSTEVlSjBBRkwtVHpLS24td1R3bnVEM2VQbVdmS0JzTEpTME82R09LVGZDM1lpSTQzMlJISExzRFlYNVlNbjBKVWhwN1pTRFN6UFFoellhZUNBd3JVQlNLSnJEUmJVWHFoOFBXemlUZWdfMllXUkhYUDNoaGRwUGxZbnpwWXFR?oc=5",
+      "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQNWtwLWtwTHdZendlY2FHNm4yeWVLMjNKekhNWDIzOFZJc21hSFg4ZjhqN190OC1TZGdHUjhUTy1uN2pmOEZiOUFuWVZBYm10cC1GQ2dyekxVei1FaEpiRTVLeHlQVV9ZUERZSzBWQ0pNUFVBY0JpUlhGSElQc1dZMmQ2M0VZc2JzVjhPRWY3Vjh4dG1ldU9aVjljTWd2WFBBamJrVmYtNUM0Yjlab1NZS1dSaWxFbW5wYWZuTWtySWE0MDFmT3VXUw?oc=5",
+      "https://news.google.com/rss/articles/CBMimgFBVV95cUxNaFlCU1JxTFVENWdpb0JoRGRFS1htYl9SME0yUk5sUkhhdTRJTVVMNGVkbnhDN0NUREVVWHE3bEVmbm9NSmdldy1fN1ZDM1owZlhiYnZpOWtNUFB0b0JkT1BEaVptd1dwOUlPdkVEcThxNUFmcWJhT1BtNVFMSnhEd2JxWlFfLXBZdUhyZUM4cnZiNEc3eHVGUTZ3?oc=5",
+      "https://news.google.com/rss/articles/CBMidEFVX3lxTE8weXBqd2xvaHpkWkZRSU5EM3VHY2tTZ2diUWExXzNxeWRQd21YYW9uUWNlY1VlVVdCMDByS2p6dUR5QmdoeDFaVWlxWjZBSlJaNkdkM1A1cUdiUEV1MElKMl9WRmRUNVBQUTNQV09rcHJlaDM1?oc=5"
     ]
   }
 ]

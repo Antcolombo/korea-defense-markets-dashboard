@@ -1,33 +1,47 @@
-import Link from 'next/link'
-import type { ReactNode } from 'react'
+import * as React from 'react'
+import { cva, type VariantProps } from 'class-variance-authority'
+import { Slot } from '@radix-ui/react-slot'
+import { cn } from '@/lib/utils'
 
-type ButtonProps = {
-  children: ReactNode
-  href?: string
-  onClick?: () => void
-  variant?: 'primary' | 'secondary' | 'ghost'
-  type?: 'button' | 'submit'
+const buttonVariants = cva(
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0',
+  {
+    variants: {
+      variant: {
+        default: 'bg-primary text-primary-foreground hover:bg-primary/85',
+        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+        outline: 'border border-border bg-background hover:bg-muted hover:text-foreground',
+        ghost: 'hover:bg-muted hover:text-foreground',
+        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/85',
+        link: 'text-primary underline-offset-4 hover:underline'
+      },
+      size: {
+        default: 'h-9 px-3 py-2',
+        sm: 'h-8 px-2.5 text-xs',
+        lg: 'h-10 px-4',
+        icon: 'h-9 w-9',
+        'icon-sm': 'h-8 w-8'
+      }
+    },
+    defaultVariants: {
+      variant: 'default',
+      size: 'default'
+    }
+  }
+)
+
+function Button({
+  className,
+  variant,
+  size,
+  asChild = false,
+  ...props
+}: React.ComponentProps<'button'> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean
+}) {
+  const Comp = asChild ? Slot : 'button'
+  return <Comp className={cn(buttonVariants({ variant, size, className }))} {...props} />
 }
 
-export function Button({ children, href, onClick, variant = 'primary', type = 'button' }: ButtonProps) {
-  const variants = {
-    primary: 'border-[rgba(80,210,193,0.45)] bg-[rgba(80,210,193,0.18)] text-ink hover:bg-[rgba(80,210,193,0.28)]',
-    secondary: 'border-line bg-[rgba(0,0,0,0.24)] text-ink hover:border-steel hover:bg-[rgba(0,0,0,0.38)]',
-    ghost: 'border-transparent bg-transparent text-steel hover:bg-[rgba(255,255,255,0.06)]'
-  }
-  const className = `inline-flex min-h-8 items-center justify-center whitespace-nowrap rounded-md border px-3 text-sm font-semibold transition ${variants[variant]}`
-
-  if (href) {
-    return (
-      <Link href={href} className={className}>
-        {children}
-      </Link>
-    )
-  }
-
-  return (
-    <button type={type} onClick={onClick} className={className}>
-      {children}
-    </button>
-  )
-}
+export { Button, buttonVariants }

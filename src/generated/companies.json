@@ -3,10 +3,10 @@
     "provider": "SEC EDGAR",
     "sourceUrl": "https://data.sec.gov/",
     "sourceName": "SEC submissions API",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
-    "publishedAt": "2026-05-13",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
+    "publishedAt": "2026-06-15",
     "isDerived": false,
-    "methodologyNote": "Latest sourced SEC filing metadata: 8-K filed 2026-05-13.",
+    "methodologyNote": "Latest sourced SEC filing metadata: 4 filed 2026-06-15.",
     "dataQuality": "source",
     "ticker": "LMT",
     "name": "LOCKHEED MARTIN CORP",
@@ -16,7 +16,7 @@
     "description": "Lockheed Martin is tracked for public Aerospace & Defense exposure tied to Missile Defense, Munitions / Defense Industrial Base, U.S.-ROK-Japan Alliance.",
     "defenseExposure": "Mapped to Missile Defense, Munitions / Defense Industrial Base, U.S.-ROK-Japan Alliance through the public watchlist taxonomy.",
     "catalysts": [
-      "Latest sourced SEC filing form: 8-K"
+      "Latest sourced SEC filing form: 4"
     ],
     "risks": [
       "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
@@ -33,10 +33,10 @@
     "provider": "SEC EDGAR",
     "sourceUrl": "https://data.sec.gov/",
     "sourceName": "SEC submissions API",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
-    "publishedAt": "2026-05-14",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
+    "publishedAt": "2026-06-18",
     "isDerived": false,
-    "methodologyNote": "Latest sourced SEC filing metadata: SCHEDULE 13G/A filed 2026-05-14.",
+    "methodologyNote": "Latest sourced SEC filing metadata: 11-K filed 2026-06-18.",
     "dataQuality": "source",
     "ticker": "RTX",
     "name": "RTX Corp",
@@ -46,7 +46,7 @@
     "description": "RTX is tracked for public Aerospace & Defense exposure tied to Missile Defense, Munitions / Defense Industrial Base.",
     "defenseExposure": "Mapped to Missile Defense, Munitions / Defense Industrial Base through the public watchlist taxonomy.",
     "catalysts": [
-      "Latest sourced SEC filing form: SCHEDULE 13G/A"
+      "Latest sourced SEC filing form: 11-K"
     ],
     "risks": [
       "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
@@ -62,10 +62,10 @@
     "provider": "SEC EDGAR",
     "sourceUrl": "https://data.sec.gov/",
     "sourceName": "SEC submissions API",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
-    "publishedAt": "2026-05-14",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
+    "publishedAt": "2026-06-11",
     "isDerived": false,
-    "methodologyNote": "Latest sourced SEC filing metadata: SCHEDULE 13G/A filed 2026-05-14.",
+    "methodologyNote": "Latest sourced SEC filing metadata: 11-K/A filed 2026-06-11.",
     "dataQuality": "source",
     "ticker": "NOC",
     "name": "NORTHROP GRUMMAN CORP /DE/",
@@ -75,7 +75,7 @@
     "description": "Northrop Grumman is tracked for public Aerospace & Defense exposure tied to Missile Defense, Cyber / AI Defense.",
     "defenseExposure": "Mapped to Missile Defense, Cyber / AI Defense through the public watchlist taxonomy.",
     "catalysts": [
-      "Latest sourced SEC filing form: SCHEDULE 13G/A"
+      "Latest sourced SEC filing form: 11-K/A"
     ],
     "risks": [
       "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
@@ -91,10 +91,10 @@
     "provider": "SEC EDGAR",
     "sourceUrl": "https://data.sec.gov/",
     "sourceName": "SEC submissions API",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
-    "publishedAt": "2026-05-13",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
+    "publishedAt": "2026-06-18",
     "isDerived": false,
-    "methodologyNote": "Latest sourced SEC filing metadata: 4 filed 2026-05-13.",
+    "methodologyNote": "Latest sourced SEC filing metadata: 4 filed 2026-06-18.",
     "dataQuality": "source",
     "ticker": "GD",
     "name": "GENERAL DYNAMICS CORP",
@@ -120,10 +120,10 @@
     "provider": "SEC EDGAR",
     "sourceUrl": "https://data.sec.gov/",
     "sourceName": "SEC submissions API",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
-    "publishedAt": "2026-05-05",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
+    "publishedAt": "2026-06-15",
     "isDerived": false,
-    "methodologyNote": "Latest sourced SEC filing metadata: 10-Q filed 2026-05-05.",
+    "methodologyNote": "Latest sourced SEC filing metadata: 4 filed 2026-06-15.",
     "dataQuality": "source",
     "ticker": "HII",
     "name": "HUNTINGTON INGALLS INDUSTRIES, INC.",
@@ -133,7 +133,7 @@
     "description": "Huntington Ingalls Industries is tracked for public Aerospace & Defense exposure tied to Naval / Shipbuilding, China/Taiwan Spillover, U.S.-ROK-Japan Alliance.",
     "defenseExposure": "Mapped to Naval / Shipbuilding, China/Taiwan Spillover, U.S.-ROK-Japan Alliance through the public watchlist taxonomy.",
     "catalysts": [
-      "Latest sourced SEC filing form: 10-Q"
+      "Latest sourced SEC filing form: 4"
     ],
     "risks": [
       "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
@@ -150,10 +150,10 @@
     "provider": "SEC EDGAR",
     "sourceUrl": "https://data.sec.gov/",
     "sourceName": "SEC submissions API",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
-    "publishedAt": "2026-05-18",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
+    "publishedAt": "2026-06-09",
     "isDerived": false,
-    "methodologyNote": "Latest sourced SEC filing metadata: 144 filed 2026-05-18.",
+    "methodologyNote": "Latest sourced SEC filing metadata: 144 filed 2026-06-09.",
     "dataQuality": "source",
     "ticker": "LHX",
     "name": "L3HARRIS TECHNOLOGIES, INC. /DE/",
@@ -179,10 +179,10 @@
     "provider": "SEC EDGAR",
     "sourceUrl": "https://data.sec.gov/",
     "sourceName": "SEC submissions API",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
-    "publishedAt": "2026-05-14",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
+    "publishedAt": "2026-06-16",
     "isDerived": false,
-    "methodologyNote": "Latest sourced SEC filing metadata: SCHEDULE 13G filed 2026-05-14.",
+    "methodologyNote": "Latest sourced SEC filing metadata: 11-K filed 2026-06-16.",
     "dataQuality": "source",
     "ticker": "BA",
     "name": "BOEING CO",
@@ -192,7 +192,7 @@
     "description": "Boeing is tracked for public Aerospace & Defense exposure tied to U.S.-ROK-Japan Alliance, Defense Procurement.",
     "defenseExposure": "Mapped to U.S.-ROK-Japan Alliance, Defense Procurement through the public watchlist taxonomy.",
     "catalysts": [
-      "Latest sourced SEC filing form: SCHEDULE 13G"
+      "Latest sourced SEC filing form: 11-K"
     ],
     "risks": [
       "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
@@ -208,10 +208,10 @@
     "provider": "SEC EDGAR",
     "sourceUrl": "https://data.sec.gov/",
     "sourceName": "SEC submissions API",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
-    "publishedAt": "2026-05-19",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
+    "publishedAt": "2026-06-16",
     "isDerived": false,
-    "methodologyNote": "Latest sourced SEC filing metadata: 4 filed 2026-05-19.",
+    "methodologyNote": "Latest sourced SEC filing metadata: 4 filed 2026-06-16.",
     "dataQuality": "source",
     "ticker": "TSM",
     "name": "TAIWAN SEMICONDUCTOR MANUFACTURING CO LTD",
@@ -237,10 +237,10 @@
     "provider": "SEC EDGAR",
     "sourceUrl": "https://data.sec.gov/",
     "sourceName": "SEC submissions API",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
-    "publishedAt": "2026-05-14",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
+    "publishedAt": "2026-06-11",
     "isDerived": false,
-    "methodologyNote": "Latest sourced SEC filing metadata: SCHEDULE 13G/A filed 2026-05-14.",
+    "methodologyNote": "Latest sourced SEC filing metadata: 4 filed 2026-06-11.",
     "dataQuality": "source",
     "ticker": "MU",
     "name": "MICRON TECHNOLOGY INC",
@@ -250,7 +250,7 @@
     "description": "Micron Technology is tracked for public Semiconductors exposure tied to Semiconductor Export Controls, China/Taiwan Spillover.",
     "defenseExposure": "Mapped to Semiconductor Export Controls, China/Taiwan Spillover through the public watchlist taxonomy.",
     "catalysts": [
-      "Latest sourced SEC filing form: SCHEDULE 13G/A"
+      "Latest sourced SEC filing form: 4"
     ],
     "risks": [
       "Provider coverage and public filing metadata do not substitute for full fundamental diligence."
@@ -266,7 +266,7 @@
     "provider": "OpenDART",
     "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
     "sourceName": "OpenDART disclosure list API",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
     "publishedAt": null,
     "isDerived": false,
     "methodologyNote": "Latest sourced OpenDART disclosure: N/A received N/A.",
@@ -293,7 +293,7 @@
     "provider": "OpenDART",
     "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
     "sourceName": "OpenDART disclosure list API",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
     "publishedAt": null,
     "isDerived": false,
     "methodologyNote": "Latest sourced OpenDART disclosure: N/A received N/A.",
@@ -321,7 +321,7 @@
     "provider": "OpenDART",
     "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
     "sourceName": "OpenDART disclosure list API",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
     "publishedAt": null,
     "isDerived": false,
     "methodologyNote": "Latest sourced OpenDART disclosure: N/A received N/A.",
@@ -348,7 +348,7 @@
     "provider": "OpenDART",
     "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
     "sourceName": "OpenDART disclosure list API",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
     "publishedAt": null,
     "isDerived": false,
     "methodologyNote": "Latest sourced OpenDART disclosure: N/A received N/A.",
@@ -375,7 +375,7 @@
     "provider": "OpenDART",
     "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
     "sourceName": "OpenDART disclosure list API",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
     "publishedAt": null,
     "isDerived": false,
     "methodologyNote": "Latest sourced OpenDART disclosure: N/A received N/A.",
@@ -402,7 +402,7 @@
     "provider": "OpenDART",
     "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
     "sourceName": "OpenDART disclosure list API",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
     "publishedAt": null,
     "isDerived": false,
     "methodologyNote": "Latest sourced OpenDART disclosure: N/A received N/A.",
@@ -429,7 +429,7 @@
     "provider": "OpenDART",
     "sourceUrl": "https://engopendart.fss.or.kr/intro/main.do",
     "sourceName": "OpenDART disclosure list API",
-    "retrievedAt": "2026-05-20T16:51:06.472Z",
+    "retrievedAt": "2026-06-21T19:58:32.609Z",
     "publishedAt": null,
     "isDerived": false,
     "methodologyNote": "Latest sourced OpenDART disclosure: N/A received N/A.",

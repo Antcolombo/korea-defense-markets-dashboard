@@ -11,5 +11,9 @@ yarn-error.log*
 .DS_Store
 coverage
 *.tsbuildinfo
+test-results
+playwright-report
 data/private/
 .vercel
+.neon
+src/generated/privateTradeJournal.json

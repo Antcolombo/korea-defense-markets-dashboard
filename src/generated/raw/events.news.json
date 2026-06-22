@@ -1,5 +1,5 @@
 {
-  "retrievedAt": "2026-05-20T16:50:44.865Z",
+  "retrievedAt": "2026-06-21T19:57:55.520Z",
   "status": "source",
   "articleCount": 60,
   "failures": [],
@@ -9,166 +9,166 @@
       "query": "South Korea defense missile military navy shipbuilding",
       "provider": "Google News RSS",
       "sourceUrl": "https://news.google.com/rss",
-      "retrievedAt": "2026-05-20T16:50:44.865Z",
+      "retrievedAt": "2026-06-21T19:57:55.520Z",
       "status": "source",
       "articles": [
         {
-          "title": "U.S. Considering Foreign Designs, Shipyards for New Navy Frigate, Destroyer Work in $1.85B Study - USNI News",
-          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPajVpQlp5RXRNRWUzOWJ1YXlnd1Bfb1BZVmo4YzZud3lObmRCdFh1cjZqNXZHLURWR0VJTE5fQ3p5MERKQW9VeTZiQUd3NktxdFJyRFBsajBxYkpqN0VQbWdILUFpZ2ZYcmdCODd6Z2hVMlRDVmxGZGlRemxZS2I2YjIzQ2FTQUJneDI0ei1zSlBlQnRMZ0h4UzhTTzlhc2VkcllLTWh4RE0xMEZQNWs4UUJweWJGQlFGejh5MVI0ajEyRzA?oc=5",
-          "domain": "USNI News",
-          "seendate": "20260424070000",
+          "title": "The Navy’s Golden Fleet Has a Price Problem - Defense Security Monitor",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPSmhDQmZGNVhnZHN0WjRPUUpsVmhNZkdrN1lSYmRvUkY3YzU4Q3lfd1pKU0wyTWIta0tfQkhRZmYxQjQ0ODJER1psYUtWSXFYOTc1WHI2NmxjZnhmVVhPejFudkNvLXZBU2hqZ1dodTNYRXI3eHZ1NV9INy0xYnFfSV9Qb3pXYkRwcjV1Qm9xVXZvYzRuVVZB?oc=5",
+          "domain": "Defense Security Monitor",
+          "seendate": "20260527070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "Navy ‘going to study’ possibility of building ships outside US, Phelan says - Navy Times",
-          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNc2NRS0otQkNZdzA4cnFsUHZ6TFVxRjliSFlzdExrMjdWMlU4NHdXNjNfbjZuMld4VlhZTUhUVkltZVRIZTlYNU1pcVBQbWVLajVsbHY0elUzNzlHUy1LMEF5aGVzWTZvNXdaVFhiR18yakpDM2VaWElIak1tN0kxR3RMNk1Lb0N5ZnNCZnlDS1ZRbVA2RTR2ZUNUS18zQkZza1dEbjhxQ1lVbnV2RW1zSXR2N2RVd1hYRUNEb1RjZjJiMHc?oc=5",
-          "domain": "Navy Times",
-          "seendate": "20260421070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "Navy calls for 34 new ships plus more than 4,000 major munitions - Stars and Stripes",
-          "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNaGc2eThxbUV5c05tQkQ2a01udGVWR2d3WDNXdF9jb3dJaXpQVmtucXpzWmVZTmh1T3BaT0Q4RDZadjZTVUFLMUZpemZ2LXdIQ0hXZW1DMkM5LTludTdkZ01zYUFNQ1JGTFNLOVVMRWFDLUt0cE5sMDhHd2EwMGhVeE9taGt6cl9sbHFjdW9iRnYwTUZMc19fRDFlbzB2b3A0dlpPdVNn?oc=5",
-          "domain": "Stars and Stripes",
-          "seendate": "20260421070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "Tracking US military assets in the Iran war - Atlantic Council",
-          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOeG1rTGw4QzQwOUpxbkIzWHZKTFBWc3VwTzBGTWJsaWFoOEtwRzlseVhMY1NMWkxWWmd4S0U1N2FUem5QWEN6b2FHYkdWMURvMXhzMDJLZk1Sc1oxbEFrUl9fSkpGdWwxN2F3Z2dlSmg3aWhvM3J2ZkpNZFp5a0VLV25ITkhNVDAwVG5wU2pZV3BSZFNmN25yWHhyUER5ZklLamF6clE3RmhyVlFXOXA5UVg1RlFOODY3ekVldQ?oc=5",
-          "domain": "Atlantic Council",
-          "seendate": "20260515193000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "South Korea Wants Nuclear Submarines Just Like the U.S. Navy, Russia, and China - 19FortyFive",
-          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQM09zQ2lJXzFTX3JZdWRBNEc1Y1podzQwR0RDaV9wVmxWYjR3bmFmVkhpQXRyQ2c0OXFYRmZadHkwNjRHMnVKaTVoaHpuWmthdWVfUVpSZ1Y2UTZURHliLVJ0dm5DcjVoSk9qNllUQzkzcFlncFUxYVZTYTdab1BKeklKV0lsMlI0MVRTcHRac0R4bUFNcHMyYXdEaEZPbWcwdzcwSFc5b0d0R3lNOEc1dmJMSQ?oc=5",
-          "domain": "19FortyFive",
-          "seendate": "20260428070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "The Navy Needs Precise Mass and Here Is How to Get There - War on the Rocks",
-          "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQY0VnSDBYLTBIUnpqSUozcURpWFFSVUpmRFM4U0tXUDQyd3lEN1hvc1poRDBSd2xhd0g1aW9SemxjNnZqMVFIUWY4Szk4c19JaVNPN3ZqTVNlVEVpbFd5SHlXa1F6SmpVWHpjTUV1bDl6c3did2dPOHdzMUktWjR5SUNMUFlKWTE5dnMw?oc=5",
+          "title": "South Korea Could Build Nuclear Submarines, But It Shouldn’t - War on the Rocks",
+          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQWkpIYzJSa3NSTEVlSjBBRkwtVHpLS24td1R3bnVEM2VQbVdmS0JzTEpTME82R09LVGZDM1lpSTQzMlJISExzRFlYNVlNbjBKVWhwN1pTRFN6UFFoellhZUNBd3JVQlNLSnJEUmJVWHFoOFBXemlUZWdfMllXUkhYUDNoaGRwUGxZbnpwWXFR?oc=5",
           "domain": "War on the Rocks",
-          "seendate": "20260520073245",
+          "seendate": "20260615073238",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "China’s Naval Buildup Exposes U.S. Shipbuilding Gaps and Fleet Weakness - The Heritage Foundation",
-          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOYkJLdDE3LWZ6aXl4d0swaTlBYXpDUUEtRTFZX2NVbVdJbndQZ3ZSbkdsWERwcEE2ZjRESDBjNzVjd0dmcHVBNnpTT0xfaERzaE85dzM1Z1Z1ZHZzZTlqZkthdVhsa0hneFk3VEVnTTU5RldPbWRVek9vSWpjcUlKYzdIMTNWbmpQOWlJOW5FbzB6ek9OemJkUnIxWlJXWHctSFowVlN4RVdHczJTRThpbU93?oc=5",
-          "domain": "The Heritage Foundation",
-          "seendate": "20260509203551",
+          "title": "Shipbuilders Look to Big Budget Plus-Ups to Reverse Delays, Cost Overruns - National Defense Magazine",
+          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQNWtwLWtwTHdZendlY2FHNm4yeWVLMjNKekhNWDIzOFZJc21hSFg4ZjhqN190OC1TZGdHUjhUTy1uN2pmOEZiOUFuWVZBYm10cC1GQ2dyekxVei1FaEpiRTVLeHlQVV9ZUERZSzBWQ0pNUFVBY0JpUlhGSElQc1dZMmQ2M0VZc2JzVjhPRWY3Vjh4dG1ldU9aVjljTWd2WFBBamJrVmYtNUM0Yjlab1NZS1dSaWxFbW5wYWZuTWtySWE0MDFmT3VXUw?oc=5",
+          "domain": "National Defense Magazine",
+          "seendate": "20260608070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "Contracts for May 15, 2026 - U.S. Department of War (.gov)",
-          "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOLVNrdEpEcllVYi1xMFhxSUh2US10UTZER2w1U2g2VmI0akJYLXBCRmxoYTZTR2ZNazJSV2VsZ1NRcXBucTRPZm5GLWMyUnRtckRJaC1fOU5HSjRjSkh1eU1ST3BhOW0xSXZmOFdDUVJQRm5rb3J4d3k1OHZOQzRzLU55VXdHMXpFQXJaRHRKWQ?oc=5",
-          "domain": "U.S. Department of War (.gov)",
-          "seendate": "20260515212442",
+          "title": "Treat Naval Shipbuilders Like Public Utilities | Proceedings - June 2026 Vol. 152/6/1,480 - U.S. Naval Institute",
+          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNaFlCU1JxTFVENWdpb0JoRGRFS1htYl9SME0yUk5sUkhhdTRJTVVMNGVkbnhDN0NUREVVWHE3bEVmbm9NSmdldy1fN1ZDM1owZlhiYnZpOWtNUFB0b0JkT1BEaVptd1dwOUlPdkVEcThxNUFmcWJhT1BtNVFMSnhEd2JxWlFfLXBZdUhyZUM4cnZiNEc3eHVGUTZ3?oc=5",
+          "domain": "U.S. Naval Institute",
+          "seendate": "20260531221018",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "Trump Administration Requests Extraordinary $1.5 Trillion Defense Budget - Foundation for Defense of Democracies",
-          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPZTNjdjdDYnYzX1pkQ01za2tXWm9mamxJVmliaG9JWUZlaWtmaUp1WWFIZV82Ym5qeXh5RWtrWWZzOFdfdjd1eHdSQ1dsbDBuR2M4TGZUVmdwbDlaY2tGY0tDaER0Q3ktMjJCQ3pCRnJfS0x3ZzBJQTVVU1NOcFdtMEtoOFkzdXppQ3RDLVh5OUxrYWx6cTkyckZud0s0NndSRkw4RHdlOS1hYXBBN0Nwa3BB?oc=5",
+          "title": "U.S. Eyes Allied Warship Buildings - Businesskorea",
+          "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE8weXBqd2xvaHpkWkZRSU5EM3VHY2tTZ2diUWExXzNxeWRQd21YYW9uUWNlY1VlVVdCMDByS2p6dUR5QmdoeDFaVWlxWjZBSlJaNkdkM1A1cUdiUEV1MElKMl9WRmRUNVBQUTNQV09rcHJlaDM1?oc=5",
+          "domain": "Businesskorea",
+          "seendate": "20260602070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "The Navy Needs a Strategic Industrial Plan to Realize the Golden Fleet - RealClearDefense",
+          "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNcl9IT0pQMmFUYW5GNFdHTGIxWTRxSy1STVN2SXJ5ZEZMeF9mM2JxcURLWXlyTnhkb0wyWmEyb3VyTTR2cVo3a1NLY0lZWmFhb2VWRjk4NVlmSGx0enBqdU5Fb3pTQ2g2UDFuTkdkbDR5YkNPTTJOcnllR19QMnV1RExNM2gtcDVINzVPR1h0cWpscWpKdzZVYktfUVJ3VC1GenhYNmNfc0l1SjJ3WUNFd3NnSnFhbHdLT0pjci1NVlJ0VHRiQjdzMVpORi12MGY5eEE?oc=5",
+          "domain": "RealClearDefense",
+          "seendate": "20260526103244",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "Rowing in the Same Direction - Foundation for Defense of Democracies",
+          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1qVloyUGc1bFBidmNkdE9wWklfcHllVFIybWsyTmUzYzlJTEV2b182aDBPWUZPa3hRZFpKTHBwVTB6Y3BJRUNKT3BabThwWkgwTWFuNXk5ajlKWXpWekp4c2VjYnlhOFVnZXowN083aU11bmpuaDFNeA?oc=5",
           "domain": "Foundation for Defense of Democracies",
-          "seendate": "20260423070000",
+          "seendate": "20260618202323",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "Navy planning to spend more than $17B on first Trump-class battleship - DefenseScoop",
-          "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNcGtTUWJMQ3FQQ3lYbGh6Z2Z3LTVQMEVWZU94V25kUWRCdkRod2JhbDNXQjlid1RDSDN0eFJfeWNZd1Z6NVYwclRJSlBuVmkxblhheWJXZVJRRUZ2djFtUG9telZSaXZvWXRDVmhiS1o4aHJsdWE2QkFpdVZBVnh3alRzSzJjTUhSdXVFcGU3bF9VUmtRMmY1X3FWOA?oc=5",
-          "domain": "DefenseScoop",
-          "seendate": "20260421070000",
+          "title": "Hanwha Ocean Selected for South Korea’s KDDX Destroyer Program - navalnews.com",
+          "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPV2M3Y2JuUWNDRG9BUGlLVE1fTHhEa0JnVmF2OGh4TVRwU1g2SW1FQUxIMGxVeGItUzZGbERtbEpnMnNNVERSdUdVS3I0T2oyak9hN0NDT2JhakNyNVZxOGJaM25wcTNXMXEtMnVVTUo0bkViTHZpTWI3V0FuWDdDVmpaTTA1VVNGeWtmOFNORVB1ZS1jTlZXbjhmVkVUYUUwaXlZeFdaazJFY1U?oc=5",
+          "domain": "navalnews.com",
+          "seendate": "20260611070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "Pentagon unveils sweeping expansion of fleet, weapons, and global support - MSN",
-          "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxNODZXWGtsZVNpTElDLWREcWdOSHpESjZXd0hxME51MHRVNXRZRmJJVm9yVTUydERqdDhzT0VvbWRDNjJFbU5Ga25RYkt6THZnS09HcjEwM0FhWEF2b2JjZ182b09Fc1A5bjFSb2ZrSllCTHI4SkkweDdpNGVnZHdEY2g0RTAzaVRVV20wR2NsbmZPN3YwejZRblZLMkFRNThtcExSdTFTMnA0MXMydklsYWJaR0JxSHNZWnlUVVRHRmpnSnk0NnV0eHhGcFV6Sjl0aTl1MVdBc19ydmhBbmVqWXFYMzVTaTdKcXpxODVPa2RPems?oc=5",
-          "domain": "MSN",
-          "seendate": "20260423070000",
+          "title": "KSS-III SSX Jangbogo-III Class - GlobalSecurity",
+          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBEZ1oyckpOVzFpa1k4QVRfTWtvOGJ1QjhfNWg0WjFPX0RTc205Y05pRXpjb2VnQnJVS2poOXI1TWdZT0RxbHlhbGFTZjJIY2Z0eXZ6WjBVVFBDbExXaVN3a0FNRTRycWVQY0NZ?oc=5",
+          "domain": "GlobalSecurity",
+          "seendate": "20260527070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "S. Korea to launch new frigate with enhanced anti-air, anti-sub capabilities - The Korea Herald",
-          "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE0xSlYtckVkZkNHRWJDUmZGeHhvb1A0c21rRExIdHBYT1loVUptOXlNd1YtZjMwR1h2eHROV3JHSXhXbjMxTHBoUlFfZ1FmYXFMUFY4Yi1LNA?oc=5",
-          "domain": "The Korea Herald",
-          "seendate": "20260429070000",
+          "title": "Reintroduce nuclear weapons to the Pacific to reduce the chances of war with China - Breaking Defense",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxORGNXaXdOLXJubDk2MUV1Mi00ZHlEM1psWW1seUhPTF9wNFNUTmJwbVh3VmlNckJOdS1GSU9sMHh1WVY4b3p6NHY5TnR5WURxa1kzVDNpVVZ5REtqMkNJVlpCcWdjSW52cy0taFE4MUJvUEZrN0N1NDh6TExxZzhrSWJZT1lFWGRrYnJ1WDFsZWdmMHl0QVMzd0ZYa3JNcnp4MGdENWFJSGFKeExnRVhiQ2I5Qzd4dWhPTzdn?oc=5",
+          "domain": "Breaking Defense",
+          "seendate": "20260601070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "CMSI Translation #29: “Can ‘Armchair Strategizing’ Secure Victory from a Thousand Miles Away?” - Andrew Erickson",
-          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPb1RxTjhzRjhucnh6R3NHbmtLSVM1bXpTNXdmRnpYSzl1MlRPbzcxWmh5Y3JHMGJqQkZST2x5cjljNVZHNU5FX2ZmNEpUaG9IQVdNTEtLZTJjaXFwbFRxWFNyNjQyZVVsdVlTSWJtSlhESnpfRUVvNm1ZY3NiNlZqQm5CQ19fRWwwaGIxeXBvTGE0MUp2UFhlbjFRMDliZTduT3lXQ0JHUDZjT3U0TzVrNWtxd1VpaDlBeC1CNFd2MjEyNHBnaGc?oc=5",
-          "domain": "Andrew Erickson",
-          "seendate": "20260421070000",
+          "title": "American power is wrung out - The Washington Post",
+          "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOYV9xbTRSbU9MUXN1WHZnejlaNWo2WnhvRGdqQ181RGp4eGRVaktJRzFkSE5EQVpXMEJ4RG9QcmpxeF80QjZ1Tm1BVmM1dkZSS2hob21CczhvSkc0ZmxSNllGVUZfVUUtZC1hN1ljOEVUeWFWYWl4UzdnYkp3aDRWeWF2MlE1R1ByUEVpcWtmRXBKdkpkZWVrU3dvX0VPY3BZWU5uMnVJdGRES2gwSFI2emZPWFNIcjU2Y05qQXVnSWJTaTlpM3BxVXpJQXJNQjNIU0lN?oc=5",
+          "domain": "The Washington Post",
+          "seendate": "20260611070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "Korean companies push hard into U.S. Navy MRO market as gateway to greater cooperation - Korea JoongAng Daily",
-          "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxNdTNacEZBWkdGU2NLLXpRNUcwZEg5anFPcTVIZ2Q1d2NQTlFsUHFEd1QwWWRBNVRfaXAwUTYtc1p3bE9BLTZEQ1F1Z1RNcFdBVE9QSG9VaWxpWVZGbGJLU0NLWHNYd2dCRFpPaVB0MGFZZmRDOFBLaGFJZHM2UFhyQjhsRFVBWm0ySEpzQm83dWlGYzluTGt1LTRfYXE0WXZiUHZhZGUyQkJaTnBVTnhERk9LRmtzdkJITGhYN1NjdTFtclhLdWY4YmF1QVJndzF6bU84SG9EelVCQ1BBRzZGN2VZZkRMbDZTV2I5Z0hydnhibElz?oc=5",
-          "domain": "Korea JoongAng Daily",
-          "seendate": "20260421070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "Trilateral partners respond to North Korea’s missile threats - Indo-Pacific Defense FORUM",
-          "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQM29xcmVnVzZ3b2xRY0xGZWY2eE0xaGJOczZVSkdGVzVUN2gyNWFFR25jMk5HZEVIQjNFNFVuOTVvOXJjN2o5eEpzX1M1TmpsX1FCeERUMkN1cGp3UnNxQWRoY3ZQdnVUMjJWc0tvb1haX1FQRTBfcE9qUTBPWEJBbUZ0bU9JRUdjWUplOXN3dlBPSmZEZ3lfNjFpTQ?oc=5",
+          "title": "ROK to produce first nuclear-powered submarines by mid-2030s - Indo-Pacific Defense FORUM",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNMUZEU3NHU0xQQ1d3MjR1SWg2ZnItemFtdFl1S2hWQ1BsSzlQX3JSWFFZVG56MFdfOTBNNVFVWkJJNzliaDZzcmIxSC0wc3NNZlpwc1QwLTlUMFNFU2ZzMGlldkIxaU94Tk9ValRnc3JFWURHdEhHOV9iSklQVXFBU05pLWRMU1BHZE5JXzNMaThsd3VQMlRkV3YzNWw?oc=5",
           "domain": "Indo-Pacific Defense FORUM",
-          "seendate": "20260512140012",
+          "seendate": "20260607140008",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "South Korea's Hanwha builds arms empire as Ukraine, Iran wars spur spending - Nikkei Asia",
-          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQNE1pMzg0aVg4VG9kWGVPOHRHLVkzRlhYX3ZtRG96UTFVeS1kX3Z0V2xnWjE0cWJ3dW13a3kzRmlXeGQ3R2dROG8taVBpWW9qUHQ1NmhjSDg2YmlKT2hZOW1HaUIyem1temM4NDNWR1NKaXJRVFBoRkhYRE9ZM0NMNTlCdWpVdlFCNXNOSll5dDRIWVhvSHVFZ1JWZHBZaU1Mc3RmeWY5QnJIYS1nUFdzVXhlUDB3aHZISGFjUA?oc=5",
-          "domain": "Nikkei Asia",
-          "seendate": "20260502070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "SK Oceanplant Launches South Korea’s Newest Frigate – ROKS Jeju - Overt Defense -",
-          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNUTByNkFDX1lWRGotV0d6MHRBZ2VTTXEzWG9jYWZRSnAzQXpoOTdOdFNBNHJKQ2JoRF9oY1JPYlB5MkxDT3BXYlFpRWxWcHFIUHJpRG0yOEtNcWJxaWpYQTB6VWRNaUl4MGVUYmIwanBnU1A2cjFxWVdUZVZmTG9wdUU2cDJvV0ZqQXczakhROExqazQwWGZKX296Y1B6R25lS244?oc=5",
-          "domain": "Overt Defense -",
-          "seendate": "20260508070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "US, South Korean firms to partner on unmanned surface vessel for US military - Stars and Stripes",
-          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQRHMyS3NMQmROVlBabVd2dlc4MFNzN1hZYVlVeWZKNXZRaVczNlhxc21JVllDMUJhdGhnMjlUcm82QV80NjBRaElQaVg0ODlzc1EzZmdsdnhET0JsUG4wTGQzYWNTcWZjVVZmSUF5NlRweXpFSXFrNlpGckk5Um8zbEF5NTBoZjRfc1VxdjdFMEw0aVNSTWRPbDE2NHlXM1RGWFRIUg?oc=5",
-          "domain": "Stars and Stripes",
-          "seendate": "20260424070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "North Korea Test Launches Short Range Ballistic Missiles with Cluster Munitions - USNI News",
-          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPWndwREZmLWtDY1M5aFVnQzh5cHdZUW01RHh4alQxMkxBVDFQTGVReV95UWQ4MzVjNGpFemhzc0dEMjYxMFVNQkNPWFJOeUNIY19iNWgwLWxkWUhTRTBnWTlmaXp2blkybE9jRGc0N0d3YU8zLWtybF9wbzEzWGUtS0ctbUxibFAxalB2dE8zWlZ4R2ZoYmR6WDdFUkxxN1lMZnRrdTUzd3ktZC1nbXZDNzRR?oc=5",
-          "domain": "USNI News",
-          "seendate": "20260424070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "The U.S. Navy’s Shipbuilding Crisis Might Need Foreign Help to Fix and China Is Smiling - 19FortyFive",
-          "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQUkUwSXFWZW5rRlJYN0NVdU96OVpMak5JaU9LdmEzNk81N0NjTURyUHBEWHpwd1h4emZUOVhhRy05NnFSRmFzRElFMmZ0bnZDYzBYLVhUNkRLczd5SnVFQXFaeUlfYVJyeHZhZFd6NjFrQy1DWUxPV3JfR24tS09YYnBpOW1UcElOMlIzcEIxUlFNQWc3eDBTY0FiRHNZVWd0QU5OczBTanZXdDFjMVdpc0JaTTZoV3B1elZtUlhLNA?oc=5",
+          "title": "North Korea Capsized Its New Destroyer on Live TV Before Kim Jong Un: Now It's Building Warships Twice the Size - 19FortyFive",
+          "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOTjVlTWExbE40Y01NVTVKTDFIRm9sQ2tiV04yUWx6NWlDcmJ5a3RiU3o3WE9DUXpkZFdVYXVwSXZHbUN6YThtcW9nWlA3SnJSOTlwUTR5amppc3VSU3lkZW5vcUR5UmwyUk5GRUYzWHltN3RFUGNtUWlGUzFrVUxkejJrTS1vOVVZamVLZDJIVzFzaHdxbFFra1ZBODg0NU1FbjhOc09sWU93cU5Gb0c3eTBqazM2M1lNd1p0emhyN1VYbFlXUlV0eDFKRU1oLVgwS2tHSW9FQ1F4Q1hqSG13?oc=5",
           "domain": "19FortyFive",
-          "seendate": "20260429070000",
+          "seendate": "20260619155155",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "South Korea confirms SM-6 selection for KDX-III destroyers - Janes",
+          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOcHlyLVhEWlI3dFozc2d0NXQyc0Z0aUFFZTExZExmUW9pdmhBVnhqYkpEd1N5dzhfR2hieHp2RkpmS0ZjRHJBTDlxdm51R09oX2FBbGxJVTh6MTdoOWd0MnRYZVRTUlVxS3NhUVVoVTE1RTg5R2Y5c0xPaVM0X0gxS1dVaVVDQ091cDZCSEZwNFVEdjhZZ2xQS3R5d2VjcnRwYzkwa1QtSVVQT3dWSDBTdlhNQWZjaWR0WnJobk9MSk1JWFM1ZHc?oc=5",
+          "domain": "Janes",
+          "seendate": "20260525070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "Senate, House Defense Bills Propose Restrictions on U.S. Warships Built in Foreign Yards; Legislation Limits Navy Secretary's Ability to Rename Ships - USNI News",
+          "url": "https://news.google.com/rss/articles/CBMiigJBVV95cUxONHNoOXAzVnZZcjd5czBWQTFWcnI2Vi1NZVhxaUs5RFBkM0xiU0lsQnQ5SkJkR2N6dERuSW9oMm5uVXBBODJ3X1A4RWUxVWFlVmM5bkMwclNLV3lULWlUcm9HT1dtTGNjakh5NTI5REpTSHFiQkxxTkNjR0ZmanlfdUFvN1NqNE53Q3pyY0VhbzFyZGZ2bmhyQkFLVVhBVExVdWh3dnhwRjdBTDI5QU1PenVsV1pFcGRRR0t5NG52VTNMRzVLVHczU0hfYU9ZLVkwRG9xNWFEUXdySndYTXdZXzF3M181Rmh0d2d3WW9CVlpQamtrWTBBalVOd052RnNQSk5CWTNKYU1wUQ?oc=5",
+          "domain": "USNI News",
+          "seendate": "20260616152000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "How Japan Could Co-Produce the Navy’s Future Fleet - War on the Rocks",
+          "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOT3dVaVlKdUVzZmJ4dHV6UGl1NjBlcnhfNFhTWk9UY2dGODVZWlprNUc2RUNKaktMVl8wYmlqdFpHeDFrSjVvSTVnaGh0WkVYVkZHczctZE9WZVgwM3BBWlp6SUxaeUJiZmMydE04SHhQcElzc0VzeklGTHBjVE9RdW9ZVEFLUURWM3JMemhtR1dDdw?oc=5",
+          "domain": "War on the Rocks",
+          "seendate": "20260615080238",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "Draft HASC Defense Bill Aligns with FY27 Base Budget while Bypassing Reconciliation - Defense Security Monitor",
+          "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOb25rNUE4d0p4S3p3TjNQSGFwNkRPQ0laVzA2RElDRzBQMzhaRFdFZ1pNOXNEaEFSSmhhX3pZQXN5S24zbTVjTGp6Q05ybWVJY0t4bmRpUTEzY3Uya2hOUEF1TERDWUdSdEdTYkpOUTJUVlFncl9VbHNmOFBEX1FscEc3SGZ1c09kNlhVcl83LVJmb3pwWUNQeFZKckhzZUZCdEhKTFNNQjh1WE5XWGNQNlM5dlF2VDByVVYwZkE3Uzc0YWRnSkZNV2QtYml1dw?oc=5",
+          "domain": "Defense Security Monitor",
+          "seendate": "20260529070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "House Wants Funding for a Second Arleigh Burke Destroyer in Next Fiscal Year - USNI News",
+          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQZVlkQklUZmJFTkVMWHBlWTd2YjVPbFhqb0tlV21CYmU0cDN2dVRaa2lFcGFJcmU5cFZNVW9nNHlZRmpCanRzR29YWXdJZWtNdW9LZEwwT29kWWhBR2RCZ1kyYm5xVlpQajM3elRDZXB0WXphalV0c0NRNU5lMmQxcUVPWW5MNkJZT1NoNEc5b2tIOUthSVd4MTVYbXZab3I5cjc5dWZwRERlMVRFRkE?oc=5",
+          "domain": "USNI News",
+          "seendate": "20260526070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "Japan Announces 2 Major Western Pacific Exercises with U.S. - USNI News",
+          "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNYllyZHZ3aW9vbGJJMFBIa0hFRGxreHZhbjhNRnRCdm5Wbkh6amFpQjROTVRQNE90WjRnZnZzY3EtejRpdlJib2JZNXpIM1lDa3BOWDFGaWVvc3FMcXpPQzkyelFwcGRqNk03VkFReW1MVDFZMnctWWdPWjc5ZHJlV2RmMWpGbTFjbUdfY1NqdVBKQ0ZQeEE?oc=5",
+          "domain": "USNI News",
+          "seendate": "20260525070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "Rebuilding the Navy Will Require Allied Industrial Power | Proceedings - June 2026 Vol. 152/6/1,480 - U.S. Naval Institute",
+          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPb1FaZndZOFhDZFpIeldhRXB0WWo0Tm8td3JUTGlEaXcydEM0ck91NGQ5NzBTUmdEYW81djNBbTc0bUlVUzFuc05HQ3ZqREZGUF9jemJIdENjblBDalZBWmNtVHJsS0Z2UWJpbTE0TTIxOUNCbFpXcDlwWHpoMVNBVDU0SnY1cHBTekFtbXFXQ0J1eGNpbVNnUERWcTNaV0tBWGVOYzBmNGE?oc=5",
+          "domain": "U.S. Naval Institute",
+          "seendate": "20260531201211",
           "sourcecountry": "US",
           "language": "en"
         }
@@ -179,166 +179,166 @@
       "query": "\"North Korea\" missile nuclear border",
       "provider": "Google News RSS",
       "sourceUrl": "https://news.google.com/rss",
-      "retrievedAt": "2026-05-20T16:50:44.865Z",
+      "retrievedAt": "2026-06-21T19:57:55.520Z",
       "status": "source",
       "articles": [
         {
-          "title": "North Korea says it will deploy new artillery guns targeting Seoul - NPR",
-          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQUEc3V0NCSHJHT2xfNGh6Sk03NFpXR2hjM0JLR1g3UzZfakYwem15RlRyU21qZEc2UU9RTTg3NlFjLUVaU054ZjBwc3FwRFFWLTlZZ1RFenFtN0JxQzgwUEc5d2V5MmU5ZE5uTy10QjFwOUg4VERXQ1Z1aVFjdWpXTzgxYzBWMW1BR29DbDlpZGh3V0U?oc=5",
-          "domain": "NPR",
-          "seendate": "20260508070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "North Korea Tests Missiles with Cluster Munitions - Arms Control Association",
-          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQenlBRlE2YnA0VDk2Y2dtTzNYNl9nNXJxakdNTEVTNFBnUUdKdTNBZjZxeERnNFV3dEJlUkJjV3VHbldqQlR1WUVRQjE1bV9UdlFrazY3MnNVYWM0eWV5NThDV3hRNmtNaWxKS3Z2dDMwWkM3a3RETWVtTUhWaGF6bTBla2tMN2QzY0ZuVHh3S0pFMjQ?oc=5",
-          "domain": "Arms Control Association",
-          "seendate": "20260511131842",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "North Korea ‘will fire nuclear weapon’ if Kim is killed - Yahoo",
-          "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOTlg3WFdrcDlTcmxjUl9iT2hQRjJyczVSUE5Nc3cyLWhGWk9iemd0d3RmbnNjeVd5UUZsTGgyVU04Y3E0alNPQnd4T0JkTlQ1dmZqa0s4bUFPb0x0V3JUMm1qTUFZSDZmWmVXSzBMc1RFakdBc2x2SUxPbkszcVMzLUJSeVhGUkpJMHc?oc=5",
-          "domain": "Yahoo",
-          "seendate": "20260508070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "What’s behind North Korea’s ‘diplomatic sprint’ toward Trump - The Hill",
-          "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQZThycTR0aFJwZUtQNXZ3RWZzbk5ia2lfMmFIQlhHTlR3djVxZzRZOTAtTW9HbGZiZk9wLWpBOXhhcGVRTG9YTFRYMlJKbnAyZWc1SEJHbHpKaGNoeEh6ZUZDV2t2MExUc0FXUjFjWWtBMWJaWUQ3WHgxai0xNlp4S1NsaHJyaXZWVUtxNNIBkgFBVV95cUxPWE9pVEM3Zl9uaHZ5dFZDQURhOERiN0ZZbnd6aXlFR1VhaWQ2TEZnOHhSNDJ2ZVR5MExUN2hZd1NsMGFRcHBxN2VOeHZxbXozeHdQY3NxeTNYNVZJYncwZ3p6bHdCRnZ2d0FhS1pjbHNrNjJFTDRvTkF5Z0x5LThMVi1NMFJCc2VNT2ZYMnhxeFVWUQ?oc=5",
-          "domain": "The Hill",
-          "seendate": "20260428070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "North Korea - Nuclear, Juche, Reunification - Britannica",
-          "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1jQzhyTWRSTjlnbTFMbGk0dElfUnZybE1SU2lwZVRfb19HUTA5emJ4aHJoUjFkOXU5aUR4YlVWb1ZsVW1FNnYxbWlYdXNIMmtvbVIwTVRvUWVUNVcwU3JjeWZiLV9wdGdueFUzbHBJMUs4MFFVOEZ2MlRMNmdpVmc?oc=5",
-          "domain": "Britannica",
-          "seendate": "20260518050000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "North Korea will automatically launch a nuclear attack if Kim Jong-un is assassinated, new constitution decrees - the-sun.com",
-          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQWjNSNFlDczB0UloxOVpGaXFVMk9uTVRLaXgyZXQtQ202eEFibV9ZclQtdktiVXRWa1gyblFQeWNfTGF5RktwZlN5UVh0dzFIaVdMb3d3RXlIVWFCSDhBQ3pCbjBxa1pncENNczRFLS1ranR3RkZRekhtRUx5R1pzWHFUOGtxamZ0ZEN2U1g2bmJUc1d2RmpDeQ?oc=5",
-          "domain": "the-sun.com",
-          "seendate": "20260508070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "Even in North Korea, someone’s in your parking spot - Reuters",
-          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQR2pFNE5kcENkZHNSMTlJeGlrUW4zRkdSVHdCUndZeGJUcmxEQTlrdVJ0ZnB1VTVPRjJOZ3hBaXdKdGo2YmMxdEtJYkNla2RLNDRJbG5Cb0RWVHhTeWdZcHJtQXBWd3ZrLUc4Z3l5N0lwVlNTWjIxQlRSR0d1NHVXLWc0eTVIcjhnVWdqd1hEejJKRVJ2N3NYMDkwWGhLLWt3aEVCNEdqaGgyeGhHaWc?oc=5",
+          "title": "North Korea tests AI-guided missiles and artillery rockets designed for modern warfare, KCNA says - Reuters",
+          "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOSTdTQVRlZ0ZRdUVLU3pBSTNORUd0ZWN5clcyNnlMNkxxdmRIY1p1eDZ6YkZrNGtRdnZVNzhOM0wxbTZFMU44TmFIdWE0WHFUaDRiNXBaUGdJaEc5NVM4VXFuSDlKdkdITTNkLUMxSzZTczJ1eU9tNUdzZ1BuaVMxaktySHFNckVpWnh2N2tFanRKMTJaTFVNZkNueU5wbEhIT0xqbGJ0NGkxVTdNOUNqVTJ0b0dvTXh5TDRlX2kxc1dxcTROYlZBemVpdkFJVmc?oc=5",
           "domain": "Reuters",
-          "seendate": "20260512070000",
+          "seendate": "20260526070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "America's aging Minuteman III nuclear missiles are getting replaced. We got an inside look. - CBS News",
-          "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQQnpDanZRRk1SVkFUVkw4MEk4QUJZV0sxbk0tbWlVa2ZWaUdfUWlUN1BWSHNqc1dGTUl4cVdocFY5cEtsZUZKYW5veVRUYkk0LXNGQ01mYmFRUHRubnZhU2k5VlZFaFpGeklRUkhwSzExcHFyQWFPZWhqejZMcC1wSUh4VVowU0ww0gGOAUFVX3lxTE9oRDVEY1htWWh0UEZhQmlfV3RhZG1QTXZuYXhONWMzd1FFeDQzOEZ1SHF4cmhWem55NUhLVEg4OWx5Wm9fVXo3d1pmRlVncXBUYXdWNUdJckw1Z0NCQllsT1phODA4NFY5RTlBU0RpLWhYTmJzWHVFYXRYbmhTMEFuLVBlQzB1ODhJMHppUGc?oc=5",
-          "domain": "CBS News",
-          "seendate": "20260505070000",
+          "title": "North Korea says it tested new warheads, technology and navigation in latest launches - The Washington Post",
+          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQb1g4REF1dTJTZWVScjNBUXlqZWlkZFF0VmJLd0JUcWhsaVVtVHZ0RUp5VW0ydl9MZm1wZjc0UzB4cWZhdUhDenBNRHREUjRKMEE2d1BvdXR2TmhranhaQVFLUHl1Tlg0U2Job1FYTkF4YnhBeXZscWZSblZhdWhjREQ4VHlIZ3I1eEp0Q3JyZWpJQVlUT1dRbnpsZUpJQy1Kc1htb1UtR0hNVmhhOUFJd3RlRlRWUXZIbFliRQ?oc=5",
+          "domain": "The Washington Post",
+          "seendate": "20260526070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "North Korea to deploy new long-range artillery near border - MSN",
-          "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxOS2dUOXpLNUxfdEtRNkQ1OGxOemtlWHk2TE01TlhQR0M2QVU3Rkc1cWY5c0Y4MWZWeFdqMGpjUnBXYXdmWlpoT3JZNllMdDJmSWVVYTJhRXRoWlhMNGx6WUJrSGhVa0ROYzRPMXZRUWIyTkxxeWlSY3Nna3B2TnZXejZYa1RKSWlHS0kyLTdSbmN3dVR0YjVyS3B3UTZHc0FCcVJoelMzd0hIa1dSVlJDWkFfTGpvZllKR0NSRXQtYkRFeS1velJaQU4yd2VIdG4zVDZfYXBMY2txUGhYNUJVRVV0VlFtc2l4SlF2QzhMdw?oc=5",
-          "domain": "MSN",
-          "seendate": "20260507070000",
+          "title": "North Korea says it tested new warheads, technology and navigation in latest launches - Politico",
+          "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQMFdZNjRxOVNtT3BoOGxfRlUzaW13LTlLNkdrSHRSWUJZdkNSXzdVMEZucnFZQjZaeklkVk9lTjJ6dHBMX1VaU19rMmlFNGVSMHdoRHBjc19HdEgzVE01aUU2VHNoRVJvNUU1MTRXSGRSckVnVDk4R0VsdmxFeUEyMU04ams1ZmdkczR5UUNoYmJzaWV5Y2Nya0tsc1kwOEhIMm9Ja2RWdjZtVWJ2a2phWnVvY0RtaUtZbGVBWWhPak1PS29PMnFsMk5YVm5wblU?oc=5",
+          "domain": "Politico",
+          "seendate": "20260526070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "North Korea to deploy three long-range battalions to South Korean border - Plataforma Media",
-          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQS1p2dGRrUWF1QXdLZTJGOFBIWmtYVDR6RjZHSmlHcFQwTXNPbjN4YVgzZTc3VTAtdWVMNmFzVFBkRkV2NFowNWc4NGhhVWFjSGQ0Z0JVR0FKUGhjM2lfQ05QT3hpdF9JdlFQaDNvRkZrOUdYUlpBeFRqWEFZcmt4a1M0QmpwOHM4c19teUt6eGw5bVFKNGwxLUhLSGc0UQ?oc=5",
-          "domain": "Plataforma Media",
-          "seendate": "20260508103830",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "North Korea prepares nuclear dead man's switch - The Times of India",
-          "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNNzZObVJMRVNSNThvWUZ5Z2ZfLXRrTTNFYUdOeGg1bzBENkR6VXVvNnhtNjJDSS1TeUphdEFKUnJ1RzFIU3VNYjc3ZTNWQ3Rla3BRMDFtX05DdmFYNDdxdDZ0Ty10aEZVcVRDZnpqdkw5QXBtR0lGdU00d0ZodWdRRnBOTUhaQlBEQkVWREdLUVd3YzJuMjJSbW1TMVpFcHpvbktIb1N5MnlQNk4wb29yWmxNUGNabnAyNmJPMmVoRmFNVk1CaDJV0gHMAUFVX3lxTFBDdC11STQtem9BeW15MzE1QTlKUlMtY3FmMXVkNVgxUnJJbVBKbE5VRms0bmVJcm12QUVFREJlTHJFd0otQTFnR3MxRjliQ0ViNlhTNEFSenJvb2FzSUNaN3RKam5yMXk4ZG5WTnkyMFk4aThQNG5uMlMxamxSbzhOZUgzaXFWTzBxUzlYLWdiaEluYmdDRGYxeGRKYXhMWVZUWnB6eFlSZ0xFUThpVEE0Z2NSUHFNcmZWTXdhSElhQmc1OHVNcC1nN1RFaA?oc=5",
-          "domain": "The Times of India",
-          "seendate": "20260510102100",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "North Korea executions surged during COVID-19 crackdown: Report - Türkiye Today",
-          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPcnV1MW9WcVlieWU4QlQ0T0Q3LThyZ3g2RnlNWlBXQjMxRVpqWk5pcElJVWZCWU9aZS1oZFROdnZKTndDWXpZMXh3TXFtYXJLQnRuQUJ5Mm9NV2hXbVpHaTdfc2U0X0sxVzRwVXo4MkVIR2R1SkRoaFc0NGRvMWFnU21uZ0k2SGxMbjNReDlYNmdMZGoxeHEzN3I3QW9oN2E1QTgwS2xHUUQ?oc=5",
+          "title": "North Korea tests new multi-purpose missile launch system: Report - Türkiye Today",
+          "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQSGFUWlBFX1h6YUtxUm1HclpsTmI4OHoxS0Y1YjRHVDR5Y21kU0ZobzJ6dDRrZm9EdktUTDdIY2dTcElFRF9WdGZyd0p0dHBDWHFyU01fM0Y4elpRNVZwN2t3R0lUREk4SWthLTR6X0hEa1dmeUt6MHBlOWYwRDg5MzJ0bjA1VGNlRXkxZUx3S3lid3JFUS1wazBQSEhSZWF2cHhkLUppNUdZNXM?oc=5",
           "domain": "Türkiye Today",
-          "seendate": "20260428070000",
+          "seendate": "20260527070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "N. Korea to deploy new long-range artillery along border with S. Korea this year: KCNA - The Korea Times",
-          "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPUF9CS1lFM1BIMWhuUDJEWklXM0JiX2dBR2ZwOGZEX2prdHNmQzgtR0Z1eFhhOHZJbldBNlBxZTNuMUVjelFTaFVZRS0yQzRlelJKQnRZQUE1UWhFalBjd0hDLWlyd2FTMHVwOFgyTUR1bnJNWlpXdnV5Y2x6T3dlN2xuaEhhUjRjQmh4Zkw3ZXpTVVBJMVY0UDI0RUcyaWZpVVktOVZBSHp1Y0ZpSHdVWTV0dERmaDdEbVBhM3YteXVDeTFacmpzbUF0NkZBay1vSDQ3QTNwQWNJaUMzYkhXctIB5gFBVV95cUxNZG9yeUNna2w2bFMybVBhVWJieHJaZHRDdDJrTVliSGlaVlVIbldiUGRNVTdaZUcyX3h3RXBfc0FYRkJ0dXVXRTJqbTB3a3A1am9ORzFYcndXN0tjejhRVWl0XzZzX3g1OGtsZXVqYzFZd2NRamdwb3MzU2psQVRnOTVTa0paRmpoUXVZSDlnZzNGWFlRN2ZmS0ppWENFTTJzNXJYSEFNTThYYzItRDQxdWNaZEhaUXV4WVoxZGFrOVRrOE5Iam1JZWl2NkxTQmk1TlN2MVRkQ2d3ekswdnZiVGxZVEdJUQ?oc=5",
+          "title": "North Korea tests AI-guided missiles for the first time - Sky News",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQZW54TzNzVFFveF90MHRIb2pNSVRRVWJWa3VTb2twd2xuVC1neGphT0pTTjh6SEU4ZkRSVzVmb3doLVVTdXJhM0FrY1JyR0ZST3R4c20wU1BLb2hyeHZEMU9OOE5Zb3dNT2VIMVRlUWZKencwSFZodG80aVA5MmNNakgxb3lzbFZuZ0swZmJzSXRMUjF2dmpZWW5wZUI?oc=5",
+          "domain": "Sky News",
+          "seendate": "20260527070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "A ‘Miraculous Transformation’: How Kim Jong-un Fortified North Korea - The New York Times",
+          "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNUFJ4NmJoNW9QbW9qQ240elN0cktydU9wR2JpWWRjd2JkZVhoT0QyZlRHQzB6dmRSWkJac0FDNVJ3TVpnSi1yYXI1dkwxV3l3b2NXYTYtSUYwSWZDQk0yNjY3TG50S1MxZ2RNbkVFaHFIZ0JSeGRNRGxUb3ZOU2NsRUlMcDREQjA4Z0otLVBuck5QYkhWb2c?oc=5",
+          "domain": "The New York Times",
+          "seendate": "20260608070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "North Korea tests AI-guided cruise missiles and lightweight launchers near border - TRT World",
+          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBSMGEwRnppekE1cEh6MmNIa1hRWjJrdGJDeEs1a3dhbmt6UmMwZmVldldnZVM2am5EVktBRlpRc0VMOEhHOU9sbWY3c3JQcGVWTTRBeEZ3NDM?oc=5",
+          "domain": "TRT World",
+          "seendate": "20260526232401",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "North Korea tests AI-guided missiles, new launcher near border - MSN",
+          "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQQm5FNVdwbUVJUXlCNS13SGJTaGdvbVJBV1F5clBYYml1eC1wOEtjQ1RUNWdERjdzZ1RjZEQ0Tmx1V0tlUVQ3TGN0SWZYRzhQQldQcTBNNmhaUjB2MWpoeVJqWS1EMHM1eHNwNWVBNlNFWUl0eDVPRUQ1c2Q4UVkyR056ajNsRXBfN2p2eFlBX2tKcFlyZ0hxYjZ4b1RKbWZhWDg4eEFnX3BFcTY2OG9zMGE4TVNHNDB5SXh4cm4wQ1Z2OFlLekZkbm52VEpSd2FYdFd0UEx0cVpQVGtwcUlDbVlzdG80V3pHSkt0SlJISzJ5WXZwalE?oc=5",
+          "domain": "MSN",
+          "seendate": "20260526070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "North Korea Nuclear Threat: Fears Of Missile Launch And Border Skirmish Grow Francisco Alvarez (LDEwNTlSLo) - Mshale",
+          "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1JVnN3WWtqZU8zTzVSbmVVQ2VxQlJqT0lEcmNEaUkwUVNUckM5M2E5WEdvUEpMc0lTTjJjVlR0TmlfbGtpOVRoOHVzUFFFaG04RVlsbUY0eFBRRDA?oc=5",
+          "domain": "Mshale",
+          "seendate": "20260612025028",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "North Korea - Relations, South, Tensions - Britannica",
+          "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFA3ZFJqQUJwUGdvRnF5X0phalpIZXVBdFMxcFFITXphVm1xZUdHLWxzRHFMQmgySy1QdTlUVm9YUy1SSWk3czh2SVdrblpJVVdGMlozdzhJR3hIVFdzX0l1YzVrYm96Ulo2VEVOQlQzWEJVS0R2a19Dbg?oc=5",
+          "domain": "Britannica",
+          "seendate": "20260612070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "DPRK announces testing of latest missiles with AI - Українські Національні Новини (УНН)",
+          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFAzRWhITmpXNTUwQm1MZzM0dGRqaGtRaTI0OFhWYWYtLTBUVG1KLWp5anpTU0dvMXlQbHQyMXJJc09hSlM5ZEM4cmFiWVZNUjZmd0VHOVBTZTNKcXB5QzlWRFE0SXAyMldhUnRoWTM4cy1GeVpLV19HSnItOGnSAXtBVV95cUxPdVRKNm1Yd0cwRmY3a3R4WS1PRExqRVh6ZlFvOTU2MTF3TTZXZFkyaHdGQUtlbXo3WFVCLVFYYWVXbDFFQXAzdWRhakhEQmVaODlTWUhGQjFYTHJSZnZKV0xSZ0xYcGU3RnJvaEQwMGwzOGNSenNpZ2RRSjg?oc=5",
+          "domain": "Українські Національні Новини (УНН)",
+          "seendate": "20260527070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "Why some experts fear S. Korean missile sites could incentivize N. Korean strikes - The Korea Times",
+          "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOM0lFcFM1NXo0OHN0cS11QnFxY0VVVXJaaGh0RU5NWEtRTTI1QngycTlFNWxnTjZwOEZ0V3dmRktWWUxHRjlNRG9ENjZvbVNscTVKQTQ3T0VNZDNvbE5Fdnl5NUszcFRVZHp0aFpReVIzbmV4dlMxSlVXY3UtbTJZUVV6aWdXOEMwOE9yMFA0bVFNV3J6YnphLVphcUlqOWlmLXp3R0IzWDltU1NOMUNsNk5ONC1SLTJSc1pDZmV1M0haZmRSWlh6NXcwSHZReU9Nb1hoeTNNcmdBd3PSAeABQVVfeXFMTnI4OTRXcE1qem45TUxsVk5qZk5KTEo0VmRZMldXblVPTE9wLVJvcnQzaXBGXzdvR1ZTWWZ3NFpWZkt0Q3pQYm80RnozazNMWk5Dcjg3N2VDdnNCNE9aY0otWGh3R3N6Zm4xNnAtYXdmRUE4cG4xUzI1VndGMkJCLVZ0aEVmSUdac2VDaFRtTzZqSFowRDhTLXNORHltaGxLV29leUw0OHhFMTZBLS1DVVc2WlBzR0JoU2NDZVdoTnBicklUdFJKczVqUERmanZWZWdFNzV4a3ZueHdPNVV5Qlc?oc=5",
           "domain": "The Korea Times",
-          "seendate": "20260508070000",
+          "seendate": "20260602070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "Kim orders North Korea to fortify border against ‘archenemy’ - Türkiye Today",
-          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOY1lsZlp0WndSQXJBTmNlUkNOdE5zV2lURUxvQXNNanFSZXdlaXVscmlMSUZyTWozbkRsUWZST1hLZV81dU9DaXdXS3BaNnVvODVQYWNuTmZ4VHJUb0t5dGRBLUpoWEpRT0pkcmRCRl9MSHZsVjQ2ZlQ0d1RDZlM5Y2N5WTRhNVdkUEpZZElZTjFLanZYOTB0NmY1SzFjeExWbHlj?oc=5",
+          "title": "With Xi in North Korea, Kim to project confidence, defiance - mediaselangor.com",
+          "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFB3QlBlcThCVC13bXgzMjJMVnhfeFJIcy1vNDVYNEFDVjNOVEZ6cmFMNkp0MHNTR0NhSVExQWNTWWRYaVZ4UWlRUzVnS0IxNVYzSXlDWmpn?oc=5",
+          "domain": "mediaselangor.com",
+          "seendate": "20260606070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "North Korea tests AI-guided missiles in latest weapons display - AnewZ",
+          "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOQ1NFUlFmYUVxYnZRWVh0OWQ1QV9TUkJtTkVXWmE0NnhMQjdsaWoybVJXejl5emQ2akVFcUNPV0Ffam41YmVKTkRoY3Z5eVNha3dhaTdCdjFrMUF4TzFWR3B4dkVfdVFWeTlQTFA5S2RZajJmbkxaWWZEd1pVZ0VscldDdjFvVU5VRzBZZHB3dWoyNEtYQjQ4VlNMWGU2aDQx?oc=5",
+          "domain": "AnewZ",
+          "seendate": "20260527070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "North Korea Shows New AI-Guided Missile Power With Special Mission Warhead and Border Rocket Tests Near South Korea - Travel And Tour World",
+          "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBGZXlCSDlMWTNxb290OUt6bDRPclhQNWllMjlCdnRseG1DUVJUbUlmVXh2a2Z3ajIxWFRQbUczVi1pM2Iwb1lHUEhVMHlRdHNUcUJIQXhMUmxYNEtUQW9VTmJBRFMwa3FaNjIyY0F3?oc=5",
+          "domain": "Travel And Tour World",
+          "seendate": "20260527070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "North Korea Tests New Missile Launch System, Says Report - Tempo.co English",
+          "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPRVdHTTlXZ0xhd2tmTGh3YXJ0bjhRQzFzSjhPVnFza0tOMDRMVUNvaHd0aWlnMWJoSlBLNXNwV3JveFdrWUdEdDNRT2FDV0lWTWlZRFo5a3phaGRxWkhqSDhFdmpYU21WbFIzYkRBR2ZQWHY4dVFZSFdsb1NpUVZRamhDZnBYZXRnQTRjUXQwaGdHdw?oc=5",
+          "domain": "Tempo.co English",
+          "seendate": "20260527070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "North Korea fires ballistic missile into Yellow Sea, Seoul says - Türkiye Today",
+          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQc1BDSU9lM0V2X3hpOVZrWUI2XzZuZEpkcFNCMGhpZEN5VkwtTHhhOTZoeV9FamlfdDl0UkZXVWNIcWx2dzhQQ2NRRTVXVWRodFNvMEtzWlVYVHR3UE1wLXlRaUwzYmhMTlNXQVIzOHJockdfdWpYWG9DWHlVUzZRcUowLW1hZDBPOEJocW83aFE0bHlDZEFMVnpNUTR0Tk5WVDRFY25LQ3g?oc=5",
           "domain": "Türkiye Today",
-          "seendate": "20260518062054",
+          "seendate": "20260526070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "North Korea enshrines automatic nuclear strike if Kim killed - MSN",
-          "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxPclJ1bmducGpfNjFVUVlFVDgwVk5aVy1xVWYzdVN0QWhFaG1fVlZOTVZHTDhocVVQYW9IdmY3MURaZF9MRkZPelRtRWhXbHlDaXpkWTdEZjJxOHdjZEI3NFotVG5rTlN4VmhCalBlR0tqNFlTRVNvYy10Z0FnWXZiYlRVSVdVZlFxcW15VkFWTmZwNGFFZ2N5ckJrZlNzMWpWbFZQVWV4Rl9OQUpQcTNRc0NMUFZHY1ZyR2hpMk1oN2x3WkdSdFlXN2EtNnVaSFl5MkY5U0tRb2t4b2NfQzFLcnZZNS1KNVRfXzhmYkNnbjQ3dw?oc=5",
-          "domain": "MSN",
-          "seendate": "20260512130634",
+          "title": "History of South Korea - Relations with the North - Britannica",
+          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOQ0hlZ01VLVRvZDh6V3BGRDFseXotdEkwaHQ0eUpFSHVqUUVkNm96dHQ4dWNhT3kxd2wyQ0hrQWJqT1RFM0RSTVp4NGY2T2taQjRjOU9wRnRjUGlMRlJSbkRpakFmcXNfdDByQ05JSzMyTTBDNzZjRUtnQXhuSDY0WUprZXJNbTg?oc=5",
+          "domain": "Britannica",
+          "seendate": "20260606070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "North Korea to deploy new artillery along border with South - The News Pakistan",
-          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxORkY2NUNsQ00tV0w0dlRzRXBNWUVTdTJYN0JwdUZCRnZBRlU5SEZPRXpUS29rbjQwbFg0cFZsVWRTMW9pbC04ekpkOFprYVJyNHBGNS1CYzZFZW1WTHNQWGJaYXkwLUtBU2pJZ01HbkI2TGU3bEVHTEc0c044VmNYNHMzUGNLOVRjb054b0lSSHdQQWQ5M0MtY0NSV1E?oc=5",
-          "domain": "The News Pakistan",
-          "seendate": "20260509070000",
+          "title": "North Korea claims to have tested AI-based missiles capable of reaching Seoul - news.liga.net",
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNTEl1WnNXd3dTNG9ocWdHR0NJR1poNWhabUI5MW56SDQwYk5Kc2JLSUVEbEhuSHE1UHFNTjh1NzkwN3ppYUM1VzhfbGNkSmVYc1Z0Mk9QQjJVbVgzR2kyMTZlYnZtWlJOV0lkZjBVb3g4Qk1YOWxacE9iUWNLbHo0R242eTM0Qm5aX3NXcVNFT0xUZHhDdktsWkJnVlg0YW5zdHI5RjRIRzRVd2xPblRCRmZQRdIBuAFBVV95cUxQckYwNTg0ZXkxZHF3VkRRdW85d0NfZ1ViWGFjLWs0VG0zU2xneWNZS1E0T3J1cVRnVEhtWU1VS3BxaTllTzlKUEFjd2hyOTRmWEZDX1lpSDc5Slh6cElsY0oxVzROd2loNG5lU0RsemFkM1JJdXpucFNJbjY5QWx4UlRzS0JxZFppSWlrdTFTWWFPSWVTUlZ0TUZsNlFseWZ4NTBMM1Q0RHFlSkQ1WVQ0dThhRmdkdENI?oc=5",
+          "domain": "news.liga.net",
+          "seendate": "20260527070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "North Korea enshrines automatic nuclear strike if Kim killed - MSN",
-          "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxNM1dZajlvc1VoUG9KdXZnbVdCYm45ZW5FLTlkWnNlUVF4Z05JNlZ6UjU2Ykl6RllGVy0yUkI3U09wTHZjYzJjQjJWNEh4UURWd0lVZ2tiaTBfOTJhSndzTTBkVEtrc21Yc3Bfb3R0MnllLVpnRndidmNnbkFJeV80cUl3Z2xTWF9rMUVxUEk3VEwzSjZCa1dJTFBDMml1ZFZ0UlVyZF81eWxoYndWMHJSWW51WGk5ZExaT2hYcWdkZkNKQnhndFVJLUpPaUNBR0NmMl96M21hWk9FYmpaMGJNMkJsMWtBcHlGLTVMVHRmQ3JGRGVyM1E?oc=5",
-          "domain": "MSN",
-          "seendate": "20260512172459",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "Kim holds 1st division-brigade commanders’ meet amid military revamp - Inquirer.net",
-          "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPbEFxVWpaQVZiQVlobGJMWEJGMFU4cnB0OS1PTE5SeHB6TXhyWEg0bWowXy1DMXhiSjlEU3JjZjZSRHp2WkNWN3ZLaThYSk5BeDZ3QkxuVVZSQjduOTRZZ3FnVFhWVFoydkVQclNMN09nNkgyZFQwb0haVjZJTUJta20teURKcmxmV1NJZkM5Z19aRVptNC1BbzBITl9BODg5R3RqZ0RqcDZfRFVl0gGyAUFVX3lxTE95d1drM3ZRNjZqSFJMR29jR2RuR2dmd1ZDQlRCUDZ4dkZwVW10Z0xaZlFsODY3U1l4d1J5T2FXcHlLV0lqQXRJZzJudlRuR094T082RUZZbGVOSWJ6MlI1bTdfTm5tMUR0LWFnYndPbUtGTE5Eb09oU0ZMXzdVaDJERFJTdl9rTmlEd1JPZGxvUTRpbE1fZHprR2RfT3ItbDFtWU4zQlpiVmVfbEhyUUgwT3c?oc=5",
-          "domain": "Inquirer.net",
-          "seendate": "20260520051700",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "North Korean State Councilor Kim Jong-un said he will deploy a new self-propelled artillery force ta.. - 매일경제",
-          "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1lTy1HaElPbnJZN2swZnRLanY5NHhwOGRvYWhtOXh2WlBCX2EzM0JZYU5tNjctbkZuaXhXX2UzeFQtUHl3TGpTMWhNX09LMkN3NGFj?oc=5",
-          "domain": "매일경제",
-          "seendate": "20260508070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "North Korea to deploy new long-range artillery systems along border by year - Agenzia Nova",
-          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOd1BqRW9uMUZ1OS1kLWZ5NnpGNTQ3WWJ6M2lWWmIwNkFtbEtkTS1IbVQweXZ4b2VtTmM1czhmdWpqMFppdHBhYVhvNDZMczR2UmllVFQ4dHVncEhIWVBQaHhkQkFkUl9rY2RnNmIzX2tsZnkyOFcxVmczUEJHWGRkMjRCbkNsaDlpdTZGUkVlR2JKX0VkcWhVdzFFRFY3NHhqN3cwVmpDWVlHYWNBN1NNeVFn?oc=5",
-          "domain": "Agenzia Nova",
-          "seendate": "20260508031514",
+          "title": "New Zealand Deploys Army Platoon 20 Kilometres From North Korea’s Border For Combined Assault Exercises - Military Watch Magazine",
+          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQaWVocHhYN0hkbE41V2xMOHlwajNpXzI1eXpoUHE2SHVpYS11RGFEcGNCY182TFhOYWpraTBGX0ktRk85eUVqeVpFOUFPSnB5czl5V0Z0SnhueDItYlZiZkNWUmVrQkhKeWxTaFZiUWQzU1huSWEtanZ2RlZRcV80bDRrNWxNdl94QkxHTWd4SGVFUVh5?oc=5",
+          "domain": "Military Watch Magazine",
+          "seendate": "20260607070000",
           "sourcecountry": "US",
           "language": "en"
         }
@@ -349,166 +349,166 @@
       "query": "United States South Korea Japan defense",
       "provider": "Google News RSS",
       "sourceUrl": "https://news.google.com/rss",
-      "retrievedAt": "2026-05-20T16:50:44.865Z",
+      "retrievedAt": "2026-06-21T19:57:55.520Z",
       "status": "source",
       "articles": [
         {
-          "title": "Japan-ROK relations since 2025: toward a sustainable strategic convergence? - Fondation pour la Recherche Stratégique",
-          "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNUGFYZEFCMzRBbjVFUWp2ekEwelJtMW1RRDJiNWEtSjM1Z0tFYjhUVy1GNlBBRFdRdGJWY0xQVGc0dGJ0MWIwR0JYT3FBOUIyOXQxY1dJc24weF9KU0QzNkwtOVdXejFzd1U3U1ByVDFFTTJvdEpYeVFYdDFRZHhhdkZFYUhUcTl5MjJUR3gzcVFmamVReThVRk5jdDZqU2RzTkFaQmZ3aW5ialVUNXB5MV85MXJjajk4NHFOZHJhZWE3REtWajZTTTZkUkxoMXFrZ3lLdGM1YVRsOXNJTTBkdQ?oc=5",
-          "domain": "Fondation pour la Recherche Stratégique",
-          "seendate": "20260512174947",
+          "title": "South Korea, Japan stress Korean Peninsula security, resume maritime drills - NK News",
+          "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTFBMMVVtYjI5dm9UeTFZWl9xY3BsUFpDU1dNSld4RWRoOEE3NnBLVTJBdko0T1NXelFScGxUZVM1Nkc1OWNLdmtR?oc=5",
+          "domain": "NK News",
+          "seendate": "20260530070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "A blueprint for a US-South Korea combined multi-domain task force - Atlantic Council",
-          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNODQxcjRtVENrTE56WDFramU2SHZ6ZU1kYi1vNGJ4R0pDUnk2WGtsaWEwR3NHdnZGbUxjYzZ5ZEhvYnRQV0R2VTQ1NUI5NG0tUHQ5UE9BVG5jS2hSUUJhTE9ZMTQ5d0pDMk1DbGpFTlBVRWZzR2J1T0dhVzByZS1sSWxPQVJmOEZYcVpCU1pDZ0tSdjFjQ21KQzVXR196LVF6UnJSY05IaXpTZjRRY1E?oc=5",
-          "domain": "Atlantic Council",
-          "seendate": "20260429070000",
+          "title": "Introduction: Preventing the Erosion of Extended Deterrence in the Indo-Pacific - The National Bureau of Asian Research (NBR)",
+          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOU1N3d1BoTjlMNEg5MjNSTzhXSS1WUW5NakxIQVBRV210YjhMcDVlWEdYVkptajFIc2tKc2R3bWtSNkFqMnlFQkl4Y1plbldtdk93SEFFVXlYdExZd0lYcVZNaTZ5MWNDb3ZhTDVfU19CZDltNnRmSFlid0ZyQ21wdVNMOFJoUXJ6SHJJa25vcTZCakcwNnd3bWl0bkhicnNWSmlmQXh5Sk1FTFNraXJRRA?oc=5",
+          "domain": "The National Bureau of Asian Research (NBR)",
+          "seendate": "20260615163417",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "Why Japan and South Korea Won’t Go Nuclear - Foreign Affairs Magazine",
-          "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQazJKck96dDRubXZRWG15YlpqRVhEMUtWaVRIak5zYU53VjRJMnBJS25WTkFoVHNJOUQ0V3JTbm5weF8zelNITk5MRDF2T0ZrV1E4Z25MQUlQQ1hQbDhZdjd1OHFUcTMtcExfQ2E3RW5yYzlvUXRrdlg0bV9ENkFIRzh1RUE?oc=5",
-          "domain": "Foreign Affairs Magazine",
-          "seendate": "20260507070000",
+          "title": "The U.S.-South Korea Alliance Has Never Been This Close, or This Fragile - Korea Economic Institute of America -",
+          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNbElEaXpWOVpVelVfZWJFOUVodEZtSkJxN2VncVdkQWx4Z29iNG42cVNTc1c3TGhFV0dTNWFjNXFuM0U2dlNRTy1RM0FzVm9DTVpEak93ZldPYUlaZThHck1CeGF3SWdOeGktaTJub1FGQVh2LWIxdE90TVNfRS1KQVY1NzBlbkxlclJHRFc2VmhXelpvM3RUUVlzb2RxZw?oc=5",
+          "domain": "Korea Economic Institute of America -",
+          "seendate": "20260604070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "Correcting Course in the Indo‑Pacific - War on the Rocks",
-          "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1JdHdqS2pjNE5RUVFqQ3dFdVdaNXM5RC1pRkhUSFlXaXdUS25oOGVuLUJ6LVdBOEI0X3lHcENQOUlLdmd6bWNsTEg2VGFoTVFLWm1MbFNPSWJWckRqazhiMEF3VFZ1V0hOY3V6cmMycDA5dw?oc=5",
-          "domain": "War on the Rocks",
-          "seendate": "20260430070000",
+          "title": "Understanding Partner Preferences in the Selection of Defense Capabilities - RAND",
+          "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE84TUtYc3lUb21YRXNvY09EV3FyYzdrVWVrT3ZkTk9KR09rUHQxWjBfNEhwdEpabUt6eEVxbUo3cjdRb0gzR2I1M3lBOTdJS2Z4S29OQ3RHNXgyNDdlSHpKcnBGNkI3WVdG?oc=5",
+          "domain": "RAND",
+          "seendate": "20260616133032",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "How South Korea Might Fight a North Korean Invasion in a Dual-Contingency Scenario - 38 North",
-          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQS2VtRXgxODRtT0VnTkNQMFRXRmJIdXNReGF5cTBGelZJR3JFcnN1V2phZy1sdVI2a3RNSGxoRTFSbGVnU3JERk5JbXdMbzRTMHlXRm8wVmZxNGJQeC1ORVF6YzNWOFI5azB1SjZDeW5CaWtPZ1YwUW1nUVZqM3VGNlFIUUp6S1p6YkMybXRQRWR0aUFBMUp6Tk11cTNmLV9raXU5YXZQT3VDdnBNM3ZpQnk5V3ViZw?oc=5",
-          "domain": "38 North",
-          "seendate": "20260423070000",
+          "title": "The South Korea-US Alliance: What Comes After OPCON? - The Diplomat – Asia-Pacific",
+          "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPd3dvdVZtbG1GWk1FRzYzYjU2R0RHTU5VVnlwTk1FQU81M3g5WURIaXZMX0NSQW81bTNUdFlDX3dWcDhYZjVUMnE0S1ItaUdWbTlVYkNTeUd5Vk81NnBlNUwtS1U4dEtDb1FKajVVZFV3dFpCSTNvb1NtOHJLM3RIUW44N1NaN29fQ2g4?oc=5",
+          "domain": "The Diplomat – Asia-Pacific",
+          "seendate": "20260527070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "Washington’s Allies? Japan, Germany and South Korea - Politics Today",
-          "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxONXF0UUhWc0pEczY4YXhOZmd0VklMaE1lZjdHdGNMYi1ZaEtONEJxVERJeXNtRDh1enVWYlU2NElwUWhPQ1NUd3d5MmFhQ0VNc2YxWFJBd3BXRjc4R3VpcFRoRUVKU1dPTVVVXzl2dmtUYUtjM3paUUVjbGVkbWtrOA?oc=5",
-          "domain": "Politics Today",
-          "seendate": "20260424070000",
+          "title": "East Asia’s Double Bind: Contradictions and Possibilities in the New Cold War - Tricontinental: Institute for Social Research",
+          "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1yN0hFc3pKQ3I0Tm9QM3RySlZrc0VQSzRjVVM0THd4TlkxTEJST2JoMWNXUHlGRmhCY2JrZXhiSWc1LXhyWXRpZ2ZIVVViOHJGcFdzdjM1VWY4elJ3S3hyYnByWkxXMENRUzdhcw?oc=5",
+          "domain": "Tricontinental: Institute for Social Research",
+          "seendate": "20260602070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "Should Japan change its approach to North Korean denuclearization? - Brookings",
-          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOTFRQUkJ5bnZPR3h4Y0pyTzdRaUdFMmlvZEJKTXNXb0YtVEJORURWVzBJRXNzRlowUXEwMldma1phai14TjlUNENsME84WUMtYlVCclZHY1lyMmtySnhiUjRxLXQwLXl6OE9kb2lNTzlHYmdHUWVDUXBnQUlaZDBUc0xnaEZsSDFkVjJqbVdqNllaRVVhNUZZV0wtY3g0M1ZWNExr?oc=5",
-          "domain": "Brookings",
-          "seendate": "20260430070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "What Does Nuclear Proliferation in East Asia Mean for Russia? - Carnegie Endowment for International Peace",
-          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOQ1dYMUwyd3hLbzlZSUs1UmNoNmx1M1pKRWYxenpJYmJHN0x2MGpUaDJFaHBSeUpiWHA0OEFxNzBpeU4zQ1lzZHZzaVZPU2FjVFBCZm1YUjhIZWQwbVNsZmhYaks2OEpCZGxCWmwzSUhRVzlDQ0tjVWNzYlkza0h1QnZJWF8wc3A5UUthV3NuWjNXOGJIZ25zcWpR?oc=5",
-          "domain": "Carnegie Endowment for International Peace",
-          "seendate": "20260424070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "Japan's global defense business may be on the cusp of a big breakout - CNBC",
-          "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNb1BiSlMwUDBSOTRybUJUejNkRThnWlNLVGNiZ1hlVmNjVGRSZmQ0ZDVmUVZydGFZMks1SGZUbjVQUG1FeGN2ZGVjZDZvSTdBMHpUQV9BbDZuUFdFRldNWjlWcnppOUZYNnk3NldmUE1NRG9MTWdTal9oeVJzOVY4LTM2WjhnZk1YRW440gGQAUFVX3lxTFBFaVFDb0JjTE0ycmVJME8zdmViRG5PV01MTFU0YjBYNGJZb0phV3JXek81R2JRZEtaQ21ETnNCdEl6ZUNFU1lZazl0eWY4RkJTbnREY05oSzNad3FLbWl5andyV0MwbWdKcWVVVmlXZzg0T0tHbVBGT1NfUkk2QkVqenZKc0hHaFNVWF93bVpxVg?oc=5",
-          "domain": "CNBC",
-          "seendate": "20260513233911",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "Japan builds up its ‘southern shield’ as faith in US security cover falters - Al Jazeera",
-          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPbUhzdjVNSGctZlpDN3h4azQ3eFh3WnFBWGk4XzFPX0NsX3lFUWlMbVpjSzNSVlpWTldCMmRMWEVzWW5EdnZjdE5MUzJNN2lLcWJ0U3RkcmlYbFEyOVN1Uk1yR1RBWjdZRFNrdWYtZ2xwVmVMWDdxcG1tdnE2eDVHTTktd0lNY3ZUM0l3RUc1V2JyZVdRSERVQlc1eTE3SHczV3dBcHlwaVVQU2JhUHp3S0Noby3SAboBQVVfeXFMT0dHZDZRQnZOZVcxZWdPYU13eGtKMk0zTEZJejllRkdUR1ZvWnh2Q1gwelJOT0xyOEw0MDdBWHkxdVRodmJVNGsyZ3NTc2JnM0dqc05JalhYcm1UamNmMUJMWHdPOGtaNm85SFpCNnRXUXZweFY5cTRjOXhTbFE1TEEtQXQyazZESmNFTU9FWmVjVm4ydmVIbWV2UkplVm04cmk1UGpDVm5ZNHB5ZHMxbG1ueEphNFhfZ053?oc=5",
-          "domain": "Al Jazeera",
-          "seendate": "20260424070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "Beyond the US Alliance: Why Japan and Canada Are South Korea’s Top Security Partners - Modern Diplomacy",
-          "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOOXliUzhaSGRVTEJ4dG9nQW9qUkN2OWM5Njg0WUlDdVYyUVNCZzZJamVCYXV5Z1RPNDF6SExDVXF1dnJlTDlKYmV6ay1iNUZKVjF2YmVxeTdjTFRrMVFMTDZTQVpXdkJWZW1fVGZBNFdjQmtIMVRoRktqM3dIQWpFUEFKN1BOQ1FYSnFfRUNIQTYtMlEwWlB0VC1kSExTMlNsRUU0NkZCell4M1pnWmhqdS1YR3lNWFZNb0pva1M1NV9NZ2tTUmhkMzZjNnhHUQ?oc=5",
-          "domain": "Modern Diplomacy",
-          "seendate": "20260504070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "S. Korea, Japan hold upgraded bilateral security dialogue amid North Korea, Middle East concerns - The Korea Herald",
-          "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE45cTIyZFoyZ0E1NmtIN2luWFNvQk1HYkNEcGU0UU9vRkpnbDFiZ2dyUW5tYWtnM0xhYmhLcENVazBtd1RaVUNPbVRrTzBUSVBvMnlkcHNpNA?oc=5",
+          "title": "Momentum grows for military logistics pact between Seoul, Tokyo - The Korea Herald",
+          "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFA1R2d5a1Zmd0hMVUp3bUJWcWRBdXJSVTJCcDhwUmpjMUlfWGNKNzlJSGlBbjc1RGJXUk1yTVNESC1MejF6RWJuRWtrX2RBaGlUekZLcG9OSQ?oc=5",
           "domain": "The Korea Herald",
-          "seendate": "20260507070000",
+          "seendate": "20260602070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "Is the United States Prepared for a War with China? - CSIS | Center for Strategic and International Studies",
-          "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1FTTZxcFFuWUhkajFVODFvWEVQd051WG9VT0FpVkQ4MXlFRkQwdS1xN3ZRUE00c3B3SzdQNVIzSEZTV2trTUVKWTY2dDltaXdPSTJvMGdxd0JsTUVTOUhFbGFlSHpIVFpvTEtKcmdwWQ?oc=5",
-          "domain": "CSIS | Center for Strategic and International Studies",
-          "seendate": "20260512070000",
+          "title": "The case for a US Northeast Asia Command - Atlantic Council",
+          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxONzFwVUlxa1pIVjVxX2FaN3VoOWwwem9UXzlWY25Ja2E1SWd3TEcwX3lWM21lRm1TcFpyazI5ZVV2Q1VZMzZVNHhkRWZOZ0JxVnlYVHI5dlVXQXdUc2NKeXd6VzJQOG1CSEdVZk5RT1VvTmZQeWJYNFNxNllKYjhxaGRISUE2dTdPaG4weEwtTUNaTG01aHFOaFdfOWJSc2pTU1lxd0FMX0gtdmRJUHpOUw?oc=5",
+          "domain": "Atlantic Council",
+          "seendate": "20260618223200",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "Readout of meetings with senior defense officials in Taiwan, Japan - Foundation for Defense of Democracies",
-          "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPMU5FQWFfZndsVTZCbjRTTkw5dklIVkRmYVNfZHhXWHRweFZqMWRhbjd3SHlRb2xRbjRZOE42WktuVG1ZU2hFTVZGV0VzbkVXTlc3U0h4bVFZanZxQW81WVFENUc5aHVoOXdVUm84dWphaWRmWWdud1pwNzl1dzlGQ0YwSXk2NDdaelpwZ2puaVQ2Z2RDSnN4MTBkOWVvZVdUTEFaeWl2bGMtZw?oc=5",
-          "domain": "Foundation for Defense of Democracies",
-          "seendate": "20260423070000",
+          "title": "Keep the Steel in the First Island Chain | Proceedings - June 2026 Vol. 152/6/1,480 - U.S. Naval Institute",
+          "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNMmlpcDRUa2g4aXBTazVQNVVkd1lQekdyT1pLWGI5Qk1mNlZIWmRoZDQxWkpndkp2YXhLWm9OU056Q0FQaE04SGVYdGU5OV9kWTNtQ2hnTFB1Y1FqSXdZZDh4OVdMRDNoanN4bVNyMWhoVW9FLXdvazVWcmlzTnFpSWxOU1NWbkotZ3c?oc=5",
+          "domain": "U.S. Naval Institute",
+          "seendate": "20260531180130",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "South Korea weighs phased Hormuz role after U.S. talks, minister says - The Japan Times",
-          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPcDhCeDZudzBSM3dzWndjNDE5d3laUmlnd3M4V2lPOEZtcTU5bE1sSzd3VGlNZE54NEFQRVFiR1EtWFVQLU5yRmJsWnRNZDloVllVcjJxUWxtc0V5VzlTd3RwNmZXWDZ6bzY1QmRUdllPQUZJbm54Y01OdWsyLTdxZnFiRWxvSUFtOU1BRGx5UVE5VTdKblZILWtQMzJKVzkzWVE?oc=5",
-          "domain": "The Japan Times",
-          "seendate": "20260513034600",
+          "title": "Japan, S. Korea to resume search-and-rescue drill after about 9 years - Japan Wire by Kyodo News",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1DWGJvZWl0ODRYSjVHTmlBc1lrQWhHeVVvNXRuMjJxc1RiNDFJOF9QbndrU0JzYjFaNHBuUUdka0lQZ3VzMVU5X1FxS0ZkQlN5RlNFS3dZMVNrUQ?oc=5",
+          "domain": "Japan Wire by Kyodo News",
+          "seendate": "20260530070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "Between Two Fronts: Why Japan-South Korea Security Cooperation Is No Longer Optional - The Geopolitics",
-          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPRjV3RFRsdFlJUGNCT0RrMDJSdHhjd3ZPckFWXzRyLWE3RmxWMEl5QnB0bFVvT3J0czZZZXlUM01WY3hzVi1hMlNTZjhJQ0Nja3N5bzcybzEwSjhrSXlZOW1XbXNYMEs1cHVXSWlwTG1ZUTB5QWpNNTJUVzFQYVliT0Y5U05UTkloeU9iOURjblFhdi1TY214VjZUWldfQy01MF8wZWdVYndIbS02NUs4aw?oc=5",
-          "domain": "The Geopolitics",
-          "seendate": "20260519152739",
+          "title": "Reintroduce nuclear weapons to the Pacific to reduce the chances of war with China - Breaking Defense",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxORGNXaXdOLXJubDk2MUV1Mi00ZHlEM1psWW1seUhPTF9wNFNUTmJwbVh3VmlNckJOdS1GSU9sMHh1WVY4b3p6NHY5TnR5WURxa1kzVDNpVVZ5REtqMkNJVlpCcWdjSW52cy0taFE4MUJvUEZrN0N1NDh6TExxZzhrSWJZT1lFWGRrYnJ1WDFsZWdmMHl0QVMzd0ZYa3JNcnp4MGdENWFJSGFKeExnRVhiQ2I5Qzd4dWhPTzdn?oc=5",
+          "domain": "Breaking Defense",
+          "seendate": "20260601070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "Japan's Defense Buildup Could Ease South Korea's Security Burden - 조선일보",
-          "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOeVh0cEdmLXk3SmdsZmhZcGU3T2RTRWxNZ2g3aUFrb3JqV3VqVUotNXpjemQ5RnRhTThvWjE4ZGxndVpoQjdlRl9EUDhBM1FLQ2RNOEpSM25xVm1ETFFpWFpuNTdfV0gzUkJackgwSmVyeW81MHpzMENtdURVc25sdFVrNkE?oc=5",
+          "title": "Closing gaps: Japan’s evolving missile air- and missile-defence capabilities - The International Institute for Strategic Studies",
+          "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQWDljd3dXTm9BYlYyTXBNdjQ5WFpfMlRDV0ZkUG9fMlc0d01nM3JJVzJzSTdpVnB2aVBOS29tZ25qaEFRZURFTW9YUkxVdUdGQ3pPVVhadEx1TXZLOXU3R2hUWTdsTEtZZHcxeG9sTmxhN080a2pXSmh3aUttQ2gwQnVOVVJZQ0Z4dGJYWEZtUG5UWlRlZTJvcVpXWlQyWTlFdGZhWUR2RDJhVUlXdC1VU05ZU2ZPMk1BUjllcXVOb2hrcXc0N0Y2UHRJMHUwSDdJMlFR?oc=5",
+          "domain": "The International Institute for Strategic Studies",
+          "seendate": "20260616151806",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "U.S., Japan accelerate joint missile production - upi.com",
+          "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQeS0za0x1NjVCLUdVVzhpcG53dnhac1ZHOW9oREZMQ011Nk53cEpRWGpUWHlxS05SOHBZcEZwOG9QanhuSHZma1FhTXNteGM3dmo4ay1WcGZfck5ZNW5Ud2FsOUJuNXVUTXJDTHhvbmNHczJJZDh1TDZsNTRWb0o1azVEZ3lHeDdOUm81Rjg5VHloTDVGSjNFSUZmYjZsTmdSZHJveFR2aFgyMllGbWJHSTZGRnNpcVcwZmNnenhzMm5DLWtWOHhZeTB30gHPAUFVX3lxTE1EV0UwTDhTN2tFRlJtSkR6Q005WE9Od2xDMWtMa0VSMGFSa0s3cFNyczRHNVJMT2h3ZUtvRXN3a0pNa1J2QmprMVc4Vjd6REpGV2JJRFItOU9nMF96S1k4b0RJR19Ld0VoZ0d2VldyWDctbFJEOS1jbU93bDhBMTlxYmNzdjE0Y1JZZWxuN1U1ODZBOTVySWR0T0dUdjBDM3hBTHhoTVJMQlE5YVBUMkRXanBGZW1EdHpiUXkwNU1mTUw1LTJNZkdKbl90cVI5QQ?oc=5",
+          "domain": "upi.com",
+          "seendate": "20260531070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "U.S. Defense Demands Are Pushing Asian Allies Toward China - Council on Foreign Relations",
+          "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNQnYzWjgtTTZuX2lVYmw4S2dmckJMWTl4STlrYW9QTHpDTlNuNkJzZzl2eUhmWFBLNUNaaG5EdEVDTWlucmlsY3ZmWlBlUVRuMjA5VW1hbXJheUNZOE9UUlN3V1FZcVl1QWtvaFdCUVpvSnJrZUdIUURBUExKZlhfN0NjaHRNd2ZURHJjQ0d1YVhmd2M?oc=5",
+          "domain": "Council on Foreign Relations",
+          "seendate": "20260617193801",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "China & Taiwan Update, June 5, 2026 - American Enterprise Institute - AEI",
+          "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE84RzFjdThpM0pUcThoX2NzNFlmaGYzdldBcWdwZ21KSlBDU1RJUTltOTZrWjkyZ24zam5YdktmamJiUnVRNlk1MXpzd3YxOFBjbUtXRUNEX19jWENKSTN1bDJFYnVDTm1mRDhJWTZB?oc=5",
+          "domain": "American Enterprise Institute - AEI",
+          "seendate": "20260605070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "Defense and Sovereignty in an Unstable Indo-Pacific - JAPAN Forward",
+          "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNZURDNlU3T0N1dVQyNlpjMlRRV3YtUjd3elB3WjVaV1NDS2I2ckZ2YnVHZksycEhLeG9Fcll2SVV6MjM1ZF9ENlhFRDVYcVdTV0cySjI2cElrSlk4eWV1S2thZWtYcFBSV1ZlRUl1MEZWbnhqb0l5aTZfRUhNX3pwcTFta0RqX2NUUTkzWWNmQkpyOG81cl81enJ4MnVzYjByeFZFTmpEbw?oc=5",
+          "domain": "JAPAN Forward",
+          "seendate": "20260612070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "North Korea's Nuclear Arsenal Outpaces U.S. Diplomacy - Legis1",
+          "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE45bTI5am5ZallfYjhYQmcxVmhJSEFTY2dGSUw0eEI3bDVORFNsUy03akRWRU5nQ1p4ZThKa2p1RU9USjVHWTk1eXdVSWIyYnJTclJIeXZYVFRaVlowWHpHU3pfMGcwUHd0NTdwVWRLcXhvc19a?oc=5",
+          "domain": "Legis1",
+          "seendate": "20260604070000",
+          "sourcecountry": "US",
+          "language": "en"
+        },
+        {
+          "title": "U.S. Defense Secretary Hails South Korea's Wartime Control Push, Stresses Balance - 조선일보",
+          "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOMWdHdFNkT2JwdW1sSlBVWk5oYV9odEtnUzZVN1NjdWtJQUZjRHcxSTdoVWh2LWgxeG5QdF9KRDdwVUtYSEdmbmFNazNQaWVYVVh0SWNqYzhHQVh5dXpjTnlBQWVUTG80cjhkR19YY2RCUVRXM3I2NG1KWlpVVWwzUG9CN0RKcFN0?oc=5",
           "domain": "조선일보",
-          "seendate": "20260427070000",
+          "seendate": "20260601070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "South Korea needs partnerships to secure its economic lifelines - East Asia Forum",
-          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOV2UzS0dSOEVNTUhiU3ZZTkNwM25sMkpDS0pQR1VGTmZLeFZFMThPVDV5T3VtYk5yVmNPdWRyM2pHeTEwY3ZmcXVsZE9pY1ZlNk5DZmlzOHVWZG9pcVFwdkVPN0xfQ29DRTROMWtUUTBpQmdLT0U4clp3OVRfTXRqQTBOOEx4ZDJZNTNUdmJ6Tk9BdUg1SWVTMXZ3bFljOHBxTFlr?oc=5",
-          "domain": "East Asia Forum",
-          "seendate": "20260519000000",
+          "title": "Shangri-La: Hegseth Calls on Western Pacific Allies to Maintain Military Strength, 'We Need Partners, Not Protectorates' - USNI News",
+          "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxONlpWRzFsWTJzeXl0T0pILWowR2U2blBMTE1qUFRzaUxBd1o5RjlMdHVZQW1sMjQ1SU9tUXNNNG0tOEJaT2ROTEdza1V3VFdnV2g5M0dhRkpfaXRQMmxkSHZmbTRoUDFsVVlSejRLaWNuNEVGaVpCeVlpOFcxZ1F1UkZYdjNWa2MwUE5fMllkcjl6akhSMzlHMnNEbi1fMWNkTGkxNWJYWVZMMWM4dFdVNk5SYTlrdWpJSFdUbzNyOFpxaUJuamlNVk5ISDM5Z1VYNDFsSGZGd0NTN3N4OHlNYUhB?oc=5",
+          "domain": "USNI News",
+          "seendate": "20260530070000",
           "sourcecountry": "US",
           "language": "en"
         },
         {
-          "title": "Japan, S. Korea Hold Security Talks in Seoul - nippon.com",
-          "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1MeUhxWDB2SzkwMHhDQ0tYdHZYamxvZzF3NGpMZnZKX1hvQ1dCbjQ1NEdCTHpHYW5nMjJmZVotNk1XZ1RnNDBNcDRVZGdpUjF5bmt2N0M4NlRhMnNj?oc=5",
-          "domain": "nippon.com",
-          "seendate": "20260507070000",
-          "sourcecountry": "US",
-          "language": "en"
-        },
-        {
-          "title": "Japan puts 'too much burden' on U.S. for security, former defense minister Kono says - CNBC",
-          "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPNXRNalRiN1JZb2sweUpocGhxUDZEakFDTDFORE9WaUlLYUplaVRYbkxpREZBcWV5cnd3bDhCaDVxLWxfUmJZakxRdkhqU3N3NTFEbVNWaDVqTjNWUk9XTlpoc2FieUdSVm9XSzFzdFhuOFNKc2xfeEUwRDJMZlFMYVFHTFdxS0M2ZWRiWUNZZEZvWExMNldod2s4SWxmaUZ2SjBFR0lTQdIBrAFBVV95cUxPbnhOZTRqRDBGYkRzSDR3N244RWRuaUhXSDlqOVNtX3cwN3JaNHgtWXF1WmFMSk1KUVhCUW9JcFhyMWFlZ1hRZmVBdGhIYnFBWXZPMzdnejlvc3FJbzgwSjBqLV9kLXNjUG12amN5Q1E4VjFfdTFZVE5pUmZRaWJFS1ItemhQdkc4cTBBcjFyelJfZmZqRXVNZG5kYmtQd29vMFlOTVpCMHJZOUJH?oc=5",
-          "domain": "CNBC",
-          "seendate": "20260430070000",
+          "title": "EXCLUSIVE: OMB could use $1.9B in reconciliation to buy foreign-made ships - Breaking Defense",
+          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNeVpkUVgxQ2k0QWh5QW5SNndVOGxFUTBLUmlaZDdtVmpGZkNNTmNPeDN5MnhLQktueERPSjZUdDM5aWVpbkV1OG1MNVpfbm1qZUQwZjMwSGtMQWREYU5RMjBfZzN0Smk3bG1NQ3RXbDdfZ3Y4a1NWVTl5UjUwbDdlXzd3enVvUmFNa0dOaDJXbUtqUXNsQ0pYbXRZT3JuVDZjRnkzRkRBSGVTR1VGUmc?oc=5",
+          "domain": "Breaking Defense",
+          "seendate": "20260529070000",
           "sourcecountry": "US",
           "language": "en"
         }

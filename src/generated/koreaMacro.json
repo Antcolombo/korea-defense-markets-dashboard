@@ -1,0 +1,32 @@
+[
+  {
+    "provider": "derived",
+    "sourceUrl": "/methodology",
+    "sourceName": "Korea macro summary",
+    "retrievedAt": "2026-06-21T19:58:32.748Z",
+    "publishedAt": "2026-06-21T19:58:32.748Z",
+    "isDerived": true,
+    "methodologyNote": "Korea pressure classification is derived from sourced USD/KRW, Korea rates, and optional BOK/KRX macro-flow inputs. Missing specialty inputs are visible in sourceBacklog.",
+    "dataQuality": "proxy",
+    "date": "2026-06-21",
+    "stressDriver": "Rates-driven",
+    "summary": "Current Korea pressure classification: Rates-driven. This separates FX, equity-flow, rates, and external-balance evidence instead of treating USD/KRW as the whole macro story.",
+    "usdKrw5d": -37.09,
+    "kr10y5d": 0.71,
+    "foreignEquityFlowKrwBn": null,
+    "bokBaseRate": null,
+    "currentAccountUsdBn": null,
+    "tradeBalanceUsdBn": null,
+    "krwPressureIndicators": [
+      "USD/KRW 5D level move -37.09",
+      "KR10Y 5D level move 0.71",
+      "Foreign equity flow unavailable",
+      "Current account unavailable",
+      "Trade balance unavailable"
+    ],
+    "sourceBacklog": [
+      "BOK_ECOS_API_KEY is not configured; BOK macro/rates inputs require ECOS series mappings or data/private/korea-macro-flows.json.",
+      "Foreign equity flow requires KRX investor-flow data in data/private/korea-macro-flows.json or a configured KRX API adapter."
+    ]
+  }
+]

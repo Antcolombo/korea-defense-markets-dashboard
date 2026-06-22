@@ -1,20 +1,53 @@
 {
-  "generatedAt": "2026-05-20T18:11:04.280Z",
+  "generatedAt": "2026-06-21T19:58:33.383Z",
+  "lastSuccessfulRefreshAt": "2026-06-21T19:58:25.598Z",
+  "nextScheduledRefreshAt": "2026-06-22T12:30:00.000Z",
+  "freshnessWarnings": [],
+  "koreaUnlockChecklist": [
+    {
+      "label": "data.go.kr local equity key",
+      "status": "missing",
+      "detail": "Set DATA_GO_KR_SERVICE_KEY to unlock Samsung, SK Hynix, Hanwha Aerospace, LIG Nex1, KAI, Hyundai Rotem, and Hanwha Ocean daily closes."
+    },
+    {
+      "label": "KOSPI/KOSDAQ index export",
+      "status": "missing",
+      "detail": "Create data/private/korea-index-prices.json with npm run import:korea:index or a validated KRX Data Marketplace export."
+    },
+    {
+      "label": "BOK ECOS key",
+      "status": "missing",
+      "detail": "Set BOK_ECOS_API_KEY for BOK rates/current-account/trade-balance ingestion."
+    },
+    {
+      "label": "BOK series mappings",
+      "status": "missing",
+      "detail": "Configure BOK_BASE_RATE_*, BOK_CURRENT_ACCOUNT_*, and BOK_TRADE_BALANCE_* STAT_CODE/ITEM_CODE env vars."
+    },
+    {
+      "label": "Foreign equity flow export",
+      "status": "missing",
+      "detail": "Create data/private/korea-macro-flows.json with npm run import:korea:macro or a validated KRX/BOK export."
+    }
+  ],
   "status": "passed",
-  "recordsChecked": 4582,
+  "recordsChecked": 5377,
   "datasetCounts": {
     "events": 50,
-    "assets": 39,
+    "assets": 45,
     "companies": 16,
     "themes": 13,
-    "prices": 4253,
+    "prices": 5033,
     "riskIndex": 1,
-    "eventReturns": 118,
+    "eventReturns": 123,
     "memos": 1,
+    "koreaMacro": 1,
+    "semisCycle": 2,
     "marketTape": 1,
     "companyCoverage": 16,
     "eventTape": 50,
     "ideaLedger": 5,
+    "weeklyReview": 1,
     "researchArtifacts": 6,
     "masteryPipeline": 12,
     "energyResearch": 1
@@ -23,37 +56,81 @@
     {
       "provider": "Google News RSS",
       "status": "source",
-      "retrievedAt": "2026-05-20T16:50:44.865Z",
+      "retrievedAt": "2026-06-21T19:57:55.520Z",
       "records": 60,
-      "failures": []
+      "failures": [],
+      "staleAfterHours": 24,
+      "ageHours": 0,
+      "freshnessStatus": "fresh"
     },
     {
       "provider": "Nasdaq Historical",
       "status": "source",
-      "retrievedAt": "2026-05-20T16:50:48.172Z",
-      "records": 2091,
-      "failures": []
+      "retrievedAt": "2026-06-21T19:58:00.342Z",
+      "records": 2706,
+      "failures": [],
+      "staleAfterHours": 36,
+      "ageHours": 0,
+      "freshnessStatus": "fresh"
+    },
+    {
+      "provider": "Korea official market data",
+      "status": "not_configured",
+      "retrievedAt": "2026-06-21T19:58:32.369Z",
+      "records": 0,
+      "failures": [
+        "DATA_GO_KR_SERVICE_KEY is not configured; Korean local equities remain evidence-only until official KRX-backed prices are available.",
+        "KOSPI index prices require data/private/korea-index-prices.json exported from KRX Data Marketplace.",
+        "KOSDAQ index prices require data/private/korea-index-prices.json exported from KRX Data Marketplace."
+      ],
+      "optional": true,
+      "staleAfterHours": 36,
+      "ageHours": null,
+      "freshnessStatus": "unknown"
     },
     {
       "provider": "FRED",
       "status": "source",
-      "retrievedAt": "2026-05-20T16:50:57.640Z",
-      "records": 2220,
-      "failures": []
+      "retrievedAt": "2026-06-21T19:58:17.186Z",
+      "records": 2400,
+      "failures": [],
+      "staleAfterHours": 72,
+      "ageHours": 0,
+      "freshnessStatus": "fresh"
+    },
+    {
+      "provider": "Korea macro / BOK / flows",
+      "status": "not_configured",
+      "retrievedAt": "2026-06-21T19:58:32.484Z",
+      "records": 0,
+      "failures": [
+        "BOK_ECOS_API_KEY is not configured; BOK macro/rates inputs require ECOS series mappings or data/private/korea-macro-flows.json.",
+        "Foreign equity flow requires KRX investor-flow data in data/private/korea-macro-flows.json or a configured KRX API adapter."
+      ],
+      "optional": true,
+      "staleAfterHours": 168,
+      "ageHours": null,
+      "freshnessStatus": "unknown"
     },
     {
       "provider": "SEC EDGAR",
       "status": "source",
-      "retrievedAt": "2026-05-20T16:51:02.197Z",
+      "retrievedAt": "2026-06-21T19:58:25.598Z",
       "records": 9,
-      "failures": []
+      "failures": [],
+      "staleAfterHours": 168,
+      "ageHours": 0,
+      "freshnessStatus": "fresh"
     },
     {
       "provider": "OpenDART",
       "status": "source",
-      "retrievedAt": "2026-05-20T16:51:02.197Z",
+      "retrievedAt": "2026-06-21T19:58:25.598Z",
       "records": 100,
-      "failures": []
+      "failures": [],
+      "staleAfterHours": 168,
+      "ageHours": 0,
+      "freshnessStatus": "fresh"
     }
   ],
   "missingProvenance": [],

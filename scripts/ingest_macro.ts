@@ -24,6 +24,7 @@ const series = [
   { id: 'DEXKOUS', ticker: 'USDKRW', name: 'South Korean won per U.S. dollar' },
   { id: 'DEXJPUS', ticker: 'USDJPY', name: 'Japanese yen to U.S. dollar exchange rate' },
   { id: 'DCOILWTICO', ticker: 'OIL', name: 'WTI crude oil price' },
+  { id: 'DCOILBRENTEU', ticker: 'BRENT', name: 'Brent crude oil price' },
   { id: 'IRLTLT01KRM156N', ticker: 'KR10Y', name: 'Korea long-term government bond yield' },
   { id: 'GASREGW', ticker: 'GASOLINE', name: 'US Regular All Formulations Gas Price', limit: 420 }
 ]

@@ -36,6 +36,12 @@ export const assetWatchlist = [
   { ticker: 'VIX', name: 'VIX', assetClass: 'index', country: 'United States', sector: 'Volatility', group: 'Global Overlay', sleeve: 'Global overlay', themes: ['FX / Volatility Stress'] },
   { ticker: 'GOLD', name: 'Gold', assetClass: 'commodity', country: 'Global', sector: 'Commodity', group: 'Global Overlay', sleeve: 'Global overlay', themes: ['FX / Volatility Stress', 'China/Taiwan Spillover'] },
   { ticker: 'OIL', name: 'Oil', assetClass: 'commodity', country: 'Global', sector: 'Commodity', group: 'Global Overlay', sleeve: 'Global overlay', themes: ['Oil / Energy Security', 'Shipping / Naval Risk'] },
+  { ticker: 'BRENT', name: 'Brent crude oil', assetClass: 'commodity', country: 'Global', sector: 'Commodity', group: 'Global Overlay', sleeve: 'Energy tape', themes: ['Oil / Energy Security', 'Shipping / Naval Risk'] },
+  { ticker: 'USO', name: 'United States Oil Fund', assetClass: 'etf', country: 'United States', sector: 'Energy', group: 'Energy ETFs', sleeve: 'Energy tape', themes: ['Oil / Energy Security', 'Shipping / Naval Risk'] },
+  { ticker: 'BNO', name: 'United States Brent Oil Fund', assetClass: 'etf', country: 'United States', sector: 'Energy', group: 'Energy ETFs', sleeve: 'Energy tape', themes: ['Oil / Energy Security', 'Shipping / Naval Risk'] },
+  { ticker: 'XLE', name: 'Energy Select Sector SPDR Fund', assetClass: 'etf', country: 'United States', sector: 'Energy', group: 'Energy Equities', sleeve: 'Energy tape', themes: ['Oil / Energy Security', 'Shipping / Naval Risk'] },
+  { ticker: 'XOP', name: 'SPDR S&P Oil & Gas Exploration & Production ETF', assetClass: 'etf', country: 'United States', sector: 'Energy', group: 'Energy Equities', sleeve: 'Energy tape', themes: ['Oil / Energy Security', 'Shipping / Naval Risk'] },
+  { ticker: 'OIH', name: 'VanEck Oil Services ETF', assetClass: 'etf', country: 'United States', sector: 'Energy', group: 'Energy Equities', sleeve: 'Energy tape', themes: ['Oil / Energy Security', 'Shipping / Naval Risk'] },
   { ticker: 'GASOLINE', name: 'U.S. regular gasoline retail price', assetClass: 'commodity', country: 'United States', sector: 'Energy', group: 'Energy Fundamentals', sleeve: 'Global overlay', themes: ['Oil / Energy Security', 'FX / Volatility Stress'] },
   { ticker: 'US10Y', name: 'U.S. 10-year yield', assetClass: 'rate', country: 'United States', sector: 'Rates', group: 'Global Overlay', sleeve: 'Global overlay', themes: ['FX / Volatility Stress'] }
 ] as const

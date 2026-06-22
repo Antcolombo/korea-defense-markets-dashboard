@@ -4,6 +4,7 @@ import type { Company } from '../src/types/company'
 import type { Event } from '../src/types/event'
 import type { Memo } from '../src/types/memo'
 import type { EventReturn, PricePoint } from '../src/types/market'
+import type { KoreaMacroSummary } from '../src/types/koreaMacro'
 import type {
   CompanyCoverageRecord,
   EventTapeRecord,
@@ -12,7 +13,8 @@ import type {
   MasteryPipelineStage,
   ResearchArtifactRecord,
   ResearchEventType,
-  SourceBacklogItem
+  SourceBacklogItem,
+  WeeklyReviewRecord
 } from '../src/types/researchOs'
 
 const generatedAt = nowIso()
@@ -90,8 +92,9 @@ function companyTheme(company: Company) {
   return company.relatedThemes[0] ?? company.sector
 }
 
-function buildMarketTape(assets: Asset[], prices: PricePoint[]): MarketTapeRecord[] {
+function buildMarketTape(assets: Asset[], prices: PricePoint[], koreaMacro: KoreaMacroSummary[]): MarketTapeRecord[] {
   const latest = latestByTicker(prices)
+  const macro = koreaMacro[0]
   const movers = assets
     .filter(asset => asset.return5d !== null)
     .sort((a, b) => Math.abs(b.return5d ?? 0) - Math.abs(a.return5d ?? 0))
@@ -114,6 +117,10 @@ function buildMarketTape(assets: Asset[], prices: PricePoint[]): MarketTapeRecor
     gold: latestPrice(latest, 'GOLD'),
     SOX: latestPrice(latest, 'SOXX'),
     VIX: latestPrice(latest, 'VIX'),
+    foreign_equity_flow_krw_bn: macro?.foreignEquityFlowKrwBn ?? null,
+    bok_base_rate: macro?.bokBaseRate ?? null,
+    current_account_usd_bn: macro?.currentAccountUsdBn ?? null,
+    trade_balance_usd_bn: macro?.tradeBalanceUsdBn ?? null,
     top_movers: movers,
     market_summary: 'Daily command-center row built from sourced macro and market observations; use it to ask what moved, why, whether it matters, and whether an expression is warranted.',
     todays_question: 'What moved today, what source explains it, and does it change any Korea macro, defense, or semis idea?',
@@ -176,7 +183,36 @@ function buildEventTape(events: Event[], eventReturns: EventReturn[]): EventTape
   })
 }
 
-function buildIdeaLedger(events: Event[], assets: Asset[]): IdeaLedgerRecord[] {
+function normalizeManualIdeas(records: Partial<IdeaLedgerRecord>[]): IdeaLedgerRecord[] {
+  return records.map((record, index) => ({
+    ...provenance('Research OS manual idea ledger', 'Idea ledger record sourced from data/manual/idea-ledger.json and normalized into the generated Research OS dataset.', '/research-factory'),
+    idea_id: record.idea_id ?? `manual-idea-${index + 1}`,
+    date: record.date ?? generatedAt.slice(0, 10),
+    theme: record.theme ?? 'Unclassified',
+    asset: record.asset ?? 'N/A',
+    thesis: record.thesis ?? 'Manual idea missing thesis.',
+    vibeThesis: record.vibeThesis ?? record.thesis ?? 'Manual idea missing vibe thesis.',
+    market_implies: record.market_implies ?? 'Not yet written.',
+    i_believe: record.i_believe ?? 'Not yet written.',
+    catalyst: record.catalyst ?? 'Next sourced update.',
+    expression: record.expression ?? 'Not yet selected.',
+    evidence: Array.isArray(record.evidence) && record.evidence.length > 0 ? record.evidence : ['/source-audit'],
+    status: record.status ?? 'raw',
+    promotedMemoId: record.promotedMemoId ?? null,
+    reason_accepted_or_rejected: record.reason_accepted_or_rejected ?? 'Pending review.',
+    expected_payoff: record.expected_payoff ?? 'Pending memo.',
+    invalidation: record.invalidation ?? 'Pending invalidation.',
+    result_after_1w: record.result_after_1w ?? record.resultAfter1w ?? 'Pending',
+    result_after_1m: record.result_after_1m ?? record.resultAfter1m ?? 'Pending',
+    post_mortem: record.post_mortem ?? 'Pending',
+    resultAfter1w: record.resultAfter1w ?? record.result_after_1w ?? 'Pending',
+    resultAfter1m: record.resultAfter1m ?? record.result_after_1m ?? 'Pending',
+    whatWasRight: record.whatWasRight ?? 'Pending post-mortem.',
+    whatWasWrong: record.whatWasWrong ?? 'Pending post-mortem.'
+  }))
+}
+
+function buildSeedIdeaLedger(events: Event[], assets: Asset[]): IdeaLedgerRecord[] {
   const topEvent = events[0]
   const defenseAsset = assets.find(asset => asset.ticker === 'HII') ?? assets.find(asset => asset.sector.includes('Defense')) ?? assets[0]
   const semisAsset = assets.find(asset => asset.ticker === 'SOXX') ?? assets[0]
@@ -196,19 +232,48 @@ function buildIdeaLedger(events: Event[], assets: Asset[]): IdeaLedgerRecord[] {
     theme: idea.theme,
     asset: idea.asset?.ticker ?? 'N/A',
     thesis: idea.thesis,
+    vibeThesis: `Discretionary setup: ${idea.thesis}`,
     market_implies: 'Current public dashboard evidence is incomplete; treat this as a research question, not a conclusion.',
     i_believe: 'The idea must earn promotion through source checks, event evidence, and price reaction review.',
     catalyst: topEvent?.title ?? 'Next sourced event tape update',
     expression: 'Watchlist only until memo, risk, and invalidation are written.',
     evidence: [topEvent?.sourceUrl ?? '/events', '/source-audit', '/backtest'],
     status: idea.status,
+    promotedMemoId: idea.status === 'accepted' ? `memo-${generatedAt.slice(0, 10)}` : null,
     reason_accepted_or_rejected: idea.status === 'rejected' ? 'Rejected until source and expression quality improve.' : 'Seeded for workflow tracking.',
     expected_payoff: 'Defined during memo stage.',
     invalidation: 'Invalidated if source, price, or event evidence contradicts the setup.',
     result_after_1w: 'Pending',
     result_after_1m: 'Pending',
-    post_mortem: 'Pending'
+    post_mortem: 'Pending',
+    resultAfter1w: 'Pending',
+    resultAfter1m: 'Pending',
+    whatWasRight: 'Pending post-mortem.',
+    whatWasWrong: 'Pending post-mortem.'
   }))
+}
+
+function buildWeeklyReview(ideas: IdeaLedgerRecord[], sourceStatus: 'manual-source' | 'seed-fallback'): WeeklyReviewRecord[] {
+  const rawIdeas = ideas
+    .filter(idea => ['raw', 'screened', 'watchlist'].includes(idea.status))
+    .slice(0, 5)
+    .map(idea => idea.idea_id)
+  const memoCandidate = ideas.find(idea => idea.promotedMemoId)?.idea_id ?? ideas.find(idea => idea.status === 'accepted')?.idea_id ?? null
+  const postMortemCandidate = ideas.find(idea => idea.status === 'rejected')?.idea_id ?? ideas.find(idea => idea.status === 'closed')?.idea_id ?? null
+  return [{
+    ...provenance('Research OS weekly review', 'Weekly review is derived from actual generated idea-ledger state: five raw/screened/watchlist ideas, one memo candidate, and one post-mortem candidate.', '/research-factory'),
+    date: generatedAt.slice(0, 10),
+    sourceStatus,
+    rawIdeas,
+    memoCandidate,
+    postMortemCandidate,
+    checklist: [
+      'Review five raw/screened/watchlist ideas.',
+      'Promote one idea to a memo candidate.',
+      'Update one rejected or closed idea with post-mortem fields.',
+      'Confirm source quality before changing any expression state.'
+    ]
+  }]
 }
 
 function buildResearchArtifacts(events: Event[], companies: Company[], memos: Memo[]): ResearchArtifactRecord[] {
@@ -276,11 +341,15 @@ async function main() {
   const prices = await readJson<PricePoint[]>('src/generated/prices.json', [])
   const eventReturns = await readJson<EventReturn[]>('src/generated/eventReturns.json', [])
   const memos = await readJson<Memo[]>('src/generated/memos.json', [])
+  const koreaMacro = await readJson<KoreaMacroSummary[]>('src/generated/koreaMacro.json', [])
+  const manualIdeas = await readJson<Partial<IdeaLedgerRecord>[]>('data/manual/idea-ledger.json', [])
 
-  const marketTape = buildMarketTape(assets, prices)
+  const marketTape = buildMarketTape(assets, prices, koreaMacro)
   const companyCoverage = buildCompanyCoverage(companies)
   const eventTape = buildEventTape(events, eventReturns)
-  const ideaLedger = buildIdeaLedger(events, assets)
+  const sourceStatus = manualIdeas.length > 0 ? 'manual-source' as const : 'seed-fallback' as const
+  const ideaLedger = manualIdeas.length > 0 ? normalizeManualIdeas(manualIdeas) : buildSeedIdeaLedger(events, assets)
+  const weeklyReview = buildWeeklyReview(ideaLedger, sourceStatus)
   const researchArtifacts = buildResearchArtifacts(events, companies, memos)
   const masteryPipeline = buildMasteryPipeline()
 
@@ -288,10 +357,11 @@ async function main() {
   await writeJson('src/generated/companyCoverage.json', companyCoverage)
   await writeJson('src/generated/eventTape.json', eventTape)
   await writeJson('src/generated/ideaLedger.json', ideaLedger)
+  await writeJson('src/generated/weeklyReview.json', weeklyReview)
   await writeJson('src/generated/researchArtifacts.json', researchArtifacts)
   await writeJson('src/generated/masteryPipeline.json', masteryPipeline)
 
-  console.log(`Built Research OS datasets: ${marketTape.length} market tape rows, ${companyCoverage.length} companies, ${eventTape.length} events, ${ideaLedger.length} ideas, ${researchArtifacts.length} artifacts, ${masteryPipeline.length} stages`)
+  console.log(`Built Research OS datasets: ${marketTape.length} market tape rows, ${companyCoverage.length} companies, ${eventTape.length} events, ${ideaLedger.length} ideas, ${weeklyReview.length} weekly reviews, ${researchArtifacts.length} artifacts, ${masteryPipeline.length} stages`)
 }
 
 main().catch(error => {

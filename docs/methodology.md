@@ -1,50 +1,60 @@
 # Methodology
 
-This project uses generated source-provenance data files. It does not invent event facts, market prices, company descriptions, or memo conclusions when provider data is unavailable. In strict source mode, provider failures and empty core datasets block publication.
+This project uses provider-backed point-in-time rows in Postgres. It does not invent market prices, options activity, short interest, catalyst facts, or memo conclusions when provider data is unavailable.
 
 ## Source Vs Derived Fields
-Source fields come directly from providers, such as event title, source URL, article domain, filing date, ticker, and daily close where available.
 
-Derived fields are deterministic calculations or classifications, such as:
+Source fields come from providers such as Polygon/Massive, FINRA, FRED, SEC EDGAR, OpenDART, BOK/data.go.kr/KRX exports, and public catalyst feeds.
 
-- Event category
-- Affected themes
-- Affected assets
-- Market-regime labels
-- Source-readiness checks
-- Event-to-market return windows
-- Memo summaries assembled from sourced records
+Derived fields are deterministic calculations:
 
-Each generated record includes:
+- 1D/5D/20D/60D returns
+- relative strength versus SPY
+- volume confirmation
+- realized volatility
+- moving-average distance
+- trend label
+- positioning proxy aggregation
+- crowding score
+- validation hit rates and forward returns
+- PM daily-note sections assembled from sourced snapshots
 
-- provider
-- source URL
-- source name
-- retrieval timestamp
-- published timestamp where available
-- derived flag
-- methodology note
-- data-quality status
+## Point-In-Time Metadata
 
-## Market Regime Board
-The product UI no longer converts event text into a tradeable numeric score. Event metadata is too noisy as a standalone proxy for market movement.
+Every provider-backed row stores:
 
-The regime board starts with sourced market data:
+- `asOfDate`
+- `observedAt`
+- `providerTimestamp`
+- `ingestedAt`
+- `source`
+- `provider`
+- `revisionFlag`
+- `dataStatus`
 
-- FX pressure from USD/KRW tape
-- Rates pressure from U.S. 10Y tape
-- Equity tape from EWY, SPX, and VIX
-- Semis tape from SOXX, SMH, NVDA, TSM, and MU
-- Defense tape from liquid U.S. aerospace and defense expressions
-- Source coverage and explicit backlog status
+## Data Availability
 
-Events remain useful for context, sourcing, taxonomy, and research prompts. They do not become a buy/sell score without confirmation from price, filings, fundamentals, or repeatable return studies.
+Signals expose:
 
-## Limitations
-Provider coverage can be incomplete. API keys, provider rate limits, licensing constraints, source availability, holidays, and disclosure timing can affect coverage. Missing values must not be estimated.
+- `Available`
+- `Unavailable`
+- `Stale`
+- `Partial`
+- `Entitlement Missing`
+- `Provider Error`
 
-Recent events may not have complete forward market windows. In that case, the event-return lab uses the available trailing sourced close-price window and labels the output as derived correlation context, not causal impact.
+Missing values are not estimated. Crowding scores use only sourced available components and show excluded inputs.
+
+## Validation
+
+`/research/validation` tests whether:
+
+- high crowding predicts 5D/20D reversal
+- relative strength plus volume confirmation predicts continuation
+- options-volume spikes lead later realized volatility
+
+The validation output displays hit rate, average forward return, sample size, coverage, and caveats.
 
 ## Publication Gate
 
-`npm run audit:data` checks provider status, required generated dataset counts, and provenance fields. `npm run build` runs that audit before `next build`, so the deployed site cannot ship with empty events, prices, market-regime inputs, event returns, Research OS registries, or memos.
+`npm run audit:data` checks Postgres availability, required sourced rows, provider runs, stale data, and entitlement/provider errors. `npm run build` runs that audit before `next build`.

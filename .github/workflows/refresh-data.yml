@@ -27,7 +27,7 @@ jobs:
         run: npm ci
 
       - name: Refresh generated data
-        run: npm run build:data
+        run: npm run build:generated
 
       - name: Commit refreshed data
         run: |

@@ -45,6 +45,10 @@ export type MarketTapeRecord = Provenance & {
   gold: number | null
   SOX: number | null
   VIX: number | null
+  foreign_equity_flow_krw_bn: number | null
+  bok_base_rate: number | null
+  current_account_usd_bn: number | null
+  trade_balance_usd_bn: number | null
   top_movers: string[]
   market_summary: string
   todays_question: string
@@ -101,18 +105,33 @@ export type IdeaLedgerRecord = Provenance & {
   theme: string
   asset: string
   thesis: string
+  vibeThesis: string
   market_implies: string
   i_believe: string
   catalyst: string
   expression: string
   evidence: string[]
   status: IdeaStatus
+  promotedMemoId: string | null
   reason_accepted_or_rejected: string
   expected_payoff: string
   invalidation: string
   result_after_1w: string
   result_after_1m: string
   post_mortem: string
+  resultAfter1w: string
+  resultAfter1m: string
+  whatWasRight: string
+  whatWasWrong: string
+}
+
+export type WeeklyReviewRecord = Provenance & {
+  date: string
+  sourceStatus: 'manual-source' | 'seed-fallback'
+  rawIdeas: string[]
+  memoCandidate: string | null
+  postMortemCandidate: string | null
+  checklist: string[]
 }
 
 export type ResearchArtifactRecord = Provenance & {

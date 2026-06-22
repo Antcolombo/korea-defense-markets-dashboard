@@ -1,44 +1,38 @@
-import type { ReactNode } from 'react'
-import type { RiskLevel } from '@/types/theme'
-import type { DataQuality } from '@/types/provenance'
-import { getSourceAudit } from '@/lib/data/getSourceAudit'
+import * as React from 'react'
+import { cva, type VariantProps } from 'class-variance-authority'
+import { Slot } from '@radix-ui/react-slot'
+import { cn } from '@/lib/utils'
 
-type BadgeProps = {
-  children: ReactNode
-  tone?: 'default' | 'low' | 'watch' | 'elevated' | 'high' | 'crisis' | 'source'
-}
-
-export function Badge({ children, tone = 'default' }: BadgeProps) {
-  const tones = {
-    default: 'border-line bg-[rgba(255,255,255,0.06)] text-muted',
-    low: 'border-[rgba(80,210,193,0.35)] bg-[rgba(80,210,193,0.12)] text-steel',
-    watch: 'border-[rgba(124,190,255,0.35)] bg-[rgba(124,190,255,0.12)] text-[rgb(180,220,255)]',
-    elevated: 'border-[rgba(255,228,168,0.38)] bg-[rgba(255,228,168,0.12)] text-amber',
-    high: 'border-[rgba(255,170,110,0.38)] bg-[rgba(255,170,110,0.12)] text-[rgb(255,210,180)]',
-    crisis: 'border-[rgba(255,122,122,0.45)] bg-[rgba(255,122,122,0.14)] text-crisis',
-    source: 'border-[rgba(80,210,193,0.4)] bg-[rgba(80,210,193,0.13)] text-steel'
+const badgeVariants = cva(
+  'inline-flex h-5 w-fit items-center justify-center gap-1 rounded-full border px-2 py-0.5 text-xs font-medium whitespace-nowrap',
+  {
+    variants: {
+      variant: {
+        default: 'border-primary bg-primary text-primary-foreground',
+        secondary: 'border-border bg-secondary text-secondary-foreground',
+        outline: 'border-border bg-transparent text-foreground',
+        destructive: 'border-destructive/40 bg-destructive/15 text-red-200',
+        ghost: 'border-transparent text-muted-foreground',
+        link: 'border-transparent text-primary underline-offset-4 hover:underline'
+      }
+    },
+    defaultVariants: {
+      variant: 'default'
+    }
   }
+)
 
-  return (
-    <span className={`inline-flex items-center whitespace-nowrap rounded-full border px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.04em] ${tones[tone]}`}>
-      {children}
-    </span>
-  )
+function Badge({
+  className,
+  variant,
+  asChild = false,
+  ...props
+}: React.ComponentProps<'span'> &
+  VariantProps<typeof badgeVariants> & {
+    asChild?: boolean
+}) {
+  const Comp = asChild ? Slot : 'span'
+  return <Comp className={cn(badgeVariants({ variant, className }))} {...props} />
 }
 
-export function RiskBadge({ level }: { level: RiskLevel }) {
-  const tone = level === 'Low' ? 'low' : level === 'Watch' ? 'watch' : level === 'Elevated' ? 'elevated' : level === 'High' ? 'high' : 'crisis'
-  return <Badge tone={tone}>{level}</Badge>
-}
-
-export function SourceDataBadge() {
-  const audit = getSourceAudit()
-  return <Badge tone={audit.status === 'passed' ? 'source' : 'crisis'}>{audit.status === 'passed' ? 'Source Data' : 'Audit Failed'}</Badge>
-}
-
-export function DataStatusBadge({ status }: { status: DataQuality }) {
-  if (status === 'source') return <Badge tone="source">Source Data</Badge>
-  if (status === 'derived') return <Badge tone="watch">Derived Data</Badge>
-  if (status === 'cached') return <Badge tone="elevated">Cached</Badge>
-  return <Badge tone="crisis">Unavailable</Badge>
-}
+export { Badge, badgeVariants }

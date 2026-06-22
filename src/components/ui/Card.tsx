@@ -1,30 +1,40 @@
-import type { ReactNode } from 'react'
+import * as React from 'react'
+import { cn } from '@/lib/utils'
 
-type CardProps = {
-  children: ReactNode
-  className?: string
+function Card({ className, ...props }: React.ComponentProps<'div'>) {
+  return <div className={cn('rounded-md border border-border bg-card text-card-foreground shadow-sm', className)} {...props} />
 }
 
-export function Card({ children, className = '' }: CardProps) {
-  return (
-    <div className={`workbench-card ${className}`}>
-      {children}
-    </div>
-  )
+function CardHeader({ className, ...props }: React.ComponentProps<'div'>) {
+  return <div className={cn('grid gap-1.5 p-4', className)} {...props} />
 }
 
-export function CardHeader({ title, eyebrow, action }: { title: string; eyebrow?: string; action?: ReactNode }) {
-  return (
-    <div className="workbench-card-title">
-      <div className="min-w-0">
-        {eyebrow ? <p className="workbench-kicker">{eyebrow}</p> : null}
-        <h2 className="truncate text-sm font-bold text-ink">{title}</h2>
-      </div>
-      {action}
-    </div>
-  )
+function CardTitle({ className, ...props }: React.ComponentProps<'div'>) {
+  return <div className={cn('text-base font-semibold leading-none tracking-tight', className)} {...props} />
 }
 
-export function CardBody({ children, className = '' }: CardProps) {
-  return <div className={`workbench-card-body ${className}`}>{children}</div>
+function CardDescription({ className, ...props }: React.ComponentProps<'div'>) {
+  return <div className={cn('text-sm text-muted-foreground', className)} {...props} />
+}
+
+function CardContent({ className, ...props }: React.ComponentProps<'div'>) {
+  return <div className={cn('p-4 pt-0', className)} {...props} />
+}
+
+function CardFooter({ className, ...props }: React.ComponentProps<'div'>) {
+  return <div className={cn('flex items-center border-t border-border p-4', className)} {...props} />
+}
+
+function CardAction({ className, ...props }: React.ComponentProps<'div'>) {
+  return <div className={cn('ml-auto', className)} {...props} />
+}
+
+export {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardAction,
+  CardDescription,
+  CardContent
 }

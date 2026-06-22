@@ -1,7 +1,7 @@
 {
   "provider": "Private paid energy exports",
   "sourceUrl": "data/private/energy-flows",
-  "retrievedAt": "2026-05-20T16:50:59.906Z",
+  "retrievedAt": "2026-06-21T19:58:21.654Z",
   "status": "not_configured",
   "failures": [],
   "expectedPath": "data/private/energy-flows",

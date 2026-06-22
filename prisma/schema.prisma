@@ -1,0 +1,325 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum DataStatus {
+  AVAILABLE
+  UNAVAILABLE
+  STALE
+  PARTIAL
+  ENTITLEMENT_MISSING
+  PROVIDER_ERROR
+}
+
+enum RevisionFlag {
+  ORIGINAL
+  REVISED
+  CORRECTED
+  RESTATED
+  UNKNOWN
+}
+
+enum NoteStatus {
+  GENERATED
+  HUMAN_EDITED
+  PUBLISHED
+  ARCHIVED
+}
+
+model Ticker {
+  id                String                @id @default(cuid())
+  ticker            String                @unique
+  name              String
+  sector            String?
+  industry          String?
+  country           String?
+  assetType         String
+  isEtf             Boolean               @default(false)
+  description       String?
+  createdAt         DateTime              @default(now())
+  updatedAt         DateTime              @updatedAt
+  asOfDate          DateTime?
+  observedAt        DateTime?
+  providerTimestamp DateTime?
+  ingestedAt        DateTime              @default(now())
+  source            String                @default("taxonomy")
+  provider          String                @default("internal")
+  revisionFlag      RevisionFlag          @default(UNKNOWN)
+  dataStatus        DataStatus            @default(AVAILABLE)
+  dailyPrices       DailyPrice[]
+  signalSnapshots   SignalSnapshot[]
+  positioning       PositioningSnapshot[]
+  crowding          CrowdingSnapshot[]
+  basketMembers     ThemeBasketMember[]
+
+  @@index([ticker])
+  @@index([dataStatus])
+}
+
+model DailyPrice {
+  id                String       @id @default(cuid())
+  tickerId          String
+  ticker            Ticker       @relation(fields: [tickerId], references: [id], onDelete: Cascade)
+  date              DateTime
+  open              Float?
+  high              Float?
+  low               Float?
+  close             Float
+  adjustedClose     Float?
+  volume            BigInt?
+  createdAt         DateTime     @default(now())
+  asOfDate          DateTime
+  observedAt        DateTime
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  source            String
+  provider          String
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus   @default(AVAILABLE)
+
+  @@unique([tickerId, date, provider, asOfDate])
+  @@index([date])
+  @@index([asOfDate])
+  @@index([provider, dataStatus])
+}
+
+model ThemeBasket {
+  id                String              @id @default(cuid())
+  slug              String              @unique
+  name              String
+  description       String
+  category          String
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  asOfDate          DateTime?
+  observedAt        DateTime?
+  providerTimestamp DateTime?
+  ingestedAt        DateTime            @default(now())
+  source            String              @default("taxonomy")
+  provider          String              @default("internal")
+  revisionFlag      RevisionFlag        @default(UNKNOWN)
+  dataStatus        DataStatus          @default(AVAILABLE)
+  members           ThemeBasketMember[]
+}
+
+model ThemeBasketMember {
+  id                String       @id @default(cuid())
+  basketId          String
+  basket            ThemeBasket  @relation(fields: [basketId], references: [id], onDelete: Cascade)
+  tickerId          String
+  ticker            Ticker       @relation(fields: [tickerId], references: [id], onDelete: Cascade)
+  weight            Float?
+  rationale         String?
+  asOfDate          DateTime?
+  observedAt        DateTime?
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  source            String       @default("taxonomy")
+  provider          String       @default("internal")
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus   @default(AVAILABLE)
+
+  @@unique([basketId, tickerId])
+}
+
+model SignalSnapshot {
+  id                       String       @id @default(cuid())
+  tickerId                 String
+  ticker                   Ticker       @relation(fields: [tickerId], references: [id], onDelete: Cascade)
+  date                     DateTime
+  return1d                 Float?
+  return5d                 Float?
+  return20d                Float?
+  return60d                Float?
+  relativeStrengthVsSpy20d Float?
+  relativeStrengthVsSpy60d Float?
+  volumeVs20dAvg           Float?
+  realizedVol20d           Float?
+  distanceFrom20dMa        Float?
+  distanceFrom50dMa        Float?
+  trendLabel               String?
+  components               Json?
+  excludedUnavailableInputs Json?
+  createdAt                DateTime     @default(now())
+  asOfDate                 DateTime
+  observedAt               DateTime
+  providerTimestamp        DateTime?
+  ingestedAt               DateTime     @default(now())
+  source                   String
+  provider                 String
+  revisionFlag             RevisionFlag @default(UNKNOWN)
+  dataStatus               DataStatus   @default(AVAILABLE)
+
+  @@unique([tickerId, date, provider, asOfDate])
+  @@index([date])
+  @@index([dataStatus])
+}
+
+model PositioningSnapshot {
+  id                         String       @id @default(cuid())
+  tickerId                   String
+  ticker                     Ticker       @relation(fields: [tickerId], references: [id], onDelete: Cascade)
+  date                       DateTime
+  optionsVolume              Float?
+  openInterest               Float?
+  putCallRatio               Float?
+  impliedVolatility          Float?
+  impliedVolPercentile       Float?
+  shortInterest              Float?
+  shortInterestChange        Float?
+  shortVolume                Float?
+  shortVolumeRatio           Float?
+  positioningNotes           String?
+  components                 Json?
+  excludedUnavailableInputs  Json?
+  createdAt                  DateTime     @default(now())
+  asOfDate                   DateTime
+  observedAt                 DateTime
+  providerTimestamp          DateTime?
+  ingestedAt                 DateTime     @default(now())
+  source                     String
+  provider                   String
+  revisionFlag               RevisionFlag @default(UNKNOWN)
+  dataStatus                 DataStatus   @default(AVAILABLE)
+
+  @@unique([tickerId, date, provider, asOfDate])
+  @@index([date])
+  @@index([dataStatus])
+}
+
+model CrowdingSnapshot {
+  id                         String       @id @default(cuid())
+  tickerId                   String
+  ticker                     Ticker       @relation(fields: [tickerId], references: [id], onDelete: Cascade)
+  date                       DateTime
+  crowdingScore              Float?
+  crowdingLabel              String?
+  momentumScore              Float?
+  volumeScore                Float?
+  optionsScore               Float?
+  volatilityScore            Float?
+  shortInterestScore         Float?
+  catalystScore              Float?
+  explanation                String?
+  components                 Json?
+  excludedUnavailableInputs  Json?
+  createdAt                  DateTime     @default(now())
+  asOfDate                   DateTime
+  observedAt                 DateTime
+  providerTimestamp          DateTime?
+  ingestedAt                 DateTime     @default(now())
+  source                     String
+  provider                   String
+  revisionFlag               RevisionFlag @default(UNKNOWN)
+  dataStatus                 DataStatus   @default(AVAILABLE)
+
+  @@unique([tickerId, date, provider, asOfDate])
+  @@index([date])
+  @@index([dataStatus])
+}
+
+model DailyNote {
+  id                         String     @id @default(cuid())
+  date                       DateTime
+  title                      String
+  marketRegime               String?
+  topRotations               Json?
+  crowdedLongs               Json?
+  earlyAccumulation          Json?
+  reversalRisks              Json?
+  pmQuestions                Json?
+  body                       String
+  inputSnapshotIds           Json
+  excludedUnavailableInputs  Json
+  generatedAt                DateTime   @default(now())
+  humanEditedAt              DateTime?
+  noteStatus                 NoteStatus @default(GENERATED)
+  sourceCoveragePercent      Float
+  createdAt                  DateTime   @default(now())
+  updatedAt                  DateTime   @updatedAt
+  asOfDate                   DateTime
+  observedAt                 DateTime
+  providerTimestamp          DateTime?
+  ingestedAt                 DateTime   @default(now())
+  source                     String
+  provider                   String
+  revisionFlag               RevisionFlag @default(UNKNOWN)
+  dataStatus                 DataStatus @default(AVAILABLE)
+
+  @@index([date])
+  @@index([noteStatus])
+}
+
+model CatalystEvent {
+  id                String       @id @default(cuid())
+  date              DateTime
+  title             String
+  sourceName        String?
+  url               String?
+  summary           String?
+  themeTags         String[]
+  tickerTags        String[]
+  materialityScore  Float?
+  createdAt         DateTime     @default(now())
+  asOfDate          DateTime
+  observedAt        DateTime
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  source            String
+  provider          String
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus   @default(AVAILABLE)
+
+  @@index([date])
+  @@index([dataStatus])
+}
+
+model ProviderRun {
+  id                String       @id @default(cuid())
+  provider          String
+  source            String
+  startedAt         DateTime     @default(now())
+  finishedAt        DateTime?
+  asOfDate          DateTime?
+  observedAt        DateTime?
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  rowsIngested      Int          @default(0)
+  errorMessage      String?
+  metadata          Json?
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus
+
+  @@index([provider, dataStatus])
+  @@index([asOfDate])
+}
+
+model ValidationResult {
+  id                String       @id @default(cuid())
+  testName          String
+  asOfDate          DateTime
+  lookbackStart     DateTime?
+  lookbackEnd       DateTime?
+  hitRate           Float?
+  averageForwardReturn Float?
+  sampleSize        Int
+  coveragePercent   Float
+  caveats           String?
+  resultRows        Json?
+  createdAt         DateTime     @default(now())
+  observedAt        DateTime
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  source            String
+  provider          String
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus   @default(AVAILABLE)
+
+  @@index([testName, asOfDate])
+  @@index([dataStatus])
+}

@@ -1,0 +1,3 @@
+trade_id,opened_at,closed_at,status,ticker,underlying_price,option_type,strike,expiry,quantity,entry_price,exit_price,fees,side,setup,thesis,invalidation,flow_note,flow_premium,flow_type,confidence,tags,notes
+TRD-001,2026-06-01,2026-06-02,closed,NVDA,118.50,call,120,2026-06-12,1,2.10,3.35,1.30,long,breakout continuation,AI semis bid plus tape strength,close below prior day low,sweep aligned with breakout,850000,sweep,high,semis|momentum|manual-flow,followed plan and scaled out
+TRD-002,2026-06-02,,open,AMD,162.25,call,165,2026-06-19,2,1.45,,1.30,long,relative strength catch-up,AMD lagging NVDA while call flow builds,close below VWAP or flow fades,call buying near ask,430000,block,medium,semis|catchup,

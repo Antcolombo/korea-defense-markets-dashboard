@@ -1,6 +1,7 @@
 import type { Provenance } from './provenance'
 
 export type AssetClass = 'equity' | 'etf' | 'fx' | 'rate' | 'commodity' | 'index'
+export type SourceQualityLabel = 'local-market-source' | 'us-listed-source' | 'macro-source' | 'proxy' | 'evidence-only'
 
 export type Asset = Provenance & {
   ticker: string
@@ -18,5 +19,7 @@ export type Asset = Provenance & {
   returnYtd: number | null
   relatedEventCount: number | null
   riskSensitivity: number | null
+  sourceQuality: SourceQualityLabel
+  tradingViewSymbol?: string
   notes?: string
 }

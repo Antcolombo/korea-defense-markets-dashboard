@@ -1,0 +1,6 @@
+series,date,value,unit,provider,sourceName,sourceUrl
+KR_FOREIGN_EQUITY_FLOW,2026-05-20,-250.5,KRW bn,KRX investor trading trend export,Foreign investor net equity purchases,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd?locale=en
+KR_FOREIGN_EQUITY_FLOW,2026-05-21,85.2,KRW bn,KRX investor trading trend export,Foreign investor net equity purchases,https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd?locale=en
+BOK_BASE_RATE,2026-05-01,3.0,%,Bank of Korea ECOS,Bank of Korea base rate,https://ecos.bok.or.kr/api/
+KR_CURRENT_ACCOUNT,2026-04-01,4200,USD mn,Bank of Korea ECOS,Korea current account,https://ecos.bok.or.kr/api/
+KR_TRADE_BALANCE,2026-04-01,1800,USD mn,Bank of Korea ECOS,Korea trade balance,https://ecos.bok.or.kr/api/

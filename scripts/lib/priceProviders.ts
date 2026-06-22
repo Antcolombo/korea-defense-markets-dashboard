@@ -30,7 +30,7 @@ export function getMarketDataInstruments(): PriceProviderInstrument[] {
 
 export function getPriceCoverage(): PriceProviderInstrument[] {
   const marketProvider = getMarketDataProvider()
-  const fredTickers = ['SPX', 'QQQ', 'DXY', 'US2Y', 'US10Y', 'USDKRW', 'USDJPY', 'VIX', 'OIL', 'KR10Y']
+  const fredTickers = ['SPX', 'QQQ', 'DXY', 'US2Y', 'US10Y', 'USDKRW', 'USDJPY', 'VIX', 'OIL', 'BRENT', 'GASOLINE', 'KR10Y']
   return assetWatchlist.map(asset => {
     if (['fx', 'rate', 'commodity', 'index'].includes(asset.assetClass) && fredTickers.includes(asset.ticker)) {
       return {

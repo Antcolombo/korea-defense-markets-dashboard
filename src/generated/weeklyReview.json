@@ -1,0 +1,27 @@
+[
+  {
+    "provider": "derived",
+    "sourceUrl": "/research-factory",
+    "sourceName": "Research OS weekly review",
+    "retrievedAt": "2026-06-21T19:58:33.124Z",
+    "publishedAt": "2026-06-21T19:58:33.124Z",
+    "isDerived": true,
+    "methodologyNote": "Weekly review is derived from actual generated idea-ledger state: five raw/screened/watchlist ideas, one memo candidate, and one post-mortem candidate.",
+    "dataQuality": "derived",
+    "date": "2026-06-21",
+    "sourceStatus": "manual-source",
+    "rawIdeas": [
+      "idea-001",
+      "idea-002",
+      "idea-005"
+    ],
+    "memoCandidate": "idea-003",
+    "postMortemCandidate": "idea-004",
+    "checklist": [
+      "Review five raw/screened/watchlist ideas.",
+      "Promote one idea to a memo candidate.",
+      "Update one rejected or closed idea with post-mortem fields.",
+      "Confirm source quality before changing any expression state."
+    ]
+  }
+]

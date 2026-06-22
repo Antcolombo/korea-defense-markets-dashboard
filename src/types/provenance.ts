@@ -1,4 +1,4 @@
-export type DataQuality = 'source' | 'derived' | 'cached' | 'unavailable'
+export type DataQuality = 'source' | 'derived' | 'cached' | 'proxy' | 'unavailable'
 
 export type Provenance = {
   provider: string

@@ -1,0 +1,14 @@
+[
+  {
+    "ticker": "KOSPI",
+    "date": "2026-05-20",
+    "close": 2700.12,
+    "volume": null
+  },
+  {
+    "ticker": "KOSDAQ",
+    "date": "2026-05-20",
+    "close": 850.34,
+    "volume": null
+  }
+]

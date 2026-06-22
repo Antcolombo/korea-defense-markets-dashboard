@@ -1,5 +1,6 @@
 import { existsSync } from 'node:fs'
 import { mkdir, readFile, readdir } from 'node:fs/promises'
+import { parseCsv } from './lib/csv'
 import { fetchJson, fetchText, loadLocalEnv, nowIso, writeJson } from './lib/io'
 
 const outputPath = 'src/generated/raw/energy.eia.json'
@@ -106,33 +107,6 @@ async function fetchPublicDnavSeries(item: typeof publicDnavSeries[number]) {
   }
 
   return rows.sort((a, b) => b.period.localeCompare(a.period))
-}
-
-function parseCsvLine(line: string) {
-  const values: string[] = []
-  let current = ''
-  let quoted = false
-  for (const char of line) {
-    if (char === '"') {
-      quoted = !quoted
-    } else if (char === ',' && !quoted) {
-      values.push(current.trim())
-      current = ''
-    } else {
-      current += char
-    }
-  }
-  values.push(current.trim())
-  return values.map(value => value.replace(/^"|"$/g, ''))
-}
-
-function parseCsv(text: string) {
-  const lines = text.split(/\r?\n/).filter(line => line.trim())
-  const headers = parseCsvLine(lines[0] ?? '').map(header => header.trim())
-  return lines.slice(1).map(line => {
-    const values = parseCsvLine(line)
-    return Object.fromEntries(headers.map((header, index) => [header, values[index] ?? '']))
-  })
 }
 
 function normalizePrivateRows(rows: Record<string, unknown>[], sourceFile: string): PrivateEnergyObservation[] {

@@ -1,51 +1,69 @@
 # Data Sources
 
-The v2 data model uses automated ingestion with provenance.
+The Flow & Positioning Research Terminal uses sourced rows in Postgres with point-in-time metadata.
 
-## Providers
-- Google News RSS: public event/article metadata.
-- Alpha Vantage: market prices, FX, commodities, and selected series when an API key is configured.
-- FRED: macroeconomic and rates series when an API key is configured.
-- SEC EDGAR: U.S. company filing metadata and company facts.
-- OpenDART: Korean company disclosure integration when an API key and corp-code mapping are configured.
+## Primary Providers
 
-## Rules
-- No fabricated article titles, dates, source names, or URLs.
-- No fabricated market prices or returns.
-- No fabricated company filing details.
-- Derived classifications must be labeled as derived.
-- No fallback, demo, stale, or curated seed data is used in strict source mode.
-- Missing provider data is an ingestion or build error, not a publishable dashboard state.
+- Polygon/Massive: OHLCV bars and options snapshots.
+- FINRA Query API: consolidated short interest and Reg SHO daily short-sale volume.
+- FRED: macro and rates series where configured.
+- SEC EDGAR: U.S. filing metadata.
+- OpenDART: Korean disclosure metadata.
+- BOK/data.go.kr/KRX exports: optional Korea macro, local equity, and investor-flow inputs.
+- Public news/catalyst feeds: catalyst context with URLs and provider metadata.
+
+## Required Row Metadata
+
+Every provider-backed row stores:
+
+- `asOfDate`
+- `observedAt`
+- `providerTimestamp`
+- `ingestedAt`
+- `source`
+- `provider`
+- `revisionFlag`
+- `dataStatus`
+
+## Availability
+
+Every signal exposes one availability state:
+
+- `Available`
+- `Unavailable`
+- `Stale`
+- `Partial`
+- `Entitlement Missing`
+- `Provider Error`
+
+Missing options/short-interest entitlements are shown as unavailable or entitlement-missing, not imputed.
+
+## Demo Mode
+
+`DEMO_AS_OF_DATE=YYYY-MM-DD` freezes the app to real sourced rows already stored in Postgres. Live fetches are blocked while demo mode is active.
 
 ## Local Setup
 
-Create `.env.local` from `.env.example`, fill the real provider keys, then run:
-
 ```bash
-npm run setup:check
+npm run prisma:generate
+npm run db:migrate
+npm run db:seed
 npm run ingest
+npm run validate:research
 npm run audit:data
 ```
 
-The ingestion scripts load `.env.local` automatically.
+Required:
 
-## Scheduled Refresh
+- `DATABASE_URL`
+- `POLYGON_API_KEY`
+- `FINRA_CLIENT_ID`
+- `FINRA_CLIENT_SECRET`
 
-GitHub Actions runs `.github/workflows/refresh-data.yml` on weekdays at:
+Optional:
 
-- 21:30 UTC / 5:30 PM New York
-
-The workflow runs `npm run build:data` with provider env vars configured in GitHub Actions, commits refreshed generated data to `main`, and that commit triggers Vercel. Vercel uses `vercel.json` to run `next build` only, so provider rate limits cannot fail the production compile step. If ingestion fails, the refresh workflow fails without creating a deploy-triggering commit, and Vercel keeps the previous ready deployment live.
-
-Required Vercel production environment variables:
-
-- `ALPHA_VANTAGE_API_KEY`
 - `FRED_API_KEY`
-- `OPENDART_API_KEY`
 - `SEC_USER_AGENT`
-
-Optional Vercel production environment variable:
-
-- `EIA_API_KEY`
-- `MARKET_DATA_PROVIDER`, defaulting to `nasdaq`
-- `ALLOW_STALE_CACHE`, normally `false`
+- `OPENDART_API_KEY`
+- `DATA_GO_KR_SERVICE_KEY`
+- `BOK_ECOS_API_KEY`

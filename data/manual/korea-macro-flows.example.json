@@ -1,0 +1,24 @@
+[
+  {
+    "ticker": "KR_FOREIGN_EQUITY_FLOW",
+    "name": "Foreign investor net equity purchases",
+    "provider": "KRX investor trading trend export",
+    "sourceUrl": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd?locale=en",
+    "status": "source",
+    "unit": "KRW bn",
+    "observations": [
+      { "date": "2026-05-20", "value": -250.5, "unit": "KRW bn" }
+    ]
+  },
+  {
+    "ticker": "BOK_BASE_RATE",
+    "name": "Bank of Korea base rate",
+    "provider": "Bank of Korea ECOS",
+    "sourceUrl": "https://ecos.bok.or.kr/api/",
+    "status": "source",
+    "unit": "%",
+    "observations": [
+      { "date": "2026-05-01", "value": 3.0, "unit": "%" }
+    ]
+  }
+]

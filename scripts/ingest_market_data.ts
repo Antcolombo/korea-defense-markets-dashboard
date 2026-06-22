@@ -2,9 +2,8 @@ import { assertNonEmpty, fetchJson, nowIso, requiredEnv, sleep, writeJson } from
 import { getMarketDataInstruments, getMarketDataProvider } from './lib/priceProviders'
 
 const outputPath = 'src/generated/raw/market.prices.json'
-const apiKey = requiredEnv('ALPHA_VANTAGE_API_KEY')
-
 const provider = getMarketDataProvider()
+const apiKey = provider === 'alpha_vantage' ? requiredEnv('ALPHA_VANTAGE_API_KEY') : ''
 const instruments = getMarketDataInstruments()
 
 type PriceRow = {

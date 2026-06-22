@@ -1,42 +1,22 @@
-# Asia Macro Research OS
+# Flow & Positioning Research Terminal
 
-Portfolio research workbench by Ant.
+PM-facing research terminal for sector rotation, theme sponsorship, positioning pressure, crowding, reversal risk, validation, and daily market intelligence.
 
-## What This Site Is
+## Routes
 
-Asia Macro Research OS is a public-source market research portfolio project. It connects Korea macro/geopolitical event monitoring, liquid U.S.-accessible trade expressions, FX/rates, semiconductors, aerospace and defense equities, public filings, OpenDART disclosures, source provenance, and recruiter-facing trade notes.
+- `/` - terminal overview
+- `/rotation` - sector rotation board
+- `/baskets` - theme basket monitor
+- `/baskets/[slug]` - basket detail
+- `/positioning` - options and short-interest proxy board
+- `/crowding` - crowding and reversal monitor
+- `/daily-note` - auditable PM daily note
+- `/research/validation` - signal validation lab
+- `/case-studies/korea-defense` - Korea / Indo-Pacific defense case study
+- `/methodology` - proxy framework and data limitations
 
-The core research question is:
+## Data Rules
 
-> What is the Korea macro/market setup, and what liquid instrument best expresses it?
+No mock market data. Provider rows are live sourced data or frozen sourced snapshots selected with `DEMO_AS_OF_DATE`.
 
-## Important Pages
-
-- `/` - Sparse research index and project entry point.
-- `/dashboard` - Market Monitor for Korea macro, EWY/Korea beta, U.S. semis, U.S. aerospace and defense, global overlays, and event pressure.
-- `/markets` - Price Board with explicit data-quality limits.
-- `/events` - Public-source Event Tape.
-- `/source-audit` - Provider status, dataset counts, provenance checks, and data limitations.
-- `/research/korea-defense-memo` - Korea Macro Trade Note.
-- `/research/hii-stock-pitch` - HII U.S. A&D Expression Note.
-- `/methodology` - Sourced facts, deterministic derived fields, unavailable data, non-advice limits, and build-readiness gate.
-- `/about` - Portfolio and recruiter context.
-
-## Candidate Signal
-
-This project is meant to demonstrate:
-
-- Investment research workflow design.
-- Public data ingestion and source provenance.
-- Strict build gates for data readiness.
-- Market/macro framing around Korea, EWY, USD/KRW, U.S. semis, U.S. A&D, rates, oil, and volatility.
-- Next.js, TypeScript, data modeling, and portfolio-quality UI implementation.
-- Clear limitations around public daily quote data versus institutional market data.
-
-## Data Limitations
-
-The project uses public daily quote and macro/disclosure sources. U.S. prices are not institutional consolidated tape, NBBO, intraday, execution-grade, or corporate-action-verified data. Korean local equities are disclosure/evidence coverage until a KRX-capable licensed market data feed is added.
-
-## Suggested AI Summary
-
-Ant built Asia Macro Research OS, a Next.js and TypeScript portfolio project that turns public Korea macro/geopolitical events, market prices, macro series, SEC filings, OpenDART disclosures, and source audits into an institutional-style research workflow for liquid trade-expression analysis.
+Every provider row stores point-in-time metadata: `asOfDate`, `observedAt`, `providerTimestamp`, `ingestedAt`, `source`, `provider`, `revisionFlag`, and `dataStatus`.
