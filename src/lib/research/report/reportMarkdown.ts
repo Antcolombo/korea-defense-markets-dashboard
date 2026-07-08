@@ -38,7 +38,7 @@ function sectionMarkdown(section: ReportSection) {
     '',
     ...bulletList(section.bullets),
     ...(section.metrics.length ? ['', metricTable(section.metrics)] : []),
-    ...(section.excludedUnavailableInputs.length ? ['', `Unavailable inputs: ${section.excludedUnavailableInputs.join(', ')}`] : []),
+    ...(section.excludedUnavailableInputs.length ? ['', `Deferred inputs: ${section.excludedUnavailableInputs.join(', ')}`] : []),
     ''
   ]
 }

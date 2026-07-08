@@ -36,6 +36,49 @@
   color: var(--foreground) !important;
 }
 
+.terminal-mdx-editor {
+  background: rgba(6, 21, 21, 0.56);
+  border: 1px solid var(--terminal-border);
+  border-radius: 0.375rem;
+  color: var(--foreground);
+  overflow: hidden;
+}
+
+.terminal-mdx-editor .mdxeditor-toolbar {
+  background: rgba(7, 27, 26, 0.96);
+  border-bottom: 1px solid var(--terminal-border);
+  color: var(--foreground);
+}
+
+.terminal-mdx-editor .mdxeditor-toolbar button {
+  color: var(--foreground);
+}
+
+.terminal-mdx-editor .mdxeditor-toolbar button:hover {
+  background: rgba(80, 210, 193, 0.12);
+}
+
+.terminal-mdx-content {
+  color: var(--foreground);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  min-height: 360px;
+  padding: 1rem;
+}
+
+.terminal-mdx-content h1,
+.terminal-mdx-content h2,
+.terminal-mdx-content h3 {
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+.terminal-mdx-content p,
+.terminal-mdx-content li {
+  color: rgba(255, 255, 255, 0.72);
+}
+
 @media (max-width: 1023px) {
   .terminal-command-bar {
     grid-template-columns: 1fr;

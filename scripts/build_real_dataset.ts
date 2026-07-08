@@ -102,7 +102,7 @@ function assetsForThemes(themes: string[]) {
 
 function parseMarketReturns(series: RawMarketSeries) {
   const rows = (series.rows ?? [])
-    .map(row => ({ date: row.date, price: Number(row.close) }))
+    .map(row => ({ date: row.date, price: Number(row.close), volume: row.volume }))
     .filter(row => row.date && Number.isFinite(row.price))
     .sort((a, b) => a.date.localeCompare(b.date))
 
@@ -130,6 +130,7 @@ function parseMarketReturns(series: RawMarketSeries) {
       date: row.date,
       ticker: series.symbol,
       price: row.price,
+      volume: row.volume,
       returnValue: index === 0 ? 0 : Number((((row.price - rows[index - 1].price) / rows[index - 1].price) * 100).toFixed(2))
     }))
   }
@@ -156,6 +157,7 @@ function parseFredPrices(series: RawFredSeries) {
       date: row.date,
       ticker: series.ticker,
       price: row.price,
+      volume: null,
       returnValue: index === 0 ? 0 : Number((row.price - rows[index - 1].price).toFixed(2))
     }))
   }

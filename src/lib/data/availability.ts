@@ -18,7 +18,7 @@ export function metric(value: number | bigint | null | undefined, dataStatus: Db
   if (value === null || value === undefined) {
     return { value: null, dataStatus: dataStatus === 'AVAILABLE' ? 'UNAVAILABLE' : dataStatus, availability: availabilityFromStatus(dataStatus === 'AVAILABLE' ? 'UNAVAILABLE' : dataStatus), reason }
   }
-  return { value: typeof value === 'bigint' ? Number(value) : value, dataStatus, availability: availabilityFromStatus(dataStatus), reason }
+  return { value: typeof value === 'bigint' ? Number(value) : value, dataStatus, availability: availabilityFromStatus(dataStatus) }
 }
 
 export function pointInTime(input: {

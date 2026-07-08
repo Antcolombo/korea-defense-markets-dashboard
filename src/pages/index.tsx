@@ -8,11 +8,13 @@ import {
 import { createApiResponse, createShellMeta, type ShellMeta, type UnavailableField } from '@/lib/research/api'
 import { getEvents } from '@/lib/data/getEvents'
 import { getPrices } from '@/lib/data/getPrices'
+import { getAssets } from '@/lib/data/getAssets'
+import { getEventReturns } from '@/lib/data/getEventReturns'
+import { getSourceAudit } from '@/lib/data/getSourceAudit'
 import {
   getBasketDetail,
   getBasketSummaries,
   getCrowdingRows,
-  getDailyNote,
   getHomeSummary,
   getPositioningRows,
   getRotationRows,
@@ -21,12 +23,28 @@ import {
   isValidTickerSymbol,
   normalizeTickerSymbol
 } from '@/lib/research/repository'
+import { buildRiskLensRows } from '@/lib/research/riskLens'
+import {
+  getDefaultStockPitch,
+  getStockPitch,
+  listStockPitchSummaries
+} from '@/lib/research/pitches'
+import {
+  buildInvestmentDecisionTemplate,
+  getInvestmentDecision,
+  listInvestmentDecisions,
+  listInvestmentDecisionSummaries
+} from '@/lib/research/decisions'
+import { buildStockPitchSourceSnapshot, getSourcedPriceSeries } from '@/lib/research/stockPitchSources'
+import { buildTargetConfidence } from '@/lib/research/targetConfidence'
+import { buildPmEngineView } from '@/lib/research/pm'
 
 type Props = {
   module: WorkspaceModule
   data: WorkspaceData
   shell: ShellMeta
   unavailableFields: UnavailableField[]
+  deferredUnavailableFields: UnavailableField[]
   selectedTicker?: string
   selectedSlug?: string
 }
@@ -38,16 +56,24 @@ const validModules = new Set<WorkspaceModule>([
   'basket-detail',
   'positioning',
   'crowding',
-  'daily-note',
   'validation',
   'methodology',
   'korea-defense',
-  'stock-report'
+  'stock-report',
+  'decision-log',
+  'stock-pitch',
+  'event-study',
+  'paper-book',
+  'risk-lens',
+  'source-audit'
 ])
 
 export const getServerSideProps: GetServerSideProps<Props> = async context => {
   const requested = typeof context.query.module === 'string' ? context.query.module : 'overview'
-  const module = validModules.has(requested as WorkspaceModule) ? requested as WorkspaceModule : 'overview'
+  const requestedSlug = typeof context.query.slug === 'string' ? context.query.slug : ''
+  const module = requested === 'baskets' && requestedSlug
+    ? 'basket-detail'
+    : validModules.has(requested as WorkspaceModule) ? requested as WorkspaceModule : 'overview'
   const allPrices = getPrices()
   let data: WorkspaceData = {}
   let responseData: unknown = data
@@ -68,7 +94,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async context => {
       rotations,
       baskets: summary.baskets,
       crowding,
-      note: summary.note,
     }
     selectedTicker = selectPriceTicker(allPrices, rotations.map(row => row.ticker))
     data.prices = scopedPrices(allPrices, selectedTicker)
@@ -95,7 +120,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async context => {
   }
 
   if (module === 'basket-detail') {
-    selectedSlug = typeof context.query.slug === 'string' ? context.query.slug : ''
+    selectedSlug = requestedSlug
     const [detail, positioningRows] = await Promise.all([getBasketDetail(selectedSlug), getPositioningRows()])
     const tickers = new Set(detail.members.map(member => member.ticker))
     data = {
@@ -123,16 +148,47 @@ export const getServerSideProps: GetServerSideProps<Props> = async context => {
     selectedTicker = crowding[0]?.ticker
   }
 
-  if (module === 'daily-note') {
-    const note = await getDailyNote()
-    data = { note }
-    responseData = { note }
-  }
-
   if (module === 'validation') {
     const validation = await getValidationRows()
     data = { validation }
     responseData = { validation }
+  }
+
+  if (module === 'event-study') {
+    const events = getEvents()
+    const eventReturns = getEventReturns()
+    const assets = getAssets()
+    data = { events, eventReturns, assets, prices: allPrices }
+    responseData = { events, eventReturns, assets, prices: allPrices }
+  }
+
+  if (module === 'paper-book') {
+    const portfolioDecisions = await listInvestmentDecisions()
+    const pmEngine = await buildPmEngineView(portfolioDecisions)
+    data = { portfolioDecisions, pmEngine }
+    responseData = { portfolioDecisions, pmEngine }
+  }
+
+  if (module === 'risk-lens') {
+    const requestedRiskTicker = normalizeTickerSymbol(context.query.ticker)
+    const rotations = await getRotationRows()
+    const focusTickers = [
+      isValidTickerSymbol(requestedRiskTicker) ? requestedRiskTicker : null,
+      ...rotations
+        .slice()
+        .sort((a, b) => (b.relativeStrengthVsSpy20d.value ?? -Infinity) - (a.relativeStrengthVsSpy20d.value ?? -Infinity))
+        .map(row => row.ticker)
+    ].filter((ticker): ticker is string => Boolean(ticker))
+    const riskLens = await buildRiskLensRows(focusTickers, rotations)
+    selectedTicker = isValidTickerSymbol(requestedRiskTicker) ? requestedRiskTicker : riskLens[0]?.ticker ?? 'NVDA'
+    data = { rotations, riskLens }
+    responseData = { riskLens }
+  }
+
+  if (module === 'source-audit') {
+    const sourceAudit = getSourceAudit()
+    data = { sourceAudit }
+    responseData = { sourceAudit }
   }
 
   if (module === 'methodology') {
@@ -166,12 +222,66 @@ export const getServerSideProps: GetServerSideProps<Props> = async context => {
     responseData = { report }
   }
 
+  if (module === 'decision-log') {
+    const requestedDecisionTicker = normalizeTickerSymbol(context.query.ticker)
+    const decisions = await listInvestmentDecisionSummaries()
+    let activeDecision = typeof context.query.slug === 'string' ? await getInvestmentDecision(context.query.slug) : null
+    if (!activeDecision && context.query.new === '1') {
+      activeDecision = await buildInvestmentDecisionTemplate(isValidTickerSymbol(requestedDecisionTicker) ? requestedDecisionTicker : 'NVDA')
+    }
+    if (!activeDecision && isValidTickerSymbol(requestedDecisionTicker)) {
+      const match = decisions.find(row => row.ticker === requestedDecisionTicker)
+      activeDecision = match ? await getInvestmentDecision(match.slug) : await buildInvestmentDecisionTemplate(requestedDecisionTicker)
+    }
+    activeDecision = activeDecision ?? (decisions[0] ? await getInvestmentDecision(decisions[0].slug) : await buildInvestmentDecisionTemplate('NVDA'))
+    selectedTicker = activeDecision?.ticker ?? 'NVDA'
+    data = { decisions, decision: activeDecision ?? undefined }
+    responseData = { decisions, decision: activeDecision }
+  }
+
+  if (module === 'stock-pitch') {
+    const slug = typeof context.query.slug === 'string' ? context.query.slug : ''
+    const requestedPitchTicker = normalizeTickerSymbol(context.query.ticker)
+    const pitches = await listStockPitchSummaries()
+    let activePitch = slug ? await getStockPitch(slug) : null
+    if (!activePitch && isValidTickerSymbol(requestedPitchTicker)) {
+      const match = pitches.find(row => row.ticker === requestedPitchTicker)
+      activePitch = match ? await getStockPitch(match.slug) : null
+    }
+    activePitch = activePitch ?? await getDefaultStockPitch()
+    selectedTicker = isValidTickerSymbol(requestedPitchTicker) ? requestedPitchTicker : activePitch.ticker
+    const report = await getStockReport(selectedTicker)
+    const [baseSourceSnapshot, sourcedPrices] = await Promise.all([
+      buildStockPitchSourceSnapshot(selectedTicker, report),
+      getSourcedPriceSeries(selectedTicker)
+    ])
+    const sourceSnapshot = {
+      ...baseSourceSnapshot,
+      targetConfidence: buildTargetConfidence({
+        report,
+        sourceSnapshot: baseSourceSnapshot,
+        currentPrice: activePitch.pitch.setup.currentPrice,
+        targetPrice: activePitch.pitch.setup.targetPrice,
+        expectedReturn: activePitch.pitch.setup.expectedReturn
+      })
+    }
+    data = {
+      pitches,
+      pitch: activePitch,
+      pitchCreateTicker: selectedTicker,
+      pitchSource: sourceSnapshot,
+      prices: sourcedPrices
+    }
+    responseData = { pitches, pitch: activePitch, report, sourceSnapshot, prices: sourcedPrices }
+  }
+
   const response = createApiResponse(responseData)
   const props: Props = {
     module,
     data,
     shell: createShellMeta(response),
-    unavailableFields: response.unavailableFields
+    unavailableFields: response.unavailableFields,
+    deferredUnavailableFields: response.deferredUnavailableFields
   }
   if (selectedTicker) props.selectedTicker = selectedTicker
   if (selectedSlug) props.selectedSlug = selectedSlug
@@ -185,7 +295,7 @@ export function WorkspacePage(props: InferGetServerSidePropsType<typeof getServe
     <>
       <Head>
         <title>LIQUIDCHAIN Market Terminal</title>
-        <meta name="description" content="Single-workspace market terminal for sourced flow, positioning, crowding, validation, and PM reports." />
+        <meta name="description" content="Single-workspace PM research terminal for sourced pitches, decision journal, event studies, validation, paper book, risk, and source audit." />
       </Head>
       <TerminalWorkspace {...props} />
     </>

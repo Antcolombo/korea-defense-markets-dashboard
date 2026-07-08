@@ -24,13 +24,6 @@ enum RevisionFlag {
   UNKNOWN
 }
 
-enum NoteStatus {
-  GENERATED
-  HUMAN_EDITED
-  PUBLISHED
-  ARCHIVED
-}
-
 model Ticker {
   id                String                @id @default(cuid())
   ticker            String                @unique
@@ -192,6 +185,122 @@ model PositioningSnapshot {
   @@index([dataStatus])
 }
 
+model OptionContract {
+  id                String       @id @default(cuid())
+  optionTicker      String       @unique
+  underlyingTicker  String
+  expirationDate    DateTime
+  strikePrice       Float
+  contractType      String
+  exerciseStyle     String?
+  sharesPerContract Int?
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+  asOfDate          DateTime?
+  observedAt        DateTime?
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  source            String
+  provider          String
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus   @default(PARTIAL)
+
+  @@index([underlyingTicker, expirationDate, strikePrice])
+  @@index([underlyingTicker, contractType])
+  @@index([dataStatus])
+}
+
+model OptionContractBar {
+  id                String       @id @default(cuid())
+  optionTicker      String
+  underlyingTicker  String
+  date              DateTime
+  open              Float?
+  high              Float?
+  low               Float?
+  close             Float?
+  volume            BigInt?
+  vwap              Float?
+  transactions      Int?
+  createdAt         DateTime     @default(now())
+  asOfDate          DateTime
+  observedAt        DateTime?
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  source            String
+  provider          String
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus   @default(PARTIAL)
+
+  @@unique([optionTicker, date, provider, asOfDate])
+  @@index([underlyingTicker, date])
+  @@index([optionTicker, date])
+  @@index([dataStatus])
+}
+
+model OptionsStrikeSignal {
+  id                String       @id @default(cuid())
+  ticker            String
+  date              DateTime
+  expirationDate    DateTime
+  strikePrice       Float
+  callVolume        Float?
+  putVolume         Float?
+  totalVolume       Float?
+  openInterest      Float?
+  impliedVolatility Float?
+  gamma             Float?
+  gammaExposure     Float?
+  gammaProxy        Float?
+  magnetScore       Float?
+  sourceQuality     String
+  mode              String
+  createdAt         DateTime     @default(now())
+  asOfDate          DateTime
+  observedAt        DateTime?
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  source            String
+  provider          String
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus   @default(PARTIAL)
+
+  @@unique([ticker, date, expirationDate, strikePrice, mode])
+  @@index([ticker, date])
+  @@index([ticker, expirationDate])
+  @@index([mode, sourceQuality])
+  @@index([dataStatus])
+}
+
+model OptionsBattlefieldSnapshot {
+  id                String       @id @default(cuid())
+  ticker            String
+  date              DateTime
+  mode              String
+  sourceLabel       String
+  callWall          Float?
+  putWall           Float?
+  zeroGamma         Float?
+  expectedMove      Float?
+  pressureDirection String?
+  confidence        Float?
+  payload           Json
+  createdAt         DateTime     @default(now())
+  asOfDate          DateTime
+  observedAt        DateTime?
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  source            String
+  provider          String
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus   @default(PARTIAL)
+
+  @@unique([ticker, date, mode, provider, asOfDate])
+  @@index([ticker, date])
+  @@index([mode])
+  @@index([dataStatus])
+}
+
 model CrowdingSnapshot {
   id                         String       @id @default(cuid())
   tickerId                   String
@@ -223,38 +332,6 @@ model CrowdingSnapshot {
   @@index([dataStatus])
 }
 
-model DailyNote {
-  id                         String     @id @default(cuid())
-  date                       DateTime
-  title                      String
-  marketRegime               String?
-  topRotations               Json?
-  crowdedLongs               Json?
-  earlyAccumulation          Json?
-  reversalRisks              Json?
-  pmQuestions                Json?
-  body                       String
-  inputSnapshotIds           Json
-  excludedUnavailableInputs  Json
-  generatedAt                DateTime   @default(now())
-  humanEditedAt              DateTime?
-  noteStatus                 NoteStatus @default(GENERATED)
-  sourceCoveragePercent      Float
-  createdAt                  DateTime   @default(now())
-  updatedAt                  DateTime   @updatedAt
-  asOfDate                   DateTime
-  observedAt                 DateTime
-  providerTimestamp          DateTime?
-  ingestedAt                 DateTime   @default(now())
-  source                     String
-  provider                   String
-  revisionFlag               RevisionFlag @default(UNKNOWN)
-  dataStatus                 DataStatus @default(AVAILABLE)
-
-  @@index([date])
-  @@index([noteStatus])
-}
-
 model CatalystEvent {
   id                String       @id @default(cuid())
   date              DateTime
@@ -277,6 +354,72 @@ model CatalystEvent {
 
   @@index([date])
   @@index([dataStatus])
+}
+
+model StockPitch {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  ticker         String
+  companyName    String
+  recommendation String
+  status         String   @default("draft")
+  shareToken     String   @unique
+  shareEnabled   Boolean  @default(false)
+  payload        Json
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  publishedAt    DateTime?
+
+  @@index([ticker])
+  @@index([status])
+  @@index([shareEnabled])
+}
+
+model InvestmentDecision {
+  id                 String   @id @default(cuid())
+  slug               String   @unique
+  ticker             String
+  companyName        String
+  status             String   @default("watch")
+  decision           String   @default("watch")
+  marketBelief       String   @default("")
+  variantView        String   @default("")
+  evidenceJson       Json
+  riskJson           Json
+  invalidation       String   @default("")
+  timeHorizon        String?
+  expectedReturn     Float?
+  downside           Float?
+  sourceSnapshotJson Json?
+  outcomeReturn      Float?
+  lesson             String?
+  isPublic           Boolean  @default(false)
+  featuredRank       Int?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@index([ticker])
+  @@index([status])
+  @@index([decision])
+  @@index([isPublic, featuredRank])
+}
+
+model AiScan {
+  id             String   @id @default(cuid())
+  ticker         String
+  mode           String
+  inputHash      String
+  model          String
+  status         String
+  payload        Json?
+  sourceSnapshot Json
+  errorMessage   String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@unique([ticker, mode, inputHash])
+  @@index([ticker, mode, createdAt])
+  @@index([status])
 }
 
 model ProviderRun {
@@ -321,5 +464,239 @@ model ValidationResult {
   dataStatus        DataStatus   @default(AVAILABLE)
 
   @@index([testName, asOfDate])
+  @@index([dataStatus])
+}
+
+model FundamentalSnapshot {
+  id                String       @id @default(cuid())
+  ticker            String
+  periodEnd         DateTime
+  fiscalPeriod      String
+  currency          String       @default("USD")
+  revenue           Float?
+  grossProfit       Float?
+  operatingIncome   Float?
+  ebitda            Float?
+  netIncome         Float?
+  epsDiluted        Float?
+  freeCashFlow      Float?
+  cash              Float?
+  debt              Float?
+  sharesDiluted     Float?
+  payload           Json?
+  createdAt         DateTime     @default(now())
+  asOfDate          DateTime
+  observedAt        DateTime
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  source            String
+  provider          String
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus   @default(PARTIAL)
+
+  @@unique([ticker, periodEnd, fiscalPeriod, provider, asOfDate])
+  @@index([ticker, periodEnd])
+  @@index([asOfDate])
+  @@index([dataStatus])
+}
+
+model EstimateSnapshot {
+  id                String       @id @default(cuid())
+  ticker            String
+  periodEnd         DateTime
+  fiscalPeriod      String
+  estimateDate      DateTime
+  revenueEstimate   Float?
+  epsEstimate       Float?
+  ebitdaEstimate    Float?
+  payload           Json?
+  createdAt         DateTime     @default(now())
+  asOfDate          DateTime
+  observedAt        DateTime
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  source            String
+  provider          String
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus   @default(PARTIAL)
+
+  @@unique([ticker, periodEnd, fiscalPeriod, estimateDate, provider, asOfDate])
+  @@index([ticker, periodEnd])
+  @@index([estimateDate])
+  @@index([dataStatus])
+}
+
+model ValuationSnapshot {
+  id                String       @id @default(cuid())
+  ticker            String
+  date              DateTime
+  marketCap         Float?
+  enterpriseValue   Float?
+  peRatio           Float?
+  evSales           Float?
+  evEbitda          Float?
+  fcfYield          Float?
+  payload           Json?
+  createdAt         DateTime     @default(now())
+  asOfDate          DateTime
+  observedAt        DateTime
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  source            String
+  provider          String
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus   @default(PARTIAL)
+
+  @@unique([ticker, date, provider, asOfDate])
+  @@index([ticker, date])
+  @@index([dataStatus])
+}
+
+model FactorExposureSnapshot {
+  id                String       @id @default(cuid())
+  ticker            String
+  date              DateTime
+  exposures         Json
+  beta              Float?
+  residualVariance  Float?
+  rSquared          Float?
+  observations      Int
+  createdAt         DateTime     @default(now())
+  asOfDate          DateTime
+  observedAt        DateTime
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  source            String
+  provider          String
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus   @default(PARTIAL)
+
+  @@unique([ticker, date, provider, asOfDate])
+  @@index([ticker, date])
+  @@index([dataStatus])
+}
+
+model RiskModelRun {
+  id                String       @id @default(cuid())
+  name              String
+  date              DateTime
+  factors           String[]
+  factorCovariance  Json
+  payload           Json
+  createdAt         DateTime     @default(now())
+  asOfDate          DateTime
+  observedAt        DateTime
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  source            String
+  provider          String
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus   @default(PARTIAL)
+
+  @@index([name, date])
+  @@index([dataStatus])
+}
+
+model PmDecisionOverlay {
+  id                String       @id @default(cuid())
+  decisionSlug      String
+  ticker            String
+  date              DateTime
+  pmReady           Boolean      @default(false)
+  expectedValue     Float?
+  costAdjustedEv    Float?
+  suggestedSizePct  Float?
+  activeCapReason   String?
+  payload           Json
+  createdAt         DateTime     @default(now())
+  asOfDate          DateTime
+  observedAt        DateTime
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  source            String
+  provider          String
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus   @default(PARTIAL)
+
+  @@unique([decisionSlug, date, provider, asOfDate])
+  @@index([ticker, date])
+  @@index([pmReady])
+  @@index([dataStatus])
+}
+
+model PortfolioOptimizationRun {
+  id                String       @id @default(cuid())
+  name              String
+  date              DateTime
+  nav               Float
+  grossExposure     Float?
+  netExposure       Float?
+  portfolioBeta     Float?
+  costAdjustedEv    Float?
+  payload           Json
+  createdAt         DateTime     @default(now())
+  asOfDate          DateTime
+  observedAt        DateTime
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  source            String
+  provider          String
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus   @default(PARTIAL)
+
+  @@index([name, date])
+  @@index([dataStatus])
+}
+
+model PortfolioRiskSnapshot {
+  id                String       @id @default(cuid())
+  name              String
+  date              DateTime
+  annualizedRisk    Float?
+  valueAtRisk95     Float?
+  valueAtRisk99     Float?
+  expectedShortfall Float?
+  liquidityDays     Float?
+  payload           Json
+  createdAt         DateTime     @default(now())
+  asOfDate          DateTime
+  observedAt        DateTime
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  source            String
+  provider          String
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus   @default(PARTIAL)
+
+  @@index([name, date])
+  @@index([dataStatus])
+}
+
+model BacktestRun {
+  id                String       @id @default(cuid())
+  name              String
+  date              DateTime
+  lookbackStart     DateTime?
+  lookbackEnd       DateTime?
+  hitRate           Float?
+  informationCoefficient Float?
+  averageForwardReturn Float?
+  sharpe            Float?
+  maxDrawdown       Float?
+  turnover          Float?
+  capacity          Float?
+  netReturn         Float?
+  payload           Json
+  createdAt         DateTime     @default(now())
+  asOfDate          DateTime
+  observedAt        DateTime
+  providerTimestamp DateTime?
+  ingestedAt        DateTime     @default(now())
+  source            String
+  provider          String
+  revisionFlag      RevisionFlag @default(UNKNOWN)
+  dataStatus        DataStatus   @default(PARTIAL)
+
+  @@index([name, date])
   @@index([dataStatus])
 }

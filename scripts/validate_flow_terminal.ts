@@ -3,6 +3,16 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
+type ValidationSample = {
+  ticker: string
+  signalDate: string
+  signalValue: number | null
+  hit: boolean
+  forwardReturn: number
+  trailingVol?: number | null
+  forwardVol?: number | null
+}
+
 async function main() {
   const asOfDate = process.env.DEMO_AS_OF_DATE ? new Date(`${process.env.DEMO_AS_OF_DATE}T00:00:00.000Z`) : new Date()
   await runCrowdingReversal(asOfDate)
@@ -17,7 +27,7 @@ async function runCrowdingReversal(asOfDate: Date) {
     include: { ticker: { include: { dailyPrices: { orderBy: { date: 'asc' } } } } },
     take: 500
   })
-  const samples = rows.flatMap(row => forwardReturnSample(row.ticker.dailyPrices, row.date, row.crowdingScore ?? null, value => value >= 75))
+  const samples = rows.flatMap(row => reversalReturnSample(row.ticker.ticker, row.ticker.dailyPrices, row.date, row.crowdingScore ?? null, value => value >= 75))
   await saveValidation('Crowding score vs 5D/20D reversal', asOfDate, samples, 'Hit means crowded ticker had negative 20D forward return after high crowding score.')
 }
 
@@ -27,7 +37,7 @@ async function runRsVolumeContinuation(asOfDate: Date) {
     include: { ticker: { include: { dailyPrices: { orderBy: { date: 'asc' } } } } },
     take: 500
   })
-  const samples = rows.flatMap(row => forwardReturnSample(row.ticker.dailyPrices, row.date, row.return20d ?? null, () => true))
+  const samples = rows.flatMap(row => continuationReturnSample(row.ticker.ticker, row.ticker.dailyPrices, row.date, row.return20d ?? null, () => true))
   await saveValidation('RS + volume confirmation vs continuation', asOfDate, samples, 'Hit means positive 20D forward return after positive RS and elevated volume.')
 }
 
@@ -37,11 +47,11 @@ async function runOptionsVolatilityLead(asOfDate: Date) {
     include: { ticker: { include: { dailyPrices: { orderBy: { date: 'asc' } } } } },
     take: 500
   })
-  const samples = rows.flatMap(row => forwardVolSample(row.ticker.dailyPrices, row.date, row.optionsVolume ?? null))
+  const samples = rows.flatMap(row => forwardVolSample(row.ticker.ticker, row.ticker.dailyPrices, row.date, row.optionsVolume ?? null))
   await saveValidation('Options volume spike vs later realized vol', asOfDate, samples, 'Hit means realized forward volatility exceeded trailing realized volatility after options-volume signal.')
 }
 
-async function saveValidation(testName: string, asOfDate: Date, samples: { hit: boolean; forwardReturn: number }[], caveats: string) {
+async function saveValidation(testName: string, asOfDate: Date, samples: ValidationSample[], caveats: string) {
   const sampleSize = samples.length
   const hitRate = sampleSize > 0 ? samples.filter(sample => sample.hit).length / sampleSize : null
   const averageForwardReturn = sampleSize > 0 ? samples.reduce((sum, sample) => sum + sample.forwardReturn, 0) / sampleSize : null
@@ -65,7 +75,22 @@ async function saveValidation(testName: string, asOfDate: Date, samples: { hit: 
   })
 }
 
-function forwardReturnSample(prices: { date: Date; close: number; adjustedClose: number | null }[], date: Date, score: number | null, predicate: (value: number) => boolean) {
+function reversalReturnSample(ticker: string, prices: { date: Date; close: number; adjustedClose: number | null }[], date: Date, score: number | null, predicate: (value: number) => boolean) {
+  return forwardReturnSample(ticker, prices, date, score, predicate, forwardReturn => forwardReturn < 0)
+}
+
+function continuationReturnSample(ticker: string, prices: { date: Date; close: number; adjustedClose: number | null }[], date: Date, score: number | null, predicate: (value: number) => boolean) {
+  return forwardReturnSample(ticker, prices, date, score, predicate, forwardReturn => forwardReturn > 0)
+}
+
+function forwardReturnSample(
+  ticker: string,
+  prices: { date: Date; close: number; adjustedClose: number | null }[],
+  date: Date,
+  score: number | null,
+  predicate: (value: number) => boolean,
+  isHit: (forwardReturn: number) => boolean
+) {
   if (score === null || !predicate(score)) return []
   const index = prices.findIndex(price => price.date.getTime() >= date.getTime())
   const forward = index >= 0 ? prices[index + 20] : null
@@ -75,17 +100,31 @@ function forwardReturnSample(prices: { date: Date; close: number; adjustedClose:
   const end = forward.adjustedClose ?? forward.close
   if (start === 0) return []
   const forwardReturn = ((end - start) / start) * 100
-  return [{ hit: forwardReturn < 0 ? true : score < 75 && forwardReturn > 0, forwardReturn }]
+  return [{
+    ticker,
+    signalDate: anchor.date.toISOString().slice(0, 10),
+    signalValue: score,
+    hit: isHit(forwardReturn),
+    forwardReturn
+  }]
 }
 
-function forwardVolSample(prices: { date: Date; close: number; adjustedClose: number | null }[], date: Date, optionsVolume: number | null) {
+function forwardVolSample(ticker: string, prices: { date: Date; close: number; adjustedClose: number | null }[], date: Date, optionsVolume: number | null) {
   if (optionsVolume === null) return []
   const index = prices.findIndex(price => price.date.getTime() >= date.getTime())
   if (index < 20 || index + 20 >= prices.length) return []
   const trailing = realizedVol(prices.slice(index - 20, index + 1))
   const forward = realizedVol(prices.slice(index, index + 21))
   if (trailing === null || forward === null) return []
-  return [{ hit: forward > trailing, forwardReturn: forward - trailing }]
+  return [{
+    ticker,
+    signalDate: prices[index].date.toISOString().slice(0, 10),
+    signalValue: optionsVolume,
+    hit: forward > trailing,
+    forwardReturn: forward - trailing,
+    trailingVol: trailing,
+    forwardVol: forward
+  }]
 }
 
 function realizedVol(prices: { close: number; adjustedClose: number | null }[]) {

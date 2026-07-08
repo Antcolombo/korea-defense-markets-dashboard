@@ -2,10 +2,10 @@ import { seedBaskets } from '@/lib/data/baskets/seedBaskets'
 import { seedTickers } from '@/lib/data/baskets/seedTickers'
 import { combineStatuses, metric, pointInTime, sourceCoverage } from '@/lib/data/availability'
 import { getEvents } from '@/lib/data/getEvents'
-import { generateDailyNote } from '@/lib/data/notes/generateDailyNote'
 import { buildStockReport, buildUnavailableStockReport } from '@/lib/research/report/buildStockReport'
+import { crowdingLabel as scoreCrowdingLabel, crowdingScoreFromComponents, extensionRiskScoreFromComponents, setupLabel } from '@/lib/research/crowdingScores'
 import { getPrisma } from '@/lib/server/prisma'
-import type { BasketSummary, CatalystReportRow, CrowdingRow, DailyNoteDto, DbDataStatus, MetricValue, PositioningRow, RotationRow, StockReport, TickerSeed, ValidationRow } from '@/lib/research/types'
+import type { BasketSummary, CatalystReportRow, CrowdingRow, DbDataStatus, MetricValue, PositioningRow, RotationRow, StockReport, TickerSeed, ValidationRow } from '@/lib/research/types'
 
 const rotationTickers = ['SPY', 'QQQ', 'IWM', 'TLT', 'GLD', 'USO', 'VIXY', 'XLK', 'XLF', 'XLI', 'XLE', 'XLU', 'XLP', 'XLV', 'XLY', 'SMH', 'ITA', 'XAR', 'EWY']
 
@@ -42,7 +42,6 @@ type TerminalContext = {
   signalByTicker: Map<string, SnapshotLike>
   positioningByTicker: Map<string, SnapshotLike>
   crowdingByTicker: Map<string, SnapshotLike>
-  latestNote: SnapshotLike | null
   validationResults: SnapshotLike[]
   providerRuns: SnapshotLike[]
   databaseConfigured: boolean
@@ -54,7 +53,7 @@ let databaseUnavailableUntil = 0
 
 const TERMINAL_CONTEXT_TTL_MS = 60_000
 const DATABASE_RETRY_DELAY_MS = 10_000
-const DATABASE_QUERY_TIMEOUT_MS = Number(process.env.RESEARCH_DB_TIMEOUT_MS ?? 5_000)
+const DATABASE_QUERY_TIMEOUT_MS = Number(process.env.RESEARCH_DB_TIMEOUT_MS ?? 10_000)
 
 export async function getTerminalContext(): Promise<TerminalContext> {
   const prisma = getPrisma()
@@ -88,13 +87,12 @@ async function loadTerminalContext(): Promise<TerminalContext> {
   if (!prisma) return fallbackContext(false)
 
   try {
-    const [tickers, baskets, signals, positioning, crowding, notes, validationResults, providerRuns] = await withTimeout(Promise.all([
+    const [tickers, baskets, signals, positioning, crowding, validationResults, providerRuns] = await withTimeout(Promise.all([
       prisma.ticker.findMany({ orderBy: { ticker: 'asc' } }),
       prisma.themeBasket.findMany({ include: { members: { include: { ticker: true } } }, orderBy: { slug: 'asc' } }),
       prisma.signalSnapshot.findMany({ include: { ticker: true }, orderBy: [{ asOfDate: 'desc' }, { date: 'desc' }], take: 2000 }),
       prisma.positioningSnapshot.findMany({ include: { ticker: true }, orderBy: [{ asOfDate: 'desc' }, { date: 'desc' }], take: 2000 }),
       prisma.crowdingSnapshot.findMany({ include: { ticker: true }, orderBy: [{ asOfDate: 'desc' }, { date: 'desc' }], take: 2000 }),
-      prisma.dailyNote.findMany({ orderBy: [{ asOfDate: 'desc' }, { generatedAt: 'desc' }], take: 1 }),
       prisma.validationResult.findMany({ orderBy: [{ asOfDate: 'desc' }, { createdAt: 'desc' }], take: 20 }),
       prisma.providerRun.findMany({ orderBy: { startedAt: 'desc' }, take: 20 })
     ]), DATABASE_QUERY_TIMEOUT_MS)
@@ -105,7 +103,6 @@ async function loadTerminalContext(): Promise<TerminalContext> {
       signalByTicker: latestSnapshotByTicker(signals),
       positioningByTicker: latestSnapshotByTicker(positioning),
       crowdingByTicker: latestSnapshotByTicker(crowding),
-      latestNote: notes[0] ?? null,
       validationResults,
       providerRuns,
       databaseConfigured: true
@@ -135,7 +132,6 @@ function fallbackContext(databaseConfigured: boolean): TerminalContext {
     signalByTicker: new Map<string, SnapshotLike>(),
     positioningByTicker: new Map<string, SnapshotLike>(),
     crowdingByTicker: new Map<string, SnapshotLike>(),
-    latestNote: null,
     validationResults: [],
     providerRuns: [],
     databaseConfigured
@@ -202,21 +198,6 @@ export async function getBasketDetail(slug: string) {
   return { summary, members }
 }
 
-export async function getDailyNote() {
-  const context = await getTerminalContext()
-  if (context.latestNote) return dailyNoteDto(context.latestNote)
-  const rotations = await getRotationRows()
-  const crowding = await getCrowdingRows()
-  const asOfDate = process.env.DEMO_AS_OF_DATE || new Date().toISOString().slice(0, 10)
-  return generateDailyNote({
-    asOfDate,
-    rotations,
-    crowding,
-    source: process.env.DEMO_AS_OF_DATE ? 'frozen sourced snapshot' : 'database',
-    provider: context.databaseConfigured ? 'Postgres' : 'not configured'
-  })
-}
-
 export async function getValidationRows() {
   const context = await getTerminalContext()
   if (context.validationResults.length === 0) {
@@ -242,14 +223,13 @@ export async function getValidationRows() {
 }
 
 export async function getHomeSummary() {
-  const [rotations, baskets, crowding, note, validation] = await Promise.all([
+  const [rotations, baskets, crowding, validation] = await Promise.all([
     getRotationRows(),
     getBasketSummaries(),
     getCrowdingRows(),
-    getDailyNote(),
     getValidationRows()
   ])
-  return { rotations, baskets, crowding, note, validation, demoAsOfDate: process.env.DEMO_AS_OF_DATE ?? null }
+  return { rotations, baskets, crowding, validation, demoAsOfDate: process.env.DEMO_AS_OF_DATE ?? null }
 }
 
 export function normalizeTickerSymbol(value: string | string[] | undefined) {
@@ -279,19 +259,19 @@ export async function getStockReport(symbol: string): Promise<StockReport> {
       isEtf: false,
       description: 'Ticker is outside seeded taxonomy.'
     })
-  const catalysts = await getCatalystRows(ticker)
+  const catalysts = await getCatalystRows(ticker, tickerRow.name)
 
   return buildStockReport({
     ticker,
     companyName: tickerRow.name,
     signal: rotationRow(tickerRow, context.signalByTicker.get(ticker)),
     positioning: positioningRow(tickerRow, context.positioningByTicker.get(ticker)),
-    crowding: crowdingRow(tickerRow, context.crowdingByTicker.get(ticker), basketForTicker(ticker)),
+    crowding: crowdingRow(tickerRow, context.crowdingByTicker.get(ticker), basketForTicker(ticker), catalysts),
     catalysts
   })
 }
 
-async function getCatalystRows(ticker: string): Promise<CatalystReportRow[]> {
+async function getCatalystRows(ticker: string, companyName: string): Promise<CatalystReportRow[]> {
   const prisma = getPrisma()
   if (prisma && Date.now() >= databaseUnavailableUntil) {
     try {
@@ -300,7 +280,8 @@ async function getCatalystRows(ticker: string): Promise<CatalystReportRow[]> {
         orderBy: [{ date: 'desc' }, { createdAt: 'desc' }],
         take: 5
       }), 2500)
-      if (rows.length > 0) return rows.map(catalystEventRow)
+      const directRows = rows.filter(row => storedCatalystIsDirectTicker(row, ticker, companyName))
+      if (directRows.length > 0) return directRows.map(catalystEventRow)
     } catch (error) {
       databaseUnavailableUntil = Date.now() + 30_000
       console.warn(`Catalyst query unavailable; using generated event fallback. ${describeDatabaseError(error)}`)
@@ -309,9 +290,11 @@ async function getCatalystRows(ticker: string): Promise<CatalystReportRow[]> {
 
   return getEvents()
     .filter(event => event.affectedAssets.includes(ticker))
+    .filter(event => generatedEventIsDirectTickerCatalyst(event, ticker, companyName))
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, 5)
     .map(event => {
+      const materiality = generatedEventMateriality(event.verified, event.priceConfirmationRequired)
       const point = pointInTime({
         asOfDate: event.date,
         observedAt: event.publishedAt,
@@ -329,9 +312,58 @@ async function getCatalystRows(ticker: string): Promise<CatalystReportRow[]> {
         summary: event.summary,
         sourceName: event.sourceName,
         url: event.sourceUrl,
-        materialityScore: metric(null, 'UNAVAILABLE', 'No sourced materiality score stored for generated event')
+        materialityScore: metric(materiality, event.verified ? 'AVAILABLE' : 'PARTIAL', 'Generated event materiality derived from sourced event metadata')
       }
     })
+}
+
+function generatedEventIsDirectTickerCatalyst(event: ReturnType<typeof getEvents>[number], ticker: string, companyName: string) {
+  const text = [
+    event.title,
+    event.summary,
+    event.analystNote,
+    event.eventUse,
+    ...event.sourceContext
+  ].join(' ').toLowerCase()
+  const symbol = ticker.toLowerCase()
+  if (new RegExp(`\\b${escapeRegex(symbol)}\\b`, 'i').test(text)) return true
+  const companyTokens = directCompanyTokens(companyName)
+  if (companyTokens.some(token => new RegExp(`\\b${escapeRegex(token)}\\b`, 'i').test(text))) return true
+  return /earnings|guidance|revenue|margin|product|chip|gpu|accelerator|sec filing|regulatory|export control/.test(text)
+    && companyTokens.length > 0
+    && companyTokens.some(token => text.includes(token))
+}
+
+function storedCatalystIsDirectTicker(record: SnapshotLike, ticker: string, companyName: string) {
+  const text = [
+    textOf(record.title),
+    textOf(record.summary),
+    textOf(record.sourceName),
+    textOf(record.url)
+  ].filter(Boolean).join(' ').toLowerCase()
+  const symbol = ticker.toLowerCase()
+  if (new RegExp(`\\b${escapeRegex(symbol)}\\b`, 'i').test(text)) return true
+  const companyTokens = directCompanyTokens(companyName)
+  return companyTokens.some(token => new RegExp(`\\b${escapeRegex(token)}\\b`, 'i').test(text))
+}
+
+function directCompanyTokens(companyName: string) {
+  const generic = new Set(['inc', 'corp', 'corporation', 'company', 'co', 'ltd', 'plc', 'holdings', 'markets', 'group'])
+  return companyName
+    .toLowerCase()
+    .replace(/[^a-z0-9 ]+/g, ' ')
+    .split(/\s+/)
+    .filter(token => token.length >= 4 && !generic.has(token))
+}
+
+function escapeRegex(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+function generatedEventMateriality(verified: boolean, priceConfirmationRequired: boolean) {
+  if (verified && !priceConfirmationRequired) return 72
+  if (verified) return 64
+  return priceConfirmationRequired ? 48 : 55
 }
 
 function catalystEventRow(record: SnapshotLike): CatalystReportRow {
@@ -399,10 +431,10 @@ function positioningRow(ticker: MinimalTicker, snapshot: SnapshotLike | undefine
     ...pointInTime(snapshot ?? { source: 'positioning snapshot', provider: 'not configured', dataStatus: 'UNAVAILABLE' }),
     ticker: ticker.ticker,
     name: ticker.name,
-    optionsVolume: metric(numberOf(snapshot?.optionsVolume), status, 'Polygon options entitlement or row missing'),
-    openInterest: metric(numberOf(snapshot?.openInterest), status, 'Polygon options entitlement or row missing'),
+    optionsVolume: metric(numberOf(snapshot?.optionsVolume), status, 'Polygon/Massive options entitlement or row missing'),
+    openInterest: metric(numberOf(snapshot?.openInterest), status, 'Polygon/Massive options entitlement or row missing'),
     putCallRatio: metric(numberOf(snapshot?.putCallRatio), status, 'Options chain inputs missing'),
-    impliedVolatility: metric(numberOf(snapshot?.impliedVolatility), status, 'Polygon options entitlement or row missing'),
+    impliedVolatility: metric(numberOf(snapshot?.impliedVolatility), status, 'Polygon/Massive options entitlement or row missing'),
     impliedVolPercentile: metric(numberOf(snapshot?.impliedVolPercentile), status, 'Insufficient IV history'),
     shortInterest: metric(numberOf(snapshot?.shortInterest), status, 'FINRA short-interest row missing'),
     shortInterestChange: metric(numberOf(snapshot?.shortInterestChange), status, 'FINRA short-interest history missing'),
@@ -412,21 +444,45 @@ function positioningRow(ticker: MinimalTicker, snapshot: SnapshotLike | undefine
   }
 }
 
-function crowdingRow(ticker: MinimalTicker, snapshot: SnapshotLike | undefined, basket: string): CrowdingRow {
+function crowdingRow(ticker: MinimalTicker, snapshot: SnapshotLike | undefined, basket: string, catalysts: CatalystReportRow[] = []): CrowdingRow {
   const status = statusOf(snapshot)
   const excluded = arrayOfStrings(snapshot?.excludedUnavailableInputs)
+  const momentumScore = numberOf(snapshot?.momentumScore)
+  const volumeScore = numberOf(snapshot?.volumeScore)
+  const optionsScore = numberOf(snapshot?.optionsScore)
+  const volatilityScore = numberOf(snapshot?.volatilityScore)
+  const shortInterestScore = numberOf(snapshot?.shortInterestScore)
+  const storedCrowdingScore = numberOf(snapshot?.crowdingScore)
+  const crowdingScore = crowdingScoreFromComponents({ momentumScore, volumeScore, optionsScore, shortInterestScore }) ?? storedCrowdingScore
+  const extensionRiskScore = numberOf(snapshot?.extensionRiskScore)
+    ?? componentNumber(snapshot, 'extensionRiskScore')
+    ?? extensionRiskScoreFromComponents({
+      volatilityScore,
+      distanceFrom20dMa: componentNumber(snapshot, 'distanceFrom20dMa'),
+      distanceFrom50dMa: componentNumber(snapshot, 'distanceFrom50dMa')
+    })
+    ?? volatilityScore
+  const catalystSupportScore = numberOf(snapshot?.catalystScore)
+    ?? componentNumber(snapshot, 'catalystSupportScore')
+    ?? averageMetric(catalysts.map(row => row.materialityScore.value))
+  const catalystStatus = catalystSupportScore !== null && catalysts.length > 0
+    ? combineStatuses(catalysts.map(row => row.dataStatus as DbDataStatus))
+    : status
   return {
     ...pointInTime(snapshot ?? { source: 'crowding snapshot', provider: 'not configured', dataStatus: 'UNAVAILABLE' }),
     ticker: ticker.ticker,
     name: ticker.name,
     basket,
-    crowdingScore: metric(numberOf(snapshot?.crowdingScore), status, 'Crowding snapshot missing'),
-    crowdingLabel: textOf(snapshot?.crowdingLabel) ?? 'Unavailable',
-    momentumScore: metric(numberOf(snapshot?.momentumScore), status, 'Momentum component missing'),
-    volumeScore: metric(numberOf(snapshot?.volumeScore), status, 'Volume component missing'),
-    optionsScore: metric(numberOf(snapshot?.optionsScore), status, 'Options component missing'),
-    volatilityScore: metric(numberOf(snapshot?.volatilityScore), status, 'Volatility component missing'),
-    shortInterestScore: metric(numberOf(snapshot?.shortInterestScore), status, 'Short-interest component missing'),
+    crowdingScore: metric(crowdingScore, status, 'Crowding snapshot missing'),
+    crowdingLabel: scoreCrowdingLabel(crowdingScore),
+    extensionRiskScore: metric(extensionRiskScore, status, 'Extension-risk snapshot missing'),
+    catalystSupportScore: metric(catalystSupportScore, catalystStatus, 'Catalyst support score missing'),
+    setupLabel: setupLabel({ crowdingScore, extensionRiskScore, catalystSupportScore }),
+    momentumScore: metric(momentumScore, status, 'Momentum component missing'),
+    volumeScore: metric(volumeScore, status, 'Volume component missing'),
+    optionsScore: metric(optionsScore, status, 'Options component missing'),
+    volatilityScore: metric(volatilityScore, status, 'Volatility component missing'),
+    shortInterestScore: metric(shortInterestScore, status, 'Short-interest component missing'),
     explanation: textOf(snapshot?.explanation) ?? 'No sourced crowding explanation available.',
     excludedUnavailableInputs: excluded
   }
@@ -460,31 +516,9 @@ function basketSummary(basket: unknown, signalByTicker: Map<string, SnapshotLike
     return60d: metric(return60d, status, 'Basket member signals missing'),
     relativeStrengthVsSpy20d: metric(rs20d, status, 'Basket member signals missing'),
     averageCrowdingScore: metric(avgCrowding, status, 'Basket member crowding rows missing'),
-    basketLabel: avgCrowding === null ? 'Unavailable' : avgCrowding >= 75 ? 'Crowded Momentum' : avgCrowding >= 50 ? 'Confirmed Sponsorship' : avgCrowding >= 25 ? 'Early Accumulation' : 'Ignored / Weak',
+    basketLabel: avgCrowding === null ? 'Unavailable' : avgCrowding >= 75 ? 'Crowded Sponsorship' : avgCrowding >= 50 ? 'Confirmed Sponsorship' : avgCrowding >= 25 ? 'Early Accumulation' : 'Ignored / Weak',
     topContributors: ranked.slice(0, 3).map(item => item.ticker),
     laggards: ranked.slice(-3).reverse().map(item => item.ticker)
-  }
-}
-
-function dailyNoteDto(note: SnapshotLike): DailyNoteDto {
-  return {
-    ...pointInTime(note),
-    id: textOf(note.id) ?? 'daily-note',
-    date: isoDate(note.date) ?? isoDate(note.asOfDate) ?? '',
-    title: textOf(note.title) ?? 'PM Daily Flow & Positioning Note',
-    marketRegime: textOf(note.marketRegime) ?? 'Unavailable',
-    topRotations: arrayOfStrings(note.topRotations),
-    crowdedLongs: arrayOfStrings(note.crowdedLongs),
-    earlyAccumulation: arrayOfStrings(note.earlyAccumulation),
-    reversalRisks: arrayOfStrings(note.reversalRisks),
-    pmQuestions: arrayOfStrings(note.pmQuestions),
-    body: textOf(note.body) ?? '',
-    inputSnapshotIds: arrayOfStrings(note.inputSnapshotIds),
-    excludedUnavailableInputs: arrayOfStrings(note.excludedUnavailableInputs),
-    generatedAt: isoDateTime(note.generatedAt) ?? '',
-    humanEditedAt: isoDateTime(note.humanEditedAt),
-    noteStatus: (textOf(note.noteStatus) as DailyNoteDto['noteStatus']) ?? 'GENERATED',
-    sourceCoveragePercent: numberOf(note.sourceCoveragePercent) ?? 0
   }
 }
 
@@ -499,8 +533,29 @@ function validationRow(record: SnapshotLike): ValidationRow {
     averageForwardReturn,
     sampleSize: numberOf(record.sampleSize) ?? 0,
     coveragePercent: numberOf(record.coveragePercent) ?? sourceCoverage([hitRate, averageForwardReturn]),
-    caveats: textOf(record.caveats) ?? 'No caveat recorded.'
+    caveats: textOf(record.caveats) ?? 'No caveat recorded.',
+    resultRows: normalizeValidationSamples(record.resultRows)
   }
+}
+
+function normalizeValidationSamples(value: unknown) {
+  if (!Array.isArray(value)) return []
+  return value.slice(0, 100).flatMap(item => {
+    if (!item || typeof item !== 'object') return []
+    const raw = item as Record<string, unknown>
+    const hit = raw.hit
+    const forwardReturn = numberOf(raw.forwardReturn)
+    if (typeof hit !== 'boolean' || forwardReturn === null) return []
+    return [{
+      ticker: textOf(raw.ticker) ?? undefined,
+      signalDate: textOf(raw.signalDate) ?? undefined,
+      signalValue: numberOf(raw.signalValue),
+      hit,
+      forwardReturn,
+      trailingVol: numberOf(raw.trailingVol),
+      forwardVol: numberOf(raw.forwardVol)
+    }]
+  })
 }
 
 function getBasketMembers(basket: unknown) {
@@ -553,14 +608,15 @@ function readField(value: unknown, field: string): unknown {
   return (value as Record<string, unknown>)[field]
 }
 
+function componentNumber(snapshot: SnapshotLike | undefined, field: string) {
+  const components = readField(snapshot, 'components')
+  if (!components || typeof components !== 'object' || Array.isArray(components)) return null
+  return numberOf((components as Record<string, unknown>)[field])
+}
+
 function isoDate(value: unknown) {
   const date = dateOf(value)
   return date ? date.toISOString().slice(0, 10) : null
-}
-
-function isoDateTime(value: unknown) {
-  const date = dateOf(value)
-  return date ? date.toISOString() : null
 }
 
 function dateOf(value: unknown) {

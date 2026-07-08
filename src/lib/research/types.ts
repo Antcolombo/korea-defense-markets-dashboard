@@ -108,6 +108,9 @@ export type CrowdingRow = PointInTime & {
   basket: string
   crowdingScore: MetricValue
   crowdingLabel: string
+  extensionRiskScore: MetricValue
+  catalystSupportScore: MetricValue
+  setupLabel: string
   momentumScore: MetricValue
   volumeScore: MetricValue
   optionsScore: MetricValue
@@ -117,25 +120,6 @@ export type CrowdingRow = PointInTime & {
   excludedUnavailableInputs: string[]
 }
 
-export type DailyNoteDto = PointInTime & {
-  id: string
-  date: string
-  title: string
-  marketRegime: string
-  topRotations: string[]
-  crowdedLongs: string[]
-  earlyAccumulation: string[]
-  reversalRisks: string[]
-  pmQuestions: string[]
-  body: string
-  inputSnapshotIds: string[]
-  excludedUnavailableInputs: string[]
-  generatedAt: string
-  humanEditedAt: string | null
-  noteStatus: 'GENERATED' | 'HUMAN_EDITED' | 'PUBLISHED' | 'ARCHIVED'
-  sourceCoveragePercent: number
-}
-
 export type ValidationRow = PointInTime & {
   testName: string
   hitRate: MetricValue
@@ -143,6 +127,17 @@ export type ValidationRow = PointInTime & {
   sampleSize: number
   coveragePercent: number
   caveats: string
+  resultRows?: ValidationSampleRow[]
+}
+
+export type ValidationSampleRow = {
+  ticker?: string
+  signalDate?: string
+  signalValue?: number | null
+  hit: boolean
+  forwardReturn: number
+  trailingVol?: number | null
+  forwardVol?: number | null
 }
 
 export type CatalystReportRow = PointInTime & {

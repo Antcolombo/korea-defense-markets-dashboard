@@ -14,6 +14,7 @@ type Props = {
   report: StockReport
   shell: ShellMeta
   unavailableFields: UnavailableField[]
+  deferredUnavailableFields: UnavailableField[]
   selectedTicker: string
 }
 
@@ -28,12 +29,13 @@ export const getServerSideProps: GetServerSideProps<Props> = async context => {
       report,
       shell: createShellMeta(response),
       unavailableFields: response.unavailableFields,
+      deferredUnavailableFields: response.deferredUnavailableFields,
       selectedTicker: report.ticker
     }
   }
 }
 
-export function StockReportRoute({ report, shell, unavailableFields, selectedTicker }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export function StockReportRoute({ report, shell, unavailableFields, deferredUnavailableFields, selectedTicker }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <>
       <Head>
@@ -45,6 +47,7 @@ export function StockReportRoute({ report, shell, unavailableFields, selectedTic
         data={{ report }}
         shell={shell}
         unavailableFields={unavailableFields}
+        deferredUnavailableFields={deferredUnavailableFields}
         selectedTicker={selectedTicker}
       />
     </>

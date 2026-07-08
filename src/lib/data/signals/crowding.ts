@@ -1,14 +1,8 @@
 import { combineStatuses, metric, sourceCoverage } from '@/lib/data/availability'
+import { crowdingLabel } from '@/lib/research/crowdingScores'
 import type { CrowdingRow, MetricValue } from '@/lib/research/types'
 
-export function crowdingLabel(score: number | null) {
-  if (score === null) return 'Unavailable'
-  if (score < 25) return 'Ignored / Weak'
-  if (score < 50) return 'Early Accumulation'
-  if (score < 75) return 'Confirmed Sponsorship'
-  if (score < 90) return 'Crowded Momentum'
-  return 'Reversal Risk'
-}
+export { crowdingLabel }
 
 export function scoreAvailableComponents(components: MetricValue[]) {
   const available = components.filter(item => item.value !== null && item.availability === 'Available')

@@ -1,7 +1,7 @@
 {
   "provider": "EIA Open Data",
   "sourceUrl": "https://www.eia.gov/opendata/",
-  "retrievedAt": "2026-06-21T19:58:21.654Z",
+  "retrievedAt": "2026-07-06T17:30:39.538Z",
   "status": "source",
   "failures": [],
   "series": [
@@ -12,6 +12,16 @@
       "unit": "thousand barrels",
       "status": "source",
       "observations": [
+        {
+          "period": "2026-06-26",
+          "value": 213966,
+          "units": "MBBL"
+        },
+        {
+          "period": "2026-06-19",
+          "value": 216299,
+          "units": "MBBL"
+        },
         {
           "period": "2026-06-12",
           "value": 214235,
@@ -2101,16 +2111,6 @@
           "period": "2018-06-15",
           "value": 240040,
           "units": "MBBL"
-        },
-        {
-          "period": "2018-06-08",
-          "value": 236763,
-          "units": "MBBL"
-        },
-        {
-          "period": "2018-06-01",
-          "value": 239034,
-          "units": "MBBL"
         }
       ]
     },
@@ -2121,6 +2121,16 @@
       "unit": "thousand barrels",
       "status": "source",
       "observations": [
+        {
+          "period": "2026-06-26",
+          "value": 408359,
+          "units": "MBBL"
+        },
+        {
+          "period": "2026-06-19",
+          "value": 412134,
+          "units": "MBBL"
+        },
         {
           "period": "2026-06-12",
           "value": 418222,
@@ -4210,16 +4220,6 @@
           "period": "2018-06-15",
           "value": 426527,
           "units": "MBBL"
-        },
-        {
-          "period": "2018-06-08",
-          "value": 432441,
-          "units": "MBBL"
-        },
-        {
-          "period": "2018-06-01",
-          "value": 436584,
-          "units": "MBBL"
         }
       ]
     },
@@ -4230,6 +4230,16 @@
       "unit": "thousand barrels",
       "status": "source",
       "observations": [
+        {
+          "period": "2026-06-26",
+          "value": 108599,
+          "units": "MBBL"
+        },
+        {
+          "period": "2026-06-19",
+          "value": 106116,
+          "units": "MBBL"
+        },
         {
           "period": "2026-06-12",
           "value": 103052,
@@ -6318,16 +6328,6 @@
         {
           "period": "2018-06-15",
           "value": 117408,
-          "units": "MBBL"
-        },
-        {
-          "period": "2018-06-08",
-          "value": 114693,
-          "units": "MBBL"
-        },
-        {
-          "period": "2018-06-01",
-          "value": 116794,
           "units": "MBBL"
         }
       ]

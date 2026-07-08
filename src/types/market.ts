@@ -16,4 +16,8 @@ export type PricePoint = Provenance & {
   ticker: string
   price: number
   returnValue: number
+  open?: number | null
+  high?: number | null
+  low?: number | null
+  volume?: number | null
 }

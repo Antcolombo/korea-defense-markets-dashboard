@@ -1,4 +1,10 @@
 import type { DataAvailability, DbDataStatus, MetricValue, PointInTime } from './types'
+import {
+  matchesProviderHealthDefinition,
+  providerHealthDefinitionHasField,
+  providerHealthDefinitions,
+  unavailableFieldVisibility
+} from './datasetRegistry'
 
 export type ApiDataStatus =
   | 'available'
@@ -21,12 +27,14 @@ export type CoverageSummary = {
   totalFields: number
   availableFields: number
   coveragePercent: number
+  deferredFields: number
 }
 
 export type UnavailableField = {
   field: string
   reason: string
   provider?: string
+  visibility: 'active' | 'deferred'
 }
 
 export type ProviderFreshness = {
@@ -44,14 +52,32 @@ export type ProviderHealth = {
   detail: string
 }
 
+export type ShellQualityStatus = 'fresh' | 'stale' | 'partial' | 'gaps' | 'no_data'
+export type ShellSourceStatus = 'fresh' | 'available' | 'limited' | 'stale' | 'deferred' | 'unavailable'
+
+export type ShellSourceState = {
+  key: 'prices' | 'options' | 'short_sale' | 'catalyst' | 'validation'
+  label: string
+  status: ShellSourceStatus
+  detail: string
+}
+
 export type ShellMeta = {
   asOf: string
   generatedAt: string
   coveragePercent: number
+  qualityStatus: ShellQualityStatus
+  qualityLabel: string
+  qualityDetail: string
+  freshnessAgeHours: number | null
   providerFreshness: ProviderFreshness[]
   providerHealth: ProviderHealth[]
+  deferredProviderHealth: ProviderHealth[]
+  sourceStates: ShellSourceState[]
+  sourceSummary: string
   hasRequiredSnapshots: boolean
   unavailableCount: number
+  deferredUnavailableCount: number
   demoAsOfDate: string | null
 }
 
@@ -60,6 +86,7 @@ export type ApiResponse<T> = {
   provenance: Provenance[]
   coverage: CoverageSummary
   unavailableFields: UnavailableField[]
+  deferredUnavailableFields: UnavailableField[]
   generatedAt: string
 }
 
@@ -80,37 +107,205 @@ export function toApiStatus(status: DbDataStatus | DataAvailability | string | n
 
 export function createApiResponse<T>(data: T): ApiResponse<T> {
   const generatedAt = new Date().toISOString()
-  const metrics = collectMetricValues(data)
+  const metrics = collectMetricEntries(data)
+  const visibleMetrics = metrics.filter(isActiveMetric)
+  const unavailableFields = buildUnavailableFields(data)
   const points = collectPointInTime(data)
-  const totalFields = metrics.length > 0 ? metrics.length : points.length
+  const hasVisibleMetrics = visibleMetrics.length > 0
+  const hasActiveGaps = unavailableFields.active.length > 0
+  const totalFields = metrics.length > 0 ? visibleMetrics.length : hasActiveGaps ? points.length : 0
   const availableFields = metrics.length > 0
-    ? metrics.filter(metric => metric.availability === 'Available').length
-    : points.filter(point => point.dataStatus === 'AVAILABLE').length
+    ? visibleMetrics.filter(entry => entry.metric.value !== null).length
+    : totalFields > 0 ? points.filter(point => point.dataStatus === 'AVAILABLE').length : 0
   const coveragePercent = totalFields === 0 ? 0 : Math.round((availableFields / totalFields) * 100)
   return {
     data,
     provenance: buildProvenance(points),
-    coverage: { totalFields, availableFields, coveragePercent },
-    unavailableFields: buildUnavailableFields(data),
+    coverage: {
+      totalFields,
+      availableFields,
+      coveragePercent: !hasVisibleMetrics && !hasActiveGaps ? 100 : coveragePercent,
+      deferredFields: unavailableFields.deferred.length
+    },
+    unavailableFields: unavailableFields.active,
+    deferredUnavailableFields: unavailableFields.deferred,
     generatedAt
   }
 }
 
-export function createShellMeta(response: Pick<ApiResponse<unknown>, 'provenance' | 'coverage' | 'unavailableFields' | 'generatedAt'>): ShellMeta {
+export function createShellMeta(response: Pick<ApiResponse<unknown>, 'provenance' | 'coverage' | 'unavailableFields' | 'deferredUnavailableFields' | 'generatedAt'>): ShellMeta {
   const sorted = response.provenance
     .filter(item => item.asOf)
     .sort((a, b) => Date.parse(b.asOf) - Date.parse(a.asOf))
-  const providerHealth = buildProviderHealth(response)
+  const providerHealth = buildProviderHealth(response, 'active')
+  const freshnessAgeHours = latestFreshnessAgeHours(response.provenance)
+  const demoAsOfDate = process.env.DEMO_AS_OF_DATE ?? process.env.NEXT_PUBLIC_DEMO_AS_OF_DATE ?? null
+  const hasRequired = hasRequiredSnapshots(providerHealth, response.coverage.coveragePercent)
+  const sourceStates = buildSourceStates(response, freshnessAgeHours)
+  const quality = summarizeShellQuality({
+    coveragePercent: response.coverage.coveragePercent,
+    unavailableCount: response.unavailableFields.length,
+    deferredUnavailableCount: response.deferredUnavailableFields.length,
+    freshnessAgeHours,
+    hasRequiredSnapshots: hasRequired,
+    demoAsOfDate
+  })
   return {
     asOf: sorted[0]?.asOf ?? response.generatedAt,
     generatedAt: response.generatedAt,
     coveragePercent: response.coverage.coveragePercent,
+    qualityStatus: quality.status,
+    qualityLabel: quality.label,
+    qualityDetail: quality.detail,
+    freshnessAgeHours,
     providerFreshness: summarizeProviderFreshness(response.provenance),
     providerHealth,
-    hasRequiredSnapshots: hasRequiredSnapshots(providerHealth, response.coverage.coveragePercent),
+    deferredProviderHealth: buildProviderHealth(response, 'deferred'),
+    sourceStates,
+    sourceSummary: summarizeSourceStates(sourceStates),
+    hasRequiredSnapshots: hasRequired,
     unavailableCount: response.unavailableFields.length,
-    demoAsOfDate: process.env.DEMO_AS_OF_DATE ?? process.env.NEXT_PUBLIC_DEMO_AS_OF_DATE ?? null
+    deferredUnavailableCount: response.deferredUnavailableFields.length,
+    demoAsOfDate
   }
+}
+
+function latestFreshnessAgeHours(provenance: Provenance[]) {
+  let latest = 0
+  for (const item of provenance) {
+    for (const value of [item.ingestedAt, item.asOf]) {
+      const time = Date.parse(value)
+      if (Number.isFinite(time) && time > latest) latest = time
+    }
+  }
+  if (!latest) return null
+  return Math.max(0, Math.round(((Date.now() - latest) / 36e5) * 10) / 10)
+}
+
+function summarizeShellQuality(input: {
+  coveragePercent: number
+  unavailableCount: number
+  deferredUnavailableCount: number
+  freshnessAgeHours: number | null
+  hasRequiredSnapshots: boolean
+  demoAsOfDate: string | null
+}): { status: ShellQualityStatus; label: string; detail: string } {
+  const coverageDetail = `${input.coveragePercent}% active / ${input.deferredUnavailableCount} deferred`
+  if (input.coveragePercent <= 0) return { status: 'no_data', label: 'No Data', detail: coverageDetail }
+  if (!input.demoAsOfDate && input.freshnessAgeHours !== null && input.freshnessAgeHours > 36) {
+    return { status: 'stale', label: 'Stale', detail: `${input.freshnessAgeHours.toFixed(1)}h old / ${input.deferredUnavailableCount} deferred` }
+  }
+  if (input.unavailableCount > 0) {
+    return { status: 'gaps', label: 'Gaps', detail: `${input.unavailableCount} active / ${input.deferredUnavailableCount} deferred` }
+  }
+  if (input.coveragePercent < 100 || !input.hasRequiredSnapshots) {
+    return { status: 'partial', label: 'Partial', detail: coverageDetail }
+  }
+  return { status: 'fresh', label: 'Fresh', detail: coverageDetail }
+}
+
+function buildSourceStates(
+  response: Pick<ApiResponse<unknown>, 'provenance' | 'unavailableFields' | 'deferredUnavailableFields'>,
+  freshnessAgeHours: number | null
+): ShellSourceState[] {
+  const active = response.unavailableFields.map(fieldText)
+  const deferred = response.deferredUnavailableFields.map(fieldText)
+  const provenance = response.provenance.map(item => `${item.provider} ${item.dataset} ${item.source} ${item.status}`.toLowerCase())
+  const hasActive = (patterns: RegExp[]) => active.some(text => patterns.some(pattern => pattern.test(text)))
+  const hasDeferred = (patterns: RegExp[]) => deferred.some(text => patterns.some(pattern => pattern.test(text)))
+  const hasProvider = (patterns: RegExp[]) => provenance.some(text => patterns.some(pattern => pattern.test(text)))
+
+  const pricePatterns = [/price/, /ohlcv/, /close/, /relative-strength/, /\brs\b/, /signal snapshot/]
+  const optionPatterns = [/option/, /put\/call/, /open interest/, /implied vol/, /\biv\b/, /greek/, /gamma/]
+  const shortPatterns = [/finra/, /short-sale/, /short sale/, /short-volume/, /short volume/, /short-interest/, /short interest/]
+  const catalystPatterns = [/catalyst/, /materiality/, /news/]
+  const validationPatterns = [/validation/, /historical/, /forward-return/, /forward return/, /sample/]
+
+  const prices: ShellSourceState = freshnessAgeHours !== null && freshnessAgeHours > 36
+    ? { key: 'prices', label: 'Prices', status: 'stale', detail: `${freshnessAgeHours.toFixed(1)}h old` }
+    : hasActive(pricePatterns)
+      ? { key: 'prices', label: 'Prices', status: 'unavailable', detail: 'Price rows missing' }
+      : { key: 'prices', label: 'Prices', status: hasProvider(pricePatterns) ? 'fresh' : 'available', detail: 'Close and RS ready' }
+
+  const options = sourceState({
+    key: 'options',
+    label: 'Options',
+    active: hasActive(optionPatterns),
+    deferred: hasDeferred(optionPatterns),
+    provider: hasProvider(optionPatterns),
+    readyDetail: 'Sampled proxy ready',
+    limitedDetail: 'Proxy ready; live OI/IV deferred',
+    missingDetail: 'Options unavailable'
+  })
+
+  const shortSale = sourceState({
+    key: 'short_sale',
+    label: 'Short-sale',
+    active: hasActive(shortPatterns),
+    deferred: hasDeferred(shortPatterns),
+    provider: hasProvider(shortPatterns),
+    readyDetail: 'FINRA proxy ready',
+    limitedDetail: 'FINRA proxy limited',
+    missingDetail: 'Short-sale unavailable'
+  })
+
+  const catalyst = sourceState({
+    key: 'catalyst',
+    label: 'Catalyst',
+    active: hasActive(catalystPatterns),
+    deferred: hasDeferred(catalystPatterns),
+    provider: hasProvider(catalystPatterns),
+    readyDetail: 'Catalyst rows ready',
+    limitedDetail: 'Some catalyst inputs deferred',
+    missingDetail: 'Catalyst deferred'
+  })
+
+  const validation: ShellSourceState = hasActive(validationPatterns)
+    ? { key: 'validation', label: 'Validation', status: 'unavailable', detail: 'Historical sample missing' }
+    : hasProvider(validationPatterns) && !hasDeferred(validationPatterns)
+      ? { key: 'validation', label: 'Validation', status: 'available', detail: 'Historical sample ready' }
+      : { key: 'validation', label: 'Validation', status: 'deferred', detail: 'Historical lab deferred' }
+
+  return [prices, options, shortSale, catalyst, validation]
+}
+
+function sourceState({
+  key,
+  label,
+  active,
+  deferred,
+  provider,
+  readyDetail,
+  limitedDetail,
+  missingDetail
+}: {
+  key: ShellSourceState['key']
+  label: string
+  active: boolean
+  deferred: boolean
+  provider: boolean
+  readyDetail: string
+  limitedDetail: string
+  missingDetail: string
+}): ShellSourceState {
+  if (active) return { key, label, status: 'unavailable', detail: missingDetail }
+  if (deferred && provider) return { key, label, status: 'limited', detail: limitedDetail }
+  if (deferred) return { key, label, status: 'deferred', detail: missingDetail }
+  if (provider) return { key, label, status: 'available', detail: readyDetail }
+  return { key, label, status: 'unavailable', detail: missingDetail }
+}
+
+function summarizeSourceStates(states: ShellSourceState[]) {
+  return states.map(state => `${state.label} ${sourceStatusWord(state.status)}.`).join(' ')
+}
+
+function sourceStatusWord(status: ShellSourceStatus) {
+  if (status === 'available') return 'ready'
+  return status
+}
+
+function fieldText(field: UnavailableField) {
+  return `${field.field} ${field.reason} ${field.provider ?? ''}`.toLowerCase()
 }
 
 export function hasRequiredSnapshots(providerHealth: ProviderHealth[], coveragePercent: number) {
@@ -120,7 +315,7 @@ export function hasRequiredSnapshots(providerHealth: ProviderHealth[], coverageP
 }
 
 export function summarizeProviderFreshness(provenance: Provenance[]): ProviderFreshness[] {
-  const preferred = ['Polygon', 'Polygon OHLCV', 'Polygon Options', 'FINRA', 'FRED']
+  const preferred = ['Polygon', 'Polygon OHLCV', 'Massive Options', 'FINRA', 'FRED']
   const map = new Map<string, ProviderFreshness>()
   for (const item of provenance) {
     const provider = normalizeProviderLabel(item)
@@ -140,7 +335,7 @@ export function summarizeProviderFreshness(provenance: Provenance[]): ProviderFr
 
 function normalizeProviderLabel(item: Provenance) {
   const text = `${item.provider} ${item.dataset} ${item.source}`.toLowerCase()
-  if (text.includes('option')) return 'Polygon Options'
+  if (text.includes('option')) return 'Massive Options'
   if (text.includes('ohlcv') || text.includes('aggregate') || text.includes('price') || text.includes('signal snapshot')) return 'Polygon OHLCV'
   if (text.includes('finra') || text.includes('short')) return 'FINRA'
   if (text.includes('fred')) return 'FRED'
@@ -160,66 +355,42 @@ function statusRank(status: ApiDataStatus) {
   return ranks[status]
 }
 
-function buildProviderHealth(response: Pick<ApiResponse<unknown>, 'provenance' | 'coverage'>): ProviderHealth[] {
+function buildProviderHealth(
+  response: Pick<ApiResponse<unknown>, 'provenance' | 'coverage' | 'unavailableFields' | 'deferredUnavailableFields'>,
+  visibility: 'active' | 'deferred'
+): ProviderHealth[] {
   const provenance = response.provenance
   const coverage = response.coverage.coveragePercent
-  const definitions = [
-    {
-      id: 'postgres',
-      label: 'Postgres',
-      requirement: 'required' as const,
-      matches: ['postgres', 'database'],
-      detail: 'Provider rows and point-in-time snapshots'
-    },
-    {
-      id: 'polygon-ohlcv',
-      label: 'Polygon OHLCV',
-      requirement: 'required' as const,
-      matches: ['polygon ohlcv', 'signal snapshot', 'price', 'aggregate', 'ohlcv'],
-      detail: 'Daily OHLCV, returns, relative strength'
-    },
-    {
-      id: 'polygon-options',
-      label: 'Polygon Options',
-      requirement: 'optional' as const,
-      matches: ['polygon options', 'option'],
-      detail: 'Options volume, open interest, IV proxies'
-    },
-    {
-      id: 'finra-short-sale',
-      label: 'FINRA Short Sale Volume',
-      requirement: 'optional' as const,
-      matches: ['finra', 'short-sale', 'short sale', 'short volume'],
-      detail: 'Daily short-sale volume flow proxy'
-    },
-    {
-      id: 'finra-short-interest',
-      label: 'FINRA Short Interest',
-      requirement: 'optional' as const,
-      matches: ['short interest'],
-      detail: 'Settlement-date short interest proxy'
-    },
-    {
-      id: 'fred-sec',
-      label: 'FRED / SEC',
-      requirement: 'optional' as const,
-      matches: ['fred', 'sec', 'macro', 'filing'],
-      detail: 'Macro and catalyst context'
-    }
-  ]
+  const scopedFields = visibility === 'active' ? response.unavailableFields : response.deferredUnavailableFields
+  const hasActiveGaps = response.unavailableFields.length > 0
+  if (visibility === 'active' && response.coverage.totalFields === 0 && response.unavailableFields.length === 0) return []
 
-  return definitions.map(definition => {
-    const matches = provenance.filter(item => {
-      const text = `${item.provider} ${item.dataset} ${item.source}`.toLowerCase()
-      return definition.matches.some(match => text.includes(match))
-    })
-    const status = providerStatus(matches, definition.requirement, coverage)
+  return providerHealthDefinitions(visibility).map(definition => {
+    const matches = provenance.filter(item => matchesProviderHealthDefinition(item, definition))
+    const fieldRelevant = scopedFields.some(field => providerHealthDefinitionHasField(definition, field))
+    const status = providerStatus(matches, definition.requirement, coverage, visibility, hasActiveGaps, fieldRelevant, definition.id)
     return { id: definition.id, label: definition.label, requirement: definition.requirement, detail: definition.detail, status }
+  }).filter(item => {
+    if (visibility === 'deferred') {
+      return item.status !== 'unavailable' || response.deferredUnavailableFields.some(field => providerHealthDefinitionHasField({ ...item, visibility, fields: [] }, field))
+    }
+    if (item.status === 'unavailable' && !hasActiveGaps) return false
+    return item.requirement === 'required' || item.status === 'available' || item.status === 'partial'
   })
 }
 
-function providerStatus(matches: Provenance[], requirement: 'required' | 'optional', coverage: number): ApiDataStatus {
-  if (matches.length === 0) return coverage > 0 && requirement === 'required' ? 'partial' : 'unavailable'
+function providerStatus(
+  matches: Provenance[],
+  requirement: 'required' | 'optional',
+  coverage: number,
+  visibility: 'active' | 'deferred',
+  hasActiveGaps: boolean,
+  fieldRelevant: boolean,
+  definitionId: string
+): ApiDataStatus {
+  if (visibility === 'active' && coverage > 0 && !hasActiveGaps && (matches.length > 0 || requirement === 'required' || definitionId === 'postgres')) return 'available'
+  if (visibility === 'deferred' && fieldRelevant && matches.length === 0) return 'unavailable'
+  if (matches.length === 0) return 'unavailable'
   if (matches.some(item => item.status === 'provider_error')) return 'provider_error'
   if (matches.some(item => item.status === 'entitlement_missing')) return 'entitlement_missing'
   if (matches.some(item => item.status === 'stale')) return 'stale'
@@ -252,8 +423,8 @@ function buildProvenance(points: PointInTime[]) {
 function buildUnavailableFields(value: unknown) {
   const fields: UnavailableField[] = []
   walk(value, [], (node, path, parent) => {
-    if (isMetricValue(node) && node.availability !== 'Available') {
-      fields.push(unavailableField(formatPath(path), node.reason || node.availability, pointProvider(parent)))
+    if (isMetricValue(node) && node.value === null) {
+      fields.push(unavailableField(metricFieldName(node, path), node.reason || node.availability, pointProvider(parent)))
     }
     if (path[path.length - 1] === 'excludedUnavailableInputs' && Array.isArray(node)) {
       for (const item of node) {
@@ -262,24 +433,46 @@ function buildUnavailableFields(value: unknown) {
     }
   })
   const seen = new Set<string>()
-  return fields.filter(item => {
+  const unique = fields.filter(item => {
     const key = `${item.field}|${item.reason}|${item.provider ?? ''}`
     if (seen.has(key)) return false
     seen.add(key)
     return true
   })
+  return {
+    active: unique.filter(item => item.visibility === 'active'),
+    deferred: unique.filter(item => item.visibility === 'deferred')
+  }
 }
 
 function unavailableField(field: string, reason: string, provider?: string): UnavailableField {
-  return provider ? { field, reason, provider } : { field, reason }
+  const visibility = unavailableFieldVisibility({ field, reason, provider })
+  return provider ? { field, reason, provider, visibility } : { field, reason, visibility }
 }
 
-function collectMetricValues(value: unknown) {
-  const metrics: MetricValue[] = []
-  walk(value, [], node => {
-    if (isMetricValue(node)) metrics.push(node)
+type MetricEntry = {
+  metric: MetricValue
+  field: string
+  provider?: string
+}
+
+function collectMetricEntries(value: unknown) {
+  const metrics: MetricEntry[] = []
+  walk(value, [], (node, path, parent) => {
+    if (isMetricValue(node)) {
+      metrics.push({
+        metric: node,
+        field: metricFieldName(node, path),
+        provider: pointProvider(parent)
+      })
+    }
   })
   return metrics
+}
+
+function isActiveMetric(entry: MetricEntry) {
+  if (entry.metric.value !== null) return true
+  return unavailableFieldVisibility({ field: entry.field, reason: entry.metric.reason ?? entry.metric.availability, provider: entry.provider }) === 'active'
 }
 
 function collectPointInTime(value: unknown) {
@@ -325,4 +518,9 @@ function pointProvider(value: unknown) {
 function formatPath(path: string[]) {
   const named = path.filter(part => Number.isNaN(Number(part)))
   return named.slice(-2).join('.') || 'field'
+}
+
+function metricFieldName(value: MetricValue, path: string[]) {
+  const label = (value as MetricValue & { label?: unknown }).label
+  return typeof label === 'string' && label.trim() ? label : formatPath(path)
 }

@@ -3,20 +3,20 @@
     "provider": "derived",
     "sourceUrl": "/methodology",
     "sourceName": "Dashboard methodology",
-    "retrievedAt": "2026-06-21T19:58:32.609Z",
+    "retrievedAt": "2026-07-06T17:30:48.275Z",
     "publishedAt": null,
     "isDerived": true,
     "methodologyNote": "Memo assembled only from sourced event titles and sourced/derived dashboard records.",
     "dataQuality": "derived",
-    "id": "memo-2026-06-21",
-    "date": "2026-06-21",
+    "id": "memo-2026-07-06",
+    "date": "2026-07-06",
     "title": "Korea Macro Trade Note",
     "researchPriority": 0,
     "riskLevel": "Watch",
     "topEvents": [
-      "The Navy’s Golden Fleet Has a Price Problem - Defense Security Monitor",
+      "Shipbuilders Look to Big Budget Plus-Ups to Reverse Delays, Cost Overruns - National Defense Magazine",
       "South Korea Could Build Nuclear Submarines, But It Shouldn’t - War on the Rocks",
-      "Shipbuilders Look to Big Budget Plus-Ups to Reverse Delays, Cost Overruns - National Defense Magazine"
+      "Contracts for June 24, 2026 - U.S. Department of War (.gov)"
     ],
     "marketReaction": "Start with USD/KRW and EWY, then compare liquid U.S. expressions in semis and A&D against the event tape and macro overlays.",
     "themeUpdate": "Most recent sourced theme mapping: Naval / Shipbuilding, China/Taiwan Spillover.",
@@ -37,11 +37,11 @@
       "New event tape pressure and source-confirmed disclosure updates"
     ],
     "sources": [
-      "https://news.google.com/rss/articles/CBMilwFBVV95cUxPSmhDQmZGNVhnZHN0WjRPUUpsVmhNZkdrN1lSYmRvUkY3YzU4Q3lfd1pKU0wyTWIta0tfQkhRZmYxQjQ0ODJER1psYUtWSXFYOTc1WHI2NmxjZnhmVVhPejFudkNvLXZBU2hqZ1dodTNYRXI3eHZ1NV9INy0xYnFfSV9Qb3pXYkRwcjV1Qm9xVXZvYzRuVVZB?oc=5",
-      "https://news.google.com/rss/articles/CBMijgFBVV95cUxQWkpIYzJSa3NSTEVlSjBBRkwtVHpLS24td1R3bnVEM2VQbVdmS0JzTEpTME82R09LVGZDM1lpSTQzMlJISExzRFlYNVlNbjBKVWhwN1pTRFN6UFFoellhZUNBd3JVQlNLSnJEUmJVWHFoOFBXemlUZWdfMllXUkhYUDNoaGRwUGxZbnpwWXFR?oc=5",
       "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQNWtwLWtwTHdZendlY2FHNm4yeWVLMjNKekhNWDIzOFZJc21hSFg4ZjhqN190OC1TZGdHUjhUTy1uN2pmOEZiOUFuWVZBYm10cC1GQ2dyekxVei1FaEpiRTVLeHlQVV9ZUERZSzBWQ0pNUFVBY0JpUlhGSElQc1dZMmQ2M0VZc2JzVjhPRWY3Vjh4dG1ldU9aVjljTWd2WFBBamJrVmYtNUM0Yjlab1NZS1dSaWxFbW5wYWZuTWtySWE0MDFmT3VXUw?oc=5",
-      "https://news.google.com/rss/articles/CBMimgFBVV95cUxNaFlCU1JxTFVENWdpb0JoRGRFS1htYl9SME0yUk5sUkhhdTRJTVVMNGVkbnhDN0NUREVVWHE3bEVmbm9NSmdldy1fN1ZDM1owZlhiYnZpOWtNUFB0b0JkT1BEaVptd1dwOUlPdkVEcThxNUFmcWJhT1BtNVFMSnhEd2JxWlFfLXBZdUhyZUM4cnZiNEc3eHVGUTZ3?oc=5",
-      "https://news.google.com/rss/articles/CBMidEFVX3lxTE8weXBqd2xvaHpkWkZRSU5EM3VHY2tTZ2diUWExXzNxeWRQd21YYW9uUWNlY1VlVVdCMDByS2p6dUR5QmdoeDFaVWlxWjZBSlJaNkdkM1A1cUdiUEV1MElKMl9WRmRUNVBQUTNQV09rcHJlaDM1?oc=5"
+      "https://news.google.com/rss/articles/CBMijgFBVV95cUxQWkpIYzJSa3NSTEVlSjBBRkwtVHpLS24td1R3bnVEM2VQbVdmS0JzTEpTME82R09LVGZDM1lpSTQzMlJISExzRFlYNVlNbjBKVWhwN1pTRFN6UFFoellhZUNBd3JVQlNLSnJEUmJVWHFoOFBXemlUZWdfMllXUkhYUDNoaGRwUGxZbnpwWXFR?oc=5",
+      "https://news.google.com/rss/articles/CBMikAFBVV95cUxOX3JlTFRoQkNOTUNVblkwY2VhS29OWTFESjFmcU83cFdwT3NNZHpxMUZGMDgzRW5FT0dkaC1FZ2NPWFJyZFoxWlpYVHBLUW1VaS02cV9vdlFTNko3VnRzc0FoMFJja19mUnVMSWdzQlp3SUVxSWJaY0ZWQTNYanl3Qi03SE16V1B0WklLNWZoakg?oc=5",
+      "https://news.google.com/rss/articles/CBMirAFBVV95cUxOMUZESTBtQWF0OTkzVDI5cjVTVmxwUXQ4MXNVVzFybG5CRmJpand0Y1gwY2REak5RT2N2ZWU0QzhJZDU3MGNGdk9rSTE2S054dm1FeTQ5Z2cxTklOam1HOGVBbTc2N0VPR2d2U1lpMDlpcGh3dE55UlRSaHhIQXhxanZzWld4RnVCQmVrZWg2ZnlJNEdIMll0R0V4MG9IX3JjeGRIdlhldzIzQkRw?oc=5",
+      "https://news.google.com/rss/articles/CBMiigJBVV95cUxOZUpDcGw3bmFmazVQTk94aVFZMzhvRHpudHlFYVg3cDRFN1dtaUxTNVU0TW5nUmRvMUh0NUhvb0czSmNpYXBTR0tsdWRwV3poTzNIQ09VNFdFc2RObXVUU3kxb2xodExIMDhldE5jSldjcTl3VWRQUXVZNG9BZE1ndl85cGFNNEVhOWFfZUluYWVfblgzRXJtakZia1BBbFh2TDNhMTkzcHZjaURfT3JsM0pmMzUxVDl4UFczVmk5ZDRDUVJOYjdmQnhiZjBldlpkUUtRY1NxNWNKOXZmOE5pamxJRlBUd09ZcHJLOUs2UWM4SEoza2l3dFp5ZHB2Y2VrNHduRDN6WDZTUQ?oc=5"
     ]
   }
 ]

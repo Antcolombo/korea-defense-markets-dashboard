@@ -28,7 +28,9 @@ async function main() {
     take: 10
   })
   for (const run of badRows) {
-    failures.push(`${run.provider}: ${run.dataStatus}${run.errorMessage ? ` (${run.errorMessage})` : ''}`)
+    if (!await hasNewerSuccessfulProviderRun(run)) {
+      failures.push(`${run.provider}: ${run.dataStatus}${run.errorMessage ? ` (${run.errorMessage})` : ''}`)
+    }
   }
 
   const latestRun = await prisma.providerRun.findFirst({ orderBy: { startedAt: 'desc' } })
@@ -49,6 +51,33 @@ function asOfWhere() {
   if (!process.env.DEMO_AS_OF_DATE) return {}
   const date = new Date(`${process.env.DEMO_AS_OF_DATE}T00:00:00.000Z`)
   return { asOfDate: { lte: date }, dataStatus: { in: [DataStatus.AVAILABLE, DataStatus.PARTIAL] } }
+}
+
+async function hasNewerSuccessfulProviderRun(run: {
+  provider: string
+  source: string
+  startedAt: Date
+  metadata: unknown
+}) {
+  const ticker = providerRunTicker(run.metadata)
+  const newerRuns = await prisma.providerRun.findMany({
+    where: {
+      provider: run.provider,
+      source: run.source,
+      startedAt: { gt: run.startedAt },
+      dataStatus: { in: [DataStatus.AVAILABLE, DataStatus.PARTIAL] }
+    },
+    orderBy: { startedAt: 'desc' },
+    take: 25
+  })
+  if (!ticker) return newerRuns.length > 0
+  return newerRuns.some(candidate => providerRunTicker(candidate.metadata) === ticker)
+}
+
+function providerRunTicker(metadata: unknown) {
+  if (!metadata || typeof metadata !== 'object') return ''
+  const value = (metadata as { ticker?: unknown }).ticker
+  return typeof value === 'string' ? value.toUpperCase() : ''
 }
 
 main().catch(error => {

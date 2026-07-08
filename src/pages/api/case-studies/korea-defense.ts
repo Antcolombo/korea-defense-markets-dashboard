@@ -1,12 +1,11 @@
-import { getBasketDetail, getCrowdingRows, getDailyNote, getRotationRows } from '@/lib/research/repository'
+import { getBasketDetail, getCrowdingRows, getRotationRows } from '@/lib/research/repository'
 import { createResearchApiHandler } from '@/lib/research/apiRoute'
 
 export default createResearchApiHandler(async () => {
-  const [basket, rotations, crowding, note] = await Promise.all([
+  const [basket, rotations, crowding] = await Promise.all([
     getBasketDetail('korea-indo-pacific'),
     getRotationRows(),
-    getCrowdingRows(),
-    getDailyNote()
+    getCrowdingRows()
   ])
-  return { basket, rotations, crowding, note }
+  return { basket, rotations, crowding }
 })
