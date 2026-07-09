@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useQueryState, parseAsString } from 'nuqs'
 import { toPng } from 'html-to-image'
 import { type ColumnDef } from '@tanstack/react-table'
-import { createChart, LineSeries } from 'lightweight-charts'
+import { createChart, LineSeries, LineStyle } from 'lightweight-charts'
 import {
   Activity,
   BarChart3,
@@ -56,11 +56,13 @@ import { MemoEditor } from '@/components/terminal/memo-editor'
 import {
   CrowdingRiskMap,
   GapHeatmap,
+  MathTraceGrid,
   ProviderHealthMap,
   ReportSignalRadar,
   ReturnRibbonChart,
   RotationQuadrantChart,
-  ScenarioLineChart
+  ScenarioLineChart,
+  chartTheme
 } from '@/components/terminal/research-charts'
 import { ResearchDataTable } from '@/components/terminal/research-data-table'
 import { SourceSheet } from '@/components/terminal/source-sheet'
@@ -90,6 +92,7 @@ import type { PmBacktestSummary, PmDecisionOverlay, PmEngineView, PmFactorHeatma
 import type { PitchSourceSnapshot, StockPitchRecord, StockPitchSummary } from '@/types/pitch'
 
 type ChartPricePoint = Pick<PricePoint, 'date' | 'ticker' | 'price'> & {
+  returnValue?: number | null
   open?: number | null
   high?: number | null
   low?: number | null
@@ -304,7 +307,7 @@ export function TerminalWorkspace({
                 <Terminal className="h-4 w-4" />
               </div>
               <div className="min-w-0">
-                <p className="truncate font-mono text-sm font-bold tracking-[0.2em] text-foreground">LIQUIDCHAIN</p>
+                <p className="truncate text-sm font-bold tracking-[0.08em] text-foreground">LIQUIDCHAIN</p>
               </div>
             </div>
 
@@ -312,7 +315,7 @@ export function TerminalWorkspace({
               {visibleModules.map(item => {
                 const Icon = item.icon
                 return (
-                  <Button key={item.id} asChild variant={isModuleActive(item.id, module) ? 'secondary' : 'ghost'} size="sm" className="font-mono text-[0.72rem]">
+                  <Button key={item.id} asChild variant={isModuleActive(item.id, module) ? 'secondary' : 'ghost'} size="sm" className="text-[0.75rem] font-medium">
                     <Link href={item.href}>
                       <Icon className="h-3.5 w-3.5" />
                       {item.short}
@@ -419,7 +422,7 @@ function MobileModuleSelect({ module }: { module: WorkspaceModule }) {
         }
       }}
     >
-      <SelectTrigger className="min-w-0 max-w-full font-mono">
+        <SelectTrigger className="min-w-0 max-w-full font-medium">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
@@ -448,8 +451,8 @@ function LeftRail({
       <div className="border-b border-border p-3">
         <div className="flex items-center justify-between gap-2">
           <div>
-            <p className="font-mono text-[0.68rem] tracking-[0.04em] text-muted-foreground">Workspace</p>
-            <h2 className="font-mono text-sm font-semibold">Module Rail</h2>
+            <p className="text-[0.68rem] font-medium tracking-[0.04em] text-muted-foreground">Workspace</p>
+            <h2 className="text-sm font-semibold">Module Rail</h2>
           </div>
           <Badge variant="outline" className="font-mono">{activeLabel}</Badge>
         </div>
@@ -460,7 +463,7 @@ function LeftRail({
             {visibleModules.map(item => {
               const Icon = item.icon
               return (
-                <Button key={item.id} asChild variant={isModuleActive(item.id, active) ? 'secondary' : 'ghost'} className="w-full min-w-0 justify-start overflow-hidden font-mono text-xs">
+                <Button key={item.id} asChild variant={isModuleActive(item.id, active) ? 'secondary' : 'ghost'} className="w-full min-w-0 justify-start overflow-hidden text-xs font-medium">
                   <Link href={item.href}>
                     <Icon className="h-3.5 w-3.5" />
                     {item.label}
@@ -529,8 +532,8 @@ function RightRail({
   return (
     <aside className="flex h-full min-h-0 flex-col border-l border-border bg-card/45">
       <div className="border-b border-border p-3">
-        <p className="font-mono text-[0.68rem] tracking-[0.04em] text-muted-foreground">Source / Risk</p>
-        <h2 className="mt-1 font-mono text-sm font-semibold">{active.label}</h2>
+        <p className="text-[0.68rem] font-medium tracking-[0.04em] text-muted-foreground">Source / Risk</p>
+        <h2 className="mt-1 text-sm font-semibold">{active.label}</h2>
       </div>
       <ScrollArea className="min-h-0 flex-1">
         <div className="grid gap-3 p-2">
@@ -627,7 +630,7 @@ function MainModule(props: {
   if (module === 'source-audit') return <SourceAuditModule audit={data.sourceAudit} shell={props.shell} unavailableFields={props.unavailableFields} deferredUnavailableFields={props.deferredUnavailableFields} />
   if (module === 'methodology') return <MethodologyModule />
   if (module === 'korea-defense') return <KoreaDefenseModule data={data} />
-  if (module === 'stock-report') return <StockReportModule report={data.report} unavailableFields={props.unavailableFields} deferredUnavailableFields={props.deferredUnavailableFields} />
+  if (module === 'stock-report') return <StockReportModule report={data.report} prices={data.prices ?? []} unavailableFields={props.unavailableFields} deferredUnavailableFields={props.deferredUnavailableFields} />
   if (module === 'decision-log') return <DecisionLogModule data={data} selectedTicker={props.selectedTicker} sourceSummary={props.shell.sourceSummary} />
   if (module === 'stock-pitch') return <StockPitchModule data={data} />
   return (
@@ -974,7 +977,11 @@ function EventStudyModule({ data }: { data: WorkspaceData }) {
   const summary = summarizeEventStudy(rows)
   const categoryRows = summarizeEventStudyByCategory(rows)
   return (
-    <ModuleFrame title="Event Study Lab" kicker="Catalyst tests" description="Defense contracts, earnings, export controls, and geopolitical shocks mapped to sourced return windows. Correlation only; no causality claim.">
+    <ModuleFrame title="Event Study Lab" kicker="Catalyst tests" description="Defense contracts, earnings, export controls, and geopolitical shocks mapped to static research fixtures. Correlation only; no causality claim.">
+      <ProvenanceWarning
+        title="Static research fixture"
+        detail="This module uses checked-in event and return fixtures. Treat it as a lab dataset until events and returns are backed by live provider rows."
+      />
       <div className="grid gap-3 md:grid-cols-4">
         <MetricCard label="Samples" value={summary.samples.toString()} />
         <MetricCard label="Hit Rate 20D" value={summary.hitRate === null ? 'N/A' : `${summary.hitRate.toFixed(1)}%`} />
@@ -987,9 +994,9 @@ function EventStudyModule({ data }: { data: WorkspaceData }) {
         </Panel>
         <Panel title="Source Caveats" kicker="No hallucinated data">
           <div className="grid gap-2">
-            <Rule label="Volume" text="Shown only when generated/DB price rows carry sourced volume. Otherwise unavailable." />
+            <Rule label="Volume" text="Shown only when static price rows carry volume. Otherwise unavailable." />
             <Rule label="Volatility" text="Pre/post realized vol uses close-to-close daily rows; intraday shocks are out of scope." />
-            <Rule label="Recent events" text="Some generated event windows may use available trailing windows until forward data matures." />
+            <Rule label="Recent events" text="Static event windows may use available trailing rows until forward data matures." />
           </div>
         </Panel>
       </div>
@@ -1222,6 +1229,10 @@ function KoreaDefenseModule({ data }: { data: WorkspaceData }) {
   const events = data.events ?? []
   return (
     <ModuleFrame title="Korea / Indo-Pacific Defense" kicker="Case study" description="Applied case study for defense-linked sponsorship, crowding, catalysts, and invalidation.">
+      <ProvenanceWarning
+        title="Case-study events"
+        detail="Catalyst cards here come from static event fixtures. Rotation and crowding rows remain sourced through the terminal data layer."
+      />
       <div className="grid gap-3 xl:grid-cols-[1fr_0.9fr]">
         <Panel title="Current Flow Read" kicker="Signals">
           <DataTable data={signals} columns={rotationColumns} />
@@ -1255,10 +1266,12 @@ function KoreaDefenseModule({ data }: { data: WorkspaceData }) {
 
 function StockReportModule({
   report,
+  prices,
   unavailableFields,
   deferredUnavailableFields
 }: {
   report?: StockReport
+  prices: ChartPricePoint[]
   unavailableFields: UnavailableField[]
   deferredUnavailableFields: UnavailableField[]
 }) {
@@ -1313,6 +1326,9 @@ function StockReportModule({
             Export PDF
           </Button>
         </div>
+      </Panel>
+      <Panel title={`${activeReport.ticker} Price Tape`} kicker="Close / benchmark / indexed modes">
+        <PriceChart prices={prices} ticker={activeReport.ticker} />
       </Panel>
       <div className="grid gap-3 xl:grid-cols-[1fr_0.85fr]">
         <Panel title="Variant Lens / Originality Gate" kicker="Report read">
@@ -1410,36 +1426,129 @@ function DecisionLogModule({ data, selectedTicker, sourceSummary }: { data: Work
   )
 }
 
-function PriceChart({ prices, ticker }: { prices: ChartPricePoint[]; ticker: string }) {
+type PriceChartRange = '1M' | '3M' | '6M' | '1Y'
+type PriceViewMode = 'price' | 'indexed'
+type BenchmarkKey = 'spy' | 'sector'
+
+type PriceChartEventMarker = {
+  date: string
+  title: string
+  tone?: 'good' | 'warn' | 'danger' | 'neutral'
+}
+
+type PriceChartRail = {
+  label: string
+  price: number
+  tone?: 'good' | 'warn' | 'danger' | 'neutral'
+}
+
+const priceChartRanges: PriceChartRange[] = ['1M', '3M', '6M', '1Y']
+
+function PriceChart({
+  prices,
+  ticker,
+  sector,
+  eventMarkers = [],
+  rails = []
+}: {
+  prices: ChartPricePoint[]
+  ticker: string
+  sector?: string
+  eventMarkers?: PriceChartEventMarker[]
+  rails?: PriceChartRail[]
+}) {
   const chartRef = useRef<HTMLDivElement | null>(null)
-  const data = useMemo(() => prices
-    .filter(point => point.ticker === ticker)
-    .sort((a, b) => a.date.localeCompare(b.date))
-    .map(point => ({ time: point.date, value: point.price })), [prices, ticker])
+  const [range, setRange] = useState<PriceChartRange>('6M')
+  const [mode, setMode] = useState<PriceViewMode>('price')
+  const [benchmarks, setBenchmarks] = useState<Record<BenchmarkKey, boolean>>({ spy: true, sector: false })
+  const [hover, setHover] = useState<{ date: string; price: number | null; returnValue: number | null; volume: number | null; indexed: number | null } | null>(null)
+  const tickerRows = useMemo(() => priceRowsForTicker(prices, ticker), [prices, ticker])
+  const startDate = rangeStartDate(tickerRows, range)
+  const visibleRows = useMemo(() => filterPriceRows(tickerRows, startDate), [tickerRows, startDate])
+  const sectorSymbol = sectorBenchmarkForTicker(ticker, sector)
+  const spyRows = useMemo(() => filterPriceRows(priceRowsForTicker(prices, 'SPY'), startDate), [prices, startDate])
+  const sectorRows = useMemo(() => filterPriceRows(priceRowsForTicker(prices, sectorSymbol), startDate), [prices, sectorSymbol, startDate])
+  const primaryData = useMemo(() => chartLineData(visibleRows, mode), [visibleRows, mode])
+  const benchmarkData = useMemo(() => {
+    if (mode !== 'indexed') return []
+    const rows: { key: BenchmarkKey; label: string; color: string; data: { time: string; value: number }[] }[] = []
+    if (benchmarks.spy && ticker !== 'SPY' && spyRows.length) {
+      rows.push({ key: 'spy', label: 'SPY', color: chartTheme.colors.accent, data: chartLineData(spyRows, 'indexed') })
+    }
+    if (benchmarks.sector && sectorSymbol !== ticker && sectorSymbol !== 'SPY' && sectorRows.length) {
+      rows.push({ key: 'sector', label: sectorSymbol, color: chartTheme.colors.warn, data: chartLineData(sectorRows, 'indexed') })
+    }
+    return rows
+  }, [benchmarks, mode, sectorRows, sectorSymbol, spyRows, ticker])
+  const latest = visibleRows.at(-1)
+  const first = visibleRows[0]
+  const indexedReturn = first && latest ? ((latest.price / first.price) - 1) * 100 : null
 
   useEffect(() => {
-    if (!chartRef.current || data.length === 0) return
+    if (!chartRef.current || primaryData.length === 0) return
     const element = chartRef.current
+    let active = true
     const chart = createChart(element, {
       width: element.clientWidth,
       height: element.clientHeight,
       layout: {
         background: { color: 'transparent' },
-        textColor: 'rgba(255,255,255,0.64)'
+        textColor: chartTheme.colors.muted
       },
       grid: {
-        vertLines: { color: 'rgba(255,255,255,0.06)' },
-        horzLines: { color: 'rgba(255,255,255,0.08)' }
+        vertLines: { color: 'rgba(255,255,255,0.055)' },
+        horzLines: { color: chartTheme.colors.grid }
+      },
+      crosshair: {
+        vertLine: { color: 'rgba(116,242,206,0.45)', labelBackgroundColor: '#1f6f69' },
+        horzLine: { color: 'rgba(116,242,206,0.35)', labelBackgroundColor: '#1f6f69' }
       },
       rightPriceScale: { borderVisible: false },
-      timeScale: { borderVisible: false }
+      timeScale: { borderVisible: false, rightOffset: 4 }
     })
     const series = chart.addSeries(LineSeries, {
-      color: '#50d2c1',
+      color: chartTheme.colors.good,
       lineWidth: 2,
       priceLineVisible: false
     })
-    series.setData(data as never)
+    series.setData(primaryData as never)
+    for (const row of benchmarkData) {
+      const benchmarkSeries = chart.addSeries(LineSeries, {
+        color: row.color,
+        lineWidth: 1,
+        priceLineVisible: false
+      })
+      benchmarkSeries.setData(row.data as never)
+    }
+    const basePrice = visibleRows[0]?.price ?? null
+    for (const rail of rails) {
+      const price = mode === 'indexed' && basePrice ? (rail.price / basePrice) * 100 : rail.price
+      series.createPriceLine({
+        price,
+        title: rail.label,
+        color: chartTheme.colors[rail.tone ?? 'neutral'],
+        lineWidth: 1,
+        lineStyle: LineStyle.Dashed,
+        axisLabelVisible: true
+      })
+    }
+    chart.subscribeCrosshairMove(param => {
+      if (!active) return
+      if (!param.time) {
+        setHover(null)
+        return
+      }
+      const date = String(param.time)
+      const point = visibleRows.find(row => row.date === date)
+      const primaryPoint = param.seriesData.get(series) as { value?: number } | undefined
+      setHover({
+        date,
+        price: point?.price ?? null,
+        returnValue: point?.returnValue ?? null,
+        volume: point?.volume ?? null,
+        indexed: typeof primaryPoint?.value === 'number' ? primaryPoint.value : null
+      })
+    })
     chart.timeScale().fitContent()
     const resize = new ResizeObserver(entries => {
       const entry = entries[0]
@@ -1451,21 +1560,105 @@ function PriceChart({ prices, ticker }: { prices: ChartPricePoint[]; ticker: str
     })
     resize.observe(element)
     return () => {
+      active = false
       resize.disconnect()
       chart.remove()
     }
-  }, [data])
+  }, [benchmarkData, mode, primaryData, rails, visibleRows])
 
   return (
-    <div className="relative h-[360px] min-h-[260px] w-full">
-      {data.length === 0 ? (
-        <div className="absolute inset-0 grid place-items-center rounded-md border border-dashed border-border bg-background/35">
-          <EmptyLine title={`No ${ticker} close series`} detail="Chart stays empty until sourced price rows exist." />
+    <div className="grid gap-3">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <div className="flex flex-wrap gap-1">
+          {priceChartRanges.map(option => (
+            <Button key={option} type="button" size="sm" variant={range === option ? 'secondary' : 'outline'} className="h-8 px-2 font-mono text-xs" onClick={() => setRange(option)}>
+              {option}
+            </Button>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-1">
+          <Button type="button" size="sm" variant={mode === 'price' ? 'secondary' : 'outline'} className="h-8 px-2 font-mono text-xs" onClick={() => setMode('price')}>
+            Price
+          </Button>
+          <Button type="button" size="sm" variant={mode === 'indexed' ? 'secondary' : 'outline'} className="h-8 px-2 font-mono text-xs" onClick={() => setMode('indexed')}>
+            Indexed
+          </Button>
+          <Button type="button" size="sm" variant={mode === 'indexed' && benchmarks.spy ? 'secondary' : 'outline'} className="h-8 px-2 font-mono text-xs" disabled={mode !== 'indexed' || ticker === 'SPY' || !spyRows.length} onClick={() => setBenchmarks(current => ({ ...current, spy: !current.spy }))}>
+            SPY
+          </Button>
+          <Button type="button" size="sm" variant={mode === 'indexed' && benchmarks.sector ? 'secondary' : 'outline'} className="h-8 px-2 font-mono text-xs" disabled={mode !== 'indexed' || sectorSymbol === ticker || sectorSymbol === 'SPY' || !sectorRows.length} onClick={() => setBenchmarks(current => ({ ...current, sector: !current.sector }))}>
+            {sectorSymbol}
+          </Button>
+        </div>
+      </div>
+      <div className="relative h-[360px] min-h-[260px] w-full overflow-hidden rounded-md border border-border bg-background/35">
+        {primaryData.length === 0 ? (
+          <div className="absolute inset-0 z-10 grid place-items-center">
+            <EmptyLine title={`No ${ticker} close series`} detail="Chart stays empty until sourced price rows exist." />
+          </div>
+        ) : null}
+        <div className="pointer-events-none absolute left-3 top-3 z-10 rounded-md border border-border bg-card/90 px-3 py-2 backdrop-blur">
+          <p className="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-muted-foreground">{mode === 'indexed' ? 'Indexed read' : 'Hover read'}</p>
+          <p className="mt-1 font-mono text-sm font-semibold">{hover ? `${hover.date} / ${formatMaybeNumber(hover.price)}` : latest ? `${latest.date} / ${formatMaybeNumber(latest.price)}` : ticker}</p>
+          <div className="mt-2 grid gap-1 text-[0.68rem] text-muted-foreground sm:grid-cols-3">
+            <span>1D {formatMaybePct(hover?.returnValue ?? latest?.returnValue ?? null)}</span>
+            <span>Vol {formatVolume(hover?.volume ?? latest?.volume ?? null)}</span>
+            <span>Idx {formatMaybeNumber(hover?.indexed ?? (mode === 'indexed' ? 100 + (indexedReturn ?? 0) : null))}</span>
+          </div>
+        </div>
+        {eventMarkers.length ? (
+          <div className="pointer-events-none absolute bottom-3 left-3 z-10 flex max-w-[70%] flex-wrap gap-1">
+            {eventMarkers.slice(0, 4).map(marker => (
+              <span key={`${marker.date}-${marker.title}`} className="rounded border border-border bg-card/85 px-2 py-1 font-mono text-[0.6rem] text-muted-foreground backdrop-blur">{marker.date} {marker.title}</span>
+            ))}
+          </div>
+        ) : null}
+        <div ref={chartRef} className="h-full w-full" />
+      </div>
+      {mode === 'indexed' ? (
+        <div className="flex flex-wrap gap-2 text-[0.68rem] text-muted-foreground">
+          <span className="rounded border border-border bg-background/45 px-2 py-1 font-mono text-foreground">{ticker}</span>
+          {benchmarkData.map(row => <span key={row.key} className="rounded border border-border bg-background/45 px-2 py-1 font-mono" style={{ color: row.color }}>{row.label}</span>)}
         </div>
       ) : null}
-      <div ref={chartRef} className="h-full w-full" />
     </div>
   )
+}
+
+function priceRowsForTicker(prices: ChartPricePoint[], ticker: string) {
+  return prices
+    .filter(point => point.ticker === ticker)
+    .slice()
+    .sort((a, b) => a.date.localeCompare(b.date))
+}
+
+function rangeStartDate(rows: ChartPricePoint[], range: PriceChartRange) {
+  if (!rows.length) return null
+  const daysByRange: Record<PriceChartRange, number> = { '1M': 22, '3M': 66, '6M': 132, '1Y': 252 }
+  return rows.slice(-daysByRange[range])[0]?.date ?? rows[0]?.date ?? null
+}
+
+function filterPriceRows(rows: ChartPricePoint[], startDate: string | null) {
+  if (!startDate) return rows
+  return rows.filter(row => row.date >= startDate)
+}
+
+function chartLineData(rows: ChartPricePoint[], mode: PriceViewMode) {
+  if (mode === 'price') return rows.map(row => ({ time: row.date, value: row.price }))
+  const base = rows[0]?.price
+  if (!base) return []
+  return rows.map(row => ({ time: row.date, value: (row.price / base) * 100 }))
+}
+
+function sectorBenchmarkForTicker(ticker: string, sector?: string) {
+  const symbol = ticker.toUpperCase()
+  const label = `${sector ?? ''} ${symbol}`.toLowerCase()
+  if (['NVDA', 'AMD', 'AVGO', 'TSM', 'ASML', 'MU', 'SMH', 'SOXX'].includes(symbol) || /semi|chip|hardware/.test(label)) return 'SMH'
+  if (['RTX', 'LMT', 'NOC', 'GD', 'AVAV', 'KTOS', 'XAR', 'ITA'].includes(symbol) || /defense|aerospace|industrial/.test(label)) return 'XAR'
+  if (/technology|software|cloud/.test(label)) return 'XLK'
+  if (/energy|oil|gas/.test(label)) return 'XLE'
+  if (/financial|bank|broker/.test(label)) return 'XLF'
+  return 'SPY'
 }
 
 function DataTable<T extends object>({ data, columns }: { data: T[]; columns: ColumnDef<T, unknown>[] }) {
@@ -1857,6 +2050,14 @@ function formatMaybeNumber(value: number | null | undefined) {
   return value === null || value === undefined || !Number.isFinite(value) ? 'N/A' : value.toFixed(Math.abs(value) >= 100 ? 0 : 2)
 }
 
+function formatVolume(value: number | null | undefined) {
+  if (value === null || value === undefined || !Number.isFinite(value)) return 'N/A'
+  if (Math.abs(value) >= 1_000_000_000) return `${(value / 1_000_000_000).toFixed(1)}B`
+  if (Math.abs(value) >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`
+  if (Math.abs(value) >= 1_000) return `${(value / 1_000).toFixed(1)}K`
+  return value.toFixed(0)
+}
+
 function round(value: number, digits = 1) {
   const factor = 10 ** digits
   return Math.round(value * factor) / factor
@@ -1911,6 +2112,14 @@ function SizingWaterfall({ steps }: { steps: PmWaterfallStep[] }) {
           <p className="text-[0.68rem] leading-4 text-muted-foreground">{step.reason}</p>
         </div>
       ))}
+      <MathTraceGrid items={steps.slice(0, 6).map(step => ({
+        label: step.label,
+        raw: `${step.valuePct.toFixed(1)}% cap`,
+        normalized: `${Math.round((step.valuePct / max) * 100)} normalized`,
+        confidence: step.active ? 'active constraint' : 'available cap',
+        result: step.reason,
+        tone: step.active ? 'warn' : 'neutral'
+      }))} />
     </div>
   )
 }
@@ -1918,27 +2127,41 @@ function SizingWaterfall({ steps }: { steps: PmWaterfallStep[] }) {
 function FactorHeatmap({ rows }: { rows: PmFactorHeatmapRow[] }) {
   const factors = [...new Set(rows.flatMap(row => Object.keys(row.exposures)))].slice(0, 12)
   if (!rows.length || !factors.length) return <EmptyLine title="No factor cells" detail="Factor model needs aligned price history." />
+  const traceRows = rows.slice(0, 4).flatMap(row => factors.slice(0, 3).map(factor => {
+    const value = row.exposures[factor] ?? 0
+    return {
+      label: `${row.ticker} ${factor}`,
+      raw: value.toFixed(2),
+      normalized: `${Math.round(Math.min(1, Math.abs(value) / 1.5) * 100)} intensity`,
+      confidence: 'factor model',
+      result: value >= 0 ? 'positive exposure' : 'negative exposure',
+      tone: Math.abs(value) >= 1 ? 'danger' as const : Math.abs(value) >= 0.5 ? 'warn' as const : 'neutral' as const
+    }
+  }))
   return (
-    <div className="overflow-x-auto">
-      <div className="min-w-[620px]">
-        <div className="grid gap-1" style={{ gridTemplateColumns: `90px repeat(${factors.length}, minmax(44px, 1fr))` }}>
-          <div className="font-mono text-[0.65rem] text-muted-foreground">Ticker</div>
-          {factors.map(factor => <div key={factor} className="text-center font-mono text-[0.65rem] text-muted-foreground">{factor}</div>)}
-          {rows.map(row => (
-            <div key={row.ticker} className="contents">
-              <div className="truncate rounded-md border border-border bg-background/45 px-2 py-1 font-mono text-xs font-semibold">{row.ticker}</div>
-              {factors.map(factor => {
-                const value = row.exposures[factor] ?? 0
-                return (
-                  <div key={`${row.ticker}-${factor}`} className="rounded-md px-1 py-1 text-center font-mono text-[0.68rem] text-foreground" style={{ backgroundColor: heatColor(value) }}>
-                    {value.toFixed(2)}
-                  </div>
-                )
-              })}
-            </div>
-          ))}
+    <div className="grid gap-3">
+      <div className="overflow-x-auto">
+        <div className="min-w-[620px]">
+          <div className="grid gap-1" style={{ gridTemplateColumns: `90px repeat(${factors.length}, minmax(44px, 1fr))` }}>
+            <div className="font-mono text-[0.65rem] text-muted-foreground">Ticker</div>
+            {factors.map(factor => <div key={factor} className="text-center font-mono text-[0.65rem] text-muted-foreground">{factor}</div>)}
+            {rows.map(row => (
+              <div key={row.ticker} className="contents">
+                <div className="truncate rounded-md border border-border bg-background/45 px-2 py-1 font-mono text-xs font-semibold">{row.ticker}</div>
+                {factors.map(factor => {
+                  const value = row.exposures[factor] ?? 0
+                  return (
+                    <div key={`${row.ticker}-${factor}`} className="rounded-md px-1 py-1 text-center font-mono text-[0.68rem] text-foreground" style={{ backgroundColor: heatColor(value) }}>
+                      {value.toFixed(2)}
+                    </div>
+                  )
+                })}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+      <MathTraceGrid items={traceRows} />
     </div>
   )
 }
@@ -2010,8 +2233,8 @@ function ModuleFrame({ title, kicker, description, children }: { title: string; 
   return (
     <section className="flex h-full min-h-0 flex-col bg-background">
       <div className="border-b border-border bg-card/40 p-3">
-        <p className="font-mono text-[0.68rem] tracking-[0.04em] text-muted-foreground">{kicker}</p>
-        <h1 className="mt-1 truncate font-mono text-lg font-semibold">{title}</h1>
+        <p className="text-[0.68rem] font-medium tracking-[0.04em] text-muted-foreground">{kicker}</p>
+        <h1 className="mt-1 truncate text-xl font-semibold">{title}</h1>
         {description ? <p className="mt-1 max-w-5xl text-sm leading-6 text-muted-foreground">{description}</p> : null}
       </div>
       <ScrollArea className="min-h-0 flex-1">
@@ -2027,8 +2250,8 @@ function Panel({ title, kicker, action, children }: { title: string; kicker: str
       <CardHeader className="border-b border-border pb-3">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <p className="font-mono text-[0.65rem] tracking-[0.04em] text-muted-foreground">{kicker}</p>
-            <CardTitle className="mt-1 truncate font-mono text-sm">{title}</CardTitle>
+            <p className="text-[0.66rem] font-medium tracking-[0.04em] text-muted-foreground">{kicker}</p>
+            <CardTitle className="mt-1 truncate text-sm font-semibold">{title}</CardTitle>
           </div>
           {action}
         </div>
@@ -2049,8 +2272,8 @@ function MetricPanel({ label, value }: { label: string; value: string }) {
 function MetricMini({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-md border border-border bg-background/45 p-2">
-      <p className="font-mono text-[0.65rem] tracking-[0.04em] text-muted-foreground">{label}</p>
-      <p className="mt-1 truncate font-mono text-sm font-semibold">{value}</p>
+      <p className="text-[0.66rem] font-medium tracking-[0.04em] text-muted-foreground">{label}</p>
+      <p className="mt-1 truncate text-sm font-semibold">{value}</p>
     </div>
   )
 }
@@ -2058,8 +2281,8 @@ function MetricMini({ label, value }: { label: string; value: string }) {
 function MetricCard({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-md border border-border bg-card p-3">
-      <p className="font-mono text-[0.65rem] tracking-[0.04em] text-muted-foreground">{label}</p>
-      <p className="mt-2 truncate font-mono text-lg font-semibold">{value}</p>
+      <p className="text-[0.66rem] font-medium tracking-[0.04em] text-muted-foreground">{label}</p>
+      <p className="mt-2 truncate text-lg font-semibold">{value}</p>
     </div>
   )
 }
@@ -2101,6 +2324,18 @@ function Rule({ label, text }: { label: string; text: string }) {
     <div className="rounded-md border border-border bg-background/45 p-3">
       <p className="font-mono text-xs font-semibold tracking-[0.06em] text-primary">{label}</p>
       <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
+    </div>
+  )
+}
+
+function ProvenanceWarning({ title, detail }: { title: string; detail: string }) {
+  return (
+    <div className="rounded-md border border-amber-300/35 bg-amber-300/10 p-3">
+      <div className="flex flex-wrap items-center gap-2">
+        <Badge variant="outline" className="border-amber-300/45 font-mono text-amber-100">provenance</Badge>
+        <p className="font-mono text-xs font-semibold text-amber-100">{title}</p>
+      </div>
+      <p className="mt-2 text-xs leading-5 text-muted-foreground">{detail}</p>
     </div>
   )
 }

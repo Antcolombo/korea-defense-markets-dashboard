@@ -95,21 +95,20 @@ export const getServerSideProps: GetServerSideProps<Props> = async context => {
       baskets: summary.baskets,
       crowding,
     }
-    selectedTicker = selectPriceTicker(allPrices, rotations.map(row => row.ticker))
-    data.prices = scopedPrices(allPrices, selectedTicker)
+    selectedTicker = selectPriceTicker(rotations.map(row => row.ticker))
+    data.prices = await scopedSourcedPrices(selectedTicker)
     responseData = data
   }
 
   if (module === 'rotation') {
     const rotations = await getRotationRows()
     selectedTicker = selectPriceTicker(
-      allPrices,
       rotations
         .slice()
         .sort((a, b) => (b.relativeStrengthVsSpy20d.value ?? -Infinity) - (a.relativeStrengthVsSpy20d.value ?? -Infinity))
         .map(row => row.ticker)
     )
-    data = { rotations, prices: scopedPrices(allPrices, selectedTicker) }
+    data = { rotations, prices: await scopedSourcedPrices(selectedTicker) }
     responseData = { rotations }
   }
 
@@ -129,8 +128,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async context => {
       basketCrowding: detail.members.map(member => member.crowding),
       positioning: positioningRows.filter(row => tickers.has(row.ticker))
     }
-    selectedTicker = selectPriceTicker(allPrices, detail.members.map(member => member.ticker))
-    data.prices = scopedPrices(allPrices, selectedTicker)
+    selectedTicker = selectPriceTicker(detail.members.map(member => member.ticker))
+    data.prices = await scopedSourcedPrices(selectedTicker)
     responseData = data
   }
 
@@ -209,8 +208,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async context => {
       .filter(event => event.affectedThemes.some(theme => theme.toLowerCase().includes('defense')) || event.category.includes('DEFENSE'))
       .sort((a, b) => b.date.localeCompare(a.date))
       .slice(0, 12)
-    selectedTicker = selectPriceTicker(allPrices, rotationsForTheme.map(row => row.ticker))
-    data = { rotations: rotationsForTheme, crowding, events, prices: scopedPrices(allPrices, selectedTicker) }
+    selectedTicker = selectPriceTicker(rotationsForTheme.map(row => row.ticker))
+    data = { rotations: rotationsForTheme, crowding, events, prices: await scopedSourcedPrices(selectedTicker) }
     responseData = { rotations: rotationsForTheme, crowding }
   }
 
@@ -218,7 +217,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async context => {
     const ticker = normalizeTickerSymbol(context.query.ticker)
     selectedTicker = isValidTickerSymbol(ticker) ? ticker : 'NVDA'
     const report = await getStockReport(selectedTicker)
-    data = { report }
+    data = { report, prices: await scopedSourcedPrices(selectedTicker) }
     responseData = { report }
   }
 
@@ -304,19 +303,24 @@ export function WorkspacePage(props: InferGetServerSidePropsType<typeof getServe
 
 export default WorkspacePage
 
-function selectPriceTicker(prices: ReturnType<typeof getPrices>, candidates: string[]) {
-  const available = new Set(prices.map(point => point.ticker))
-  return candidates.find(ticker => available.has(ticker)) ?? candidates[0]
+function selectPriceTicker(candidates: string[]) {
+  return candidates.find(Boolean) ?? candidates[0]
 }
 
-function scopedPrices(prices: ReturnType<typeof getPrices>, ticker: string | undefined) {
+async function scopedSourcedPrices(ticker: string | undefined) {
   if (!ticker) return []
-  return prices
-    .filter(point => point.ticker === ticker)
-    .slice(-180)
-    .map(point => ({
-      date: point.date,
-      ticker: point.ticker,
-      price: point.price
-    }))
+  const tickers = new Set([ticker, 'SPY', 'ITA', 'XAR', 'SMH', 'XLK', 'XLI', 'XLE', 'XLF'])
+  const series = await Promise.all(Array.from(tickers).map(async symbol => sourcedPriceRows(await getSourcedPriceSeries(symbol, 260))))
+  return series.flat()
+}
+
+function sourcedPriceRows(points: Awaited<ReturnType<typeof getSourcedPriceSeries>>) {
+  const sorted = [...points].sort((a, b) => a.date.localeCompare(b.date)).slice(-260)
+  const anchor = sorted.find(point => point.price > 0)?.price ?? null
+  return sorted.map(point => ({
+    date: point.date,
+    ticker: point.ticker,
+    price: point.price,
+    returnValue: anchor ? ((point.price - anchor) / anchor) * 100 : 0
+  }))
 }

@@ -6,7 +6,6 @@ import { fetchPolygonDailyBars, fetchPolygonOptionSnapshot } from '../src/lib/da
 import { calculateReturnFromBars, distanceFromMovingAverage, realizedVolatility20d, trendLabel, volumeVsAverage20d } from '../src/lib/data/signals/returns'
 import { seedTickers } from '../src/lib/data/baskets/seedTickers'
 import { seedBaskets } from '../src/lib/data/baskets/seedBaskets'
-import { getEvents } from '../src/lib/data/getEvents'
 import { crowdingLabel, crowdingScoreFromComponents, extensionRiskScoreFromComponents, setupLabel } from '../src/lib/research/crowdingScores'
 import { buildOptionsBattlefieldFromRaw } from '../src/lib/research/optionsBattlefield'
 import type { DbDataStatus } from '../src/lib/research/types'
@@ -653,38 +652,7 @@ async function catalystSupportScoreForTicker(symbol: string, asOfDate: Date) {
     .map(row => row.materialityScore)
     .filter((value): value is number => typeof value === 'number' && Number.isFinite(value))
   if (values.length > 0) return Number((values.reduce((sum, value) => sum + value, 0) / values.length).toFixed(1))
-
-  const generatedValues = getEvents()
-    .filter(event => event.affectedAssets.includes(symbol))
-    .filter(event => generatedEventIsDirectTickerCatalyst(event, symbol, companyName))
-    .filter(event => new Date(`${event.date}T00:00:00.000Z`).getTime() <= asOfDate.getTime())
-    .slice(0, 5)
-    .map(event => generatedEventMateriality(event.verified, event.priceConfirmationRequired))
-  if (generatedValues.length === 0) return null
-  return Number((generatedValues.reduce((sum, value) => sum + value, 0) / generatedValues.length).toFixed(1))
-}
-
-function generatedEventMateriality(verified: boolean, priceConfirmationRequired: boolean) {
-  if (verified && !priceConfirmationRequired) return 72
-  if (verified) return 64
-  return priceConfirmationRequired ? 48 : 55
-}
-
-function generatedEventIsDirectTickerCatalyst(event: ReturnType<typeof getEvents>[number], ticker: string, companyName: string) {
-  const text = [
-    event.title,
-    event.summary,
-    event.analystNote,
-    event.eventUse,
-    ...event.sourceContext
-  ].join(' ').toLowerCase()
-  const symbol = ticker.toLowerCase()
-  if (new RegExp(`\\b${escapeRegex(symbol)}\\b`, 'i').test(text)) return true
-  const companyTokens = directCompanyTokens(companyName)
-  if (companyTokens.some(token => new RegExp(`\\b${escapeRegex(token)}\\b`, 'i').test(text))) return true
-  return /earnings|guidance|revenue|margin|product|chip|gpu|accelerator|sec filing|regulatory|export control/.test(text)
-    && companyTokens.length > 0
-    && companyTokens.some(token => text.includes(token))
+  return null
 }
 
 function storedCatalystIsDirectTicker(record: { title: string; summary: string | null; sourceName: string | null; url: string | null }, ticker: string, companyName: string) {

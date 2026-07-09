@@ -1,7 +1,6 @@
 import { seedBaskets } from '@/lib/data/baskets/seedBaskets'
 import { seedTickers } from '@/lib/data/baskets/seedTickers'
 import { combineStatuses, metric, pointInTime, sourceCoverage } from '@/lib/data/availability'
-import { getEvents } from '@/lib/data/getEvents'
 import { buildStockReport, buildUnavailableStockReport } from '@/lib/research/report/buildStockReport'
 import { crowdingLabel as scoreCrowdingLabel, crowdingScoreFromComponents, extensionRiskScoreFromComponents, setupLabel } from '@/lib/research/crowdingScores'
 import { getPrisma } from '@/lib/server/prisma'
@@ -284,54 +283,11 @@ async function getCatalystRows(ticker: string, companyName: string): Promise<Cat
       if (directRows.length > 0) return directRows.map(catalystEventRow)
     } catch (error) {
       databaseUnavailableUntil = Date.now() + 30_000
-      console.warn(`Catalyst query unavailable; using generated event fallback. ${describeDatabaseError(error)}`)
+      console.warn(`Catalyst query unavailable; no generated event fallback used. ${describeDatabaseError(error)}`)
     }
   }
 
-  return getEvents()
-    .filter(event => event.affectedAssets.includes(ticker))
-    .filter(event => generatedEventIsDirectTickerCatalyst(event, ticker, companyName))
-    .sort((a, b) => b.date.localeCompare(a.date))
-    .slice(0, 5)
-    .map(event => {
-      const materiality = generatedEventMateriality(event.verified, event.priceConfirmationRequired)
-      const point = pointInTime({
-        asOfDate: event.date,
-        observedAt: event.publishedAt,
-        providerTimestamp: event.retrievedAt,
-        ingestedAt: event.retrievedAt,
-        source: event.sourceUrl,
-        provider: event.provider,
-        dataStatus: event.verified ? 'AVAILABLE' : 'PARTIAL'
-      })
-      return {
-        ...point,
-        id: event.id,
-        title: event.title,
-        date: event.date,
-        summary: event.summary,
-        sourceName: event.sourceName,
-        url: event.sourceUrl,
-        materialityScore: metric(materiality, event.verified ? 'AVAILABLE' : 'PARTIAL', 'Generated event materiality derived from sourced event metadata')
-      }
-    })
-}
-
-function generatedEventIsDirectTickerCatalyst(event: ReturnType<typeof getEvents>[number], ticker: string, companyName: string) {
-  const text = [
-    event.title,
-    event.summary,
-    event.analystNote,
-    event.eventUse,
-    ...event.sourceContext
-  ].join(' ').toLowerCase()
-  const symbol = ticker.toLowerCase()
-  if (new RegExp(`\\b${escapeRegex(symbol)}\\b`, 'i').test(text)) return true
-  const companyTokens = directCompanyTokens(companyName)
-  if (companyTokens.some(token => new RegExp(`\\b${escapeRegex(token)}\\b`, 'i').test(text))) return true
-  return /earnings|guidance|revenue|margin|product|chip|gpu|accelerator|sec filing|regulatory|export control/.test(text)
-    && companyTokens.length > 0
-    && companyTokens.some(token => text.includes(token))
+  return []
 }
 
 function storedCatalystIsDirectTicker(record: SnapshotLike, ticker: string, companyName: string) {
@@ -358,12 +314,6 @@ function directCompanyTokens(companyName: string) {
 
 function escapeRegex(value: string) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-}
-
-function generatedEventMateriality(verified: boolean, priceConfirmationRequired: boolean) {
-  if (verified && !priceConfirmationRequired) return 72
-  if (verified) return 64
-  return priceConfirmationRequired ? 48 : 55
 }
 
 function catalystEventRow(record: SnapshotLike): CatalystReportRow {

@@ -1,5 +1,4 @@
 import { createHash } from 'node:crypto'
-import { getPrices } from '@/lib/data/getPrices'
 import { pointInTime } from '@/lib/data/availability'
 import { getDayMap } from '@/lib/research/dayMap'
 import { getOptionsBattlefield } from '@/lib/research/optionsBattlefield'
@@ -32,29 +31,11 @@ export async function getSourcedPriceSeries(ticker: string, limit = 180): Promis
           .sort((a, b) => a.date.localeCompare(b.date))
       }
     } catch (error) {
-      console.warn(`DailyPrice lookup unavailable for ${symbol}; using generated price fallback. ${describeError(error)}`)
+      console.warn(`DailyPrice lookup unavailable for ${symbol}; no price fallback used. ${describeError(error)}`)
     }
   }
 
-  return getPrices()
-    .filter(point => point.ticker === symbol)
-    .slice(-limit)
-    .map(point => ({
-      ...pointInTime({
-        asOfDate: point.date,
-        observedAt: point.date,
-        providerTimestamp: point.publishedAt,
-        ingestedAt: point.retrievedAt,
-        source: point.sourceName || point.sourceUrl || 'fallback generated price',
-        provider: point.provider || 'fallback generated price',
-        dataStatus: point.dataQuality === 'unavailable' ? 'UNAVAILABLE' : 'PARTIAL'
-      }),
-      ticker: symbol,
-      date: point.date,
-      price: point.price,
-      label: 'fallback generated price',
-      fallback: true
-    }))
+  return []
 }
 
 export async function buildStockPitchSourceSnapshot(ticker: string, report: StockReport): Promise<PitchSourceSnapshot> {

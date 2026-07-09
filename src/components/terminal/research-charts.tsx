@@ -23,11 +23,8 @@ import {
   BarChart,
   CartesianGrid,
   Cell,
-  PolarAngleAxis,
-  PolarGrid,
-  PolarRadiusAxis,
-  Radar,
-  RadarChart,
+  LabelList,
+  ReferenceArea,
   ReferenceLine,
   ResponsiveContainer,
   Scatter,
@@ -37,18 +34,57 @@ import {
   YAxis,
   ZAxis
 } from 'recharts'
-import { GripVertical } from 'lucide-react'
 import type { ShellMeta, UnavailableField } from '@/lib/research/api'
 import type { CrowdingRow, MetricValue, ReportMetric, RotationRow, StockReport } from '@/lib/research/types'
 import { useTerminalStore } from '@/components/terminal/terminal-store'
 import { cn } from '@/lib/utils'
+
+type Tone = 'neutral' | 'good' | 'warn' | 'danger'
+
+type MetricLike = Pick<MetricValue, 'value' | 'availability' | 'dataStatus' | 'reason'> | undefined
+
+type MathTraceItem = {
+  label: string
+  raw: string
+  normalized: string
+  weight?: string
+  confidence?: string
+  result: string
+  tone?: Tone
+}
+
+export const chartTheme = {
+  colors: {
+    good: '#65e4c6',
+    warn: '#d9b96e',
+    danger: '#ff7777',
+    neutral: '#8fa7a2',
+    accent: '#74b3f2',
+    muted: 'rgba(255,255,255,0.58)',
+    foreground: '#ffffff',
+    grid: 'rgba(255,255,255,0.075)',
+    zero: 'rgba(255,255,255,0.24)',
+    categorical: ['#65e4c6', '#74b3f2', '#d9b96e', '#ff9f43', '#ff7777', '#b6a7ff']
+  },
+  axis: { fill: 'rgba(255,255,255,0.65)', fontSize: 11 },
+  axisSmall: { fill: 'rgba(255,255,255,0.62)', fontSize: 10 },
+  margin: { top: 16, right: 22, bottom: 22, left: 8 },
+  tooltipStyle: {
+    background: '#071b1a',
+    border: '1px solid rgba(255,255,255,0.12)',
+    borderRadius: '8px',
+    color: '#fff',
+    boxShadow: '0 18px 50px rgba(0,0,0,0.28)'
+  },
+  missingState: 'grid min-h-[180px] place-items-center rounded-md border border-dashed border-border bg-background/35 p-4 text-center'
+} as const
 
 export type TerminalMetric = {
   id: string
   label: string
   value: string
   sub: string
-  tone?: 'neutral' | 'good' | 'warn' | 'danger'
+  tone?: Tone
 }
 
 export function SortableMetricStrip({ metrics }: { metrics: TerminalMetric[] }) {
@@ -92,17 +128,17 @@ function CompactMetricBar({ metrics }: { metrics: TerminalMetric[] }) {
   const context = metrics.find(metric => metric.id === 'top-rs') ?? metrics[1]
   if (!source) return null
   return (
-    <section className={cn('border-b border-border bg-background/95 p-2 md:hidden', metricToneClass(source.tone))}>
+    <section className={cn('border-b border-border bg-background p-2 md:hidden', metricToneClass(source.tone))}>
       <div className="grid gap-1 rounded-md border border-border bg-card p-3">
         <div className="flex min-w-0 items-center justify-between gap-3">
           <div className="min-w-0">
-            <p className="font-mono text-[0.66rem] tracking-[0.04em] text-muted-foreground">{source.label}</p>
-            <p className="mt-1 truncate font-mono text-sm font-semibold text-foreground">{source.value}</p>
+            <p className="text-[0.68rem] font-medium tracking-[0.04em] text-muted-foreground">{source.label}</p>
+            <p className="mt-1 truncate text-sm font-semibold text-foreground">{source.value}</p>
           </div>
           {context ? (
             <div className="min-w-0 text-right">
-              <p className="truncate font-mono text-[0.66rem] text-muted-foreground">{context.label}</p>
-              <p className="truncate font-mono text-sm font-semibold">{context.value}</p>
+              <p className="truncate text-[0.68rem] text-muted-foreground">{context.label}</p>
+              <p className="truncate text-sm font-semibold">{context.value}</p>
             </div>
           ) : null}
         </div>
@@ -118,17 +154,14 @@ function SortableMetricCard({ metric }: { metric: TerminalMetric }) {
     <TremorCard
       ref={setNodeRef}
       style={{ transform: CSS.Transform.toString(transform), transition }}
-      className={cn('rounded-md border border-border bg-card p-3 shadow-none ring-0', metricToneClass(metric.tone))}
+      className={cn('cursor-grab rounded-md border border-border bg-card p-3 shadow-none ring-0 active:cursor-grabbing', metricToneClass(metric.tone))}
+      {...attributes}
+      {...listeners}
     >
-      <div className="flex items-start justify-between gap-2">
-        <div className="min-w-0">
-          <p className="font-mono text-[0.66rem] tracking-[0.04em] text-muted-foreground">{metric.label}</p>
-          <p className="mt-1 truncate font-mono text-lg font-semibold text-foreground">{metric.value}</p>
-          <p className="mt-1 truncate font-mono text-[0.68rem] text-muted-foreground">{metric.sub}</p>
-        </div>
-        <button type="button" className="hidden text-muted-foreground hover:text-foreground md:block" aria-label={`Reorder ${metric.label}`} {...attributes} {...listeners}>
-          <GripVertical className="h-4 w-4" />
-        </button>
+      <div className="min-w-0">
+        <p className="text-[0.68rem] font-medium tracking-[0.04em] text-muted-foreground">{metric.label}</p>
+        <p className="mt-1 truncate text-lg font-semibold text-foreground">{metric.value}</p>
+        <p className="mt-1 truncate text-[0.72rem] text-muted-foreground">{metric.sub}</p>
       </div>
     </TremorCard>
   )
@@ -141,6 +174,70 @@ function metricToneClass(tone: TerminalMetric['tone']) {
   return ''
 }
 
+export function statusConfidence(metric: MetricLike) {
+  if (!metric || metric.value === null) return 0
+  if (metric.dataStatus === 'AVAILABLE') return 1
+  if (metric.dataStatus === 'PARTIAL') return 0.72
+  if (metric.dataStatus === 'STALE') return 0.48
+  if (metric.dataStatus === 'ENTITLEMENT_MISSING') return 0.28
+  if (metric.dataStatus === 'PROVIDER_ERROR') return 0.16
+  return 0.1
+}
+
+export function normalizeMetricScore(metric: MetricLike, label: string) {
+  const value = metric?.value
+  if (value === null || value === undefined) return 0
+  if (label.includes('Volume')) return clamp(value * 55, 0, 100)
+  if (label.includes('RS vs SPY')) return clamp(50 + value * 3, 0, 100)
+  if (label.includes('return')) return clamp(50 + value * 2.5, 0, 100)
+  if (label.includes('Extension risk')) return clamp(100 - value, 0, 100)
+  if (label.includes('score') || label.includes('Crowding') || label.includes('Catalyst')) return clamp(value, 0, 100)
+  return clamp(value, 0, 100)
+}
+
+export function toneForScore(score: number): Tone {
+  if (score >= 70) return 'good'
+  if (score >= 45) return 'warn'
+  return 'danger'
+}
+
+export function formatMathStep(raw: string, normalized: string, confidence?: string, result?: string) {
+  return [raw, normalized, confidence, result].filter(Boolean).join(' -> ')
+}
+
+export function MathTraceGrid({ items }: { items: MathTraceItem[] }) {
+  if (!items.length) return null
+  return (
+    <div className="grid gap-2 md:grid-cols-2">
+      {items.map(item => <MathTrace key={item.label} item={item} />)}
+    </div>
+  )
+}
+
+export function MathTrace({ item }: { item: MathTraceItem }) {
+  const tone = item.tone ?? 'neutral'
+  return (
+    <div className={cn('rounded-md border border-border bg-background/40 p-3', traceToneClass(tone))}>
+      <div className="flex min-w-0 items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="truncate font-mono text-xs font-semibold">{item.label}</p>
+          <p className="mt-1 text-[0.68rem] leading-4 text-muted-foreground">
+            {formatMathStep(item.raw, item.normalized, item.confidence, item.result)}
+          </p>
+        </div>
+        {item.weight ? <span className="rounded border border-border px-1.5 py-0.5 font-mono text-[0.62rem] text-muted-foreground">{item.weight}</span> : null}
+      </div>
+    </div>
+  )
+}
+
+function traceToneClass(tone: Tone) {
+  if (tone === 'good') return 'border-l-2 border-l-emerald-300/80'
+  if (tone === 'warn') return 'border-l-2 border-l-amber/80'
+  if (tone === 'danger') return 'border-l-2 border-l-destructive/80'
+  return ''
+}
+
 export function MetricBarChart({
   rows
 }: {
@@ -150,13 +247,13 @@ export function MetricBarChart({
   return (
     <div className="h-[280px] w-full">
       <ResponsiveContainer>
-        <BarChart data={data}>
-          <CartesianGrid stroke="rgba(255,255,255,0.08)" vertical={false} />
-          <XAxis dataKey="name" tick={{ fill: 'rgba(255,255,255,0.65)', fontSize: 11 }} />
-          <YAxis tick={{ fill: 'rgba(255,255,255,0.65)', fontSize: 11 }} />
-          <RechartsTooltip contentStyle={{ background: '#071b1a', border: '1px solid rgba(255,255,255,0.12)', color: '#fff' }} />
+        <BarChart data={data} margin={chartTheme.margin}>
+          <CartesianGrid stroke={chartTheme.colors.grid} vertical={false} />
+          <XAxis dataKey="name" tick={chartTheme.axis} />
+          <YAxis tick={chartTheme.axis} />
+          <RechartsTooltip contentStyle={chartTheme.tooltipStyle} />
           <Bar dataKey="value" radius={[3, 3, 0, 0]}>
-            {data.map(row => <Cell key={row.name} fill={(row.value ?? 0) >= 0 ? '#50d2c1' : '#ff6565'} />)}
+            {data.map(row => <Cell key={row.name} fill={(row.value ?? 0) >= 0 ? chartTheme.colors.good : chartTheme.colors.danger} />)}
           </Bar>
         </BarChart>
       </ResponsiveContainer>
@@ -179,13 +276,13 @@ export function ScenarioLineChart({ metrics }: { metrics: ReportMetric[] }) {
     <div className="h-[260px] w-full">
       <ResponsiveContainer>
         <BarChart data={data} layout="vertical" margin={{ top: 10, right: 18, bottom: 8, left: 8 }}>
-          <CartesianGrid stroke="rgba(255,255,255,0.08)" horizontal={false} />
-          <XAxis type="number" tick={{ fill: 'rgba(255,255,255,0.65)', fontSize: 11 }} />
-          <YAxis type="category" dataKey="name" width={88} tick={{ fill: 'rgba(255,255,255,0.65)', fontSize: 10 }} />
-          <ReferenceLine x={0} stroke="rgba(255,255,255,0.22)" strokeDasharray="4 4" />
-          <RechartsTooltip contentStyle={tooltipStyle} formatter={(value) => [Number(value).toFixed(1), 'Value']} labelFormatter={(label, payload) => payload?.[0]?.payload?.fullLabel ?? label} />
+          <CartesianGrid stroke={chartTheme.colors.grid} horizontal={false} />
+          <XAxis type="number" tick={chartTheme.axis} />
+          <YAxis type="category" dataKey="name" width={88} tick={chartTheme.axisSmall} />
+          <ReferenceLine x={0} stroke={chartTheme.colors.zero} strokeDasharray="4 4" />
+          <RechartsTooltip contentStyle={chartTheme.tooltipStyle} formatter={(value) => [Number(value).toFixed(1), 'Value']} labelFormatter={(label, payload) => payload?.[0]?.payload?.fullLabel ?? label} />
           <Bar dataKey="value" radius={[0, 3, 3, 0]}>
-            {data.map(row => <Cell key={row.fullLabel} fill={row.value >= 0 ? '#50d2c1' : '#ff7777'} />)}
+            {data.map(row => <Cell key={row.fullLabel} fill={row.value >= 0 ? chartTheme.colors.good : chartTheme.colors.danger} />)}
           </Bar>
         </BarChart>
       </ResponsiveContainer>
@@ -195,107 +292,182 @@ export function ScenarioLineChart({ metrics }: { metrics: ReportMetric[] }) {
 
 export function RotationQuadrantChart({ rows }: { rows: RotationRow[] }) {
   const data = rows
-    .map(row => ({
-      ticker: row.ticker,
-      rs: row.relativeStrengthVsSpy20d.value,
-      return20d: row.return20d.value,
-      volume: row.volumeVs20dAvg.value ?? 1,
-      trend: row.trendLabel
-    }))
-    .filter((row): row is { ticker: string; rs: number; return20d: number; volume: number; trend: string } => row.rs !== null && row.return20d !== null)
+    .flatMap(row => {
+      const rs = row.relativeStrengthVsSpy20d.value
+      const return20d = row.return20d.value
+      if (rs === null || return20d === null) return []
+      return [{
+        ticker: row.ticker,
+        rs,
+        return20d,
+        volume: row.volumeVs20dAvg.value ?? 1,
+        trend: row.trendLabel,
+        status: row.dataStatus,
+        asOfDate: row.asOfDate
+      }]
+    })
+    .sort((a, b) => (Math.abs(b.rs) + Math.abs(b.return20d) + b.volume) - (Math.abs(a.rs) + Math.abs(a.return20d) + a.volume))
+    .map((row, index) => ({ ...row, rank: index + 1 }))
 
   if (!data.length) return <MissingChartState title="No rotation plot" detail="20D return and RS vs SPY are missing." />
+  const xDomain = paddedDomain(data.map(row => row.rs))
+  const yDomain = paddedDomain(data.map(row => row.return20d))
 
   return (
-    <div className="h-[320px] w-full">
-      <ResponsiveContainer>
-        <ScatterChart margin={{ top: 14, right: 18, bottom: 20, left: 8 }}>
-          <CartesianGrid stroke="rgba(255,255,255,0.08)" />
-          <XAxis type="number" dataKey="rs" name="RS vs SPY" tick={{ fill: 'rgba(255,255,255,0.65)', fontSize: 11 }} />
-          <YAxis type="number" dataKey="return20d" name="20D return" tick={{ fill: 'rgba(255,255,255,0.65)', fontSize: 11 }} />
-          <ZAxis type="number" dataKey="volume" range={[80, 360]} />
-          <ReferenceLine x={0} stroke="rgba(255,255,255,0.22)" strokeDasharray="4 4" />
-          <ReferenceLine y={0} stroke="rgba(255,255,255,0.22)" strokeDasharray="4 4" />
-          <RechartsTooltip content={<ScatterTooltip xLabel="RS vs SPY" yLabel="20D return" />} />
-          <Scatter data={data}>
-            {data.map(row => <Cell key={row.ticker} fill={row.rs >= 0 && row.return20d >= 0 ? '#50d2c1' : row.rs < 0 && row.return20d < 0 ? '#ff7777' : '#d6b36a'} />)}
-          </Scatter>
-        </ScatterChart>
-      </ResponsiveContainer>
+    <div className="grid gap-3">
+      <div className="relative h-[320px] w-full">
+        <QuadrantOverlay labels={{ topLeft: 'Weak tape / RS bid', topRight: 'Leadership', bottomLeft: 'Lagging', bottomRight: 'Tape bid / RS lag' }} />
+        <ResponsiveContainer>
+          <ScatterChart margin={chartTheme.margin}>
+            <CartesianGrid stroke={chartTheme.colors.grid} />
+            <ReferenceArea x1={0} x2={xDomain[1]} y1={0} y2={yDomain[1]} fill={chartTheme.colors.good} fillOpacity={0.08} />
+            <ReferenceArea x1={xDomain[0]} x2={0} y1={yDomain[0]} y2={0} fill={chartTheme.colors.danger} fillOpacity={0.08} />
+            <ReferenceArea x1={xDomain[0]} x2={0} y1={0} y2={yDomain[1]} fill={chartTheme.colors.warn} fillOpacity={0.05} />
+            <ReferenceArea x1={0} x2={xDomain[1]} y1={yDomain[0]} y2={0} fill={chartTheme.colors.accent} fillOpacity={0.04} />
+            <XAxis type="number" dataKey="rs" name="RS vs SPY" domain={xDomain} tick={chartTheme.axis} />
+            <YAxis type="number" dataKey="return20d" name="20D return" domain={yDomain} tick={chartTheme.axis} />
+            <ZAxis type="number" dataKey="volume" range={[80, 360]} />
+            <ReferenceLine x={0} stroke={chartTheme.colors.zero} strokeDasharray="4 4" />
+            <ReferenceLine y={0} stroke={chartTheme.colors.zero} strokeDasharray="4 4" />
+            <RechartsTooltip content={<ScatterTooltip xLabel="RS vs SPY" yLabel="20D return" zLabel="Volume/avg" />} />
+            <Scatter data={data}>
+              {data.map(row => (
+                <Cell
+                  key={row.ticker}
+                  fill={row.rs >= 0 && row.return20d >= 0 ? chartTheme.colors.good : row.rs < 0 && row.return20d < 0 ? chartTheme.colors.danger : chartTheme.colors.warn}
+                  fillOpacity={row.rank <= 5 ? 0.95 : 0.38}
+                />
+              ))}
+              <LabelList dataKey="ticker" content={props => <PointLabel {...props} rows={data} />} />
+            </Scatter>
+          </ScatterChart>
+        </ResponsiveContainer>
+      </div>
+      <BubbleLegend label="Bubble size" detail="Volume vs 20D average" />
+      <MathTraceGrid items={[
+        { label: 'RS axis', raw: '20D RS vs SPY', normalized: 'x position', confidence: 'source status kept in tooltip', result: 'right side = relative leadership', tone: 'neutral' },
+        { label: 'Return axis', raw: '20D return', normalized: 'y position', confidence: 'price freshness', result: 'upper side = positive tape', tone: 'neutral' },
+        { label: 'Bubble', raw: 'Volume/avg', normalized: 'size scale', result: 'larger = stronger participation', tone: 'good' },
+        { label: 'Label priority', raw: 'absolute signal + volume', normalized: 'rank top 5', result: 'direct labels only on highest-signal names', tone: 'warn' }
+      ]} />
     </div>
   )
 }
 
 export function CrowdingRiskMap({ rows }: { rows: CrowdingRow[] }) {
   const data = rows
-    .map(row => ({
-      ticker: row.ticker,
-      crowding: row.crowdingScore.value,
-      extension: row.extensionRiskScore.value,
-      catalyst: row.catalystSupportScore.value ?? 1,
-      setup: row.setupLabel
-    }))
-    .filter((row): row is { ticker: string; crowding: number; extension: number; catalyst: number; setup: string } => row.crowding !== null && row.extension !== null)
+    .flatMap(row => {
+      const crowding = row.crowdingScore.value
+      const extension = row.extensionRiskScore.value
+      if (crowding === null || extension === null) return []
+      return [{
+        ticker: row.ticker,
+        crowding,
+        extension,
+        catalyst: row.catalystSupportScore.value ?? 1,
+        setup: row.setupLabel,
+        status: row.dataStatus,
+        asOfDate: row.asOfDate
+      }]
+    })
+    .sort((a, b) => (b.crowding + b.extension + b.catalyst) - (a.crowding + a.extension + a.catalyst))
+    .map((row, index) => ({ ...row, rank: index + 1 }))
 
   if (!data.length) return <MissingChartState title="No crowding map" detail="Crowding and extension scores are missing." />
 
   return (
-    <div className="h-[320px] w-full">
-      <ResponsiveContainer>
-        <ScatterChart margin={{ top: 14, right: 18, bottom: 20, left: 8 }}>
-          <CartesianGrid stroke="rgba(255,255,255,0.08)" />
-          <XAxis type="number" dataKey="crowding" domain={[0, 100]} tick={{ fill: 'rgba(255,255,255,0.65)', fontSize: 11 }} />
-          <YAxis type="number" dataKey="extension" domain={[0, 100]} tick={{ fill: 'rgba(255,255,255,0.65)', fontSize: 11 }} />
-          <ZAxis type="number" dataKey="catalyst" range={[90, 420]} />
-          <ReferenceLine x={70} stroke="rgba(255,255,255,0.24)" strokeDasharray="4 4" />
-          <ReferenceLine y={70} stroke="rgba(255,255,255,0.24)" strokeDasharray="4 4" />
-          <RechartsTooltip content={<ScatterTooltip xLabel="Crowding" yLabel="Extension" zLabel="Catalyst" />} />
-          <Scatter data={data}>
-            {data.map(row => <Cell key={row.ticker} fill={row.extension >= 70 && row.crowding >= 70 ? '#ff7777' : row.catalyst >= 65 ? '#50d2c1' : '#d6b36a'} />)}
-          </Scatter>
-        </ScatterChart>
-      </ResponsiveContainer>
+    <div className="grid gap-3">
+      <div className="relative h-[320px] w-full">
+        <QuadrantOverlay labels={{ topLeft: 'Watch extension', topRight: 'Chase risk', bottomLeft: 'Quiet', bottomRight: 'Sponsored' }} />
+        <ResponsiveContainer>
+          <ScatterChart margin={chartTheme.margin}>
+            <CartesianGrid stroke={chartTheme.colors.grid} />
+            <ReferenceArea x1={70} x2={100} y1={70} y2={100} fill={chartTheme.colors.danger} fillOpacity={0.1} />
+            <ReferenceArea x1={55} x2={100} y1={0} y2={45} fill={chartTheme.colors.good} fillOpacity={0.08} />
+            <ReferenceArea x1={0} x2={55} y1={55} y2={100} fill={chartTheme.colors.warn} fillOpacity={0.07} />
+            <XAxis type="number" dataKey="crowding" domain={[0, 100]} tick={chartTheme.axis} />
+            <YAxis type="number" dataKey="extension" domain={[0, 100]} tick={chartTheme.axis} />
+            <ZAxis type="number" dataKey="catalyst" range={[90, 420]} />
+            <ReferenceLine x={70} stroke={chartTheme.colors.zero} strokeDasharray="4 4" />
+            <ReferenceLine y={70} stroke={chartTheme.colors.zero} strokeDasharray="4 4" />
+            <RechartsTooltip content={<ScatterTooltip xLabel="Crowding" yLabel="Extension" zLabel="Catalyst" />} />
+            <Scatter data={data}>
+              {data.map(row => (
+                <Cell
+                  key={row.ticker}
+                  fill={row.extension >= 70 && row.crowding >= 70 ? chartTheme.colors.danger : row.catalyst >= 65 ? chartTheme.colors.good : chartTheme.colors.warn}
+                  fillOpacity={row.rank <= 5 ? 0.95 : 0.38}
+                />
+              ))}
+              <LabelList dataKey="ticker" content={props => <PointLabel {...props} rows={data} />} />
+            </Scatter>
+          </ScatterChart>
+        </ResponsiveContainer>
+      </div>
+      <BubbleLegend label="Bubble size" detail="Catalyst support score" />
+      <MathTraceGrid items={[
+        { label: 'Crowding', raw: 'sponsorship components', normalized: 'x 0-100', confidence: 'source status kept in tooltip', result: 'right side = crowded/sponsored', tone: 'neutral' },
+        { label: 'Extension', raw: 'volatility + MA distance', normalized: 'y 0-100', result: 'upper side = chase risk', tone: 'danger' },
+        { label: 'Catalyst', raw: 'support score', normalized: 'bubble size', result: 'larger = better confirmation', tone: 'good' },
+        { label: 'Setup', raw: 'crowding + extension + catalyst', normalized: 'rank top 5', result: 'direct labels on highest-risk reads', tone: 'warn' }
+      ]} />
     </div>
   )
 }
 
 export function ReportSignalRadar({ report }: { report: StockReport }) {
   const rows = [
-    radarPoint(report, 'Tape', '20D return', 2.5),
-    radarPoint(report, 'RS', '20D RS vs SPY', 3),
-    radarPoint(report, 'Volume', 'Volume vs 20D average', 55, 'x'),
-    radarPoint(report, 'Crowding', 'Crowding score', 1, 'score'),
-    radarPoint(report, 'Extension', 'Extension risk score', 1, 'score'),
-    radarPoint(report, 'Catalyst', 'Catalyst support score', 1, 'score')
+    scorecardPoint(report, 'Tape', '20D return', '20%', 'Price trend contribution'),
+    scorecardPoint(report, 'RS', '20D RS vs SPY', '20%', 'Relative strength contribution'),
+    scorecardPoint(report, 'Volume', 'Volume vs 20D average', '15%', 'Participation confirmation'),
+    scorecardPoint(report, 'Crowding', 'Crowding score', '15%', 'Sponsorship pressure'),
+    scorecardPoint(report, 'Extension', 'Extension risk score', '15%', 'Risk penalty'),
+    scorecardPoint(report, 'Catalyst', 'Catalyst support score', '15%', 'Confirmation quality')
   ]
   const available = rows.filter(row => row.available).length
+  const average = rows.length ? rows.reduce((sum, row) => sum + row.contribution, 0) / rows.length : 0
+  const averageTone = toneForScore(average)
 
   return (
-    <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_220px]">
-      <div className="h-[300px] w-full">
-        <ResponsiveContainer>
-          <RadarChart data={rows}>
-            <PolarGrid stroke="rgba(255,255,255,0.12)" />
-            <PolarAngleAxis dataKey="axis" tick={{ fill: 'rgba(255,255,255,0.72)', fontSize: 10 }} />
-            <PolarRadiusAxis domain={[0, 100]} tick={false} axisLine={false} />
-            <Radar dataKey="score" stroke="#50d2c1" fill="#50d2c1" fillOpacity={0.24} strokeWidth={2} />
-            <RechartsTooltip contentStyle={tooltipStyle} formatter={(value, name, item) => [`${Math.round(Number(value))}`, item.payload.raw]} />
-          </RadarChart>
-        </ResponsiveContainer>
-      </div>
-      <div className="grid content-start gap-2">
-        <div className="rounded-md border border-border bg-background/45 p-3">
-          <p className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-muted-foreground">Evidence Readiness</p>
+    <div className="grid gap-3">
+      <div className="grid gap-2 md:grid-cols-3">
+        <div className={cn('rounded-md border border-border bg-background/45 p-3 md:col-span-1', traceToneClass(averageTone))}>
+          <p className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-muted-foreground">Evidence Scorecard</p>
           <p className="mt-2 font-mono text-2xl font-semibold">{available}/{rows.length}</p>
-          <p className="mt-1 text-xs text-muted-foreground">Radar only scores sourced metrics. Missing axes stay at zero.</p>
+          <p className="mt-1 text-xs leading-5 text-muted-foreground">Small multiples show raw value, normalized score, source confidence, and final contribution. Missing data carries confidence penalty.</p>
         </div>
-        {rows.map(row => (
-          <div key={row.axis} className="grid grid-cols-[1fr_auto] gap-2 rounded-md border border-border bg-background/35 p-2">
-            <span className="truncate font-mono text-[0.68rem] text-muted-foreground">{row.axis}</span>
-            <span className={row.available ? 'font-mono text-[0.68rem] text-foreground' : 'font-mono text-[0.68rem] text-muted-foreground'}>{row.raw}</span>
-          </div>
-        ))}
+        <div className="grid gap-2 md:col-span-2 md:grid-cols-2">
+          {rows.map(row => (
+            <div key={row.axis} className={cn('rounded-md border border-border bg-background/35 p-3', traceToneClass(row.tone))}>
+              <div className="flex min-w-0 items-start justify-between gap-2">
+                <div className="min-w-0">
+                  <p className="truncate font-mono text-xs font-semibold">{row.axis}</p>
+                  <p className="mt-1 truncate text-[0.68rem] text-muted-foreground">{row.detail}</p>
+                </div>
+                <span className="font-mono text-[0.68rem] text-muted-foreground">{row.weight}</span>
+              </div>
+              <div className="mt-3 h-2 overflow-hidden rounded-full bg-muted">
+                <div className="h-full rounded-full" style={{ width: `${row.contribution}%`, backgroundColor: chartTheme.colors[row.tone] }} />
+              </div>
+              <div className="mt-3 grid grid-cols-2 gap-2 text-[0.68rem]">
+                <span className="truncate text-muted-foreground">Raw <span className="font-mono text-foreground">{row.raw}</span></span>
+                <span className="truncate text-muted-foreground">Score <span className="font-mono text-foreground">{Math.round(row.score)}</span></span>
+                <span className="truncate text-muted-foreground">Conf <span className="font-mono text-foreground">{Math.round(row.confidence * 100)}%</span></span>
+                <span className="truncate text-muted-foreground">Read <span className="font-mono text-foreground">{row.read}</span></span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
+      <MathTraceGrid items={rows.map(row => ({
+        label: row.axis,
+        raw: row.raw,
+        normalized: `${Math.round(row.score)} normalized`,
+        weight: row.weight,
+        confidence: `${Math.round(row.confidence * 100)}% confidence`,
+        result: `${Math.round(row.contribution)} final`,
+        tone: row.tone
+      }))} />
     </div>
   )
 }
@@ -318,16 +490,16 @@ export function ReturnRibbonChart({ report }: { report: StockReport }) {
         <AreaChart data={data} margin={{ top: 16, right: 20, left: 0, bottom: 8 }}>
           <defs>
             <linearGradient id="returnRibbonFill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#50d2c1" stopOpacity={0.42} />
-              <stop offset="95%" stopColor="#50d2c1" stopOpacity={0.02} />
+              <stop offset="5%" stopColor={chartTheme.colors.good} stopOpacity={0.42} />
+              <stop offset="95%" stopColor={chartTheme.colors.good} stopOpacity={0.02} />
             </linearGradient>
           </defs>
-          <CartesianGrid stroke="rgba(255,255,255,0.08)" vertical={false} />
-          <XAxis dataKey="name" tick={{ fill: 'rgba(255,255,255,0.65)', fontSize: 11 }} />
-          <YAxis tick={{ fill: 'rgba(255,255,255,0.65)', fontSize: 11 }} />
-          <ReferenceLine y={0} stroke="rgba(255,255,255,0.22)" strokeDasharray="4 4" />
-          <RechartsTooltip contentStyle={tooltipStyle} formatter={(value) => [`${Number(value).toFixed(1)}%`, 'Return']} />
-          <Area type="monotone" dataKey="value" stroke="#50d2c1" strokeWidth={2} fill="url(#returnRibbonFill)" />
+          <CartesianGrid stroke={chartTheme.colors.grid} vertical={false} />
+          <XAxis dataKey="name" tick={chartTheme.axis} />
+          <YAxis tick={chartTheme.axis} />
+          <ReferenceLine y={0} stroke={chartTheme.colors.zero} strokeDasharray="4 4" />
+          <RechartsTooltip contentStyle={chartTheme.tooltipStyle} formatter={(value) => [`${Number(value).toFixed(1)}%`, 'Return']} />
+          <Area type="monotone" dataKey="value" stroke={chartTheme.colors.good} strokeWidth={2} fill="url(#returnRibbonFill)" />
         </AreaChart>
       </ResponsiveContainer>
     </div>
@@ -343,7 +515,7 @@ export function ProviderHealthMap({ shell }: { shell: ShellMeta }) {
         <div>
           <p className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-muted-foreground">Coverage</p>
           <div className="mt-2 h-2 overflow-hidden rounded-full bg-muted">
-            <div className="h-full rounded-full bg-[linear-gradient(90deg,#ff7777,#d6b36a,#50d2c1)]" style={{ width: `${Math.max(0, Math.min(shell.coveragePercent, 100))}%` }} />
+            <div className="h-full rounded-full" style={{ width: `${Math.max(0, Math.min(shell.coveragePercent, 100))}%`, background: `linear-gradient(90deg, ${chartTheme.colors.danger}, ${chartTheme.colors.warn}, ${chartTheme.colors.good})` }} />
           </div>
         </div>
         <p className="font-mono text-xl font-semibold">{shell.coveragePercent}%</p>
@@ -352,7 +524,7 @@ export function ProviderHealthMap({ shell }: { shell: ShellMeta }) {
         {rows.slice(0, 8).map(row => (
           <div key={row.id} className="rounded-md border border-border bg-background/35 p-2">
             <div className="mb-2 flex items-center gap-2">
-              <span className={`h-2.5 w-2.5 rounded-full ${statusDot(row.status)}`} />
+              <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: statusColor(row.status) }} />
               <span className="truncate font-mono text-[0.68rem]">{row.label}</span>
             </div>
             <p className="line-clamp-2 text-[0.66rem] leading-4 text-muted-foreground">{row.detail}</p>
@@ -394,12 +566,6 @@ export function metricNumber(metric: MetricValue | undefined) {
   return metric?.value ?? null
 }
 
-const tooltipStyle = {
-  background: '#071b1a',
-  border: '1px solid rgba(255,255,255,0.12)',
-  color: '#fff'
-}
-
 function ScatterTooltip({
   active,
   payload,
@@ -408,7 +574,7 @@ function ScatterTooltip({
   zLabel
 }: {
   active?: boolean
-  payload?: { payload: Record<string, string | number> }[]
+  payload?: { payload: Record<string, unknown> }[]
   xLabel: string
   yLabel: string
   zLabel?: string
@@ -416,19 +582,24 @@ function ScatterTooltip({
   if (!active || !payload?.length) return null
   const row = payload[0]?.payload
   return (
-    <div className="rounded-md border border-border bg-background/95 p-2 shadow">
-      <p className="font-mono text-xs font-semibold">{row.ticker}</p>
-      <p className="mt-1 text-[0.68rem] text-muted-foreground">{xLabel}: {numberText(row.rs ?? row.crowding)}</p>
+    <div className="rounded-md border border-border bg-background/95 p-3 shadow">
+      <div className="flex items-center justify-between gap-3">
+        <p className="font-mono text-xs font-semibold">{String(row.ticker ?? 'N/A')}</p>
+        {row.rank ? <span className="rounded border border-border px-1.5 py-0.5 font-mono text-[0.62rem] text-muted-foreground">#{String(row.rank)}</span> : null}
+      </div>
+      <p className="mt-2 text-[0.68rem] text-muted-foreground">{xLabel}: {numberText(row.rs ?? row.crowding)}</p>
       <p className="text-[0.68rem] text-muted-foreground">{yLabel}: {numberText(row.return20d ?? row.extension)}</p>
-      {zLabel ? <p className="text-[0.68rem] text-muted-foreground">{zLabel}: {numberText(row.catalyst)}</p> : null}
-      {row.trend || row.setup ? <p className="mt-1 text-[0.68rem] text-foreground">{row.trend ?? row.setup}</p> : null}
+      {zLabel ? <p className="text-[0.68rem] text-muted-foreground">{zLabel}: {numberText(row.catalyst ?? row.volume)}</p> : null}
+      {row.status ? <p className="text-[0.68rem] text-muted-foreground">Status: {String(row.status)}</p> : null}
+      {row.asOfDate ? <p className="text-[0.68rem] text-muted-foreground">As of: {String(row.asOfDate)}</p> : null}
+      {row.trend || row.setup ? <p className="mt-2 text-[0.68rem] text-foreground">{String(row.trend ?? row.setup)}</p> : null}
     </div>
   )
 }
 
 function MissingChartState({ title, detail }: { title: string; detail: string }) {
   return (
-    <div className="grid min-h-[180px] place-items-center rounded-md border border-dashed border-border bg-background/35 p-4 text-center">
+    <div className={chartTheme.missingState}>
       <div>
         <p className="font-mono text-sm font-semibold">{title}</p>
         <p className="mt-1 text-xs text-muted-foreground">{detail}</p>
@@ -445,21 +616,24 @@ function metricByLabel(report: StockReport, label: string) {
   return allReportMetrics(report).find(metric => metric.label === label)
 }
 
-function radarPoint(report: StockReport, axis: string, label: string, factor: number, mode: 'signed' | 'x' | 'score' = 'signed') {
+function scorecardPoint(report: StockReport, axis: string, label: string, weight: string, detail: string) {
   const metric = metricByLabel(report, label)
-  const value = metric?.value ?? null
-  const score = value === null
-    ? 0
-    : mode === 'score'
-      ? clamp(value, 0, 100)
-      : mode === 'x'
-        ? clamp(value * factor, 0, 100)
-        : clamp(50 + value * factor, 0, 100)
+  const score = normalizeMetricScore(metric, label)
+  const confidence = statusConfidence(metric)
+  const contribution = clamp(score * confidence, 0, 100)
+  const tone = toneForScore(contribution)
   return {
     axis,
+    label,
+    detail,
+    weight,
     score,
     raw: metric?.displayValue ?? 'Unavailable',
-    available: value !== null
+    available: metric?.value !== null && metric?.value !== undefined,
+    confidence,
+    contribution,
+    tone,
+    read: finalRead(contribution)
   }
 }
 
@@ -467,27 +641,84 @@ function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value))
 }
 
-function numberText(value: string | number | undefined) {
+function numberText(value: unknown) {
   if (typeof value === 'number') return value.toFixed(1)
-  return value ?? 'n/a'
+  if (typeof value === 'string') return value
+  return 'n/a'
 }
 
-function statusDot(status: ShellMeta['providerHealth'][number]['status']) {
-  if (status === 'available') return 'bg-emerald-300'
-  if (status === 'partial') return 'bg-cyan-300'
-  if (status === 'stale') return 'bg-amber-300'
-  if (status === 'entitlement_missing') return 'bg-orange-300'
-  if (status === 'provider_error') return 'bg-red-400'
-  return 'bg-muted'
+function statusColor(status: ShellMeta['providerHealth'][number]['status']) {
+  if (status === 'available') return chartTheme.colors.good
+  if (status === 'partial') return chartTheme.colors.accent
+  if (status === 'stale') return chartTheme.colors.warn
+  if (status === 'entitlement_missing') return '#ff9f43'
+  if (status === 'provider_error') return chartTheme.colors.danger
+  return chartTheme.colors.neutral
 }
 
 function gapColor(reason: string, index: number) {
   const lower = reason.toLowerCase()
   if (lower.includes('provider') || lower.includes('unavailable')) return 'rgba(255, 119, 119, 0.55)'
-  if (lower.includes('stale')) return 'rgba(214, 179, 106, 0.62)'
+  if (lower.includes('stale')) return 'rgba(217, 185, 110, 0.62)'
   if (lower.includes('entitlement')) return 'rgba(255, 159, 67, 0.58)'
-  const palette = ['rgba(80, 210, 193, 0.35)', 'rgba(116, 179, 242, 0.35)', 'rgba(214, 179, 106, 0.38)']
+  const palette = ['rgba(101, 228, 198, 0.35)', 'rgba(116, 179, 242, 0.35)', 'rgba(217, 185, 110, 0.38)']
   return palette[index % palette.length]
+}
+
+function finalRead(score: number) {
+  if (score >= 70) return 'support'
+  if (score >= 45) return 'mixed'
+  return 'weak'
+}
+
+function paddedDomain(values: number[]): [number, number] {
+  const min = Math.min(...values, 0)
+  const max = Math.max(...values, 0)
+  const pad = Math.max(1, (max - min) * 0.18)
+  return [Math.floor(min - pad), Math.ceil(max + pad)]
+}
+
+function QuadrantOverlay({ labels }: { labels: { topLeft: string; topRight: string; bottomLeft: string; bottomRight: string } }) {
+  const labelClass = 'pointer-events-none absolute z-10 rounded border border-border bg-background/70 px-2 py-1 font-mono text-[0.62rem] uppercase tracking-[0.12em] text-muted-foreground backdrop-blur'
+  return (
+    <>
+      <span className={`${labelClass} left-12 top-4`}>{labels.topLeft}</span>
+      <span className={`${labelClass} right-4 top-4`}>{labels.topRight}</span>
+      <span className={`${labelClass} bottom-10 left-12`}>{labels.bottomLeft}</span>
+      <span className={`${labelClass} bottom-10 right-4`}>{labels.bottomRight}</span>
+    </>
+  )
+}
+
+function BubbleLegend({ label, detail }: { label: string; detail: string }) {
+  return (
+    <div className="flex flex-wrap items-center gap-3 rounded-md border border-border bg-background/35 px-3 py-2 text-[0.68rem] text-muted-foreground">
+      <span className="font-mono text-foreground">{label}</span>
+      <span>{detail}</span>
+      <span className="ml-auto flex items-center gap-1">
+        <span className="h-2 w-2 rounded-full border border-border bg-primary/70" />
+        <span className="h-3 w-3 rounded-full border border-border bg-primary/70" />
+        <span className="h-4 w-4 rounded-full border border-border bg-primary/70" />
+      </span>
+    </div>
+  )
+}
+
+function PointLabel({ x, y, index, rows }: { x?: number | string; y?: number | string; index?: number; rows: { ticker: string; rank: number }[] }) {
+  const row = typeof index === 'number' ? rows[index] : null
+  if (!row || row.rank > 5 || x === undefined || y === undefined) return null
+  return (
+    <text
+      x={Number(x) + 8}
+      y={Number(y) - 8}
+      fill={chartTheme.colors.foreground}
+      fontFamily="JetBrains Mono, ui-monospace, monospace"
+      fontSize={10}
+      fontWeight={700}
+    >
+      {row.ticker}
+    </text>
+  )
 }
 
 function shortMetricLabel(label: string) {

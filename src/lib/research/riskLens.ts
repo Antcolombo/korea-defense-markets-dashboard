@@ -1,4 +1,3 @@
-import { getPrices } from '@/lib/data/getPrices'
 import { getPrisma } from '@/lib/server/prisma'
 import type { RotationRow } from '@/lib/research/types'
 
@@ -33,16 +32,17 @@ export type RiskLensRow = {
 
 export async function buildRiskLensRows(tickers: string[], rotations: RotationRow[]): Promise<RiskLensRow[]> {
   const uniqueTickers = Array.from(new Set(tickers.map(normalizeTicker).filter(Boolean))).slice(0, 24)
+  const queryTickers = Array.from(new Set([...uniqueTickers, 'VIX']))
   const byTicker = new Map<string, DailyPriceLike[]>()
   const prisma = getPrisma()
 
   if (prisma) {
     try {
       const rows = await prisma.dailyPrice.findMany({
-        where: { ticker: { ticker: { in: uniqueTickers } }, dataStatus: { in: ['AVAILABLE', 'PARTIAL'] } },
+        where: { ticker: { ticker: { in: queryTickers } }, dataStatus: { in: ['AVAILABLE', 'PARTIAL'] } },
         include: { ticker: true },
         orderBy: [{ date: 'desc' }],
-        take: uniqueTickers.length * 100
+        take: queryTickers.length * 100
       }) as DailyPriceLike[]
       for (const row of rows) {
         const ticker = normalizeTicker(row.ticker?.ticker ?? '')
@@ -52,31 +52,12 @@ export async function buildRiskLensRows(tickers: string[], rotations: RotationRo
         byTicker.set(ticker, list)
       }
     } catch (error) {
-      console.warn(`Risk lens DailyPrice lookup unavailable; using generated close fallback. ${describeError(error)}`)
+      console.warn(`Risk lens DailyPrice lookup unavailable; no generated close fallback used. ${describeError(error)}`)
     }
   }
 
-  const generated = getPrices()
-  for (const ticker of uniqueTickers) {
-    if (byTicker.has(ticker)) continue
-    const rows = generated
-      .filter(point => point.ticker === ticker)
-      .slice(-100)
-      .map(point => ({
-        date: point.date,
-        open: null,
-        high: null,
-        low: null,
-        close: point.price,
-        adjustedClose: point.price,
-        provider: point.provider,
-        dataStatus: point.dataQuality === 'unavailable' ? 'UNAVAILABLE' : 'PARTIAL'
-      }))
-    if (rows.length) byTicker.set(ticker, rows)
-  }
-
-  const vixRows = generated.filter(point => point.ticker === 'VIX').sort((a, b) => a.date.localeCompare(b.date))
-  const vixLevel = vixRows.at(-1)?.price ?? null
+  const vixRows = (byTicker.get('VIX') ?? []).sort((a, b) => isoDate(a.date).localeCompare(isoDate(b.date)))
+  const vixLevel = vixRows.at(-1)?.close ?? null
   const vixBackdrop = vixLevel === null ? 'VIX unavailable' : vixLevel >= 25 ? 'stressed' : vixLevel >= 18 ? 'watch' : 'benign'
   const rotationByTicker = new Map(rotations.map(row => [row.ticker, row]))
 

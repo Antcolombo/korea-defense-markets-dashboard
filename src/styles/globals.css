@@ -41,30 +41,14 @@ body,
 
 body {
   margin: 0;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
-    radial-gradient(ellipse 900px 480px at 50% -18%, rgba(80, 210, 193, 0.16), transparent 60%),
-    linear-gradient(180deg, #061515 0%, #03100f 100%);
+  background: #061515;
   background-attachment: fixed;
-  background-size: 36px 36px, 36px 36px, auto, auto;
   color: var(--foreground);
   font-family: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-feature-settings: "ss01", "cv11";
   font-size: 14px;
   line-height: 1.55;
   min-height: 100dvh;
-}
-
-body::before {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  content: "";
-  inset: 0;
-  mix-blend-mode: overlay;
-  opacity: 0.025;
-  pointer-events: none;
-  position: fixed;
-  z-index: -1;
 }
 
 ::selection {

@@ -319,6 +319,17 @@ export function PitchDashboard({
 }) {
   return (
     <div className="grid min-w-0 gap-3">
+      {isSeedPitch(pitch) ? (
+        <div className="rounded-md border border-amber-300/35 bg-amber-300/10 p-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge variant="outline" className="border-amber-300/45 font-mono text-amber-100">template</Badge>
+            <p className="font-mono text-xs font-semibold text-amber-100">Seed pitch only. Not live sourced market data.</p>
+          </div>
+          <p className="mt-2 text-xs leading-5 text-muted-foreground">
+            Use Create or AI refresh to attach sourced price, catalyst, options, and evidence rows before PM review.
+          </p>
+        </div>
+      ) : null}
       <PitchSourceTabs pitch={pitch} prices={prices} />
 
       <div className="grid gap-3 md:grid-cols-5">
@@ -898,15 +909,11 @@ function PitchTargetChart({ pitch, prices }: { pitch: StockPitch; prices: ChartP
   const [hover, setHover] = useState<{ time: string; value: number } | null>(null)
   const [renderedRails, setRenderedRails] = useState<RenderedChartRail[]>([])
   const data = useMemo(() => {
-    const rows = prices
+    return prices
       .filter(point => point.ticker === pitch.setup.ticker)
       .sort((a, b) => a.date.localeCompare(b.date))
       .map(point => ({ time: point.date, value: point.price }))
-    if (rows.length === 0 && pitch.setup.currentPrice > 0) {
-      return [{ time: safeDate(pitch.setup.date), value: pitch.setup.currentPrice }]
-    }
-    return rows
-  }, [prices, pitch.setup.currentPrice, pitch.setup.date, pitch.setup.ticker])
+  }, [prices, pitch.setup.ticker])
   const visibleData = useMemo(() => filterChartRange(data, range), [data, range])
   const levels = useMemo(() => targetLevels(pitch, levelMode), [levelMode, pitch])
   const overlayRails = useMemo(() => chartOverlayRails(pitch, levelMode), [levelMode, pitch])
@@ -1833,6 +1840,10 @@ function normalizePitchForClient(pitch: StockPitch): StockPitch {
   }
 }
 
+function isSeedPitch(pitch: StockPitch) {
+  return pitch.id === 'hood-positioning-driven-catalyst-memo'
+}
+
 function clientPitchReadiness(pitch: StockPitch) {
   const missing = [
     !pitch.thesis.trim() ? 'thesis' : null,
@@ -1921,10 +1932,6 @@ function scoreBarClass(score: number) {
 function percent(value?: number) {
   if (value === undefined || value === null || !Number.isFinite(value)) return 'N/A'
   return `${value > 0 ? '+' : ''}${value.toFixed(1)}%`
-}
-
-function safeDate(value: string) {
-  return /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : new Date().toISOString().slice(0, 10)
 }
 
 function describeError(error: unknown) {

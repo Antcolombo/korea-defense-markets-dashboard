@@ -1,5 +1,4 @@
 import { pointInTime } from '@/lib/data/availability'
-import { getPrices } from '@/lib/data/getPrices'
 import { getPrisma } from '@/lib/server/prisma'
 import { listInvestmentDecisions } from '@/lib/research/decisions'
 import { getCrowdingRows, getPositioningRows, getRotationRows } from '@/lib/research/repository'
@@ -232,14 +231,6 @@ async function loadPriceSeries(tickers: string[]): Promise<PriceSeries> {
     } catch {
       // fallback below
     }
-  }
-  const generated = getPrices()
-  for (const ticker of uniqueTickers) {
-    if ((output[ticker]?.length ?? 0) >= 30) continue
-    output[ticker] = generated
-      .filter(point => point.ticker === ticker)
-      .slice(-260)
-      .map(point => ({ date: point.date, price: point.price, volume: point.volume }))
   }
   return output
 }
