@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import type { StockReport } from '@/lib/research/types'
 import { downloadStockReportPdf } from '@/lib/research/export'
-import type { PanelLayoutMode } from '@/components/terminal/terminal-store'
+import type { PanelLayoutMode } from '@/features/workspace/components/workspace-store'
 
 export function TerminalActionMenu({
   report,

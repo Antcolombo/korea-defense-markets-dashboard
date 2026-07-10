@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { PitchReadOnlyView } from '@/components/pitch/pitch-workbench'
+import { PitchReadOnlyView } from '@/features/pitches/components/pitch-workbench'
 import { getSharedStockPitch } from '@/lib/research/pitches'
 import { getSourcedPriceSeries } from '@/lib/research/stockPitchSources'
 import type { StockPitchRecord } from '@/types/pitch'

@@ -1,11 +1,11 @@
 import {
   SortableMetricStrip,
   type TerminalMetric
-} from '@/components/terminal/research-charts'
-import { qualityTone } from '@/components/terminal/terminal-quality'
+} from '@/components/workbench/research-charts'
+import { qualityTone } from '@/components/workbench/terminal-quality'
 import type { ShellMeta } from '@/lib/research/api'
 import type { MetricValue, StockReport } from '@/lib/research/types'
-import type { ModuleMeta, WorkspaceData } from '@/components/terminal/terminal-workspace'
+import type { ModuleMeta, WorkspaceData } from '@/contracts/workspace'
 
 export function TerminalMetrics({ data, shell, active }: { data: WorkspaceData; shell: ShellMeta; active: ModuleMeta }) {
   const topRotation = maxBy(data.rotations ?? data.basketSignals ?? [], row => row.return20d.value)

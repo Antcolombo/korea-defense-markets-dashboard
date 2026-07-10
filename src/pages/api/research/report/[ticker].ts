@@ -1,11 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { ApiResponse } from '@/lib/research/api'
-import { sendResearchResponse } from '@/lib/research/apiRoute'
+import { methodAllowed, sendResearchResponse } from '@/lib/research/apiRoute'
 import { buildUnavailableStockReport } from '@/lib/research/report/buildStockReport'
 import { getStockReport, isValidTickerSymbol, normalizeTickerSymbol } from '@/lib/research/repository'
 import type { StockReport } from '@/lib/research/types'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<ApiResponse<StockReport>>) {
+  if (!methodAllowed(req, res, ['GET'])) return
   const ticker = normalizeTickerSymbol(req.query.ticker)
 
   if (!isValidTickerSymbol(ticker)) {

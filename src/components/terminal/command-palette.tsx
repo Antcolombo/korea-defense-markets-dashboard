@@ -14,7 +14,7 @@ import {
 import type { ShellMeta, UnavailableField } from '@/lib/research/api'
 import type { StockReport } from '@/lib/research/types'
 import { downloadStockReportPdf } from '@/lib/research/export'
-import type { ModuleMeta } from '@/components/terminal/terminal-workspace'
+import type { ModuleMeta } from '@/contracts/workspace'
 
 export function TerminalCommandPalette({
   open,

@@ -51,13 +51,13 @@ test.afterEach(async () => {
 test('home and desktop module clicks do not break', async ({ page }) => {
   await page.goto(baseURL, { waitUntil: 'networkidle' })
   await expect(page.getByText('LIQUIDCHAIN').first()).toBeVisible()
-  await expect(page.getByText('Build investment decision record').first()).toBeVisible()
-  await expect(page.getByText('New Decision').first()).toBeVisible()
-  await expect(page.getByText('Review Open Ideas').first()).toBeVisible()
-  await expect(page.getByText('Post-Mortem Closed Ideas').first()).toBeVisible()
+  await expect(page.getByText('Build investment decision record').last()).toBeVisible()
+  await expect(page.getByText('New Decision').last()).toBeVisible()
+  await expect(page.getByText('Review Open Ideas').last()).toBeVisible()
+  await expect(page.getByText('Post-Mortem Closed Ideas').last()).toBeVisible()
 
   for (const [label, href] of visibleModules) {
-    await page.locator(`a[href="${href}"]`).first().click()
+    await page.locator(`a[href="${href}"]:visible`).first().click()
     await expect(page.getByText('LIQUIDCHAIN').first(), label).toBeVisible()
   }
 
@@ -67,7 +67,7 @@ test('home and desktop module clicks do not break', async ({ page }) => {
 test('hidden modules keep direct empty-state routes', async ({ page }) => {
   for (const [label, href] of emptyStateModules) {
     await page.goto(`${baseURL}${href}`, { waitUntil: 'networkidle' })
-    await expect(page.getByText('Not enough sourced data yet').first(), label).toBeVisible()
+    await expect(page.getByText('Not enough sourced data yet').last(), label).toBeVisible()
     await expect(page.getByText('Options Proxy Table'), label).toHaveCount(0)
     await expect(page.getByText('Validation Results'), label).toHaveCount(0)
   }
@@ -75,19 +75,19 @@ test('hidden modules keep direct empty-state routes', async ({ page }) => {
 
 test('decision log and detail route render PM discipline flow', async ({ page }) => {
   await page.goto(`${baseURL}/?module=decision-log`, { waitUntil: 'networkidle' })
-  await expect(page.getByText('Investment Decision Audit Trail').first()).toBeVisible()
-  await expect(page.getByText('PM Read').first()).toBeVisible()
-  await expect(page.getByText('Three evidence drivers').first()).toBeVisible()
+  await expect(page.getByText('Investment Decision Audit Trail').last()).toBeVisible()
+  await expect(page.getByText('PM Read').last()).toBeVisible()
+  await expect(page.getByText('Three evidence drivers').last()).toBeVisible()
 
   await page.goto(`${baseURL}/decision/nvda-decision-template`, { waitUntil: 'networkidle' })
-  await expect(page.getByText('PM Read').first()).toBeVisible()
-  await expect(page.getByText('Market believes').first()).toBeVisible()
+  await expect(page.getByText('PM Read').last()).toBeVisible()
+  await expect(page.getByText('Market believes').last()).toBeVisible()
 })
 
 test('portfolio renders public-only empty state or decisions', async ({ page }) => {
   await page.goto(`${baseURL}/portfolio`, { waitUntil: 'networkidle' })
-  await expect(page.getByText('Public Paper Book').first()).toBeVisible()
-  await expect(page.getByText(/No public decisions yet|Investment Decision Audit Trail/).first()).toBeVisible()
+  await expect(page.getByText('Public Paper Book').last()).toBeVisible()
+  await expect(page.getByText(/No public decisions yet|Investment Decision Audit Trail/).last()).toBeVisible()
 })
 
 test('decision API rejects invalid accepted and closed states', async ({ request }) => {
@@ -138,7 +138,7 @@ test('decision API rejects invalid accepted and closed states', async ({ request
 
 test('basket detail slug route renders', async ({ page }) => {
   await page.goto(`${baseURL}/?module=baskets&slug=ai-infrastructure`, { waitUntil: 'networkidle' })
-  await expect(page.getByText('AI Infrastructure').first()).toBeVisible()
+  await expect(page.getByText('AI Infrastructure').last()).toBeVisible()
 })
 
 test('direct NVDA report renders', async ({ page }) => {

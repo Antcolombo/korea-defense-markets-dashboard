@@ -1,5 +1,5 @@
 import { pointInTime } from '@/lib/data/availability'
-import { getPrisma } from '@/lib/server/prisma'
+import { loadPriceSeries } from '@/features/pm-engine/infrastructure/price-series-prisma'
 import { listInvestmentDecisions } from '@/lib/research/decisions'
 import { getCrowdingRows, getPositioningRows, getRotationRows } from '@/lib/research/repository'
 import type { InvestmentDecisionRecord } from '@/types/decision'
@@ -9,13 +9,17 @@ import { summarizePmBacktest } from './backtest'
 import { buildScenarios } from './expectedValue'
 import { buildFactorModel, portfolioVariance, type PriceSeries } from './factorRisk'
 import { latestEstimateByTicker, latestFundamentalByTicker } from './fundamentals'
-import { annualizedVolatility, average, correlation, isoDate, PM_DEFAULTS, PM_FACTORS, returnsFromPrices, round } from './math'
+import { annualizedVolatility, average, correlation, PM_DEFAULTS, PM_FACTORS, returnsFromPrices, round } from './math'
 import { optimizePmBook } from './optimizer'
 import { buildSizingWaterfall } from './sizing'
 import { estimateTransactionCost } from './transactionCosts'
 import { historicalRisk, stressScenarios } from './varStress'
 
-export async function buildPmEngineView(decisionsInput?: InvestmentDecisionRecord[]): Promise<PmEngineView> {
+export async function buildPmEngineView(
+  decisionsInput?: InvestmentDecisionRecord[],
+  clock: () => Date = () => new Date()
+): Promise<PmEngineView> {
+  const generatedAt = clock().toISOString()
   const decisions = decisionsInput ?? await listInvestmentDecisions()
   const active = decisions.filter(decision => decision.status !== 'closed')
   const tickers = unique(active.map(decision => decision.ticker))
@@ -109,10 +113,10 @@ export async function buildPmEngineView(decisionsInput?: InvestmentDecisionRecor
     }
     overlays.push({
       ...pointInTime({
-        asOfDate: new Date().toISOString(),
-        observedAt: new Date().toISOString(),
-        providerTimestamp: new Date().toISOString(),
-        ingestedAt: new Date().toISOString(),
+        asOfDate: generatedAt,
+        observedAt: generatedAt,
+        providerTimestamp: generatedAt,
+        ingestedAt: generatedAt,
         source: 'PM engine overlay from current decision log, sourced prices, signals, positioning, and optional fundamentals/estimates',
         provider: 'internal PM engine',
         dataStatus: pmReady ? 'AVAILABLE' : 'PARTIAL'
@@ -171,10 +175,10 @@ export async function buildPmEngineView(decisionsInput?: InvestmentDecisionRecor
   const engineDataStatus = optimized.decisions.length === 0 ? 'UNAVAILABLE' : pmReadyCount === optimized.decisions.length ? 'AVAILABLE' : 'PARTIAL'
   const portfolioDataStatus = optimized.decisions.length === 0 ? 'UNAVAILABLE' : 'AVAILABLE'
   const portfolioPoint = pointInTime({
-    asOfDate: new Date().toISOString(),
-    observedAt: new Date().toISOString(),
-    providerTimestamp: new Date().toISOString(),
-    ingestedAt: new Date().toISOString(),
+    asOfDate: generatedAt,
+    observedAt: generatedAt,
+    providerTimestamp: generatedAt,
+    ingestedAt: generatedAt,
     source: 'PM engine portfolio construction',
     provider: 'internal PM engine',
     dataStatus: portfolioDataStatus
@@ -206,33 +210,6 @@ export async function buildPmEngineView(decisionsInput?: InvestmentDecisionRecor
     dataStatus: engineDataStatus,
     gaps: unique([...factorModel.gaps, ...optimized.decisions.flatMap(decision => decision.sourceGaps)])
   }
-}
-
-async function loadPriceSeries(tickers: string[]): Promise<PriceSeries> {
-  const uniqueTickers = unique(tickers)
-  const output: PriceSeries = {}
-  const prisma = getPrisma()
-  if (prisma) {
-    try {
-      const rows = await prisma.dailyPrice.findMany({
-        where: { ticker: { ticker: { in: uniqueTickers } }, dataStatus: { in: ['AVAILABLE', 'PARTIAL'] } },
-        include: { ticker: true },
-        orderBy: [{ date: 'asc' }],
-        take: uniqueTickers.length * 260
-      })
-      for (const row of rows) {
-        const ticker = row.ticker.ticker
-        output[ticker] = [...output[ticker] ?? [], {
-          date: isoDate(row.date),
-          price: row.adjustedClose ?? row.close,
-          volume: typeof row.volume === 'bigint' ? Number(row.volume) : row.volume
-        }]
-      }
-    } catch {
-      // fallback below
-    }
-  }
-  return output
 }
 
 function buildBacktestSamples(priceSeries: PriceSeries, tickers: string[]) {

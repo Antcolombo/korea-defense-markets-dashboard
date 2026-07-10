@@ -29,6 +29,14 @@ DEMO_AS_OF_DATE=YYYY-MM-DD
 
 Demo mode blocks live fetches and reads real historical provider rows already stored in Postgres.
 
+Explicit modes are also available:
+
+```bash
+RESEARCH_DATA_MODE=live       # latest Postgres snapshots
+RESEARCH_DATA_MODE=snapshot   # Postgres snapshots through DEMO_AS_OF_DATE
+RESEARCH_DATA_MODE=generated  # generated adapters only; database reads disabled
+```
+
 ## Data Stack
 
 - Polygon/Massive for OHLCV and options snapshots
@@ -65,6 +73,14 @@ npm run ingest
 npm run validate:research
 npm run audit:data
 npm run dev
+```
+
+Frontend builds do not run ingestion or mutate data:
+
+```bash
+npm run build
+npm run pipeline:data
+npm run verify:deploy
 ```
 
 Required:

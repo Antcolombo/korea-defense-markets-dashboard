@@ -1,4 +1,4 @@
-import type { DbDataStatus, PointInTime } from '@/lib/research/types'
+import type { DbDataStatus, PointInTime } from '@/contracts/research'
 
 export type PmScenarioName = 'bear' | 'base' | 'bull'
 export type PmReadinessStatus = 'available' | 'partial' | 'missing'

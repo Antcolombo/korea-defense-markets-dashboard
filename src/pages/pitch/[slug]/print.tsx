@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { PitchPrintMemo } from '@/components/pitch/pitch-print-memo'
+import { PitchPrintMemo } from '@/features/pitches/components/pitch-print-memo'
 import { getSharedStockPitch } from '@/lib/research/pitches'
 import type { StockPitchRecord } from '@/types/pitch'
 

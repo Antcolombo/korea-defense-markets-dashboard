@@ -1,4 +1,17 @@
 import type { DataAvailability, DbDataStatus, MetricValue, PointInTime } from './types'
+import type {
+  ApiDataStatus,
+  ApiResponse,
+  ProviderFreshness,
+  ProviderHealth,
+  Provenance,
+  ShellMeta,
+  ShellQualityStatus,
+  ShellSourceState,
+  ShellSourceStatus,
+  UnavailableField
+} from '@/contracts/provenance'
+import { resolveResearchDataMode } from '@/platform/data/data-mode'
 import {
   matchesProviderHealthDefinition,
   providerHealthDefinitionHasField,
@@ -6,89 +19,19 @@ import {
   unavailableFieldVisibility
 } from './datasetRegistry'
 
-export type ApiDataStatus =
-  | 'available'
-  | 'unavailable'
-  | 'partial'
-  | 'stale'
-  | 'entitlement_missing'
-  | 'provider_error'
-
-export type Provenance = {
-  provider: string
-  dataset: string
-  source: string
-  asOf: string
-  ingestedAt: string
-  status: ApiDataStatus
-}
-
-export type CoverageSummary = {
-  totalFields: number
-  availableFields: number
-  coveragePercent: number
-  deferredFields: number
-}
-
-export type UnavailableField = {
-  field: string
-  reason: string
-  provider?: string
-  visibility: 'active' | 'deferred'
-}
-
-export type ProviderFreshness = {
-  provider: string
-  dataset: string
-  status: ApiDataStatus
-  asOf: string
-}
-
-export type ProviderHealth = {
-  id: string
-  label: string
-  status: ApiDataStatus
-  requirement: 'required' | 'optional'
-  detail: string
-}
-
-export type ShellQualityStatus = 'fresh' | 'stale' | 'partial' | 'gaps' | 'no_data'
-export type ShellSourceStatus = 'fresh' | 'available' | 'limited' | 'stale' | 'deferred' | 'unavailable'
-
-export type ShellSourceState = {
-  key: 'prices' | 'options' | 'short_sale' | 'catalyst' | 'validation'
-  label: string
-  status: ShellSourceStatus
-  detail: string
-}
-
-export type ShellMeta = {
-  asOf: string
-  generatedAt: string
-  coveragePercent: number
-  qualityStatus: ShellQualityStatus
-  qualityLabel: string
-  qualityDetail: string
-  freshnessAgeHours: number | null
-  providerFreshness: ProviderFreshness[]
-  providerHealth: ProviderHealth[]
-  deferredProviderHealth: ProviderHealth[]
-  sourceStates: ShellSourceState[]
-  sourceSummary: string
-  hasRequiredSnapshots: boolean
-  unavailableCount: number
-  deferredUnavailableCount: number
-  demoAsOfDate: string | null
-}
-
-export type ApiResponse<T> = {
-  data: T
-  provenance: Provenance[]
-  coverage: CoverageSummary
-  unavailableFields: UnavailableField[]
-  deferredUnavailableFields: UnavailableField[]
-  generatedAt: string
-}
+export type {
+  ApiDataStatus,
+  ApiResponse,
+  CoverageSummary,
+  ProviderFreshness,
+  ProviderHealth,
+  Provenance,
+  ShellMeta,
+  ShellQualityStatus,
+  ShellSourceState,
+  ShellSourceStatus,
+  UnavailableField
+} from '@/contracts/provenance'
 
 const statusMap: Record<DbDataStatus, ApiDataStatus> = {
   AVAILABLE: 'available',
@@ -107,6 +50,7 @@ export function toApiStatus(status: DbDataStatus | DataAvailability | string | n
 
 export function createApiResponse<T>(data: T): ApiResponse<T> {
   const generatedAt = new Date().toISOString()
+  const dataMode = resolveResearchDataMode().mode
   const metrics = collectMetricEntries(data)
   const visibleMetrics = metrics.filter(isActiveMetric)
   const unavailableFields = buildUnavailableFields(data)
@@ -120,6 +64,7 @@ export function createApiResponse<T>(data: T): ApiResponse<T> {
   const coveragePercent = totalFields === 0 ? 0 : Math.round((availableFields / totalFields) * 100)
   return {
     data,
+    dataMode,
     provenance: buildProvenance(points),
     coverage: {
       totalFields,
@@ -133,7 +78,7 @@ export function createApiResponse<T>(data: T): ApiResponse<T> {
   }
 }
 
-export function createShellMeta(response: Pick<ApiResponse<unknown>, 'provenance' | 'coverage' | 'unavailableFields' | 'deferredUnavailableFields' | 'generatedAt'>): ShellMeta {
+export function createShellMeta(response: Pick<ApiResponse<unknown>, 'dataMode' | 'provenance' | 'coverage' | 'unavailableFields' | 'deferredUnavailableFields' | 'generatedAt'>): ShellMeta {
   const sorted = response.provenance
     .filter(item => item.asOf)
     .sort((a, b) => Date.parse(b.asOf) - Date.parse(a.asOf))
@@ -151,6 +96,7 @@ export function createShellMeta(response: Pick<ApiResponse<unknown>, 'provenance
     demoAsOfDate
   })
   return {
+    dataMode: response.dataMode,
     asOf: sorted[0]?.asOf ?? response.generatedAt,
     generatedAt: response.generatedAt,
     coveragePercent: response.coverage.coveragePercent,

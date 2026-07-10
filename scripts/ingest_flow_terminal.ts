@@ -9,6 +9,8 @@ import { seedBaskets } from '../src/lib/data/baskets/seedBaskets'
 import { crowdingLabel, crowdingScoreFromComponents, extensionRiskScoreFromComponents, setupLabel } from '../src/lib/research/crowdingScores'
 import { buildOptionsBattlefieldFromRaw } from '../src/lib/research/optionsBattlefield'
 import type { DbDataStatus } from '../src/lib/research/types'
+import { providerRunMetadata, shouldPublishProviderResult } from './lib/provider_run_lifecycle'
+import { isTransientPrismaError, withRetries } from './lib/retry'
 
 const prisma = new PrismaClient()
 const lookbackDays = Number(process.env.FLOW_TERMINAL_LOOKBACK_DAYS ?? 180)
@@ -53,14 +55,16 @@ async function main() {
   const fromText = from.toISOString().slice(0, 10)
   const toText = to.toISOString().slice(0, 10)
 
+  const refreshedTickers = new Set<string>()
   for (const ticker of tickers) {
     const startedAt = new Date()
+    const providerRunId = await startProviderRun(startedAt, to, ticker.ticker)
     const bars = await fetchPolygonDailyBars(ticker.ticker, fromText, toText)
-    if (bars.status !== 'AVAILABLE') {
-      await recordProviderRun(startedAt, to, bars.status, 0, bars.errorMessage, ticker.ticker)
+    if (!shouldPublishProviderResult(bars.status, bars.rows.length)) {
+      const status = bars.status === 'AVAILABLE' ? 'UNAVAILABLE' : bars.status
+      await finishProviderRun(providerRunId, to, status, 0, bars.errorMessage ?? 'Provider returned no rows.', ticker.ticker)
     } else {
-      for (const bar of bars.rows) {
-        await prisma.dailyPrice.upsert({
+      const writes = bars.rows.map(bar => prisma.dailyPrice.upsert({
           where: { tickerId_date_provider_asOfDate: { tickerId: ticker.id, date: bar.date, provider: bar.provider, asOfDate: bar.asOfDate } },
           update: {
             open: bar.open,
@@ -94,9 +98,12 @@ async function main() {
             revisionFlag: bar.revisionFlag,
             dataStatus: bar.dataStatus
           }
-        })
+        }))
+      for (let index = 0; index < writes.length; index += 100) {
+        await prisma.$transaction(writes.slice(index, index + 100))
       }
-      await recordProviderRun(startedAt, to, bars.status, bars.rows.length, undefined, ticker.ticker)
+      refreshedTickers.add(ticker.ticker)
+      await finishProviderRun(providerRunId, to, bars.status, bars.rows.length, undefined, ticker.ticker)
     }
 
     if (enableDeferredPositioningFeeds && shouldIngestDeferredPositioning(ticker.ticker, ticker.isEtf)) {
@@ -105,7 +112,7 @@ async function main() {
     if (polygonThrottleMs > 0) await sleep(polygonThrottleMs)
   }
 
-  await computeAllSnapshots(to)
+  await computeAllSnapshots(to, refreshedTickers)
 }
 
 async function selectIngestTickers(limit: number) {
@@ -117,18 +124,39 @@ async function selectIngestTickers(limit: number) {
   })
 }
 
-async function recordProviderRun(startedAt: Date, asOfDate: Date, dataStatus: DbDataStatus, rowsIngested: number, errorMessage?: string, ticker?: string) {
-  await prisma.providerRun.create({
+async function startProviderRun(startedAt: Date, asOfDate: Date, ticker: string) {
+  const run = await prisma.providerRun.create({
     data: {
       provider: 'Polygon/Massive',
       source: 'https://polygon.io/docs/rest/stocks/aggregates/custom-bars',
       startedAt,
+      asOfDate,
+      observedAt: asOfDate,
+      dataStatus: 'PARTIAL',
+      metadata: providerRunMetadata({ ticker, dataset: 'daily-ohlcv', asOfDate, finished: false }),
+      rowsIngested: 0
+    }
+  })
+  return run.id
+}
+
+async function finishProviderRun(runId: string, asOfDate: Date, dataStatus: DbDataStatus, rowsIngested: number, errorMessage?: string, ticker?: string) {
+  await prisma.providerRun.update({
+    where: { id: runId },
+    data: {
       finishedAt: new Date(),
       asOfDate,
       observedAt: asOfDate,
       dataStatus,
       errorMessage,
-      metadata: ticker ? { ticker } : undefined,
+      metadata: providerRunMetadata({
+        ticker: ticker ?? 'unknown',
+        dataset: 'daily-ohlcv',
+        asOfDate,
+        dataStatus,
+        finished: true,
+        hasError: Boolean(errorMessage)
+      }),
       rowsIngested
     }
   })
@@ -482,13 +510,14 @@ async function throttleOptionChain(symbol: string) {
   lastOptionRequestAt = Date.now()
 }
 
-async function computeAllSnapshots(asOfDate: Date) {
+async function computeAllSnapshots(asOfDate: Date, tickerFilter?: ReadonlySet<string>) {
   const tickers = await prisma.ticker.findMany({ orderBy: { ticker: 'asc' } })
   const spy = await priceBarsForTicker('SPY', asOfDate)
   const spy20 = calculateReturnFromBars(spy, 20)
   const spy60 = calculateReturnFromBars(spy, 60)
 
   for (const ticker of tickers) {
+    if (tickerFilter && !tickerFilter.has(ticker.ticker)) continue
     const bars = await priceBarsForTicker(ticker.ticker, asOfDate)
     if (bars.length === 0) continue
     const date = new Date(`${bars.at(-1)?.date}T00:00:00.000Z`)
@@ -775,7 +804,15 @@ function clamp(value: number) {
   return Math.max(0, Math.min(100, value))
 }
 
-main().catch(error => {
+withRetries(main, {
+  attempts: 3,
+  delayMs: attempt => attempt * 1_000,
+  shouldRetry: isTransientPrismaError,
+  onRetry: async (error, attempt) => {
+    console.warn(`Transient database interruption; retrying ingestion after attempt ${attempt}. ${error instanceof Error ? error.message : String(error)}`)
+    await prisma.$disconnect()
+  }
+}).catch(error => {
   console.error(error)
   process.exit(1)
 }).finally(async () => {

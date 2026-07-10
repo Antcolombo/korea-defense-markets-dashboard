@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { TerminalWorkspace } from '@/components/terminal/terminal-workspace'
+import { TerminalWorkspace } from '@/shell/terminal/terminal-shell'
 import { createApiResponse, createShellMeta, type ShellMeta, type UnavailableField } from '@/lib/research/api'
 import {
   getStockReport,

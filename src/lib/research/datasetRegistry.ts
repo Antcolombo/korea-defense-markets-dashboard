@@ -1,4 +1,4 @@
-import type { Provenance, UnavailableField } from './api'
+import type { Provenance, UnavailableField } from '@/contracts/provenance'
 
 export type ProviderHealthDefinition = {
   id: string

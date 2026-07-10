@@ -1,19 +1,20 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { createInvestmentDecision, listInvestmentDecisionSummaries } from '@/lib/research/decisions'
-import { decisionEditorTokenName, hasDecisionWriteAccess } from '@/lib/research/decisionAuth'
-import { sendResearchResponse } from '@/lib/research/apiRoute'
+import { domainValidationApiError, methodAllowed, parseJsonObject, sendApiError, sendResearchResponse } from '@/lib/research/apiRoute'
+import { editorTokenName, hasEditorWriteAccess } from '@/lib/research/editorAuth'
 import type { UpsertInvestmentDecisionInput } from '@/lib/research/decisions'
+import { createDecisionBodySchema } from '@/features/decisions/application/schemas'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
     return sendResearchResponse(res, { decisions: await listInvestmentDecisionSummaries() })
   }
   if (req.method === 'POST') {
-    if (!hasDecisionWriteAccess(req)) {
-      return res.status(401).json({ error: `${decisionEditorTokenName()} is required to create investment decisions in production.` })
+    if (!hasEditorWriteAccess(req, 'decision')) {
+      return sendApiError(res, 401, 'unauthorized', `${editorTokenName('decision')} is required to create investment decisions in production.`)
     }
     try {
-      const body = parseBody<{ decision?: UpsertInvestmentDecisionInput; ticker?: string; companyName?: string }>(req.body)
+      const body = createDecisionBodySchema.parse(parseJsonObject<{ decision?: UpsertInvestmentDecisionInput; ticker?: string; companyName?: string }>(req.body))
       const record = await createInvestmentDecision({
         ticker: body.ticker,
         companyName: body.companyName,
@@ -21,18 +22,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       })
       return sendResearchResponse(res, { record }, 201)
     } catch (error) {
-      return res.status(400).json({ error: describeError(error) })
+      const validation = domainValidationApiError(error, ['Decision cannot'])
+      return validation
+        ? sendApiError(res, 400, 'validation', validation)
+        : sendApiError(res, 503, 'unavailable', 'Investment decision persistence is temporarily unavailable.')
     }
   }
-  res.setHeader('Allow', 'GET, POST')
-  return res.status(405).json({ error: 'Method not allowed.' })
-}
-
-function parseBody<T>(body: unknown): T {
-  if (typeof body === 'string') return JSON.parse(body) as T
-  return (body ?? {}) as T
-}
-
-function describeError(error: unknown) {
-  return error instanceof Error ? error.message : String(error)
+  methodAllowed(req, res, ['GET', 'POST'])
 }

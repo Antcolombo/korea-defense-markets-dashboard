@@ -102,11 +102,14 @@ async function testSyntheticPmView() {
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()
   }
-  const pm = await buildPmEngineView([decision])
+  const fixedNow = new Date('2026-07-10T12:00:00.000Z')
+  const pm = await buildPmEngineView([decision], () => fixedNow)
   assert.equal(pm.decisions.length, 1)
   assert.equal(pm.decisions[0].ticker, 'NVDA')
   assert.ok(pm.decisions[0].sizingWaterfall.length > 0)
   assert.ok(pm.decisions[0].sourceLights.length >= 6)
+  assert.equal(pm.decisions[0].asOfDate, fixedNow.toISOString())
+  assert.equal(pm.portfolio.asOfDate, fixedNow.toISOString())
 }
 
 function syntheticPrices() {

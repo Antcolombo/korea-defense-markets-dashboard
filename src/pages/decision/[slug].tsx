@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { DecisionWorkbench } from '@/components/decision/decision-workbench'
+import { DecisionWorkbench } from '@/features/decisions/components/decision-workbench'
 import { getInvestmentDecision } from '@/lib/research/decisions'
 import type { InvestmentDecisionRecord, InvestmentDecisionSummary } from '@/types/decision'
 

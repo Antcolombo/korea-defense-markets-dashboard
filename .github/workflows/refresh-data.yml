@@ -2,6 +2,16 @@ name: Refresh live research data
 
 on:
   workflow_dispatch:
+    inputs:
+      pipeline:
+        description: Pipeline to run
+        required: true
+        default: generated
+        type: choice
+        options:
+          - generated
+          - terminal
+          - all
 
 permissions:
   contents: write
@@ -11,7 +21,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  refresh:
+  generated:
+    if: inputs.pipeline == 'generated' || inputs.pipeline == 'all'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -26,7 +37,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Refresh generated data
+      - name: Run independent generated-data pipeline
         run: npm run build:generated
 
       - name: Commit refreshed data
@@ -40,3 +51,25 @@ jobs:
           fi
           git commit -m "Refresh generated research data"
           git push
+
+  terminal:
+    if: inputs.pipeline == 'terminal' || inputs.pipeline == 'all'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Postgres research pipeline
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
+        run: npm run pipeline:data

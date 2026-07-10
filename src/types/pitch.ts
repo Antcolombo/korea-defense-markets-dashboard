@@ -1,4 +1,4 @@
-import type { PointInTime } from '@/lib/research/types'
+import type { PointInTime } from '@/contracts/research'
 
 export type PitchRecommendation =
   | 'long'

@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run audit:data && next build",
-    "build:data": "npm run ingest:terminal && npm run validate:research && npm run audit:data",
+    "build": "next build",
+    "build:data": "npm run pipeline:data",
+    "pipeline:data": "npm run ingest:terminal && npm run validate:research && npm run audit:data",
+    "verify:deploy": "npm run lint && npm run audit:data",
     "build:generated": "npm run ingest:generated && tsx scripts/build_real_dataset.ts && tsx scripts/build_korea_macro.ts && tsx scripts/build_semis_cycle.ts && tsx scripts/build_energy_research.ts && tsx scripts/build_research_os.ts && npm run audit:source",
     "ingest": "npm run ingest:terminal",
     "ingest:terminal": "tsx scripts/ingest_flow_terminal.ts",
@@ -25,10 +27,16 @@
     "test:trust": "tsx scripts/test_trust_patch.ts",
     "test:decisions": "tsx scripts/test_decision_validation.ts",
     "test:pm": "tsx scripts/test_pm_engine.ts",
+    "test:api": "tsx scripts/test_api_routes.ts",
+    "test:workspace": "tsx scripts/test_workspace_loaders.ts",
+    "test:repositories": "tsx scripts/test_repository_services.ts",
+    "test:ingestion": "tsx scripts/test_ingestion_lifecycle.ts",
+    "test:pitches": "tsx scripts/test_pitch_domain.ts",
     "smoke:click": "playwright test scripts/click_smoke.spec.mjs",
     "lint:styles": "tsx scripts/check_style_boundaries.ts",
+    "lint:architecture": "tsx scripts/check_architecture.ts",
     "start": "next start",
-    "lint": "npm run lint:styles && tsc --noEmit"
+    "lint": "npm run lint:styles && npm run lint:architecture && tsc --noEmit"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
