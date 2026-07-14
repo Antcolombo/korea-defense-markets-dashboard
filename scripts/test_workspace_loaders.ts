@@ -44,7 +44,7 @@ async function testEveryLoaderInIsolation() {
       getStockPitch: async () => null,
       listStockPitchSummaries: async () => [],
       buildStockPitchSourceSnapshot: async () => ({ ticker: 'NVDA', generatedAt: '2026-07-10T00:00:00.000Z', reportAsOf: '', price: null, newsTape: [], providerNotes: [], gaps: [], sourceQuality: {} }),
-      getSourcedPriceSeries: async () => [],
+      getSourcedPriceSeries: async (ticker: string) => [{ date: '2026-07-10', ticker, price: 100, volume: 1_000 }],
       buildTargetConfidence: () => ({ score: 0, label: 'low', drivers: [], blockers: [], nextDataNeeded: [] })
     },
     decisions: {
@@ -69,6 +69,7 @@ async function testEveryLoaderInIsolation() {
     const result = await loader({ query: queries[module] ?? {}, dataMode: 'generated', repositories })
     assert.ok(result.data, `${module} returns workspace data`)
     assert.notEqual(result.responseData, undefined, `${module} returns response data`)
+    if (module === 'stock-report') assert.ok(result.data.prices?.some(row => row.ticker === 'NVDA'), 'stock report receives sourced chart prices')
   }
 }
 
