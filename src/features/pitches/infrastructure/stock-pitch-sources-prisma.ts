@@ -1,16 +1,37 @@
 import { createHash } from 'node:crypto'
 import { pointInTime } from '@/lib/data/availability'
+import { getPrices } from '@/lib/data/getPrices'
 import { getDayMap } from '@/lib/research/dayMap'
 import { getOptionsBattlefield } from '@/lib/research/optionsBattlefield'
 import { getPrisma } from '@/lib/server/prisma'
-import { researchSnapshotCutoff } from '@/platform/data/data-mode'
+import { researchSnapshotCutoff, resolveResearchDataMode } from '@/platform/data/data-mode'
 import type { ReportSection, StockReport } from '@/lib/research/types'
 import type { PitchNewsTapeItem, PitchPriceProvenance, PitchSourceSnapshot } from '@/types/pitch'
 
-export type SourcedPricePoint = PitchPriceProvenance
+export type SourcedPricePoint = PitchPriceProvenance & { volume?: number | null }
 
 export async function getSourcedPriceSeries(ticker: string, limit = 180): Promise<SourcedPricePoint[]> {
   const symbol = normalizeTicker(ticker)
+  if (resolveResearchDataMode().mode === 'generated') {
+    return getPrices([symbol], limit).map(row => ({
+      ...pointInTime({
+        asOfDate: row.date,
+        observedAt: row.retrievedAt,
+        providerTimestamp: row.publishedAt,
+        ingestedAt: row.retrievedAt,
+        source: row.sourceName,
+        provider: row.provider,
+        revisionFlag: 'ORIGINAL',
+        dataStatus: 'AVAILABLE'
+      }),
+      ticker: symbol,
+      date: row.date,
+      price: row.price,
+      volume: row.volume,
+      label: `${row.provider} close`,
+      fallback: false
+    }))
+  }
   const prisma = getPrisma()
   const cutoff = researchSnapshotCutoff()
   if (prisma) {
@@ -30,6 +51,7 @@ export async function getSourcedPriceSeries(ticker: string, limit = 180): Promis
             ticker: symbol,
             date: isoDate(row.date),
             price: row.close,
+            volume: row.volume === null ? null : Number(row.volume),
             label: `${row.provider} close`,
             fallback: false
           }))

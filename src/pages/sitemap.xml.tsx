@@ -14,7 +14,7 @@ const routes = [
   '/?module=paper-book',
   '/?module=risk-lens',
   '/?module=source-audit',
-  '/?module=korea-defense',
+  '/korea-defense',
   '/?module=methodology',
   '/?module=stock-report&ticker=NVDA'
 ]

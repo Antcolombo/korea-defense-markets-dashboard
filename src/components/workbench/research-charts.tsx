@@ -15,7 +15,6 @@ import {
   useSortable
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import { Card as TremorCard } from '@tremor/react'
 import {
   Area,
   AreaChart,
@@ -151,7 +150,7 @@ function CompactMetricBar({ metrics }: { metrics: TerminalMetric[] }) {
 function SortableMetricCard({ metric }: { metric: TerminalMetric }) {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: metric.id })
   return (
-    <TremorCard
+    <div
       ref={setNodeRef}
       style={{ transform: CSS.Transform.toString(transform), transition }}
       className={cn('cursor-grab rounded-md border border-border bg-card p-3 shadow-none ring-0 active:cursor-grabbing', metricToneClass(metric.tone))}
@@ -163,7 +162,7 @@ function SortableMetricCard({ metric }: { metric: TerminalMetric }) {
         <p className="mt-1 truncate text-lg font-semibold text-foreground">{metric.value}</p>
         <p className="mt-1 truncate text-[0.72rem] text-muted-foreground">{metric.sub}</p>
       </div>
-    </TremorCard>
+    </div>
   )
 }
 

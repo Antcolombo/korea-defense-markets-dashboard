@@ -8,7 +8,7 @@ const visibleModules = [
   ['Crowding', '/?module=crowding'],
   ['Signal Validation Lab', '/?module=validation'],
   ['Methodology', '/?module=methodology'],
-  ['Korea Defense', '/?module=korea-defense'],
+  ['Korea Defense', '/korea-defense'],
   ['Stock Report', '/?module=stock-report&ticker=NVDA'],
   ['Stock Pitch', '/?module=stock-pitch'],
   ['Decision Journal', '/?module=decision-log'],
@@ -50,15 +50,14 @@ test.afterEach(async () => {
 
 test('home and desktop module clicks do not break', async ({ page }) => {
   await page.goto(baseURL, { waitUntil: 'networkidle' })
-  await expect(page.getByText('LIQUIDCHAIN').first()).toBeVisible()
-  await expect(page.getByText('Build investment decision record').last()).toBeVisible()
-  await expect(page.getByText('New Decision').last()).toBeVisible()
-  await expect(page.getByText('Review Open Ideas').last()).toBeVisible()
-  await expect(page.getByText('Post-Mortem Closed Ideas').last()).toBeVisible()
+  await expect(page.getByText('KOREA DEFENSE').first()).toBeVisible()
+  await expect(page.getByText('Korea / Indo-Pacific Defense').last()).toBeVisible()
+  await expect(page.getByText('Current Flow Read').last()).toBeVisible()
+  await expect(page.getByText('Confirmation / Invalidation').last()).toBeVisible()
 
   for (const [label, href] of visibleModules) {
     await page.locator(`a[href="${href}"]:visible`).first().click()
-    await expect(page.getByText('LIQUIDCHAIN').first(), label).toBeVisible()
+    await expect(page.getByText('KOREA DEFENSE').first(), label).toBeVisible()
   }
 
   await expect(page.locator('a[href="/?module=positioning"]'), 'Positioning hidden from main nav').toHaveCount(0)
@@ -90,7 +89,7 @@ test('portfolio renders public-only empty state or decisions', async ({ page }) 
   await expect(page.getByText(/No public decisions yet|Investment Decision Audit Trail/).last()).toBeVisible()
 })
 
-test('decision API rejects invalid accepted and closed states', async ({ request }) => {
+test('decision API protects writes or rejects invalid accepted and closed states', async ({ request }) => {
   const accepted = await request.post(`${baseURL}/api/research/decisions`, {
     data: {
       decision: {
@@ -101,6 +100,10 @@ test('decision API rejects invalid accepted and closed states', async ({ request
       }
     }
   })
+  if (accepted.status() === 401) {
+    expect(await accepted.text()).toContain('required to create investment decisions in production')
+    return
+  }
   expect(accepted.status()).toBe(400)
   expect(await accepted.text()).toContain('Decision cannot be accepted yet')
 

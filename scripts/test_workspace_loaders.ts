@@ -73,11 +73,11 @@ async function testEveryLoaderInIsolation() {
 }
 
 function testModuleResolution() {
-  assert.equal(resolveWorkspaceModule({}), 'overview')
+  assert.equal(resolveWorkspaceModule({}), 'korea-defense')
   assert.equal(resolveWorkspaceModule({ module: 'rotation' }), 'rotation')
   assert.equal(resolveWorkspaceModule({ module: 'baskets', slug: 'korea-indo-pacific' }), 'basket-detail')
-  assert.equal(resolveWorkspaceModule({ module: 'unknown' }), 'overview')
-  assert.equal(resolveWorkspaceModule({ module: ['rotation'] }), 'overview')
+  assert.equal(resolveWorkspaceModule({ module: 'unknown' }), 'korea-defense')
+  assert.equal(resolveWorkspaceModule({ module: ['rotation'] }), 'korea-defense')
 }
 
 function testDataModes() {

@@ -1,6 +1,6 @@
-# Flow & Positioning Research Terminal
+# Korea Defense Markets Dashboard
 
-A PM-facing research dashboard that uses sourced public and provider-backed market-data proxies to monitor sector rotation, theme sponsorship, positioning pressure, crowding, and reversal risk.
+A PM-facing Korea / Indo-Pacific defense market-intelligence terminal. It connects public catalysts to Korea beta, liquid U.S. defense suppliers, relative strength, volume confirmation, crowding, and explicit invalidation.
 
 This project is designed as a proof-of-work artifact for Flow / Positioning / Market Intelligence roles across hedge funds, asset managers, and market-data teams.
 
@@ -15,7 +15,24 @@ The terminal answers:
 - What should a PM investigate today?
 - Can a sourced single-stock note be generated and exported?
 
-The first applied case study is Korea / Indo-Pacific defense.
+Korea / Indo-Pacific defense is the default product view. Broader rotation, stock-report, decision-journal, validation, and risk modules support the case study.
+
+## Interview Demo
+
+Use committed sourced snapshots when reliability matters more than a live database connection:
+
+```bash
+npm run demo
+```
+
+Production-equivalent check:
+
+```bash
+npm run demo:build
+npm run demo:start
+```
+
+Open `/korea-defense`. Generated mode disables database access, derives market signals only from committed provider rows, and leaves unavailable options or short-interest fields explicitly unavailable.
 
 ## Real Data Rule
 
@@ -49,17 +66,16 @@ Every provider-backed row stores `asOfDate`, `observedAt`, `providerTimestamp`, 
 ## Routes
 
 - `/`
-- `/stock-report`
+- `/korea-defense`
 - `/report/[ticker]`
-- `/rotation`
-- `/baskets`
-- `/baskets/[slug]`
-- `/positioning`
-- `/crowding`
-- `/daily-note`
-- `/research/validation`
-- `/case-studies/korea-defense`
-- `/methodology`
+- `/?module=overview`
+- `/?module=rotation`
+- `/?module=baskets`
+- `/?module=crowding`
+- `/?module=validation`
+- `/?module=methodology`
+- `/?module=decision-log`
+- `/?module=source-audit`
 
 ## Setup
 

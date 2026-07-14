@@ -1,9 +1,12 @@
 {
-  "name": "flow-positioning-research-terminal",
+  "name": "korea-defense-markets-dashboard",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "demo": "RESEARCH_DATA_MODE=generated next dev",
+    "demo:build": "RESEARCH_DATA_MODE=generated next build",
+    "demo:start": "RESEARCH_DATA_MODE=generated next start",
     "build": "next build",
     "build:data": "npm run pipeline:data",
     "pipeline:data": "npm run ingest:terminal && npm run validate:research && npm run audit:data",
@@ -51,7 +54,6 @@
     "@remixicon/react": "^4.9.0",
     "@tanstack/react-query": "^5.101.1",
     "@tanstack/react-table": "^8.21.3",
-    "@tremor/react": "^3.18.7",
     "@types/node": "^22.15.19",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",

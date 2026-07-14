@@ -11,8 +11,8 @@ export function WorkspacePage(props: InferGetServerSidePropsType<typeof getServe
   return (
     <>
       <Head>
-        <title>LIQUIDCHAIN Market Terminal</title>
-        <meta name="description" content="Single-workspace PM research terminal for sourced pitches, decision journal, event studies, validation, paper book, risk, and source audit." />
+        <title>Korea Defense Markets | Research Terminal</title>
+        <meta name="description" content="Sourced Korea and Indo-Pacific defense market intelligence: catalysts, Korea beta, U.S. supplier confirmation, crowding, and invalidation." />
       </Head>
       <TerminalWorkspace {...props} />
     </>

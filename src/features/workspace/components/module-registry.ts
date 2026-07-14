@@ -17,6 +17,7 @@ import {
 import type { ModuleMeta, WorkspaceModule } from '@/contracts/workspace'
 
 export const workspaceModules: ModuleMeta[] = [
+  { id: 'korea-defense', label: 'Korea Defense', short: 'Korea', href: '/korea-defense', icon: Shield },
   { id: 'overview', label: 'Overview', short: 'Overview', href: '/?module=overview', icon: Terminal },
   { id: 'rotation', label: 'Rotation', short: 'Rotation', href: '/?module=rotation', icon: LineChart },
   { id: 'baskets', label: 'Baskets', short: 'Baskets', href: '/?module=baskets', icon: Layers3 },
@@ -24,7 +25,6 @@ export const workspaceModules: ModuleMeta[] = [
   { id: 'crowding', label: 'Crowding', short: 'Crowding', href: '/?module=crowding', icon: Gauge },
   { id: 'validation', label: 'Signal Validation Lab', short: 'Signal Lab', href: '/?module=validation', icon: FlaskConical },
   { id: 'methodology', label: 'Methodology', short: 'Method', href: '/?module=methodology', icon: ListFilter },
-  { id: 'korea-defense', label: 'Korea Defense', short: 'Korea', href: '/?module=korea-defense', icon: Shield },
   { id: 'stock-report', label: 'Stock Report', short: 'Report', href: '/?module=stock-report&ticker=NVDA', icon: BarChart3 },
   { id: 'stock-pitch', label: 'Stock Pitch', short: 'Pitch', href: '/?module=stock-pitch', icon: PenLine },
   { id: 'decision-log', label: 'Decision Journal', short: 'Journal', href: '/?module=decision-log', icon: Clipboard },

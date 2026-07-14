@@ -4,6 +4,7 @@ import { ResearchDataTable } from '@/components/workbench/research-data-table'
 import { ModuleFrame } from '@/components/workbench/module-frame'
 import { Panel, ProvenanceWarning, Rule } from '@/components/workbench/research-surfaces'
 import type { WorkspaceData } from '@/contracts/workspace'
+import { PriceChart } from '@/features/stock-report/components/stock-report-module'
 import { metricText } from '@/features/workspace/formatters'
 import type { CrowdingRow, RotationRow } from '@/types/research'
 
@@ -11,12 +12,25 @@ export function KoreaDefenseModule({ data }: { data: WorkspaceData }) {
   const signals = data.rotations ?? data.basketSignals ?? []
   const crowding = data.crowding ?? data.basketCrowding ?? []
   const events = data.events ?? []
+  const priceTicker = data.prices?.find(row => row.ticker === 'EWY')?.ticker ?? data.prices?.[0]?.ticker ?? 'EWY'
+  const latestAsOf = signals.map(row => row.asOfDate).filter((value): value is string => Boolean(value)).sort().at(-1)?.slice(0, 10) ?? 'unavailable'
   return (
-    <ModuleFrame title="Korea / Indo-Pacific Defense" kicker="Case study" description="Applied case study for defense-linked sponsorship, crowding, catalysts, and invalidation.">
+    <ModuleFrame title="Korea / Indo-Pacific Defense" kicker="Market intelligence case study" description="Trace a public catalyst through Korea beta, U.S. defense suppliers, price confirmation, crowding, and explicit invalidation.">
       <ProvenanceWarning
-        title="Case-study events"
-        detail="Catalyst cards here come from static event fixtures. Rotation and crowding rows remain sourced through the terminal data layer."
+        title={`Frozen sourced demo / as of ${latestAsOf}`}
+        detail="Interview mode reads committed provider snapshots. Returns and risk measures are derived from sourced closes; unavailable options and short-interest fields remain excluded."
       />
+      <Panel title="Catalyst → Market → Decision" kicker="Five-minute walkthrough">
+        <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-4">
+          <Rule label="1 / CATALYST" text="Start with verified public defense, alliance, procurement, and export-control events." />
+          <Rule label="2 / KOREA BETA" text="Check EWY and USD/KRW direction before treating headlines as tradable Korea confirmation." />
+          <Rule label="3 / SUPPLIERS" text="Test breadth through ITA, XAR, and liquid U.S. primes rather than relying on one security." />
+          <Rule label="4 / DECISION" text="Promote only when price, breadth, source quality, and invalidation rules support action." />
+        </div>
+      </Panel>
+      <Panel title={`${priceTicker} Korea Beta Tape`} kicker="Sourced daily close">
+        <PriceChart prices={data.prices ?? []} ticker={priceTicker} />
+      </Panel>
       <div className="grid gap-3 xl:grid-cols-[1fr_0.9fr]">
         <Panel title="Current Flow Read" kicker="Signals">
           <ResearchDataTable data={signals} columns={rotationColumns} />
@@ -40,8 +54,8 @@ export function KoreaDefenseModule({ data }: { data: WorkspaceData }) {
       </Panel>
       <Panel title="Confirmation / Invalidation" kicker="Decision rules">
         <div className="grid gap-2 md:grid-cols-2">
-          <Rule label="Confirm" text="EWY and defense proxies broaden together while extension risk stays confirmed by fresh catalyst support." />
-          <Rule label="Invalidate" text="Relative strength rolls over, crowding turns into exit risk, or fresh catalyst support fails to confirm the move." />
+          <Rule label="CONFIRM" text="EWY and defense proxies broaden together; supplier relative strength and sourced volume confirm the catalyst." />
+          <Rule label="INVALIDATE" text="EWY relative strength rolls over, USD/KRW stress dominates, breadth narrows, or extension rises without fresh catalyst support." />
         </div>
       </Panel>
     </ModuleFrame>

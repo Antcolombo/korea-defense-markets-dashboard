@@ -1,10 +1,14 @@
 import { seedBaskets } from '@/lib/data/baskets/seedBaskets'
 import { seedTickers } from '@/lib/data/baskets/seedTickers'
+import { getAssets } from '@/lib/data/getAssets'
+import { getPrices } from '@/lib/data/getPrices'
 import { combineStatuses, metric, pointInTime, sourceCoverage } from '@/lib/data/availability'
 import { buildStockReport, buildUnavailableStockReport } from '@/lib/research/report/buildStockReport'
 import { crowdingLabel as scoreCrowdingLabel, crowdingScoreFromComponents, extensionRiskScoreFromComponents, setupLabel } from '@/lib/research/crowdingScores'
 import { getPrisma } from '@/lib/server/prisma'
-import { researchSnapshotCutoff } from '@/platform/data/data-mode'
+import { researchSnapshotCutoff, resolveResearchDataMode } from '@/platform/data/data-mode'
+import type { Asset } from '@/types/asset'
+import type { PricePoint } from '@/types/market'
 import type { BasketSummary, CatalystReportRow, CrowdingRow, DbDataStatus, MetricValue, PositioningRow, RotationRow, StockReport, TickerSeed, ValidationRow } from '@/lib/research/types'
 
 const rotationTickers = ['SPY', 'QQQ', 'IWM', 'TLT', 'GLD', 'USO', 'VIXY', 'XLK', 'XLF', 'XLI', 'XLE', 'XLU', 'XLP', 'XLV', 'XLY', 'SMH', 'ITA', 'XAR', 'EWY']
@@ -24,11 +28,11 @@ type MinimalTicker = {
 type SnapshotLike = {
   id?: string
   tickerId?: string
-  date?: Date | null
-  asOfDate?: Date | null
-  observedAt?: Date | null
-  providerTimestamp?: Date | null
-  ingestedAt?: Date | null
+  date?: Date | string | null
+  asOfDate?: Date | string | null
+  observedAt?: Date | string | null
+  providerTimestamp?: Date | string | null
+  ingestedAt?: Date | string | null
   source?: string
   provider?: string
   revisionFlag?: string
@@ -58,7 +62,9 @@ const DATABASE_QUERY_TIMEOUT_MS = Number(process.env.RESEARCH_DB_TIMEOUT_MS ?? 1
 export async function getTerminalContext(): Promise<TerminalContext> {
   const prisma = getPrisma()
   if (!prisma) {
-    return fallbackContext(false)
+    return resolveResearchDataMode().mode === 'generated'
+      ? generatedContext()
+      : fallbackContext(false)
   }
   const now = Date.now()
   if (terminalContextCache && now - terminalContextCache.loadedAt < TERMINAL_CONTEXT_TTL_MS) {
@@ -80,6 +86,180 @@ export async function getTerminalContext(): Promise<TerminalContext> {
       })
   }
   return terminalContextPromise
+}
+
+let generatedTerminalContext: TerminalContext | null = null
+
+function generatedContext(): TerminalContext {
+  if (generatedTerminalContext) return generatedTerminalContext
+
+  const assets = getAssets()
+  const prices = getPrices()
+  const pricesByTicker = groupPrices(prices)
+  const generatedTickers = assets.map(assetToTicker)
+  const tickers = mergeTickers(seedTickers.map(seedToTicker), generatedTickers)
+  const signalByTicker = new Map<string, SnapshotLike>()
+  const crowdingByTicker = new Map<string, SnapshotLike>()
+  const benchmarkSeries = pricesByTicker.get('SPY') ?? pricesByTicker.get('SPX') ?? []
+  const benchmark20d = periodReturn(benchmarkSeries, 20)
+  const benchmark60d = periodReturn(benchmarkSeries, 60)
+
+  for (const asset of assets) {
+    const series = pricesByTicker.get(asset.ticker) ?? []
+    const signal = generatedSignalSnapshot(asset, series, benchmark20d, benchmark60d)
+    if (!signal) continue
+    signalByTicker.set(asset.ticker, signal)
+    crowdingByTicker.set(asset.ticker, generatedCrowdingSnapshot(signal))
+  }
+
+  generatedTerminalContext = {
+    tickers,
+    baskets: seedBaskets,
+    signalByTicker,
+    positioningByTicker: new Map<string, SnapshotLike>(),
+    crowdingByTicker,
+    validationResults: [],
+    providerRuns: [],
+    databaseConfigured: false
+  }
+  return generatedTerminalContext
+}
+
+function groupPrices(rows: PricePoint[]) {
+  const grouped = new Map<string, PricePoint[]>()
+  for (const row of rows) grouped.set(row.ticker, [...grouped.get(row.ticker) ?? [], row])
+  for (const [ticker, series] of grouped) grouped.set(ticker, series.sort((a, b) => a.date.localeCompare(b.date)))
+  return grouped
+}
+
+function assetToTicker(asset: Asset): MinimalTicker {
+  return {
+    ticker: asset.ticker,
+    name: asset.name,
+    sector: asset.sector,
+    country: asset.country,
+    assetType: asset.assetClass.toUpperCase(),
+    isEtf: asset.assetClass === 'etf',
+    description: asset.description
+  }
+}
+
+function mergeTickers(primary: MinimalTicker[], secondary: MinimalTicker[]) {
+  const merged = new Map(primary.map(ticker => [ticker.ticker, ticker]))
+  for (const ticker of secondary) merged.set(ticker.ticker, { ...merged.get(ticker.ticker), ...ticker })
+  return [...merged.values()]
+}
+
+function generatedSignalSnapshot(
+  asset: Asset,
+  series: PricePoint[],
+  benchmark20d: number | null,
+  benchmark60d: number | null
+): SnapshotLike | null {
+  const latest = series.at(-1)
+  const return1d = periodReturn(series, 1) ?? asset.return1d
+  const return5d = periodReturn(series, 5) ?? asset.return5d
+  const return20d = periodReturn(series, 20) ?? asset.return20d
+  const return60d = periodReturn(series, 60)
+  if (!latest && return1d === null && return5d === null && return20d === null) return null
+
+  const ma20 = movingAverage(series, 20)
+  const ma50 = movingAverage(series, 50)
+  const distanceFrom20dMa = priceDistance(latest?.price ?? null, ma20)
+  const distanceFrom50dMa = priceDistance(latest?.price ?? null, ma50)
+  const volumeVs20dAvg = volumeRatio(series, 20)
+  const realizedVol20d = realizedVolatility(series, 20)
+  const relativeStrengthVsSpy20d = return20d === null || benchmark20d === null ? null : return20d - benchmark20d
+  const relativeStrengthVsSpy60d = return60d === null || benchmark60d === null ? null : return60d - benchmark60d
+
+  return {
+    asOfDate: latest?.date ?? asset.retrievedAt,
+    observedAt: asset.retrievedAt,
+    providerTimestamp: asset.publishedAt,
+    ingestedAt: asset.retrievedAt,
+    source: latest?.sourceName ?? asset.sourceName,
+    provider: latest?.provider ?? asset.provider,
+    revisionFlag: 'ORIGINAL',
+    dataStatus: 'AVAILABLE',
+    return1d,
+    return5d,
+    return20d,
+    return60d,
+    relativeStrengthVsSpy20d,
+    relativeStrengthVsSpy60d,
+    volumeVs20dAvg,
+    realizedVol20d,
+    distanceFrom20dMa,
+    distanceFrom50dMa,
+    trendLabel: trendLabel(return20d, distanceFrom20dMa, distanceFrom50dMa)
+  }
+}
+
+function generatedCrowdingSnapshot(signal: SnapshotLike): SnapshotLike {
+  const relativeStrength = numberOf(signal.relativeStrengthVsSpy20d)
+  const volumeRatioValue = numberOf(signal.volumeVs20dAvg)
+  const volatility = numberOf(signal.realizedVol20d)
+  const momentumScore = relativeStrength === null ? null : clamp(50 + relativeStrength * 3, 0, 100)
+  const volumeScore = volumeRatioValue === null ? null : clamp(volumeRatioValue * 50, 0, 100)
+  const volatilityScore = volatility === null ? null : clamp(volatility * 2, 0, 100)
+  return {
+    ...signal,
+    dataStatus: 'PARTIAL',
+    momentumScore,
+    volumeScore,
+    volatilityScore,
+    optionsScore: null,
+    shortInterestScore: null,
+    excludedUnavailableInputs: ['Options positioning', 'Short interest'],
+    explanation: 'Derived from sourced daily close and volume only. Options and short-interest inputs are excluded, not estimated.'
+  }
+}
+
+function periodReturn(series: PricePoint[], sessions: number) {
+  if (series.length < 2) return null
+  const end = series.at(-1)?.price
+  const start = series[Math.max(0, series.length - 1 - sessions)]?.price
+  if (!end || !start) return null
+  return Number((((end - start) / start) * 100).toFixed(2))
+}
+
+function movingAverage(series: PricePoint[], sessions: number) {
+  const values = series.slice(-sessions).map(row => row.price).filter(value => Number.isFinite(value))
+  if (values.length < Math.min(5, sessions)) return null
+  return values.reduce((sum, value) => sum + value, 0) / values.length
+}
+
+function priceDistance(price: number | null, average: number | null) {
+  if (price === null || average === null || average === 0) return null
+  return Number((((price - average) / average) * 100).toFixed(2))
+}
+
+function volumeRatio(series: PricePoint[], sessions: number) {
+  const latest = series.at(-1)?.volume
+  const history = series.slice(-(sessions + 1), -1).map(row => row.volume).filter((value): value is number => typeof value === 'number' && value > 0)
+  if (!latest || history.length < 5) return null
+  const average = history.reduce((sum, value) => sum + value, 0) / history.length
+  return average ? Number((latest / average).toFixed(2)) : null
+}
+
+function realizedVolatility(series: PricePoint[], sessions: number) {
+  const closes = series.slice(-(sessions + 1)).map(row => row.price).filter(value => value > 0)
+  if (closes.length < 6) return null
+  const returns = closes.slice(1).map((price, index) => Math.log(price / closes[index]))
+  const average = returns.reduce((sum, value) => sum + value, 0) / returns.length
+  const variance = returns.reduce((sum, value) => sum + (value - average) ** 2, 0) / Math.max(1, returns.length - 1)
+  return Number((Math.sqrt(variance) * Math.sqrt(252) * 100).toFixed(2))
+}
+
+function trendLabel(return20d: number | null, distance20d: number | null, distance50d: number | null) {
+  if (return20d === null) return 'Unavailable'
+  if (return20d > 0 && (distance20d ?? 0) > 0 && (distance50d ?? 0) > 0) return 'Uptrend'
+  if (return20d < 0 && (distance20d ?? 0) < 0 && (distance50d ?? 0) < 0) return 'Downtrend'
+  return 'Mixed'
+}
+
+function clamp(value: number, min: number, max: number) {
+  return Math.max(min, Math.min(max, value))
 }
 
 async function loadTerminalContext(): Promise<TerminalContext> {

@@ -84,10 +84,10 @@ export async function loadWorkspacePage(
 }
 
 export function resolveWorkspaceModule(query: ParsedUrlQuery): WorkspaceModule {
-  const requested = queryString(query.module) || 'overview'
+  const requested = queryString(query.module) || 'korea-defense'
   const requestedSlug = queryString(query.slug)
   if (requested === 'baskets' && requestedSlug) return 'basket-detail'
-  return validModules.has(requested as WorkspaceModule) ? requested as WorkspaceModule : 'overview'
+  return validModules.has(requested as WorkspaceModule) ? requested as WorkspaceModule : 'korea-defense'
 }
 
 export const workspaceLoaders: Record<WorkspaceModule, WorkspaceLoader> = {
@@ -240,18 +240,30 @@ async function loadKoreaDefense({ repositories }: WorkspaceLoadContext): Promise
     repositories.research.getCrowdingRows()
   ])
   const memberTickers = new Set(basket.members.map(member => member.ticker))
-  const rotationsForTheme = rotations.filter(row => memberTickers.has(row.ticker) || ['EWY', 'ITA', 'XAR', 'SMH'].includes(row.ticker))
-  const crowding = crowdingRows.filter(row => memberTickers.has(row.ticker))
+  const rotationsForTheme = uniqueByTicker([
+    ...basket.members.map(member => member.signal),
+    ...rotations.filter(row => ['EWY', 'ITA', 'XAR', 'SMH'].includes(row.ticker))
+  ])
+  const crowding = uniqueByTicker([
+    ...basket.members.map(member => member.crowding),
+    ...crowdingRows.filter(row => memberTickers.has(row.ticker))
+  ])
   const events = repositories.generated.getEvents()
     .filter(event => event.affectedThemes.some(theme => theme.toLowerCase().includes('defense')) || event.category.includes('DEFENSE'))
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, 12)
   const selectedTicker = selectPriceTicker(rotationsForTheme.map(row => row.ticker))
+  const prices = await scopedSourcedPrices(repositories, selectedTicker)
+  const data = { rotations: rotationsForTheme, crowding, events, prices }
   return {
-    data: { rotations: rotationsForTheme, crowding, events, prices: await scopedSourcedPrices(repositories, selectedTicker) },
-    responseData: { rotations: rotationsForTheme, crowding },
+    data,
+    responseData: data,
     selectedTicker
   }
+}
+
+function uniqueByTicker<T extends { ticker: string }>(rows: T[]) {
+  return [...new Map(rows.map(row => [row.ticker, row])).values()]
 }
 
 async function loadStockReport({ query, repositories }: WorkspaceLoadContext): Promise<WorkspaceLoadResult> {
@@ -344,12 +356,14 @@ async function scopedSourcedPrices(repositories: RuntimeRepositories, ticker: st
 
 function sourcedPriceRows(points: Awaited<ReturnType<RuntimeRepositories['pitches']['getSourcedPriceSeries']>>) {
   const sorted = [...points].sort((a, b) => a.date.localeCompare(b.date)).slice(-260)
-  const anchor = sorted.find(point => point.price > 0)?.price ?? null
-  return sorted.map(point => ({
+  return sorted.map((point, index) => ({
     date: point.date,
     ticker: point.ticker,
     price: point.price,
-    returnValue: anchor ? ((point.price - anchor) / anchor) * 100 : 0
+    volume: point.volume,
+    returnValue: index > 0 && sorted[index - 1].price > 0
+      ? ((point.price - sorted[index - 1].price) / sorted[index - 1].price) * 100
+      : 0
   }))
 }
 

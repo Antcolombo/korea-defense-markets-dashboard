@@ -33,7 +33,7 @@ export function TerminalWorkspace({
   const workspaceRef = useRef<HTMLElement | null>(null)
   const activeMeta = moduleMeta(module)
   const watchlist = buildWatchlist(data)
-  const defaultTicker = selectedTicker ?? data.report?.ticker ?? watchlist[0]?.ticker ?? 'NVDA'
+  const defaultTicker = selectedTicker ?? data.report?.ticker ?? watchlist[0]?.ticker ?? 'EWY'
   const [, setTickerQuery] = useQueryState('ticker', parseAsString.withDefault(defaultTicker))
   const commandOpen = useTerminalStore(state => state.commandOpen)
   const setCommandOpen = useTerminalStore(state => state.setCommandOpen)
@@ -71,7 +71,7 @@ export function TerminalWorkspace({
   }
 
   function normalizedTicker(value: string) {
-    return value.trim().toUpperCase() || 'NVDA'
+    return value.trim().toUpperCase() || 'EWY'
   }
 
   function openReportTicker(value: string) {
@@ -145,7 +145,10 @@ export function TerminalWorkspace({
               <div className="flex h-8 w-8 items-center justify-center rounded-md border border-primary/40 bg-primary/15 text-primary">
                 <Terminal className="h-4 w-4" />
               </div>
-              <div className="min-w-0"><p className="truncate text-sm font-bold tracking-[0.08em] text-foreground">LIQUIDCHAIN</p></div>
+              <div className="min-w-0">
+                <p className="truncate text-sm font-bold tracking-[0.08em] text-foreground">KOREA DEFENSE</p>
+                <p className="hidden truncate text-[0.62rem] text-muted-foreground xl:block">MARKET INTELLIGENCE</p>
+              </div>
             </div>
             <nav className="hidden min-w-0 flex-1 items-center gap-1 overflow-x-auto lg:flex" aria-label="Workspace modules">
               {visibleWorkspaceModules.map(item => {
@@ -161,7 +164,7 @@ export function TerminalWorkspace({
           <form onSubmit={submitTicker} className="flex min-w-0 items-center gap-2">
             <InputGroup className="min-w-[190px] flex-1 lg:w-[320px] lg:flex-none">
               <InputGroupAddon><Search className="h-3.5 w-3.5" /></InputGroupAddon>
-              <InputGroupInput value={ticker} onChange={event => updateTicker(event.target.value)} className="font-mono text-xs" aria-label="Ticker command" placeholder="/report NVDA" />
+              <InputGroupInput value={ticker} onChange={event => updateTicker(event.target.value)} className="font-mono text-xs" aria-label="Ticker command" placeholder="/report LMT" />
             </InputGroup>
             <Tooltip>
               <TooltipTrigger asChild>

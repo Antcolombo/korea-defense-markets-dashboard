@@ -16,7 +16,7 @@ export function App({ Component, pageProps }: AppProps) {
       <NuqsAdapter>
         <div className="dark min-h-screen bg-background text-foreground">
           <Head>
-            <title>LIQUIDCHAIN Market Terminal</title>
+            <title>Korea Defense Markets | Research Terminal</title>
             <meta name="description" content="Source-aware PM research workbench for pitches, decisions, event studies, validation, paper book, risk, and data audit." />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
           </Head>

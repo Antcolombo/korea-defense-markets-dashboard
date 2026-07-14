@@ -11,7 +11,7 @@ import type {
   ShellSourceStatus,
   UnavailableField
 } from '@/contracts/provenance'
-import { resolveResearchDataMode } from '@/platform/data/data-mode'
+import { resolveResearchDataMode, type ResearchDataMode } from '@/platform/data/data-mode'
 import {
   matchesProviderHealthDefinition,
   providerHealthDefinitionHasField,
@@ -86,8 +86,9 @@ export function createShellMeta(response: Pick<ApiResponse<unknown>, 'dataMode' 
   const freshnessAgeHours = latestFreshnessAgeHours(response.provenance)
   const demoAsOfDate = process.env.DEMO_AS_OF_DATE ?? process.env.NEXT_PUBLIC_DEMO_AS_OF_DATE ?? null
   const hasRequired = hasRequiredSnapshots(providerHealth, response.coverage.coveragePercent)
-  const sourceStates = buildSourceStates(response, freshnessAgeHours)
+  const sourceStates = buildSourceStates(response, freshnessAgeHours, response.dataMode === 'generated')
   const quality = summarizeShellQuality({
+    dataMode: response.dataMode,
     coveragePercent: response.coverage.coveragePercent,
     unavailableCount: response.unavailableFields.length,
     deferredUnavailableCount: response.deferredUnavailableFields.length,
@@ -129,6 +130,7 @@ function latestFreshnessAgeHours(provenance: Provenance[]) {
 }
 
 function summarizeShellQuality(input: {
+  dataMode: ResearchDataMode
   coveragePercent: number
   unavailableCount: number
   deferredUnavailableCount: number
@@ -138,6 +140,13 @@ function summarizeShellQuality(input: {
 }): { status: ShellQualityStatus; label: string; detail: string } {
   const coverageDetail = `${input.coveragePercent}% active / ${input.deferredUnavailableCount} deferred`
   if (input.coveragePercent <= 0) return { status: 'no_data', label: 'No Data', detail: coverageDetail }
+  if (input.dataMode === 'generated') {
+    return {
+      status: input.unavailableCount > 0 || input.coveragePercent < 100 ? 'partial' : 'fresh',
+      label: 'Frozen',
+      detail: `${input.coveragePercent}% sourced snapshot / ${input.deferredUnavailableCount} deferred`
+    }
+  }
   if (!input.demoAsOfDate && input.freshnessAgeHours !== null && input.freshnessAgeHours > 36) {
     return { status: 'stale', label: 'Stale', detail: `${input.freshnessAgeHours.toFixed(1)}h old / ${input.deferredUnavailableCount} deferred` }
   }
@@ -152,7 +161,8 @@ function summarizeShellQuality(input: {
 
 function buildSourceStates(
   response: Pick<ApiResponse<unknown>, 'provenance' | 'unavailableFields' | 'deferredUnavailableFields'>,
-  freshnessAgeHours: number | null
+  freshnessAgeHours: number | null,
+  frozen = false
 ): ShellSourceState[] {
   const active = response.unavailableFields.map(fieldText)
   const deferred = response.deferredUnavailableFields.map(fieldText)
@@ -167,7 +177,9 @@ function buildSourceStates(
   const catalystPatterns = [/catalyst/, /materiality/, /news/]
   const validationPatterns = [/validation/, /historical/, /forward-return/, /forward return/, /sample/]
 
-  const prices: ShellSourceState = freshnessAgeHours !== null && freshnessAgeHours > 36
+  const prices: ShellSourceState = frozen && !hasActive(pricePatterns)
+    ? { key: 'prices', label: 'Prices', status: 'available', detail: 'Frozen sourced close and RS' }
+    : freshnessAgeHours !== null && freshnessAgeHours > 36
     ? { key: 'prices', label: 'Prices', status: 'stale', detail: `${freshnessAgeHours.toFixed(1)}h old` }
     : hasActive(pricePatterns)
       ? { key: 'prices', label: 'Prices', status: 'unavailable', detail: 'Price rows missing' }
