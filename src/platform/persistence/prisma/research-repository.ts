@@ -638,7 +638,9 @@ function basketSummary(basket: unknown, signalByTicker: Map<string, SnapshotLike
     .filter((item): item is { ticker: string; value: number } => item.value !== null)
     .sort((a, b) => b.value - a.value)
   return {
-    ...pointInTime({ source: 'theme basket taxonomy + sourced snapshots', provider: 'Postgres', dataStatus: status }),
+    ...pointInTime(resolveResearchDataMode().mode === 'generated'
+      ? { source: 'generated theme taxonomy + sourced provider snapshots', provider: 'Generated source bundle', dataStatus: status }
+      : { source: 'theme basket taxonomy + sourced snapshots', provider: 'Postgres', dataStatus: status }),
     slug,
     name,
     description: textOf(readField(basket, 'description')) ?? 'Theme basket.',

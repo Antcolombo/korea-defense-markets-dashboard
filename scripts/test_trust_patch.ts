@@ -68,9 +68,39 @@ function testMrvlScoreSemantics() {
   assert.notEqual(unsupportedSetup, 'Reversal Risk')
 }
 
+function testGeneratedShellUsesActualProviders() {
+  const previous = process.env.RESEARCH_DATA_MODE
+  process.env.RESEARCH_DATA_MODE = 'generated'
+  const sourced = pointInTime({
+    asOfDate: '2026-07-13',
+    observedAt: '2026-07-14',
+    provider: 'Nasdaq Historical',
+    source: 'Nasdaq Historical daily close',
+    dataStatus: 'AVAILABLE'
+  })
+  const missing = pointInTime({
+    provider: 'not configured',
+    source: 'signal snapshot',
+    dataStatus: 'UNAVAILABLE'
+  })
+  const shell = createShellMeta(createApiResponse({
+    rows: [
+      { ...sourced, return20d: metric(4.2, 'AVAILABLE') },
+      { ...missing, return20d: metric(null, 'UNAVAILABLE', 'Signal snapshot missing') }
+    ]
+  }))
+
+  assert.equal(shell.sourceStates.find(item => item.key === 'prices')?.status, 'available')
+  assert.ok(shell.providerHealth.some(item => item.label === 'Nasdaq / FRED market data'))
+  assert.ok(!shell.providerHealth.some(item => item.label === 'Postgres' || item.label === 'Polygon OHLCV'))
+  if (previous === undefined) delete process.env.RESEARCH_DATA_MODE
+  else process.env.RESEARCH_DATA_MODE = previous
+}
+
 testMetricReasonOnlyOnMissing()
 testDeferredRegistryExactness()
 testProviderHealthSplit()
 testMrvlScoreSemantics()
+testGeneratedShellUsesActualProviders()
 
 console.log('Trust patch regression tests passed')

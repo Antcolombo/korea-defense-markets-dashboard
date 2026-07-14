@@ -82,11 +82,16 @@ export function createShellMeta(response: Pick<ApiResponse<unknown>, 'dataMode' 
   const sorted = response.provenance
     .filter(item => item.asOf)
     .sort((a, b) => Date.parse(b.asOf) - Date.parse(a.asOf))
-  const providerHealth = buildProviderHealth(response, 'active')
   const freshnessAgeHours = latestFreshnessAgeHours(response.provenance)
   const demoAsOfDate = process.env.DEMO_AS_OF_DATE ?? process.env.NEXT_PUBLIC_DEMO_AS_OF_DATE ?? null
-  const hasRequired = hasRequiredSnapshots(providerHealth, response.coverage.coveragePercent)
   const sourceStates = buildSourceStates(response, freshnessAgeHours, response.dataMode === 'generated')
+  const providerHealth = response.dataMode === 'generated'
+    ? buildGeneratedProviderHealth(response, sourceStates, 'active')
+    : buildProviderHealth(response, 'active')
+  const deferredProviderHealth = response.dataMode === 'generated'
+    ? buildGeneratedProviderHealth(response, sourceStates, 'deferred')
+    : buildProviderHealth(response, 'deferred')
+  const hasRequired = hasRequiredSnapshots(providerHealth, response.coverage.coveragePercent)
   const quality = summarizeShellQuality({
     dataMode: response.dataMode,
     coveragePercent: response.coverage.coveragePercent,
@@ -107,7 +112,7 @@ export function createShellMeta(response: Pick<ApiResponse<unknown>, 'dataMode' 
     freshnessAgeHours,
     providerFreshness: summarizeProviderFreshness(response.provenance),
     providerHealth,
-    deferredProviderHealth: buildProviderHealth(response, 'deferred'),
+    deferredProviderHealth,
     sourceStates,
     sourceSummary: summarizeSourceStates(sourceStates),
     hasRequiredSnapshots: hasRequired,
@@ -177,7 +182,7 @@ function buildSourceStates(
   const catalystPatterns = [/catalyst/, /materiality/, /news/]
   const validationPatterns = [/validation/, /historical/, /forward-return/, /forward return/, /sample/]
 
-  const prices: ShellSourceState = frozen && !hasActive(pricePatterns)
+  const prices: ShellSourceState = frozen && hasProvider(pricePatterns)
     ? { key: 'prices', label: 'Prices', status: 'available', detail: 'Frozen sourced close and RS' }
     : freshnessAgeHours !== null && freshnessAgeHours > 36
     ? { key: 'prices', label: 'Prices', status: 'stale', detail: `${freshnessAgeHours.toFixed(1)}h old` }
@@ -207,7 +212,9 @@ function buildSourceStates(
     missingDetail: 'Short-sale unavailable'
   })
 
-  const catalyst = sourceState({
+  const catalyst = frozen && hasProvider(catalystPatterns)
+    ? { key: 'catalyst', label: 'Catalyst', status: 'available', detail: 'Frozen sourced catalyst metadata' } satisfies ShellSourceState
+    : sourceState({
     key: 'catalyst',
     label: 'Catalyst',
     active: hasActive(catalystPatterns),
@@ -225,6 +232,69 @@ function buildSourceStates(
       : { key: 'validation', label: 'Validation', status: 'deferred', detail: 'Historical lab deferred' }
 
   return [prices, options, shortSale, catalyst, validation]
+}
+
+function buildGeneratedProviderHealth(
+  response: Pick<ApiResponse<unknown>, 'provenance' | 'coverage'>,
+  sourceStates: ShellSourceState[],
+  visibility: 'active' | 'deferred'
+): ProviderHealth[] {
+  const state = (key: ShellSourceState['key']) => sourceStates.find(item => item.key === key)
+  const apiStatus = (key: ShellSourceState['key']): ApiDataStatus => {
+    const status = state(key)?.status
+    if (status === 'fresh' || status === 'available') return 'available'
+    if (status === 'limited') return 'partial'
+    if (status === 'stale') return 'stale'
+    return 'unavailable'
+  }
+  if (visibility === 'active') {
+    return [
+      {
+        id: 'generated-bundle',
+        label: 'Generated source bundle',
+        requirement: 'required',
+        detail: 'Committed point-in-time provider snapshots',
+        status: response.provenance.length > 0 && response.coverage.coveragePercent > 0 ? 'available' : 'unavailable'
+      },
+      {
+        id: 'generated-prices',
+        label: 'Nasdaq / FRED market data',
+        requirement: 'required',
+        detail: 'Daily closes, volume, returns, and relative strength',
+        status: apiStatus('prices')
+      },
+      {
+        id: 'generated-catalysts',
+        label: 'Public catalyst metadata',
+        requirement: 'optional',
+        detail: 'News, SEC, OpenDART, and macro context',
+        status: apiStatus('catalyst')
+      }
+    ]
+  }
+  return [
+    {
+      id: 'generated-options',
+      label: 'Options positioning',
+      requirement: 'optional',
+      detail: 'Not included in frozen demo; no values estimated',
+      status: apiStatus('options')
+    },
+    {
+      id: 'generated-short-sale',
+      label: 'Short-sale positioning',
+      requirement: 'optional',
+      detail: 'Deferred unless sourced public rows are present',
+      status: apiStatus('short_sale')
+    },
+    {
+      id: 'generated-validation',
+      label: 'Validation lab',
+      requirement: 'optional',
+      detail: 'Deferred when historical validation samples are absent',
+      status: apiStatus('validation')
+    }
+  ]
 }
 
 function sourceState({
