@@ -1,4 +1,5 @@
 import { companyWatchlist } from './lib/watchlist'
+import { compactSecSubmissions } from './lib/generated_retention'
 import { assertNonEmpty, fetchJson, nowIso, requiredEnv, writeJson } from './lib/io'
 
 const outputPath = 'src/generated/raw/filings.json'
@@ -64,7 +65,7 @@ async function main() {
         ticker: company.ticker,
         cik: company.cik,
         status: 'source',
-        data: await fetchSecSubmissions(company.cik)
+        data: compactSecSubmissions(await fetchSecSubmissions(company.cik))
       })
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error)

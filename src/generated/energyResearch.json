@@ -3,8 +3,8 @@
     "provider": "derived",
     "sourceUrl": "/methodology",
     "sourceName": "Energy research dataset",
-    "retrievedAt": "2026-07-06T17:30:48.674Z",
-    "publishedAt": "2026-07-06T17:30:48.674Z",
+    "retrievedAt": "2026-07-14T21:20:43.986Z",
+    "publishedAt": "2026-07-14T21:20:43.986Z",
     "isDerived": true,
     "methodologyNote": "Retail gasoline seasonality is derived from FRED GASREGW. Petroleum inventories hydrate from EIA when EIA_API_KEY is configured. Paid global flow datasets remain explicit backlog items.",
     "dataQuality": "derived",
@@ -12,8 +12,8 @@
     "title": "U.S. retail gasoline seasonality and petroleum inventory coverage",
     "unit": "dollars per gallon",
     "latestObservation": {
-      "date": "2026-06-29",
-      "value": 3.831
+      "date": "2026-07-13",
+      "value": 3.855
     },
     "currentSampleLabel": "2026 is May 1-15 only",
     "seasonalBars": [
@@ -616,10 +616,6 @@
         "name": "U.S. ending stocks of total motor gasoline",
         "unit": "thousand barrels",
         "observations": [
-          {
-            "date": "2018-06-15",
-            "value": 240040
-          },
           {
             "date": "2018-06-22",
             "value": 241196
@@ -2295,6 +2291,10 @@
           {
             "date": "2026-06-26",
             "value": 213966
+          },
+          {
+            "date": "2026-07-03",
+            "value": 212062
           }
         ]
       },
@@ -2304,10 +2304,6 @@
         "name": "U.S. ending stocks of crude oil excluding SPR",
         "unit": "thousand barrels",
         "observations": [
-          {
-            "date": "2018-06-15",
-            "value": 426527
-          },
           {
             "date": "2018-06-22",
             "value": 416636
@@ -3983,6 +3979,10 @@
           {
             "date": "2026-06-26",
             "value": 408359
+          },
+          {
+            "date": "2026-07-03",
+            "value": 411357
           }
         ]
       },
@@ -3992,10 +3992,6 @@
         "name": "U.S. ending stocks of distillate fuel oil",
         "unit": "thousand barrels",
         "observations": [
-          {
-            "date": "2018-06-15",
-            "value": 117408
-          },
           {
             "date": "2018-06-22",
             "value": 117423
@@ -5671,6 +5667,10 @@
           {
             "date": "2026-06-26",
             "value": 108599
+          },
+          {
+            "date": "2026-07-03",
+            "value": 103619
           }
         ]
       }
@@ -6460,6 +6460,11 @@
         "2021": 235497,
         "dayOfYear": 183,
         "label": "07-02"
+      },
+      {
+        "2026": 212062,
+        "dayOfYear": 184,
+        "label": "07-03"
       },
       {
         "2025": 229468,

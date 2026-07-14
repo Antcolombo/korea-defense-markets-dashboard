@@ -1,7 +1,7 @@
 {
   "provider": "Korea macro and flow inputs",
   "sourceUrl": "https://ecos.bok.or.kr/api/",
-  "retrievedAt": "2026-07-06T17:30:48.150Z",
+  "retrievedAt": "2026-07-14T21:20:43.329Z",
   "status": "not_configured",
   "failures": [
     "BOK_ECOS_API_KEY is not configured; BOK macro/rates inputs require ECOS series mappings or data/private/korea-macro-flows.json.",

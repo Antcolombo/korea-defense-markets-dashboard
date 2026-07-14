@@ -1,7 +1,7 @@
 {
   "provider": "Korea official market data",
   "sourceUrl": "https://www.data.go.kr/en/data/15094808/openapi.do",
-  "retrievedAt": "2026-07-06T17:30:48.030Z",
+  "retrievedAt": "2026-07-14T21:20:43.213Z",
   "status": "not_configured",
   "failures": [
     "DATA_GO_KR_SERVICE_KEY is not configured; Korean local equities remain evidence-only until official KRX-backed prices are available.",

@@ -1,7 +1,7 @@
 {
   "provider": "EIA Open Data",
   "sourceUrl": "https://www.eia.gov/opendata/",
-  "retrievedAt": "2026-07-06T17:30:39.538Z",
+  "retrievedAt": "2026-07-14T21:20:30.241Z",
   "status": "source",
   "failures": [],
   "series": [
@@ -12,6 +12,11 @@
       "unit": "thousand barrels",
       "status": "source",
       "observations": [
+        {
+          "period": "2026-07-03",
+          "value": 212062,
+          "units": "MBBL"
+        },
         {
           "period": "2026-06-26",
           "value": 213966,
@@ -2106,11 +2111,6 @@
           "period": "2018-06-22",
           "value": 241196,
           "units": "MBBL"
-        },
-        {
-          "period": "2018-06-15",
-          "value": 240040,
-          "units": "MBBL"
         }
       ]
     },
@@ -2121,6 +2121,11 @@
       "unit": "thousand barrels",
       "status": "source",
       "observations": [
+        {
+          "period": "2026-07-03",
+          "value": 411357,
+          "units": "MBBL"
+        },
         {
           "period": "2026-06-26",
           "value": 408359,
@@ -4215,11 +4220,6 @@
           "period": "2018-06-22",
           "value": 416636,
           "units": "MBBL"
-        },
-        {
-          "period": "2018-06-15",
-          "value": 426527,
-          "units": "MBBL"
         }
       ]
     },
@@ -4230,6 +4230,11 @@
       "unit": "thousand barrels",
       "status": "source",
       "observations": [
+        {
+          "period": "2026-07-03",
+          "value": 103619,
+          "units": "MBBL"
+        },
         {
           "period": "2026-06-26",
           "value": 108599,
@@ -6323,11 +6328,6 @@
         {
           "period": "2018-06-22",
           "value": 117423,
-          "units": "MBBL"
-        },
-        {
-          "period": "2018-06-15",
-          "value": 117408,
           "units": "MBBL"
         }
       ]
