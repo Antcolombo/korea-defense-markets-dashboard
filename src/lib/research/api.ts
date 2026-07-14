@@ -212,7 +212,7 @@ function buildSourceStates(
     missingDetail: 'Short-sale unavailable'
   })
 
-  const catalyst = frozen && hasProvider(catalystPatterns)
+  const catalyst = frozen
     ? { key: 'catalyst', label: 'Catalyst', status: 'available', detail: 'Frozen sourced catalyst metadata' } satisfies ShellSourceState
     : sourceState({
     key: 'catalyst',

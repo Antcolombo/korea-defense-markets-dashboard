@@ -91,6 +91,7 @@ function testGeneratedShellUsesActualProviders() {
   }))
 
   assert.equal(shell.sourceStates.find(item => item.key === 'prices')?.status, 'available')
+  assert.equal(shell.sourceStates.find(item => item.key === 'catalyst')?.status, 'available')
   assert.ok(shell.providerHealth.some(item => item.label === 'Nasdaq / FRED market data'))
   assert.ok(!shell.providerHealth.some(item => item.label === 'Postgres' || item.label === 'Polygon OHLCV'))
   if (previous === undefined) delete process.env.RESEARCH_DATA_MODE
