@@ -264,6 +264,8 @@
   .korea-product__frame { padding: 8px 8px 28px; }
   .korea-product__masthead { gap: 12px; grid-template-columns: 1fr; }
   .korea-product__actions { justify-content: flex-start; }
+  .korea-product__tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: visible; padding-inline: 0; }
+  .korea-product__tabs a { align-items: center; display: flex; justify-content: center; min-width: 0; padding-inline: 6px; text-align: center; }
   .korea-product__hero { gap: 28px; padding: 24px 20px; }
   .korea-product__hero h1 { font-size: clamp(2.4rem, 13vw, 3.8rem); }
   .korea-product__metrics { grid-template-columns: 1fr; }

@@ -100,11 +100,7 @@ export function KoreaDefenseExperience({ data, shell }: { data: WorkspaceData; s
               </div>
             </header>
             <div className="korea-product__chart">
-              <PriceChart
-                prices={data.prices ?? []}
-                ticker="EWY"
-                eventMarkers={events.slice(0, 4).map(event => ({ date: event.date, title: event.title }))}
-              />
+              <PriceChart prices={data.prices ?? []} ticker="EWY" />
             </div>
           </article>
 
