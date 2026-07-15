@@ -9,6 +9,7 @@ export function KoreaDefenseExperience({ data, shell }: { data: WorkspaceData; s
   const signals = data.rotations ?? data.basketSignals ?? []
   const crowding = data.crowding ?? data.basketCrowding ?? []
   const events = data.events ?? []
+  const verifiedEventCount = events.filter(event => event.verified).length
   const ewy = signals.find(row => row.ticker === 'EWY')
   const topUsExpression = [...signals]
     .filter(row => !['EWY', 'SPY', 'ITA', 'XAR'].includes(row.ticker))
@@ -48,7 +49,7 @@ export function KoreaDefenseExperience({ data, shell }: { data: WorkspaceData; s
         </header>
 
         <nav className="korea-product__tabs" aria-label="Dashboard sections">
-          <a className="is-active" href="#market-monitor">Dashboard</a>
+          <a className="is-active" href="#case-study" aria-current="page">Dashboard</a>
           <a href="#market-monitor">Markets</a>
           <a href="#source-audit">Source Audit</a>
           <Link href="/report/EWY">Research Note</Link>
@@ -75,7 +76,7 @@ export function KoreaDefenseExperience({ data, shell }: { data: WorkspaceData; s
         <section className="korea-product__metrics" aria-label="Research summary">
           <Metric label="Korea beta · 20D" value={formatMetric(ewy?.return20d)} detail="EWY sourced close series" tone="negative" />
           <Metric label="Top U.S. expression" value={topUsExpression?.ticker ?? 'N/A'} detail={`${formatMetric(topUsExpression?.relativeStrengthVsSpy20d)} RS vs SPY`} tone="positive" />
-          <Metric label="Catalyst tape" value={`${events.length}`} detail={`Verified events · as of ${latestAsOf}`} />
+          <Metric label="Catalyst tape" value={`${verifiedEventCount}/${events.length}`} detail={`Verified / total · as of ${latestAsOf}`} />
           <Metric label="Current decision" value={decision} detail="Evidence first; headline second" tone="decision" />
         </section>
 
@@ -91,7 +92,7 @@ export function KoreaDefenseExperience({ data, shell }: { data: WorkspaceData; s
           <article className="korea-product__panel korea-product__chart-panel">
             <header className="korea-product__panel-head">
               <div>
-                <span>TODAY · RELATIVE PERFORMANCE</span>
+                <span>MARKET TAPE · RELATIVE PERFORMANCE</span>
                 <h3>EWY Korea beta tape</h3>
               </div>
               <div className="korea-product__polling">

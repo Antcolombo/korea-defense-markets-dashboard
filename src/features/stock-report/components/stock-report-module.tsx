@@ -310,9 +310,11 @@ export function PriceChart({
           <Button type="button" size="sm" variant={mode === 'indexed' && benchmarks.spy ? 'secondary' : 'outline'} className="h-8 px-2 font-mono text-xs" disabled={mode !== 'indexed' || ticker === 'SPY' || !spyRows.length} onClick={() => setBenchmarks(current => ({ ...current, spy: !current.spy }))}>
             SPY
           </Button>
-          <Button type="button" size="sm" variant={mode === 'indexed' && benchmarks.sector ? 'secondary' : 'outline'} className="h-8 px-2 font-mono text-xs" disabled={mode !== 'indexed' || sectorSymbol === ticker || sectorSymbol === 'SPY' || !sectorRows.length} onClick={() => setBenchmarks(current => ({ ...current, sector: !current.sector }))}>
-            {sectorSymbol}
-          </Button>
+          {sectorSymbol !== ticker && sectorSymbol !== 'SPY' ? (
+            <Button type="button" size="sm" variant={mode === 'indexed' && benchmarks.sector ? 'secondary' : 'outline'} className="h-8 px-2 font-mono text-xs" disabled={mode !== 'indexed' || !sectorRows.length} onClick={() => setBenchmarks(current => ({ ...current, sector: !current.sector }))}>
+              {sectorSymbol}
+            </Button>
+          ) : null}
         </div>
       </div>
       <div className="relative h-[360px] min-h-[260px] w-full overflow-hidden rounded-md border border-border bg-background/35">
