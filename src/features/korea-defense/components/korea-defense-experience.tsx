@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowUpRight, CheckCircle2, Database, FileText, ShieldCheck } from 'lucide-react'
 import type { ShellMeta } from '@/contracts/provenance'
@@ -6,6 +9,7 @@ import { PriceChart } from '@/features/stock-report/components/stock-report-modu
 import type { MetricValue, RotationRow } from '@/types/research'
 
 export function KoreaDefenseExperience({ data, shell }: { data: WorkspaceData; shell: ShellMeta }) {
+  const [activeSection, setActiveSection] = useState<SectionId>('case-study')
   const signals = data.rotations ?? data.basketSignals ?? []
   const crowding = data.crowding ?? data.basketCrowding ?? []
   const events = data.events ?? []
@@ -24,6 +28,17 @@ export function KoreaDefenseExperience({ data, shell }: { data: WorkspaceData; s
     ? 'Selective, not broad'
     : 'Confirmation building'
 
+  useEffect(() => {
+    const syncSection = () => {
+      const hash = window.location.hash.slice(1)
+      setActiveSection(sectionIds.includes(hash as SectionId) ? hash as SectionId : 'case-study')
+    }
+
+    syncSection()
+    window.addEventListener('hashchange', syncSection)
+    return () => window.removeEventListener('hashchange', syncSection)
+  }, [])
+
   return (
     <main className="korea-product min-h-screen text-foreground">
       <div className="korea-product__frame">
@@ -36,9 +51,9 @@ export function KoreaDefenseExperience({ data, shell }: { data: WorkspaceData; s
             </span>
           </Link>
           <nav className="korea-product__primary-nav" aria-label="Case study navigation">
-            <a href="#case-study">Case study</a>
-            <a href="#market-monitor">Dashboard</a>
-            <a href="#decision">Decision</a>
+            <a className={activeSection === 'case-study' ? 'is-active' : undefined} href="#case-study" aria-current={activeSection === 'case-study' ? 'location' : undefined}>Case study</a>
+            <a className={activeSection === 'market-monitor' ? 'is-active' : undefined} href="#market-monitor" aria-current={activeSection === 'market-monitor' ? 'location' : undefined}>Dashboard</a>
+            <a className={activeSection === 'decision' ? 'is-active' : undefined} href="#decision" aria-current={activeSection === 'decision' ? 'location' : undefined}>Decision</a>
           </nav>
           <div className="korea-product__actions">
             <Link href="/report/EWY" className="korea-product__button korea-product__button--quiet">
@@ -49,11 +64,11 @@ export function KoreaDefenseExperience({ data, shell }: { data: WorkspaceData; s
         </header>
 
         <nav className="korea-product__tabs" aria-label="Dashboard sections">
-          <a className="is-active" href="#case-study" aria-current="page">Dashboard</a>
-          <a href="#market-monitor">Markets</a>
-          <a href="#source-audit">Source Audit</a>
+          <a className={activeSection === 'case-study' ? 'is-active' : undefined} href="#case-study" aria-current={activeSection === 'case-study' ? 'location' : undefined}>Dashboard</a>
+          <a className={activeSection === 'market-monitor' ? 'is-active' : undefined} href="#market-monitor" aria-current={activeSection === 'market-monitor' ? 'location' : undefined}>Markets</a>
+          <a className={activeSection === 'source-audit' ? 'is-active' : undefined} href="#source-audit" aria-current={activeSection === 'source-audit' ? 'location' : undefined}>Source Audit</a>
           <Link href="/report/EWY">Research Note</Link>
-          <a href="#decision">Proof</a>
+          <a className={activeSection === 'decision' ? 'is-active' : undefined} href="#decision" aria-current={activeSection === 'decision' ? 'location' : undefined}>Proof</a>
         </nav>
 
         <section id="case-study" className="korea-product__hero">
@@ -148,8 +163,11 @@ export function KoreaDefenseExperience({ data, shell }: { data: WorkspaceData; s
             <div className="korea-product__event-list">
               {events.slice(0, 5).map(event => (
                 <article key={event.id}>
-                  <time>{event.date}</time>
-                  <div><h4>{event.title}</h4><p>{event.summary}</p></div>
+                  <time dateTime={event.date}>{event.date}</time>
+                  <div>
+                    <h4><a href={event.sourceUrl} target="_blank" rel="noreferrer">{event.title}<ArrowUpRight size={12} aria-hidden="true" /></a></h4>
+                    <p>{event.summary}</p>
+                  </div>
                   <span>{event.verified ? <CheckCircle2 size={15} /> : null}{event.verified ? 'VERIFIED' : 'CHECK'}</span>
                 </article>
               ))}
@@ -191,6 +209,9 @@ export function KoreaDefenseExperience({ data, shell }: { data: WorkspaceData; s
     </main>
   )
 }
+
+const sectionIds = ['case-study', 'market-monitor', 'source-audit', 'decision'] as const
+type SectionId = typeof sectionIds[number]
 
 function Metric({ label, value, detail, tone }: { label: string; value: string; detail: string; tone?: 'positive' | 'negative' | 'decision' }) {
   return (
