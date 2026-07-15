@@ -7,6 +7,7 @@ import { createResearchQueryClient } from '@/lib/research/client'
 import '@mdxeditor/editor/style.css'
 import '@/styles/globals.css'
 import '@/styles/terminal-workspace.css'
+import '@/styles/korea-product.css'
 import '@/styles/pitch-print.css'
 
 export function App({ Component, pageProps }: AppProps) {

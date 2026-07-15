@@ -19,6 +19,7 @@ import { LeftRail, MainModule, MobileModuleSelect, RightRail } from '@/features/
 import type { TerminalWorkspaceProps } from '@/contracts/workspace'
 import { moduleMeta, visibleWorkspaceModules } from '@/features/workspace/components/module-registry'
 import { buildWatchlist, isModuleActive, panelLayoutSizes } from '@/features/workspace/domain/selectors'
+import { KoreaDefenseExperience } from '@/features/korea-defense/components/korea-defense-experience'
 
 export function TerminalWorkspace({
   module,
@@ -135,6 +136,10 @@ export function TerminalWorkspace({
       deferredUnavailableFields={deferredUnavailableFields}
     />
   )
+
+  if (module === 'korea-defense') {
+    return <KoreaDefenseExperience data={data} shell={shell} />
+  }
 
   return (
     <TooltipProvider>
