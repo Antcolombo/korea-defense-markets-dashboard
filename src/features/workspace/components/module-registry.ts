@@ -42,9 +42,10 @@ export const basketDetailMeta: ModuleMeta = {
   icon: Layers3
 }
 
-const hiddenModuleIds = new Set<WorkspaceModule>(['positioning'])
+const primaryModuleIds = new Set<WorkspaceModule>(['korea-defense', 'overview', 'stock-report'])
 
-export const visibleWorkspaceModules = workspaceModules.filter(item => !hiddenModuleIds.has(item.id))
+export const visibleWorkspaceModules = workspaceModules
+export const primaryWorkspaceModules = workspaceModules.filter(item => primaryModuleIds.has(item.id))
 
 export function moduleMeta(module: WorkspaceModule) {
   return module === 'basket-detail'

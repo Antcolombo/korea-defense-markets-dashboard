@@ -3,10 +3,17 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { parseAsString, useQueryState } from 'nuqs'
 import { toPng } from 'html-to-image'
-import { Search, Terminal, Zap } from 'lucide-react'
+import { ChevronDown, LayoutGrid, Search, Terminal, Zap } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu'
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { TerminalActionMenu } from '@/components/terminal/action-menu'
@@ -17,7 +24,7 @@ import { qualityBadgeClass, statusLabel } from '@/components/workbench/terminal-
 import { useTerminalStore, type PanelLayoutMode } from '@/features/workspace/components/workspace-store'
 import { LeftRail, MainModule, MobileModuleSelect, RightRail } from '@/features/workspace/components/module-renderer'
 import type { TerminalWorkspaceProps } from '@/contracts/workspace'
-import { moduleMeta, visibleWorkspaceModules } from '@/features/workspace/components/module-registry'
+import { moduleMeta, primaryWorkspaceModules, visibleWorkspaceModules } from '@/features/workspace/components/module-registry'
 import { buildWatchlist, isModuleActive, panelLayoutSizes } from '@/features/workspace/domain/selectors'
 import { KoreaDefenseExperience } from '@/features/korea-defense/components/korea-defense-experience'
 
@@ -155,15 +162,36 @@ export function TerminalWorkspace({
                 <p className="hidden truncate text-[0.62rem] text-muted-foreground xl:block">MARKET INTELLIGENCE</p>
               </div>
             </div>
-            <nav className="hidden min-w-0 flex-1 items-center gap-1 overflow-x-auto lg:flex" aria-label="Workspace modules">
-              {visibleWorkspaceModules.map(item => {
+            <nav className="hidden min-w-0 flex-1 items-center gap-1 lg:flex" aria-label="Workspace modules">
+              {primaryWorkspaceModules.map((item, index) => {
                 const Icon = item.icon
                 return (
-                  <Button key={item.id} asChild variant={isModuleActive(item.id, module) ? 'secondary' : 'ghost'} size="sm" className="text-[0.75rem] font-medium">
+                  <Button key={item.id} asChild variant={isModuleActive(item.id, module) ? 'secondary' : 'ghost'} size="sm" className={`${index === 0 ? '' : 'hidden xl:inline-flex'} shrink-0 text-[0.75rem] font-medium`}>
                     <Link href={item.href}><Icon className="h-3.5 w-3.5" />{item.short}</Link>
                   </Button>
                 )
               })}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button type="button" variant="outline" size="sm" className="shrink-0 text-[0.75rem] font-medium">
+                    <LayoutGrid className="h-3.5 w-3.5" />All modules<ChevronDown className="h-3.5 w-3.5 opacity-60" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-72">
+                  <DropdownMenuLabel>Research workspace</DropdownMenuLabel>
+                  {visibleWorkspaceModules.map(item => {
+                    const Icon = item.icon
+                    return (
+                      <DropdownMenuItem key={item.id} asChild className={isModuleActive(item.id, module) ? 'bg-accent' : undefined}>
+                        <Link href={item.href} className="flex w-full items-center gap-2 py-1.5">
+                          <Icon className="h-4 w-4" />
+                          <span>{item.label}</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    )
+                  })}
+                </DropdownMenuContent>
+              </DropdownMenu>
             </nav>
           </div>
           <form onSubmit={submitTicker} className="flex min-w-0 items-center gap-2">

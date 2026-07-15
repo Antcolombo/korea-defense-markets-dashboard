@@ -4,9 +4,7 @@ import formsPlugin from '@tailwindcss/forms'
 const config: Config = {
   darkMode: ['class'],
   content: [
-    './src/pages/**/*.{ts,tsx}',
-    './src/components/**/*.{ts,tsx}',
-    './src/lib/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
     './node_modules/@tremor/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
